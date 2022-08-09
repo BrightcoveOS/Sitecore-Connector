@@ -99,6 +99,22 @@ namespace Brightcove.Core.Services
             return playlist;
         }
 
+        public Label CreateLabel(string path)
+        {
+            Label label = new Label();
+            label.Path = path;
+
+            HttpRequestMessage request = new HttpRequestMessage();
+            request.Content = new StringContent(JsonConvert.SerializeObject(label), Encoding.UTF8, "application/json");
+            request.Method = HttpMethod.Post;
+            request.RequestUri = new Uri($"{cmsBaseUrl}/{accountId}/labels");
+
+            HttpResponseMessage response = SendRequest(request);
+            label = JsonConvert.DeserializeObject<Label>(response.Content.ReadAsString());
+
+            return label;
+        }
+
         public VideoVariant CreateVideoVariant(string videoId, string videoVariantName, string language)
         {
             VideoVariant videoVariant = new VideoVariant();
@@ -307,6 +323,30 @@ namespace Brightcove.Core.Services
             HttpResponseMessage response = SendRequest(request);
 
             return JsonConvert.DeserializeObject<List<PlayList>>(response.Content.ReadAsString());
+        }
+
+        public Labels GetLabels()
+        {
+            /*HttpRequestMessage request = new HttpRequestMessage();
+
+             request.Method = HttpMethod.Get;
+             request.RequestUri = new Uri($"{cmsBaseUrl}/{accountId}/labels");
+
+             HttpResponseMessage response = SendRequest(request);*/
+
+            Labels labels = new Labels();
+            labels.AccountId = "account-id";
+            labels.Version = 4;
+
+            labels.Paths = new List<string>()
+            {
+                "/nature/birds/",
+                "/nature/birds/shore_birds/",
+                "/nature/birds/forest_birds/",
+                "/nature/mammals/seamammals/"
+            };
+
+            return labels;
         }
 
         public IEnumerable<Video> GetVideos(int offset = 0, int limit = 20, string sort = "", string query = "")

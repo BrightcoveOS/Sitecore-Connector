@@ -55,6 +55,7 @@
     <Compile Include="Models\IngestTextTrack.cs" />
     <Compile Include="Models\IngestVideo.cs" />
     <Compile Include="Models\Experience.cs" />
+    <Compile Include="Models\Label.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\TemporaryIngestUrls.cs" />
     <Compile Include="Models\Converters\BrightcovePlayListSearchFieldConverter.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Models\PlayListSearch.cs" />
     <Compile Include="Models\TagInclusion.cs" />
     <Compile Include="Models\TextTrack.cs" />
+    <Compile Include="Models\Labels.cs" />
     <Compile Include="Models\VideoVariant.cs" />
     <Compile Include="Models\Video.cs" />
     <Compile Include="Models\VideoLink.cs" />
