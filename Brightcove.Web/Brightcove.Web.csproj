@@ -849,6 +849,7 @@
     <Compile Include="Rules\Analytics\PlaybackRuleContext.cs" />
     <Compile Include="Rules\Conditions\AccountTemplateCondition.cs" />
     <Compile Include="Rules\Conditions\ExportAllowedCondition.cs" />
+    <Compile Include="Search\ComputedFields\LabelsComputedField.cs" />
     <Compile Include="UI\FieldTypes\ImagePreview.cs" />
     <Compile Include="UI\FieldTypes\ReadOnlyDropTree.cs" />
     <Compile Include="UI\FieldTypes\ReadOnlyCheckBox.cs" />
