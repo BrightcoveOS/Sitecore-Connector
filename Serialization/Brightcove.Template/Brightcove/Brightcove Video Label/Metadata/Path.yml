@@ -1,20 +1,16 @@
 ﻿---
-ID: "db5ae464-3523-444e-94f4-398c01beae6b"
-Parent: "634e2e65-8d1f-48b7-a43b-c8282f38a784"
+ID: "2a881872-689d-4626-a834-f54493464c44"
+Parent: "14431994-9f6c-41fc-a7d3-8377710f5885"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Brightcove/BrightcoveVideo/Sharing/By Reference
+Path: /sitecore/templates/Brightcove/Brightcove Video Label/Metadata/Path
 DB: master
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: ReadOnlyCheckBox
+  Value: ReadOnlyText
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 500
-- ID: "be351a73-fcb0-4213-93fa-c302d8ab4f51"
-  Hint: Shared
-  Type: Checkbox
-  Value: 1
+  Value: 100
 Languages:
 - Language: en
   Versions:
@@ -22,4 +18,4 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20160607T080553Z
+      Value: 20220809T155320Z
