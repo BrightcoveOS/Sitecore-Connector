@@ -42,17 +42,24 @@ namespace Brightcove.DataExchangeFramework.Processors
             Database database = Sitecore.Configuration.Factory.GetDatabase(repository.DatabaseName);
             Item parentItem = database?.GetItem(parentItemPath);
 
-            if (parentItem != null && BucketManager.IsBucket(parentItem))
+            if (parentItem == null)
+            {
+                return null;
+            }
+
+            string fieldName = valueReader.FieldName;
+            string convertedValue = this.ConvertValueForSearch(value);
+
+            if (BucketManager.IsBucket(parentItem))
             {
                 IProviderSearchContext searchContext = ContentSearchManager.GetIndex($"sitecore_{repository.DatabaseName}_index").CreateSearchContext();
 
-                string fieldName = valueReader.FieldName;
-                string convertedValue = this.ConvertValueForSearch(value);
+                //Since we must search the index becasue the target folder is a bucket the items must have a field called 'ID' that can be used to identify them
                 AssetSearchResult searchResult = searchContext.GetQueryable<AssetSearchResult>().FirstOrDefault(x => x.Path.Contains(parentItemMediaPath) && x.ID == convertedValue);
                 return searchResult?.GetItem()?.GetItemModel();
             }
 
-            return null;
+            return parentItem.Children?.Where(c => c[fieldName] == convertedValue)?.FirstOrDefault()?.GetItemModel();
         }
 
         protected override Guid GetParentItemIdForNewItem(

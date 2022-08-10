@@ -325,28 +325,17 @@ namespace Brightcove.Core.Services
             return JsonConvert.DeserializeObject<List<PlayList>>(response.Content.ReadAsString());
         }
 
-        public Labels GetLabels()
+        public IEnumerable<Label> GetLabels()
         {
-            /*HttpRequestMessage request = new HttpRequestMessage();
+            HttpRequestMessage request = new HttpRequestMessage();
 
-             request.Method = HttpMethod.Get;
-             request.RequestUri = new Uri($"{cmsBaseUrl}/{accountId}/labels");
+            request.Method = HttpMethod.Get;
+            request.RequestUri = new Uri($"{cmsBaseUrl}/{accountId}/labels");
 
-             HttpResponseMessage response = SendRequest(request);*/
+            HttpResponseMessage response = SendRequest(request);
+            Labels labels = JsonConvert.DeserializeObject<Labels>(response.Content.ReadAsString());
 
-            Labels labels = new Labels();
-            labels.AccountId = "account-id";
-            labels.Version = 4;
-
-            labels.Paths = new List<string>()
-            {
-                "/nature/birds/",
-                "/nature/birds/shore_birds/",
-                "/nature/birds/forest_birds/",
-                "/nature/mammals/seamammals/"
-            };
-
-            return labels;
+            return labels.Paths.Select(p => new Label(p)).ToList();
         }
 
         public IEnumerable<Video> GetVideos(int offset = 0, int limit = 20, string sort = "", string query = "")

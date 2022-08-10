@@ -11,6 +11,20 @@ namespace Brightcove.Core.Models
         [JsonProperty("path", NullValueHandling = NullValueHandling.Ignore)]
         public string Path { get; set; }
 
+        [JsonIgnore()]
+        public string SitecoreName { get; set; }
+
+        public Label()
+        {
+
+        }
+
+        public Label(string path)
+        {
+            Path = path;
+            SitecoreName = path.Replace("/", "_");
+        }
+
         public Label ShallowCopy()
         {
             return (Label)this.MemberwiseClone();
