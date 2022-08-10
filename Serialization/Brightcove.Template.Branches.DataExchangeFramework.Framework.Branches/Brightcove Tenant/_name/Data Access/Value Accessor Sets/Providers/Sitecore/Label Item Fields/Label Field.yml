@@ -2,7 +2,7 @@
 ID: "fef2c6d2-1f58-4b4f-9b85-837422b2bc9a"
 Parent: "7d44913b-ba2f-473b-a80a-29a9c19c0341"
 Template: "6f7375cc-9942-4e30-8c63-95281b69c65f"
-Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Data Access/Value Accessor Sets/Providers/Sitecore/Label Item Fields/Path Field
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Data Access/Value Accessor Sets/Providers/Sitecore/Label Item Fields/Label Field
 DB: master
 SharedFields:
 - ID: "a011c1d5-1c40-4420-8592-d0ce0306e0dd"

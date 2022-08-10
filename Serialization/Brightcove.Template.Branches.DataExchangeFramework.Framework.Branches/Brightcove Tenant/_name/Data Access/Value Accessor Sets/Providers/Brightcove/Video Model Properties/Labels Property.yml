@@ -1,0 +1,25 @@
+﻿---
+ID: "e26a5576-dc40-4d13-934f-5336e4f35523"
+Parent: "9f623c7f-51f5-4091-8645-daad69627e67"
+Template: "a0737430-a34e-4034-8f98-e15fbcc6948c"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Data Access/Value Accessor Sets/Providers/Brightcove/Video Model Properties/Labels Property
+DB: master
+SharedFields:
+- ID: "06fd1c3e-a7f7-4cd2-a54e-a995d7a9e4de"
+  Hint: PropertyName
+  Value: Labels
+- ID: "3c7f78cc-0c5c-4076-80ef-9a49fda5ff96"
+  Hint: ConverterType
+  Value: Brightcove.DataExchangeFramework.Converters.LabelsPropertyValueAccessorConverter, Brightcove.DataExchangeFramework
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20220810T133510Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

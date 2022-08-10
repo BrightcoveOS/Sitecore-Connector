@@ -2,7 +2,7 @@
 ID: "2a881872-689d-4626-a834-f54493464c44"
 Parent: "14431994-9f6c-41fc-a7d3-8377710f5885"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Brightcove/Brightcove Video Label/Metadata/Path
+Path: /sitecore/templates/Brightcove/Brightcove Video Label/Metadata/Label
 DB: master
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
