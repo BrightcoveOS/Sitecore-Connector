@@ -23,7 +23,7 @@ namespace Brightcove.Web.Search.ComputedIndexFields
 
                 if (labels != null)
                 {
-                    return string.Join(" ", labels.GetItems()?.Select(i => i["path"]) ?? new string[0]);
+                    return string.Join(" ", labels.GetItems()?.Select(i => i["label"]) ?? new string[0]);
                 }
             }
             catch(Exception ex)

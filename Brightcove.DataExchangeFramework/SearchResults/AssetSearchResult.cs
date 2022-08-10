@@ -14,5 +14,9 @@ namespace Brightcove.DataExchangeFramework.SearchResults
         [DataMember]
         [IndexField("id_t")]
         public string ID { get; set; }
+
+        [DataMember]
+        [IndexField("label_t")]
+        public string Label { get; set; }
     }
 }

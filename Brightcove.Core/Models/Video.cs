@@ -47,6 +47,9 @@ namespace Brightcove.Core.Models
         [JsonProperty("sharing", NullValueHandling = NullValueHandling.Ignore)]
         public VideoSharing Sharing { get; set; }
 
+        [JsonProperty("labels", NullValueHandling = NullValueHandling.Ignore)]
+        public List<string> Labels { get; set; }
+
         [JsonIgnore]
         public string IngestJobId { get; set; }
 
