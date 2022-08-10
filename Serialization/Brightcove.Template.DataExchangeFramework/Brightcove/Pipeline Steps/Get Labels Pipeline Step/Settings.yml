@@ -1,0 +1,14 @@
+﻿---
+ID: "38b67192-f033-4954-a110-0eb495318320"
+Parent: "3d7252a0-16ac-47c1-a954-3c35b3960b63"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Data Exchange/Providers/Brightcove/Pipeline Steps/Get Labels Pipeline Step/Settings
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20211103T101303Z
