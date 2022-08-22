@@ -110,7 +110,7 @@ namespace Brightcove.Core.Services
             request.RequestUri = new Uri($"{cmsBaseUrl}/{accountId}/labels");
 
             HttpResponseMessage response = SendRequest(request);
-            label = JsonConvert.DeserializeObject<Label>(response.Content.ReadAsString());
+            label = new Label(JsonConvert.DeserializeObject<Label>(response.Content.ReadAsString()).Path);
 
             return label;
         }
@@ -126,7 +126,7 @@ namespace Brightcove.Core.Services
 
             HttpResponseMessage response = SendRequest(request);
 
-            return JsonConvert.DeserializeObject<Label>(response.Content.ReadAsString());
+            return new Label(JsonConvert.DeserializeObject<Label>(response.Content.ReadAsString()).Path);
         }
 
         public bool TryGetLabel(string path, out Label label)

@@ -18,6 +18,9 @@ namespace Brightcove.Core.Models
         [JsonIgnore()]
         public string SitecoreName { get; set; }
 
+        [JsonIgnore()]
+        public DateTime LastSyncTime { get; set; }
+
         public Label()
         {
 

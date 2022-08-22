@@ -28,8 +28,14 @@ namespace Brightcove.DataExchangeFramework.Processors
 
             service = new BrightcoveService(WebApiSettings.AccountId, WebApiSettings.ClientId, WebApiSettings.ClientSecret);
 
-            var data = service.GetLabels();
-            var dataSettings = new IterableDataSettings(data);
+            var labels = service.GetLabels();
+
+            foreach (Label label in labels)
+            {
+                label.LastSyncTime = DateTime.UtcNow;
+            }
+
+            var dataSettings = new IterableDataSettings(labels);
 
             pipelineContext.AddPlugin(dataSettings);
         }

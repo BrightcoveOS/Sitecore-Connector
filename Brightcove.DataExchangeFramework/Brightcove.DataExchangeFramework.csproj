@@ -466,6 +466,7 @@
     <Compile Include="Processors\ResolveLabelModelPipelineStepProcessor.cs" />
     <Compile Include="Processors\ResolvePlayerModelPipelineStepProcessor.cs" />
     <Compile Include="Processors\ResolvePlayListModelPipelineStepProcessor.cs" />
+    <Compile Include="Processors\UpdateLabelModelPipelineStepProcessor.cs" />
     <Compile Include="Processors\UpdatePlaylistModelPipelineStepProcessor.cs" />
     <Compile Include="Processors\UpdatePlayerModelPipelineStepProcessor.cs" />
     <Compile Include="Processors\UpdateVideoItemProcessor.cs" />
