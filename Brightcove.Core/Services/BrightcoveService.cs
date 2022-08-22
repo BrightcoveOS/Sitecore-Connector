@@ -115,6 +115,35 @@ namespace Brightcove.Core.Services
             return label;
         }
 
+        public Label UpdateLabel(Label label)
+        {
+            HttpRequestMessage request = new HttpRequestMessage();
+
+            request.Method = new HttpMethod("PATCH");
+            request.RequestUri = new Uri($"{cmsBaseUrl}/{accountId}/labels/by_path/{label.Path}");
+
+            request.Content = new StringContent(JsonConvert.SerializeObject(label), Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = SendRequest(request);
+
+            return JsonConvert.DeserializeObject<Label>(response.Content.ReadAsString());
+        }
+
+        public bool TryGetLabel(string path, out Label label)
+        {
+            //The Brightcove API does not actually include anyway to check if a specific label exists
+            //So we have to do this...
+            IEnumerable<Label> labels = GetLabels();
+            label = labels.Where(l => l.Path == path).FirstOrDefault();
+
+            if(label == null)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         public VideoVariant CreateVideoVariant(string videoId, string videoVariantName, string language)
         {
             VideoVariant videoVariant = new VideoVariant();
