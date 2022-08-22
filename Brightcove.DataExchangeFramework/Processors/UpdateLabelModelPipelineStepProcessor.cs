@@ -48,16 +48,16 @@ namespace Brightcove.DataExchangeFramework.Processors
                 Item item = Sitecore.Context.ContentDatabase.GetItem(itemModel.GetItemId().ToString());
 
                 //The item has been marked for deletion in Sitecore
-                /*if ((string)itemModel["Delete"] == "1")
+                if ((string)itemModel["Delete"] == "1")
                 {
-                    logger.Info($"Deleting the brightcove model '{player.Id}' because it has been marked for deletion in Sitecore (pipeline step: {pipelineStep.Name})");
-                    service.DeletePlayer(player.Id);
+                    logger.Info($"Deleting the brightcove model '{label.Path}' because it has been marked for deletion in Sitecore (pipeline step: {pipelineStep.Name})");
+                    service.DeleteLabel(label.Path);
 
                     logger.Info($"Deleting the brightcove item '{item.ID}' because it has been marked for deleteion in Sitecore '{itemModel.GetItemId()}' (pipeline step: {pipelineStep.Name})");
                     item.Delete();
 
                     return;
-                }*/
+                }
 
                 DateTime lastSyncTime = DateTime.UtcNow;
                 DateField lastModifiedTime = item.Fields["__Updated"];
@@ -79,6 +79,7 @@ namespace Brightcove.DataExchangeFramework.Processors
                     item["NewLabel"] = "";
                     item["LastSyncTime"] = DateTime.UtcNow.ToString();
                     item.Name = updatedLabel.SitecoreName;
+                    item["__Display name"] = updatedLabel.Path;
                     item.Editing.EndEdit();
 
                     logger.Debug($"Successfully updated the brightcove model '{label.Path}' (pipeline step: {pipelineStep.Name})");

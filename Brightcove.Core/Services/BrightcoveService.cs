@@ -319,6 +319,17 @@ namespace Brightcove.Core.Services
             SendRequest(request);
         }
 
+        public void DeleteLabel(string path)
+        {
+            if (string.IsNullOrWhiteSpace(path))
+                return;
+
+            HttpRequestMessage request = new HttpRequestMessage();
+            request.Method = HttpMethod.Delete;
+            request.RequestUri = new Uri($"{cmsBaseUrl}/{accountId}/labels/by_path/{path}");
+            SendRequest(request);
+        }
+
         public PlayList UpdatePlaylist(PlayList playlist)
         {
             HttpRequestMessage request = new HttpRequestMessage();
@@ -364,7 +375,21 @@ namespace Brightcove.Core.Services
             HttpResponseMessage response = SendRequest(request);
             Labels labels = JsonConvert.DeserializeObject<Labels>(response.Content.ReadAsString());
 
-            return labels.Paths.Select(p => new Label(p)).ToList();
+            //The brightcove API only returns leaf nodes so we have to generate the rest of the directory tree...
+            HashSet<string> uniquePaths = new HashSet<string>();
+
+            foreach (string path in labels.Paths)
+            {
+                List<string> subPaths = path.Split('/').ToList();
+
+                for (int i = subPaths.Count - 1; i > 1; i--)
+                {
+                    subPaths.RemoveAt(i);
+                    uniquePaths.Add(string.Join("/", subPaths));
+                }
+            }
+
+            return uniquePaths.Select(p => new Label(p)).ToList();
         }
 
         public IEnumerable<Video> GetVideos(int offset = 0, int limit = 20, string sort = "", string query = "")

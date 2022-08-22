@@ -83,6 +83,9 @@ namespace Brightcove.DataExchangeFramework.Processors
             item.Editing.BeginEdit();
             item["Label"] = label.Path;
             item["NewPath"] = "";
+            item["LastSyncTime"] = DateTime.UtcNow.ToString();
+            item.Name = label.SitecoreName;
+            item["__Display name"] = label.Path;
             item.Editing.EndEdit();
 
             return label;

@@ -28,8 +28,8 @@ namespace Brightcove.Core.Models
 
         public Label(string path)
         {
-            Path = path;
-            SitecoreName = path.Replace("/", "_");
+            Path = AddTrailingSlash(path);
+            SitecoreName = Path.Replace("/", "_");
         }
 
         public Label ShallowCopy()
@@ -58,6 +58,16 @@ namespace Brightcove.Core.Models
         public string GetLeafLabel()
         {
             return Path.Split('/').Last();
+        }
+
+        private string AddTrailingSlash(string path)
+        {
+            if (path[path.Length - 1] != '/')
+            {
+                return path + '/';
+            }
+
+            return path;
         }
     }
 }
