@@ -1,0 +1,14 @@
+﻿---
+ID: "b325cf32-01ad-4981-be15-0f7305393e14"
+Parent: "a3b4449b-2acb-414c-a239-5d12a1473759"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Data Exchange/Providers/Brightcove/Pipeline Steps/Update Label Model Pipeline Step/Settings
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210909T203951Z

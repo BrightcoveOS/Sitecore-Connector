@@ -1,13 +1,16 @@
 ﻿---
-ID: "2a881872-689d-4626-a834-f54493464c44"
-Parent: "14431994-9f6c-41fc-a7d3-8377710f5885"
+ID: "19174e44-13f2-4c97-8e6c-ad909db4e29d"
+Parent: "c60adc3d-4aa2-4ca5-b792-5e734159421d"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Brightcove/Brightcove Video Label/Metadata/Label
+Path: /sitecore/templates/Data Exchange/Providers/Brightcove/Pipeline Steps/Resolve Label Model Pipeline Step/Settings/AssetModelLocation
 DB: master
 SharedFields:
+- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
+  Hint: Source
+  Value: "{DD61BBDB-CF41-40F6-9923-3031C7AB47C8}"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: ReadOnlyText
+  Value: Droplink
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 100
@@ -20,10 +23,13 @@ Languages:
   Fields:
   - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
     Hint: Title
-    Value: Path
+    Value: Video Model Location
+  - ID: "9541e67d-ce8c-4225-803d-33f7f29f09ef"
+    Hint: __Short description
+    Value: 
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20220809T155320Z
+      Value: 20160305T022420Z

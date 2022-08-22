@@ -1,0 +1,34 @@
+﻿---
+ID: "61a44f9b-d42c-44c3-9202-4dfec7b67122"
+Parent: "a3b4449b-2acb-414c-a239-5d12a1473759"
+Template: "a3b4449b-2acb-414c-a239-5d12a1473759"
+Path: /sitecore/templates/Data Exchange/Providers/Brightcove/Pipeline Steps/Update Label Model Pipeline Step/__Standard Values
+DB: master
+SharedFields:
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: Applications/16x16/document.png
+- ID: "3c7f78cc-0c5c-4076-80ef-9a49fda5ff96"
+  Hint: ConverterType
+  Value: Brightcove.DataExchangeFramework.Converters.ResolveOrUpdateAssetModelPipelineStepConverter, Brightcove.DataExchangeFramework
+- ID: "4286cf2a-964d-424e-894c-ebd3d5db8345"
+  Hint: AssetItemLocation
+  Value: "{17DF1143-A38D-4C77-A933-E66B5ED21E9A}"
+- ID: "77bc01e6-b89e-4b69-a1f3-db947fa35eca"
+  Hint: AssetModelLocation
+  Value: "{EC64487D-E7E6-40B0-A86C-40C74B95E04E}"
+- ID: "a83a2eb2-bfa1-4d3f-9f17-0cc6c9a91c42"
+  Hint: ProcessorType
+  Value: Brightcove.DataExchangeFramework.Processors.UpdateLabelModelPipelineStepProcessor, Brightcove.DataExchangeFramework
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210909T205319Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
