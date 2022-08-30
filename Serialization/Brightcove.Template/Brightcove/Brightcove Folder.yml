@@ -1,0 +1,24 @@
+﻿---
+ID: "de3e2cea-4d95-41d7-b769-2881f09a4024"
+Parent: "a6aa5aaf-bedf-4b5d-bfff-f6a9ffc61c93"
+Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
+Path: /sitecore/templates/Brightcove/Brightcove Folder
+DB: master
+SharedFields:
+- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
+  Hint: __Base template
+  Type: tree list
+  Value: |
+    {1930BBEB-7805-471A-A3BE-4858AC7CF696}
+    {EA5D79C0-2375-4F96-9087-52585CC4A137}
+- ID: "f7d48a55-2158-4f02-9356-756654404f73"
+  Hint: __Standard values
+  Value: "{CD52A23F-91F6-4C63-B5DA-9D2E23DD2113}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20220830T161020Z

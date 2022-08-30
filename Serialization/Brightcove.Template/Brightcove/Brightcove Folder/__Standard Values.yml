@@ -1,0 +1,22 @@
+﻿---
+ID: "cd52a23f-91f6-4c63-b5da-9d2e23dd2113"
+Parent: "de3e2cea-4d95-41d7-b769-2881f09a4024"
+Template: "de3e2cea-4d95-41d7-b769-2881f09a4024"
+Path: /sitecore/templates/Brightcove/Brightcove Folder/__Standard Values
+DB: master
+SharedFields:
+- ID: "62c3e72a-9eb5-4bfe-afbc-203e67ec0da8"
+  Hint: Name
+  Value: $name
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20220830T162437Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

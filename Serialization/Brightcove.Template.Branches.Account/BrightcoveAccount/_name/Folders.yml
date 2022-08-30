@@ -1,0 +1,19 @@
+﻿---
+ID: "d4f60da5-fb36-430d-9788-a9bc66614baf"
+Parent: "3916e0d4-74bd-4818-8caa-61f331c50199"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: /sitecore/templates/Branches/BrightcoveAccount/$name/Folders
+DB: master
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Type: TreelistEx
+  Value: "{DE3E2CEA-4D95-41D7-B769-2881F09A4024}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20220830T161848Z

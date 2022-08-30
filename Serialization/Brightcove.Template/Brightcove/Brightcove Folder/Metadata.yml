@@ -1,0 +1,14 @@
+﻿---
+ID: "396fb25e-144b-49b2-a9bf-9727ae44c13e"
+Parent: "de3e2cea-4d95-41d7-b769-2881f09a4024"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Brightcove/Brightcove Folder/Metadata
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20220830T161639Z
