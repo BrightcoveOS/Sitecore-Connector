@@ -1,0 +1,26 @@
+﻿---
+ID: "8b5d8233-e64a-41c7-8eda-8c30c87c7d03"
+Parent: "da22cf7e-39a6-465f-9d7a-59ab5778915a"
+Template: "450c8f38-91c9-4896-957b-6f7daf18ccfc"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Value Mapping Sets/Model Source Mapping Sets/Video Variant Model Source Mapping Set/LongDescription Property Mapping
+DB: master
+SharedFields:
+- ID: "95184b45-efef-447c-9089-4f2ec5df26c5"
+  Hint: SourceAccessor
+  Type: Treelist
+  Value: "{A8ABDBC3-F16F-408D-8234-0ADC9B79EF4E}"
+- ID: "ef84b462-7f4a-4f48-b78e-ade192d55e82"
+  Hint: TargetAccessor
+  Value: "{126C0E4A-FCFB-4ADC-B061-5BC4CDAA6A01}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20220623T030213Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

@@ -1,0 +1,18 @@
+﻿---
+ID: "0fa57d58-c489-482b-a24e-4b62c330ddbe"
+Parent: "3e1308f4-6972-467f-9f06-9740cefd1710"
+Template: "2dc9c843-b841-483c-bb9b-ae0c9386404c"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Pipelines/Push Pipelines/Push Playlists Pipeline
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20211014T051458Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

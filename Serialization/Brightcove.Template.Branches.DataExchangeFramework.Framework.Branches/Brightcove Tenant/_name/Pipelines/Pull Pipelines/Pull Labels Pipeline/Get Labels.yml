@@ -1,0 +1,21 @@
+﻿---
+ID: "88343cb0-327a-4a4f-b912-618d8c3d747d"
+Parent: "4fa2e3fd-5503-46bc-90d4-8ca4645198db"
+Template: "3d7252a0-16ac-47c1-a954-3c35b3960b63"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Pipelines/Pull Pipelines/Pull Labels Pipeline/Get Labels
+DB: master
+SharedFields:
+- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
+  Hint: __Originator
+  Value: 
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20220406T132459Z
+    - ID: "7dc31c55-3679-49f2-8aac-ee9516ed04ac"
+      Hint: EndpointFrom
+      Value: "{17DF1FC5-386D-4783-9CC6-A31ABFCF6A48}"

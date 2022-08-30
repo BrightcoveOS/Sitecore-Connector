@@ -1,0 +1,28 @@
+﻿---
+ID: "e5f18de1-3358-4bc8-8914-ec59c66d5e8c"
+Parent: "a1def34e-43bc-4ef0-9547-4ead309e28a3"
+Template: "a3b4449b-2acb-414c-a239-5d12a1473759"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Pipelines/Subpipelines/Update Model Pipelines/Update Label Models Pipeline/Update Label Model
+DB: master
+SharedFields:
+- ID: "506bad49-3da6-474c-acb5-7bcb509bfbd7"
+  Hint: Enabled
+  Type: Checkbox
+  Value: 1
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 300
+- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
+  Hint: __Originator
+  Value: 
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20220406T132500Z
+    - ID: "dc6d251a-e204-48bb-ac2d-8128640134bb"
+      Hint: EndpointFrom
+      Value: "{17DF1FC5-386D-4783-9CC6-A31ABFCF6A48}"

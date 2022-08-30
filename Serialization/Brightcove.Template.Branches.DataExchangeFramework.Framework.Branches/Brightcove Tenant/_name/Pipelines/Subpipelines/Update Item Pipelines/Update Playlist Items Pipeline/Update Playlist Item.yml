@@ -1,0 +1,28 @@
+﻿---
+ID: "7e4714c5-a5e3-49d2-ae7f-3dcd879eb21c"
+Parent: "062fa6d7-d5d5-424f-b677-900c2da935a6"
+Template: "b384fb2d-fbef-4a8e-9572-fa5fb9f75a7d"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Pipelines/Subpipelines/Update Item Pipelines/Update Playlist Items Pipeline/Update Playlist Item
+DB: master
+SharedFields:
+- ID: "53ca50c3-f968-47d4-b19f-9ef305f99403"
+  Hint: ItemLocation
+  Value: "{EC64487D-E7E6-40B0-A86C-40C74B95E04E}"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 500
+- ID: "e8609af1-3e0a-41ae-894d-03dcd99165a7"
+  Hint: EndpointTo
+  Value: "{B869F0C0-9743-452A-B019-015FF0845A1F}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210914T195638Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

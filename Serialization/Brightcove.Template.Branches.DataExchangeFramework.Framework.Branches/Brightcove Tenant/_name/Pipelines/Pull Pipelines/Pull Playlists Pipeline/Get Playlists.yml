@@ -1,0 +1,22 @@
+﻿---
+ID: "f3454fb8-2648-40ed-a6b0-e0287f8761d3"
+Parent: "3558d737-2162-46f5-ace9-928c98abecb0"
+Template: "8aa7daa5-c041-45a8-b406-918f3ea2d00c"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Pipelines/Pull Pipelines/Pull Playlists Pipeline/Get Playlists
+DB: master
+SharedFields:
+- ID: "506bad49-3da6-474c-acb5-7bcb509bfbd7"
+  Hint: Enabled
+  Type: Checkbox
+  Value: 1
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "0d03f6eb-494b-42a4-939a-5dc3561084ac"
+      Hint: EndpointFrom
+      Value: "{17DF1FC5-386D-4783-9CC6-A31ABFCF6A48}"
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210917T002117Z

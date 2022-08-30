@@ -1,0 +1,48 @@
+﻿---
+ID: "4caa035b-53a2-4094-b894-145b56db6b7b"
+Parent: "bcd318ab-a0b9-47e5-b4ae-ade05ed9504e"
+Template: "31250ad6-4d31-485e-a42c-8d4ade27b318"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Pipelines/Subpipelines/Update Item Pipelines/Update Label Items Pipeline/Resolve Label Item
+DB: master
+SharedFields:
+- ID: "010e5d89-6409-4fbc-843b-ceb84c8ed3bb"
+  Hint: IdentifierObjectLocation
+  Value: "{17DF1143-A38D-4C77-A933-E66B5ED21E9A}"
+- ID: "21875be1-ad41-4541-88cf-7e47551bb6ac"
+  Hint: ItemNameValueAccessor
+  Value: "{0DB25A5B-4AC4-472C-B920-2F4947042BCE}"
+- ID: "3798a7e3-61ff-4ba3-b8ba-f5cba2929517"
+  Hint: TemplateForNewItem
+  Value: "{8B6A9EAD-4DE9-4C59-B8F5-F3FF40A64F12}"
+- ID: "4ce9ed44-bc7f-44e5-886d-97d9a6890faa"
+  Hint: IdentifierValueAccessor
+  Value: "{5A70D013-BE49-4F26-9FCF-B0FCFA66C257}"
+- ID: "5c061c42-ff86-4f43-b5ad-831dc03dc77d"
+  Hint: ResolvedObjectLocation
+  Value: "{EC64487D-E7E6-40B0-A86C-40C74B95E04E}"
+- ID: "922e98e7-be62-4a67-8273-551f2e8c8bfe"
+  Hint: EndpointFrom
+  Value: "{B869F0C0-9743-452A-B019-015FF0845A1F}"
+- ID: "d922ea57-bce2-4457-bc60-5fcaafa36707"
+  Hint: ParentForItem
+  Value: "{1ADBC873-DFBF-4C09-853E-AC71E6D59739}"
+- ID: "e074292d-0467-443c-a1b5-cbd5e5162813"
+  Hint: MatchingFieldValueAccessor
+  Value: "{FEF2C6D2-1F58-4B4F-9B85-837422B2BC9A}"
+- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
+  Hint: __Originator
+  Value: 
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "186d0a4b-a7a7-4da1-9163-61da5f0fec8a"
+      Hint: RelativePath
+      Value: Labels
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20220406T132500Z
+    - ID: "cb7ac2ec-a881-403d-923a-2ab00cbe334a"
+      Hint: BrightcoveEndpoint
+      Value: "{17DF1FC5-386D-4783-9CC6-A31ABFCF6A48}"

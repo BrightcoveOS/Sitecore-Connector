@@ -1,0 +1,30 @@
+﻿---
+ID: "bd979203-2dbc-4013-ba32-ece43c4e185a"
+Parent: "8b9d593a-a3fe-4e24-a19a-615c25e18c50"
+Template: "450c8f38-91c9-4896-957b-6f7daf18ccfc"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Value Mapping Sets/Item Source Mapping Sets/Playlist Item Source Mapping Set/Video Ids Field Mapping
+DB: master
+SharedFields:
+- ID: "506bad49-3da6-474c-acb5-7bcb509bfbd7"
+  Hint: Enabled
+  Type: Checkbox
+  Value: 1
+- ID: "95184b45-efef-447c-9089-4f2ec5df26c5"
+  Hint: SourceAccessor
+  Type: Treelist
+  Value: "{B251DB4F-CADC-45F6-9BED-4D07AA4E5179}"
+- ID: "ef84b462-7f4a-4f48-b78e-ade192d55e82"
+  Hint: TargetAccessor
+  Value: "{0353CA03-F94E-41CC-BFCF-4B0F72E830B4}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20211020T203427Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

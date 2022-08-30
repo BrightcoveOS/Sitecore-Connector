@@ -1,0 +1,18 @@
+﻿---
+ID: "ef1e96bf-0500-4da4-a1ba-9ce1a318eda6"
+Parent: "92c8fae0-16c9-40d0-be59-8decc8741623"
+Template: "9748075a-268b-4bd4-8444-c6898b12d502"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Value Mapping Sets/Model Source Mapping Sets/Video Model Source Mapping Set
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210916T220445Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

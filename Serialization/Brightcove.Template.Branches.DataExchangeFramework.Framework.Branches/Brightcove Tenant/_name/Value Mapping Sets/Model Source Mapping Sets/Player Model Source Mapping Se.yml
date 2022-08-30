@@ -1,0 +1,25 @@
+﻿---
+ID: "0e06a08b-3749-4246-9c1b-281725759179"
+Parent: "92c8fae0-16c9-40d0-be59-8decc8741623"
+Template: "9748075a-268b-4bd4-8444-c6898b12d502"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Value Mapping Sets/Model Source Mapping Sets/Player Model Source Mapping Set
+DB: master
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 500
+- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
+  Hint: __Originator
+  Value: "{A0F172D7-EA60-4F81-9177-21F89AA6F5E9}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20220406T132500Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

@@ -1,0 +1,30 @@
+﻿---
+ID: "867df478-91b8-4353-a38e-26390f94aa8e"
+Parent: "e334be1e-4deb-46eb-9f63-d4bc983f316c"
+Template: "0fd90877-c5a1-4a9a-b7d5-a8469cfa89b1"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Pipelines/Push Pipelines/Push Videos Pipeline/Update Video Models
+DB: master
+SharedFields:
+- ID: "506bad49-3da6-474c-acb5-7bcb509bfbd7"
+  Hint: Enabled
+  Type: Checkbox
+  Value: 1
+- ID: "585fe5a4-68d8-4c1e-8056-635f3d73d723"
+  Hint: Pipelines
+  Type: Treelist
+  Value: "{86AEF148-0640-45AE-9709-A4E4E50687E2}"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 400
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210923T160249Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

@@ -1,0 +1,21 @@
+﻿---
+ID: "9531cd20-285e-41d5-879d-9de0d3c3b3df"
+Parent: "11d1a819-2e6d-45dc-8f36-68d1635e4592"
+Template: "17a237b1-4926-4024-ab87-5dd9b3330139"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Pipelines/Pull Pipelines/Pull Players Pipeline/Get Players
+DB: master
+SharedFields:
+- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
+  Hint: __Originator
+  Value: 
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20220406T132459Z
+    - ID: "e0e2bd1c-a45c-4743-a316-bf490772e2a3"
+      Hint: EndpointFrom
+      Value: "{17DF1FC5-386D-4783-9CC6-A31ABFCF6A48}"

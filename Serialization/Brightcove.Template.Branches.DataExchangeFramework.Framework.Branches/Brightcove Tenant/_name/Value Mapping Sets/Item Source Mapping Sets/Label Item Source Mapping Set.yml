@@ -1,0 +1,18 @@
+﻿---
+ID: "2af287b7-0120-4689-a8ef-3fdb11d20bc6"
+Parent: "35a3cab4-3811-4436-b029-9cf438f4b02a"
+Template: "9748075a-268b-4bd4-8444-c6898b12d502"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Value Mapping Sets/Item Source Mapping Sets/Label Item Source Mapping Set
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20220822T155404Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

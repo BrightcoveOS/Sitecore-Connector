@@ -1,0 +1,36 @@
+﻿---
+ID: "f223cec2-1b3d-48ee-b4f5-5e04a26b9bcc"
+Parent: "19806385-8516-4d10-8ab0-574c6e980e4b"
+Template: "450c8f38-91c9-4896-957b-6f7daf18ccfc"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Value Mapping Sets/Model Source Mapping Sets/Experience Model Source Mapping Set/Url Proprety Mapping
+DB: master
+SharedFields:
+- ID: "95184b45-efef-447c-9089-4f2ec5df26c5"
+  Hint: SourceAccessor
+  Type: Treelist
+  Value: "{48FFFF60-A6DF-4EF6-86FD-685B676681B2}"
+- ID: "95885001-6243-4d7a-af10-90ad1326d6e2"
+  Hint: IgnoreNullValues
+  Type: Checkbox
+  Value: 0
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 350
+- ID: "ef84b462-7f4a-4f48-b78e-ade192d55e82"
+  Hint: TargetAccessor
+  Value: "{7A9B37F4-FC23-4F77-BB3B-7819B845FA30}"
+- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
+  Hint: __Originator
+  Value: 
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20220406T132500Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

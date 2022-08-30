@@ -1,0 +1,26 @@
+﻿---
+ID: "5a0fa850-1fac-4502-a42e-e8dacad57369"
+Parent: "289a1f12-65dd-44c8-ae6b-a08670e91852"
+Template: "450c8f38-91c9-4896-957b-6f7daf18ccfc"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Value Mapping Sets/Model Source Mapping Sets/Label Model Source Mapping Set/Display Name Field Mapping
+DB: master
+SharedFields:
+- ID: "95184b45-efef-447c-9089-4f2ec5df26c5"
+  Hint: SourceAccessor
+  Type: Treelist
+  Value: "{5A70D013-BE49-4F26-9FCF-B0FCFA66C257}"
+- ID: "ef84b462-7f4a-4f48-b78e-ade192d55e82"
+  Hint: TargetAccessor
+  Value: "{D9EA7085-2C7F-45F6-8EDC-FBAD13ED8A05}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20220822T182117Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

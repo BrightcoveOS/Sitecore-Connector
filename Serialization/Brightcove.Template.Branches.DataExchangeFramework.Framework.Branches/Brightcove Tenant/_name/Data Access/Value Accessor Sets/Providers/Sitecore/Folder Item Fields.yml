@@ -1,0 +1,18 @@
+﻿---
+ID: "50f8aa6f-192f-4d71-be3b-0f0c8cfc95b4"
+Parent: "7fa6568d-406c-4621-8a8c-fbfd27399cb9"
+Template: "7bc71c7a-6199-4b8f-97fe-d11c11b9e5c7"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Data Access/Value Accessor Sets/Providers/Sitecore/Folder Item Fields
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20220830T174221Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

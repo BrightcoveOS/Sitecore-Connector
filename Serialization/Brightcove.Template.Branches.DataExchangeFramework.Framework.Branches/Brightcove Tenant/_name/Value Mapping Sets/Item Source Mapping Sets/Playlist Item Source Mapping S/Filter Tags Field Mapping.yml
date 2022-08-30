@@ -1,0 +1,30 @@
+﻿---
+ID: "abadf4f1-92b0-412c-a245-86279c9d75a0"
+Parent: "8b9d593a-a3fe-4e24-a19a-615c25e18c50"
+Template: "450c8f38-91c9-4896-957b-6f7daf18ccfc"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Value Mapping Sets/Item Source Mapping Sets/Playlist Item Source Mapping Set/Filter Tags Field Mapping
+DB: master
+SharedFields:
+- ID: "506bad49-3da6-474c-acb5-7bcb509bfbd7"
+  Hint: Enabled
+  Type: Checkbox
+  Value: 1
+- ID: "95184b45-efef-447c-9089-4f2ec5df26c5"
+  Hint: SourceAccessor
+  Type: Treelist
+  Value: "{2AB96977-E7BC-4A17-BE23-3CEE836778FC}"
+- ID: "ef84b462-7f4a-4f48-b78e-ade192d55e82"
+  Hint: TargetAccessor
+  Value: "{F0988682-35ED-4FF9-80EB-665CC8FE92FA}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20211020T203237Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

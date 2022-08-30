@@ -1,0 +1,22 @@
+﻿---
+ID: "fb74f978-1d1e-4d3f-8925-dba201abb951"
+Parent: "ac535041-66c3-4ea4-bdda-4819c4494add"
+Template: "729aeffb-b5bd-4cd4-958f-e25b50948ac8"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Data Access/Value Accessor Sets/Providers/Brightcove/Folder Model Properties/Name Property
+DB: master
+SharedFields:
+- ID: "06fd1c3e-a7f7-4cd2-a54e-a995d7a9e4de"
+  Hint: PropertyName
+  Value: Name
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20220830T174150Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
