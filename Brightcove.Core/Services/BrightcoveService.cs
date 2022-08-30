@@ -392,6 +392,18 @@ namespace Brightcove.Core.Services
             return uniquePaths.Select(p => new Label(p)).ToList();
         }
 
+        public IEnumerable<Folder> GetFolders()
+        {
+            HttpRequestMessage request = new HttpRequestMessage();
+
+            request.Method = HttpMethod.Get;
+            request.RequestUri = new Uri($"{cmsBaseUrl}/{accountId}/folders");
+
+            HttpResponseMessage response = SendRequest(request);
+
+            return JsonConvert.DeserializeObject<List<Folder>>(response.Content.ReadAsString());
+        }
+
         public IEnumerable<Video> GetVideos(int offset = 0, int limit = 20, string sort = "", string query = "")
         {
             HttpRequestMessage request = new HttpRequestMessage();

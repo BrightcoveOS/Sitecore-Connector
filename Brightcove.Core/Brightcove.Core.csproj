@@ -69,6 +69,7 @@
     <Compile Include="Models\TagInclusion.cs" />
     <Compile Include="Models\TextTrack.cs" />
     <Compile Include="Models\Labels.cs" />
+    <Compile Include="Models\Folder.cs" />
     <Compile Include="Models\VideoVariant.cs" />
     <Compile Include="Models\Video.cs" />
     <Compile Include="Models\VideoLink.cs" />

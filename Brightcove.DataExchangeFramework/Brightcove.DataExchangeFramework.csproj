@@ -457,6 +457,7 @@
     <Compile Include="Processors\BasePipelineStepWithEndpointFromProcessor.cs" />
     <Compile Include="Processors\BasePipelineStepWithWebApiEndpointProcessor.cs" />
     <Compile Include="Processors\GetExperiencesPipelineStepProcessor.cs" />
+    <Compile Include="Processors\GetFoldersPipelineStepProcessor.cs" />
     <Compile Include="Processors\GetPlayersPipelineStepProcessor.cs" />
     <Compile Include="Processors\GetLabelsPipelineStepProcessor.cs" />
     <Compile Include="Processors\ReadAssetItemsPipelineStepProcessor.cs" />
