@@ -50,6 +50,9 @@ namespace Brightcove.Core.Models
         [JsonProperty("labels", NullValueHandling = NullValueHandling.Ignore)]
         public List<string> Labels { get; set; }
 
+        [JsonProperty("folder_id", NullValueHandling = NullValueHandling.Ignore)]
+        public string Folder { get; set; }
+
         [JsonIgnore]
         public string IngestJobId { get; set; }
 

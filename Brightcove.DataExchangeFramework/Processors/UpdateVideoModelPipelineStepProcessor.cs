@@ -68,7 +68,8 @@ namespace Brightcove.DataExchangeFramework.Processors
                 {
                     if (isNewVideo || video.LastModifiedDate < lastSyncTime)
                     {
-                        Updatevideo(video);
+                        UpdateVideo(video);
+                        UpdateFolder(video, itemModel);
 
                         if (isNewVideo)
                         {
@@ -131,7 +132,7 @@ namespace Brightcove.DataExchangeFramework.Processors
             return false;
         }
 
-        public void Updatevideo(Video video)
+        public void UpdateVideo(Video video)
         {
             try
             {
@@ -151,8 +152,32 @@ namespace Brightcove.DataExchangeFramework.Processors
 
                 //Rerun with the invalid custom fields removed so the rest of the updates are made
                 video.CustomFields = null;
-                Updatevideo(video);
+                UpdateVideo(video);
                 return;
+            }
+        }
+
+        public void UpdateFolder(Video video, ItemModel item)
+        {
+            string folderField = (string)item["BrightcoveFolder"];
+
+            if(string.IsNullOrWhiteSpace(folderField))
+            {
+                if(!string.IsNullOrWhiteSpace(video.Folder))
+                {
+                    service.RemoveFromFolder(video, video.Folder);
+                    LogInfo($"Removed the video '{video.Id}' from the folder '{video.Folder}'");
+                }
+            }
+            else
+            {
+                string folderId = (string)(itemModelRepository.Get(new Guid(folderField))["ID"]);
+
+                if(video.Folder != folderId)
+                {
+                    service.MoveToFolder(video, folderId);
+                    LogInfo($"Moved the video '{video.Id}' into the folder '{folderId}'");
+                }
             }
         }
 

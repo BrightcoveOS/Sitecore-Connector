@@ -143,6 +143,30 @@ namespace Brightcove.Core.Services
             return new Label(JsonConvert.DeserializeObject<Label>(response.Content.ReadAsString()).Path);
         }
 
+        public void MoveToFolder(Video video, string folderId)
+        {
+            HttpRequestMessage request = new HttpRequestMessage();
+
+            request.Method = HttpMethod.Put;
+            request.RequestUri = new Uri($"{cmsBaseUrl}/{accountId}/folders/{folderId}/videos/{video.Id}");
+
+            SendRequest(request);
+
+            return;
+        }
+
+        public void RemoveFromFolder(Video video, string folderId)
+        {
+            HttpRequestMessage request = new HttpRequestMessage();
+
+            request.Method = HttpMethod.Delete;
+            request.RequestUri = new Uri($"{cmsBaseUrl}/{accountId}/folders/{folderId}/videos/{video.Id}");
+
+            SendRequest(request);
+
+            return;
+        }
+
         public bool TryGetLabel(string path, out Label label)
         {
             //The Brightcove API does not actually include anyway to check if a specific label exists

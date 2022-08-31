@@ -443,6 +443,7 @@
     <Compile Include="Converters\ReadAssetItemsPipelineStepConverter.cs" />
     <Compile Include="Converters\UpdatePipelineStepConverter.cs" />
     <Compile Include="Converters\LabelsPropertyValueAccessorConverter.cs" />
+    <Compile Include="Converters\FolderPropertyValueAccessorConverter.cs" />
     <Compile Include="Converters\WebApiEndpointConverter.cs" />
     <Compile Include="Converters\ResolveAssetItemPipelineStepConverter.cs" />
     <Compile Include="Converters\CsvStringPropertyValueAccessorConverter.cs" />
@@ -485,6 +486,7 @@
     <Compile Include="ValueReaders\CsvStringPropertyValueReader.cs" />
     <Compile Include="ValueReaders\NullableEnumValueReader.cs" />
     <Compile Include="ValueReaders\LabelsPropertyValueReader.cs" />
+    <Compile Include="ValueReaders\FolderPropertyValueReader.cs" />
     <Compile Include="ValueReaders\VideoIdsPropertyValueReader.cs" />
     <Compile Include="ValueReaders\StringDictionaryPropertyValueReader.cs" />
     <Compile Include="ValueReaders\ChainedPropertyValueReader.cs" />
