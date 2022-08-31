@@ -1,0 +1,14 @@
+﻿---
+ID: "9b3f8b93-7e70-41c6-9f3e-e81f3374650d"
+Parent: "2aacdf56-8d6e-4e38-9e84-690561575946"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Data Exchange/Providers/Brightcove/Pipeline Steps/Resolve Folder Model Pipeline Step/Settings
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210909T203951Z

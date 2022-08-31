@@ -1,0 +1,34 @@
+﻿---
+ID: "601b2caa-864b-4b43-a990-ff619cc2b736"
+Parent: "2aacdf56-8d6e-4e38-9e84-690561575946"
+Template: "2aacdf56-8d6e-4e38-9e84-690561575946"
+Path: /sitecore/templates/Data Exchange/Providers/Brightcove/Pipeline Steps/Resolve Folder Model Pipeline Step/__Standard Values
+DB: master
+SharedFields:
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: Applications/16x16/document.png
+- ID: "19174e44-13f2-4c97-8e6c-ad909db4e29d"
+  Hint: AssetModelLocation
+  Value: "{EC64487D-E7E6-40B0-A86C-40C74B95E04E}"
+- ID: "264d947f-bc3e-4769-ae24-1f256bf2cb61"
+  Hint: AssetItemLocation
+  Value: "{17DF1143-A38D-4C77-A933-E66B5ED21E9A}"
+- ID: "3c7f78cc-0c5c-4076-80ef-9a49fda5ff96"
+  Hint: ConverterType
+  Value: Brightcove.DataExchangeFramework.Converters.ResolveOrUpdateAssetModelPipelineStepConverter, Brightcove.DataExchangeFramework
+- ID: "a83a2eb2-bfa1-4d3f-9f17-0cc6c9a91c42"
+  Hint: ProcessorType
+  Value: Brightcove.DataExchangeFramework.Processors.ResolveFolderModelPipelineStepProcessor, Brightcove.DataExchangeFramework
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210909T205319Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

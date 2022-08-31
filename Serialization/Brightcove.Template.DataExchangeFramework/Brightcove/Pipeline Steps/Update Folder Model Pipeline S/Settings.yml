@@ -1,0 +1,14 @@
+﻿---
+ID: "d06aefd0-0e7e-407e-85b0-d65f7dfd081f"
+Parent: "f71558cf-4314-4f88-9e36-b284372fb8f7"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Data Exchange/Providers/Brightcove/Pipeline Steps/Update Folder Model Pipeline Step/Settings
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210909T203951Z
