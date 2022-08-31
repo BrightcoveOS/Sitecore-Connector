@@ -1,0 +1,22 @@
+﻿---
+ID: "a32a63e2-9ed2-4f19-abc8-346df98c44df"
+Parent: "beec5e96-d7d6-4eb8-8472-e118c131340b"
+Template: "beec5e96-d7d6-4eb8-8472-e118c131340b"
+Path: /sitecore/templates/Data Exchange/Providers/Brightcove/Data Access/Value Accessors/Folder Property Value Accessor/__Standard Values
+DB: master
+SharedFields:
+- ID: "3c7f78cc-0c5c-4076-80ef-9a49fda5ff96"
+  Hint: ConverterType
+  Value: Brightcove.DataExchangeFramework.Converters.FolderPropertyValueAccessorConverter, Brightcove.DataExchangeFramework
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20160310T175552Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
