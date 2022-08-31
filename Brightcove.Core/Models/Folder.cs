@@ -18,7 +18,7 @@ namespace Brightcove.Core.Models
         public string Name { get; set; }
 
         [JsonProperty("video_count", NullValueHandling = NullValueHandling.Ignore)]
-        public int VideoCount { get; set; }
+        public int? VideoCount { get; set; }
 
         [JsonProperty("created_at", NullValueHandling = NullValueHandling.Ignore)]
         public DateTime? CreationDate { get; set; }

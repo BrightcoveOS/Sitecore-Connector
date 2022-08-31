@@ -1,16 +1,14 @@
-﻿using Brightcove.Core.Models;
+﻿using Brightcove.Core.Exceptions;
+using Brightcove.Core.Extensions;
+using Brightcove.Core.Models;
+using Brightcove.MediaFramework.Brightcove.Entities;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
-using Brightcove.Core.Extensions;
-using System.Net.Http.Headers;
-using Brightcove.Core.Exceptions;
-using System.Net;
-using Brightcove.MediaFramework.Brightcove.Entities;
 
 namespace Brightcove.Core.Services
 {
@@ -80,6 +78,22 @@ namespace Brightcove.Core.Services
             video = JsonConvert.DeserializeObject<Video>(response.Content.ReadAsString());
 
             return video;
+        }
+
+        public Folder CreateFolder(string name)
+        {
+            Folder folder = new Folder();
+            folder.Name = name;
+
+            HttpRequestMessage request = new HttpRequestMessage();
+            request.Content = new StringContent(JsonConvert.SerializeObject(folder), Encoding.UTF8, "application/json");
+            request.Method = HttpMethod.Post;
+            request.RequestUri = new Uri($"{cmsBaseUrl}/{accountId}/folders");
+
+            HttpResponseMessage response = SendRequest(request);
+            folder = JsonConvert.DeserializeObject<Folder>(response.Content.ReadAsString());
+
+            return folder;
         }
 
         public PlayList CreatePlaylist(string name)
@@ -216,6 +230,23 @@ namespace Brightcove.Core.Services
             return;
         }
 
+        public void DeleteFolder(string folderId)
+        {
+            if (string.IsNullOrWhiteSpace(folderId))
+            {
+                return;
+            }
+
+            HttpRequestMessage request = new HttpRequestMessage();
+
+            request.Method = HttpMethod.Delete;
+            request.RequestUri = new Uri($"{cmsBaseUrl}/{accountId}/folders/{folderId}");
+
+            SendRequest(request);
+
+            return;
+        }
+
         public void DeleteVideoVariant(string videoId, string language)
         {
             if (string.IsNullOrWhiteSpace(videoId))
@@ -257,6 +288,23 @@ namespace Brightcove.Core.Services
             HttpResponseMessage response = SendRequest(request);
 
             return JsonConvert.DeserializeObject<Video>(response.Content.ReadAsString());
+        }
+
+        public Folder UpdateFolder(Folder folder)
+        {
+            HttpRequestMessage request = new HttpRequestMessage();
+
+            request.Method = new HttpMethod("PATCH");
+            request.RequestUri = new Uri($"{cmsBaseUrl}/{accountId}/folders/{folder.Id}");
+
+            //We can only update the name field (rename) a folder so we ignore all other fields
+            Folder newFolder = new Folder() { Name = folder.Name };
+            
+            request.Content = new StringContent(JsonConvert.SerializeObject(newFolder), Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = SendRequest(request);
+
+            return JsonConvert.DeserializeObject<Folder>(response.Content.ReadAsString());
         }
 
         public VideoVariant UpdateVideoVariant(VideoVariant videoVariant)
@@ -494,6 +542,39 @@ namespace Brightcove.Core.Services
             }
 
             player = JsonConvert.DeserializeObject<Player>(response.Content.ReadAsString());
+            return true;
+        }
+
+        public bool TryGetFolder(string folderId, out Folder folder)
+        {
+            if (string.IsNullOrWhiteSpace(folderId))
+            {
+                folder = null;
+                return false;
+            }
+
+            HttpRequestMessage request = new HttpRequestMessage();
+            HttpResponseMessage response;
+
+            request.Method = HttpMethod.Get;
+            request.RequestUri = new Uri($"{cmsBaseUrl}/{accountId}/folders/{folderId}");
+
+            try
+            {
+                response = SendRequest(request);
+            }
+            catch (HttpStatusException ex)
+            {
+                if (ex.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    folder = null;
+                    return false;
+                }
+
+                throw ex;
+            }
+
+            folder = JsonConvert.DeserializeObject<Folder>(response.Content.ReadAsString());
             return true;
         }
 

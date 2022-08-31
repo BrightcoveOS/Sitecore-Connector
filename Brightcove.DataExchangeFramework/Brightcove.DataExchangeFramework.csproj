@@ -464,10 +464,12 @@
     <Compile Include="Processors\ResolveAssetItemPipelineStepProcessor.cs" />
     <Compile Include="Processors\GetPlayListsPipelineStepProcessor.cs" />
     <Compile Include="Processors\GetVideosPipelineStepProcessor.cs" />
+    <Compile Include="Processors\ResolveFolderModelPipelineStepProcessor.cs" />
     <Compile Include="Processors\ResolveLabelModelPipelineStepProcessor.cs" />
     <Compile Include="Processors\ResolvePlayerModelPipelineStepProcessor.cs" />
     <Compile Include="Processors\ResolvePlayListModelPipelineStepProcessor.cs" />
     <Compile Include="Processors\UpdateLabelModelPipelineStepProcessor.cs" />
+    <Compile Include="Processors\UpdateFolderModelPipelineStepProcessor.cs" />
     <Compile Include="Processors\UpdatePlaylistModelPipelineStepProcessor.cs" />
     <Compile Include="Processors\UpdatePlayerModelPipelineStepProcessor.cs" />
     <Compile Include="Processors\UpdateVideoItemProcessor.cs" />
