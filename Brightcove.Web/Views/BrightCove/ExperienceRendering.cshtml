@@ -1,4 +1,20 @@
 ﻿@using Brightcove.Web.Models
 @model ExperienceModel
 
-<iframe style="display:block;border:none;margin-left:auto;margin-right:auto;" src="@Model.Url" allow="autoplay; fullscreen; geolocation; encrypted-media" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+@if (Sitecore.Context.PageMode.IsExperienceEditor)
+{
+    if (!string.IsNullOrWhiteSpace(Model.Url))
+    {
+        <div style="padding: 1em">
+            <iframe style="display:block;border:none;margin-left:auto;margin-right:auto;" src="@Model.Url" allow="autoplay; fullscreen; geolocation; encrypted-media" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+        </div>
+    }
+    else
+    {
+        <div style="margin: 1em; padding: 1em; background-color: lightgrey">No URL set has been set for this experience. Configure the rendering using the "More->Edit component properties" option.</div>
+    }
+}
+else if (!string.IsNullOrWhiteSpace(Model.Url))
+{
+    <iframe style="display:block;border:none;margin-left:auto;margin-right:auto;" src="@Model.Url" allow="autoplay; fullscreen; geolocation; encrypted-media" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+}
