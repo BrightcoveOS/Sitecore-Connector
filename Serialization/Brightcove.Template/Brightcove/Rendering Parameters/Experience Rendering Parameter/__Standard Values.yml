@@ -1,0 +1,14 @@
+﻿---
+ID: "41054e19-7d40-4f04-a667-86520bc0734e"
+Parent: "46c527dd-cd6e-40d2-aa14-6432ef6031df"
+Template: "46c527dd-cd6e-40d2-aa14-6432ef6031df"
+Path: /sitecore/templates/Brightcove/Rendering Parameters/Experience Rendering Parameters/__Standard Values
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20221115T144049Z

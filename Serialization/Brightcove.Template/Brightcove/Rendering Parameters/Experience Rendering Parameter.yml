@@ -1,8 +1,8 @@
 ﻿---
-ID: "8b6a9ead-4de9-4c59-b8f5-f3ff40a64f12"
-Parent: "a6aa5aaf-bedf-4b5d-bfff-f6a9ffc61c93"
+ID: "46c527dd-cd6e-40d2-aa14-6432ef6031df"
+Parent: "a0cd41b1-f0fb-46c8-a70c-375c8a2919d1"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Brightcove/Brightcove Video Label
+Path: /sitecore/templates/Brightcove/Rendering Parameters/Experience Rendering Parameters
 DB: master
 SharedFields:
 - ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
@@ -10,13 +10,10 @@ SharedFields:
   Type: tree list
   Value: |
     {1930BBEB-7805-471A-A3BE-4858AC7CF696}
-    {EA5D79C0-2375-4F96-9087-52585CC4A137}
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 100
+    {8CA06D6A-B353-44E8-BC31-B528C7306971}
 - ID: "f7d48a55-2158-4f02-9356-756654404f73"
   Hint: __Standard values
-  Value: "{7D78D8EB-1DFD-4A9E-9DA7-9909BC5C58FC}"
+  Value: "{41054E19-7D40-4F04-A667-86520BC0734E}"
 Languages:
 - Language: en
   Versions:
@@ -24,4 +21,4 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20220809T155239Z
+      Value: 20221115T143557Z

@@ -817,6 +817,7 @@
     <Compile Include="Commands\MediaPreview.cs" />
     <Compile Include="Commands\OpenUploader.cs" />
     <Compile Include="Commands\TextTracks.cs" />
+    <Compile Include="Controllers\ExperienceController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="misc\EmbedMediaController.cs" />
     <Compile Include="misc\EmbedMediaPlayer.ascx.cs">
@@ -837,6 +838,7 @@
     <Compile Include="misc\OtherFieldIDs.cs" />
     <Compile Include="misc\PlaybackEvents.cs" />
     <Compile Include="misc\Settings.cs" />
+    <Compile Include="Models\ExperienceModel.cs" />
     <Compile Include="Models\WebApiResponse.cs" />
     <Compile Include="Pipelines\RegisterRoutes.cs" />
     <Compile Include="Pipelines\WebApiInitializer.cs" />

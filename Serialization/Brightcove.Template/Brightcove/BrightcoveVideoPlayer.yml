@@ -14,7 +14,7 @@ SharedFields:
   Value: "{C4EA24F3-C8BB-44CA-A224-DEF748ADF582}"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 700
+  Value: 100
 - ID: "f7d48a55-2158-4f02-9356-756654404f73"
   Hint: __Standard values
   Value: "{D6A337F0-E5CF-45E9-B8B6-7E0185C5AE78}"

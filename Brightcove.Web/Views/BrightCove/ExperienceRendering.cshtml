@@ -1,4 +1,4 @@
-﻿@using Sitecore.Mvc
-@model Sitecore.Mvc.Presentation.RenderingModel
+﻿@using Brightcove.Web.Models
+@model ExperienceModel
 
-<iframe style="display:block;border:none;margin-left:auto;margin-right:auto;" src="@Html.Sitecore().Field("Url")" allow="autoplay; fullscreen; geolocation; encrypted-media" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+<iframe style="display:block;border:none;margin-left:auto;margin-right:auto;" src="@Model.Url" allow="autoplay; fullscreen; geolocation; encrypted-media" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>

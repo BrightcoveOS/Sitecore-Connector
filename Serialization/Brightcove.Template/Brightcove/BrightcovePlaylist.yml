@@ -14,7 +14,7 @@ SharedFields:
   Value: "{C4EA24F3-C8BB-44CA-A224-DEF748ADF582}"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 600
+  Value: 100
 - ID: "c9283d9e-7c29-4419-9c28-5a5c8ff53e84"
   Hint: __Bucketable
   Type: Checkbox
