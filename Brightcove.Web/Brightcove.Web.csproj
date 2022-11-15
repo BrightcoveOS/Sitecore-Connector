@@ -780,8 +780,7 @@
     <Content Include="sitecore\shell\Themes\Standard\Brightcove\24x24\logo.png" />
     <Content Include="sitecore\shell\Themes\Standard\Brightcove\32x32\logo.png" />
     <Content Include="sitecore\shell\Themes\Standard\Brightcove\48x48\logo.png" />
-    <Content Include="Views\BrightCove\ExperienceRendering.cshtml" />
-    <Content Include="Views\BrightCove\BasicLayout.cshtml" />
+    <Content Include="sitecore modules\Web\Brightcove\Views\ExperienceRendering.cshtml" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.AutoPublish.config" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.config" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.DataProvider.10.1.config" />
@@ -913,7 +912,6 @@
     <Content Include="sitecore modules\Web\Brightcove\js\bootstrap.esm.min.js.map" />
     <Content Include="sitecore modules\Web\Brightcove\js\bootstrap.js.map" />
     <Content Include="sitecore modules\Web\Brightcove\js\bootstrap.min.js.map" />
-    <Content Include="Views\web.config" />
     <Content Include="sitecore\shell\client\Applications\ExperienceAnalytics\Common\Layouts\Renderings\Brightcove\ExperienceAnalyticsListControl.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

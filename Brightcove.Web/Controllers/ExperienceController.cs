@@ -29,7 +29,7 @@ namespace Brightcove.Web.Controllers
                 model.Url = renderingContext.Rendering.Parameters["Url"];               
             }
 
-            return PartialView("/Views/Brightcove/ExperienceRendering.cshtml", model);
+            return PartialView("/sitecore modules/Web/Brightcove/Views/ExperienceRendering.cshtml", model);
         }
     }
 }
