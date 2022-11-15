@@ -20,7 +20,11 @@ namespace Brightcove.Web.Search.ComputedIndexFields
             {
                 Item video = (Item)(indexable as SitecoreIndexableItem);
                 ReferenceField folder = video.Fields["BrightcoveFolder"];
-                return folder.TargetItem["Name"];
+
+                if(folder != null && folder.TargetItem != null)
+                {
+                    return folder.TargetItem["Name"];
+                }
             }
             catch(Exception ex)
             {
