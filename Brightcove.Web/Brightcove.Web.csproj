@@ -735,6 +735,7 @@
     <Content Include="sitecore modules\Web\Brightcove\js\bootstrap.esm.min.js" />
     <Content Include="sitecore modules\Web\Brightcove\js\bootstrap.js" />
     <Content Include="sitecore modules\Web\Brightcove\js\bootstrap.min.js" />
+    <Content Include="sitecore modules\Web\Brightcove\js\loadPlayer.js" />
     <Content Include="sitecore modules\Web\Brightcove\js\jquery.min.js" />
     <Content Include="sitecore modules\Web\Brightcove\css\brightcove.css" />
     <Content Include="sitecore modules\Web\Brightcove\js\Analytics\brightcove.js" />
