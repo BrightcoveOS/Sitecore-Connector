@@ -1,39 +1,18 @@
 ﻿@using Sitecore.MediaFramework.Mvc
-@using Sitecore.MediaFramework.Pipelines.MediaGenerateMarkup
-@using Sitecore.MediaFramework.Players
 @using Sitecore.MediaFramework.Mvc.Extentions
+@using Brightcove.Core.EmbedGenerator.Models
 
-@model MediaGenerateMarkupArgs
+@model EmbedMarkup
 
-@{
-    if (Model.Result != null)
-    {
-        using (var context = @Html.CreateResourcesContext(Constants.HeadResourcesKey))
-        {
-            foreach (string url in Model.Result.CssUrls)
-            {
-                context.AddCssUrl(url);
-            }
-            foreach (string url in Model.Result.ScriptUrls)
-            {
-                context.AddScriptUrl(url);
-            }
-        }
+@if (Model != null)
+{
 
-        using (var context = @Html.CreateResourcesContext(Constants.BodyResourcesKey))
-        {
-            foreach (var pair in Model.Result.BottomScripts)
-            {
-                context.AddScriptBlock(pair.Value);
-            }
-        }
-
-        <div class="mf-player-container" data-mf-params="@Model.Properties.ToString()">
-            @Html.Raw(@Model.Result.Html)
-        </div>
-    }
-    else
-    {
-        <div class='mf-default-view'><p>No media item is selected</p></div>
-    }
+    <div class="brightcove-media-container">
+        @Html.Raw(Model.Markup)
+        @Html.Raw(Model.ScriptTag)
+    </div>
+}
+else
+{
+    <div class='brightcove-media-container'><p>No media item is selected</p></div>
 }

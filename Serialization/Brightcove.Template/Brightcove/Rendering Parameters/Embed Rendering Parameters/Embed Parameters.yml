@@ -1,0 +1,14 @@
+﻿---
+ID: "2efb2da4-7e22-4f6b-8a05-4d519b2747f3"
+Parent: "5d7beb96-cf54-4062-822b-2a24bc252708"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Brightcove/Rendering Parameters/Embed Rendering Parameters/Embed Parameters
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20221115T143706Z
