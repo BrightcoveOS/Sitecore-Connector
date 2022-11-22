@@ -47,6 +47,9 @@
   <ItemGroup>
     <Compile Include="Exceptions\HttpStatusException.cs" />
     <Compile Include="Extensions\HttpSyncExtensions.cs" />
+    <Compile Include="EmbedGenerator\BrightcoveEmbedGenerator.cs" />
+    <Compile Include="EmbedGenerator\Models\EmbedModel.cs" />
+    <Compile Include="EmbedGenerator\Models\EmbedMarkup.cs" />
     <Compile Include="Models\AccessToken.cs" />
     <Compile Include="Models\Asset.cs" />
     <Compile Include="Models\AssetSource.cs" />
