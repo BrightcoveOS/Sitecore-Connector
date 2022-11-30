@@ -4,15 +4,7 @@
 
 @model EmbedMarkup
 
-@if (Model != null)
-{
-
-    <div class="brightcove-media-container">
-        @Html.Raw(Model.Markup)
-        @Html.Raw(Model.ScriptTag)
-    </div>
-}
-else
-{
-    <div class='brightcove-media-container'><p>No media item is selected</p></div>
-}
+<div class="brightcove-media-rendering-container">
+    @Html.Raw(Model.Markup)
+    @Html.Raw(Model.ScriptTag)
+</div>
