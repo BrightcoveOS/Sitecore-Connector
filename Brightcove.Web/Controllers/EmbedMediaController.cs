@@ -1,8 +1,10 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using Brightcove.Core;
+using Brightcove.Core.EmbedGenerator;
 using Brightcove.Core.EmbedGenerator.Models;
-using Brightcove.Web.Model;
+using Brightcove.Web.EmbedGenerator;
+using Brightcove.Web.Models;
 using Sitecore.Configuration;
 using Sitecore.Data;
 using Sitecore.Mvc.Controllers;
@@ -31,10 +33,9 @@ namespace Brightcove.Web.Controllers
             //MediaGenerateMarkupPipeline.Run(args);
 
             EmbedRenderingParameters parameters = new EmbedRenderingParameters(rendering.Parameters.ToDictionary(p => p.Key, p => p.Value));
-            EmbedModel model = parameters.CreateEmbedModel();
 
-            var generator = new BrightcoveEmbedGenerator();
-            var result = generator.Generate(model);
+            var generator = new SitecoreEmbedGenerator();
+            var result = generator.Generate(parameters);
 
             return this.View(this.renderVideoViewPath, result);
         }

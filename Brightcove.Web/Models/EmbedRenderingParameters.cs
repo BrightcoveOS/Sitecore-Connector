@@ -8,7 +8,7 @@ using Sitecore.Data;
 using Sitecore.Diagnostics;
 using Sitecore.Mvc.Presentation;
 
-namespace Brightcove.Web.Model
+namespace Brightcove.Web.Models
 {
     [Serializable]
     public class EmbedRenderingParameters
@@ -31,8 +31,19 @@ namespace Brightcove.Web.Model
         public EmbedRenderingParameters(NameValueCollection collection)
         {
             Assert.ArgumentNotNull(collection, "collection");
-
             this.Parameters = new NameValueCollection(collection);
+        }
+
+        public EmbedRenderingParameters(EmbedModel model) : this()
+        {
+            AccountId = model.AccountId;
+            PlayerId = model.PlayerId;
+            MediaId = model.MediaId;
+            Width = model.Width;
+            Height = model.Height;
+            IsPlaylist = model.MediaType == MediaType.Playlist;
+            IsFixed = model.MediaSizing == MediaSizing.Fixed;
+            IsJavascriptEmbed = model.EmbedType == EmbedType.JavaScript;
         }
 
         public string AccountId
@@ -40,6 +51,10 @@ namespace Brightcove.Web.Model
             get
             {
                 return GetString("accountId");
+            }
+            set
+            {
+                this.Parameters["accountId"] = value;
             }
         }
 
@@ -49,6 +64,10 @@ namespace Brightcove.Web.Model
             {
                 return GetString("playerId");
             }
+            set
+            {
+                this.Parameters["playerId"] = value;
+            }
         }
 
         public string MediaId
@@ -56,6 +75,10 @@ namespace Brightcove.Web.Model
             get
             {
                 return GetString("mediaId");
+            }
+            set
+            {
+                this.Parameters["mediaId"] = value;
             }
         }
 
@@ -65,6 +88,10 @@ namespace Brightcove.Web.Model
             {
                 return GetInt("width", 960);
             }
+            set
+            {
+                this.Parameters["width"] = value.ToString();
+            }
         }
 
         public int Height
@@ -72,6 +99,10 @@ namespace Brightcove.Web.Model
             get
             {
                 return GetInt("height", 540);
+            }
+            set
+            {
+                this.Parameters["height"] = value.ToString();
             }
         }
 
@@ -81,6 +112,10 @@ namespace Brightcove.Web.Model
             {
                 return GetBoolean("isPlaylist");
             }
+            set
+            {
+                this.Parameters["isPlaylist"] = (value ? "1" : "0");
+            }
         }
 
         public bool IsFixed
@@ -89,6 +124,10 @@ namespace Brightcove.Web.Model
             {
                 return GetBoolean("isFixedSize");
             }
+            set
+            {
+                this.Parameters["isFixedSize"] = (value ? "1" : "0");
+            }
         }
 
         public bool IsJavascriptEmbed
@@ -96,6 +135,10 @@ namespace Brightcove.Web.Model
             get
             {
                 return GetBoolean("isJavascriptEmbed");
+            }
+            set
+            {
+                this.Parameters["isJavascriptEmbed"] = (value ? "1" : "0");
             }
         }
 
