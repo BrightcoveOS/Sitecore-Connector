@@ -1,10 +1,4 @@
 ﻿
-/* We cant let videos embedded in rich text fields load while in the content/experience editor 
- * because it modifies the value of the rich text field breaking the embed. Note this only happens
- * if use the rich text editor. Instead we load this script first and check if we are in the 
- * content/experience editor.
- */
-
 if (document.currentScript != null) {
     //If Context Editor
     var isEditor = window.location.pathname.startsWith("/sitecore/shell/Controls/Rich%20Text%20Editor/");
