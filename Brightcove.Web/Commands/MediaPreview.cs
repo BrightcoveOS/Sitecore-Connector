@@ -1,94 +1,81 @@
-﻿namespace Sitecore.MediaFramework.Commands
+﻿using System;
+using System.Globalization;
+using System.Linq;
+using Brightcove.Core.EmbedGenerator.Models;
+using Brightcove.MediaFramework.Brightcove;
+using Brightcove.Web.EmbedGenerator;
+using Brightcove.Web.Models;
+using Brightcove.Web.Utilities;
+using Sitecore;
+// using Brightcove.Web.Model;
+using Sitecore.Data.Fields;
+using Sitecore.Data.Items;
+using Sitecore.Diagnostics;
+using Sitecore.MediaFramework;
+//using Sitecore.MediaFramework.Utils;
+using Sitecore.Shell.Framework.Commands;
+using Sitecore.Text;
+using Sitecore.Web.UI.Sheer;
+
+namespace Brightcove.Web.Commands
 {
-  using System;
-  using System.Globalization;
-    using System.Linq;
-    using Brightcove.MediaFramework.Brightcove.Players;
-    using Sitecore.Data.Fields;
-    using Sitecore.Data.Items;
-  using Sitecore.Diagnostics;
-  using Sitecore.MediaFramework.Pipelines.MediaGenerateMarkup;
-  using Sitecore.MediaFramework.Players;
-  using Sitecore.MediaFramework.Utils;
-  using Sitecore.Shell.Framework.Commands;
-  using Sitecore.Text;
-  using Sitecore.Web.UI.Sheer;
-
-  [Serializable]
-  public class MediaPreview : Command
-  {
-    public override void Execute(CommandContext context)
+    [Serializable]
+    public class MediaPreview : Command
     {
-      Assert.ArgumentNotNull(context, "context");
-
-      Item item = this.GetItem(context);
-
-      if (item != null)
-      {
-        var properties = this.GetPlayerProperties(context);
-
-        var args = new MediaGenerateMarkupArgs
+        public override void Execute(CommandContext context)
         {
-          MarkupType = MarkupType.FrameUrl,
-          MediaItem = item,
-          Properties = properties
-        };
+            Assert.ArgumentNotNull(context, "context");
 
-                args.AccountItem = Sitecore.Context.ContentDatabase.GetItem(string.Join("/", args.MediaItem.Paths.Path.Split('/').Take(5)));
-                args.PlayerItem = ((ReferenceField)args.AccountItem?.Fields["DefaultVideoPlayer"])?.TargetItem;
+            Item item = this.GetItem(context);
 
-                var generator = new BrightcovePlayerMarkupGenerator();
-        var result = generator.Generate(args);
+            if (item != null)
+            {
+                bool isPlaylist = item.TemplateID == Brightcove.MediaFramework.Brightcove.TemplateIDs.Playlist;
+                Item accountItem = MediaItemUtil.GetAccountForMedia(item);
+                Item defaultPlayerItem;
 
-        if (!string.IsNullOrEmpty(result.Html))
-        {
-          UrlString url = new UrlString(result.Html);
-          url[Constants.PlayerParameters.ForceRender] = "1";
+                if (isPlaylist)
+                {
+                   defaultPlayerItem = (((ReferenceField)accountItem?.Fields["DefaultPlaylistPlayer"])?.TargetItem);
+                }
+                else
+                {
+                   defaultPlayerItem = (((ReferenceField)accountItem?.Fields["DefaultVideoPlayer"])?.TargetItem);
+                }
 
-          url["sc_content"] = "master";
+                UrlString url = new UrlString(string.Format("/layouts/Brightcove/Sublayouts/Player.aspx?itemId={0}&playerId={1}", item.ID, defaultPlayerItem.ID));
 
-          SheerResponse.ShowModalDialog(url.ToString(), properties.Width.ToString(CultureInfo.InvariantCulture), properties.Height.ToString(CultureInfo.InvariantCulture), string.Empty, false);
+                //url[PlayerParameters.ForceRender] = "1";
+                url["sc_content"] = "master";
+
+                SheerResponse.ShowModalDialog(url.ToString(), "960", "540", string.Empty, false);
+            }
         }
-        else
+
+        public override CommandState QueryState(CommandContext context)
         {
-          SheerResponse.Alert(Translations.MediaPreviewCouldNotBeShown);
+            Item item = this.GetItem(context);
+            if (item != null && MediaItemUtil.IsMediaElement(item.Template))
+            {
+                return CommandState.Enabled;
+            }
+            return CommandState.Hidden;
         }
-      } 
-    }
 
-    public override CommandState QueryState(CommandContext context)
-    {
-      Item item = this.GetItem(context);
-      if (item != null && MediaItemUtil.IsMediaElement(item.Template))
-      {
-        return CommandState.Enabled;
-      }
-      return CommandState.Hidden;
-    }
-
-    protected virtual Item GetItem(CommandContext context)
-    {
-      if ((context.Items.Length > 0) && (context.Items[0] != null))
-      {
-        return context.Items[0];
-      }
+        protected virtual Item GetItem(CommandContext context)
+        {
+            if ((context.Items.Length > 0) && (context.Items[0] != null))
+            {
+                return context.Items[0];
+            }
       
-      string id = context.Parameters["id"];
-      if (!string.IsNullOrEmpty(id))
-      {
-        return (Context.ContentDatabase ?? Context.Database).GetItem(id);
-      }
+            string id = context.Parameters["id"];
+            if (!string.IsNullOrEmpty(id))
+            {
+                return (Context.ContentDatabase ?? Context.Database).GetItem(id);
+            }
 
-      return null;
+            return null;
+        }
     }
-
-    protected virtual PlayerProperties GetPlayerProperties(CommandContext context)
-    {
-      return new PlayerProperties
-        {
-          Width = MediaFrameworkContext.PreviewSize.Width,
-          Height = MediaFrameworkContext.PreviewSize.Height
-        };
-    }
-  }
 }
