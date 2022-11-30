@@ -155,8 +155,8 @@ namespace Brightcove.Web.UI.Wizards
             parameters.Width = int.Parse(this.WidthInput.Value);
             parameters.Height = int.Parse(this.HeightInput.Value);
 
-            parameters.IsJavascriptEmbed = (this.EmbedInput.Value == Brightcove.MediaFramework.Brightcove.Constants.EmbedJavascript);
-            parameters.IsFixed = (this.SizingInput.Value != Brightcove.MediaFramework.Brightcove.Constants.SizingResponsive);
+            parameters.Embed = this.EmbedInput.Value;
+            parameters.Sizing = this.SizingInput.Value;
             parameters.IsPlaylist = IsPlaylist(SourceItemID);
 
             return parameters;

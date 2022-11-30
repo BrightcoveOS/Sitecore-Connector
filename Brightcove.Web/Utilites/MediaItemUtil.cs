@@ -8,12 +8,12 @@ namespace Brightcove.Web.Utilities
     {
         public static string GetMediaId(ID mediaId)
         {
-            return Sitecore.Context.ContentDatabase.GetItem(mediaId)["ID"];
+            return Sitecore.Context.Database.GetItem(mediaId)["ID"];
         }
 
         public static Item GetAccountForMedia(Item media)
         {
-            return Sitecore.Context.ContentDatabase.GetItem(string.Join("/", media.Paths.Path.Split('/').Take(5)));
+            return Sitecore.Context.Database.GetItem(string.Join("/", media.Paths.Path.Split('/').Take(5)));
         }
 
         public static Item GetAccountForMedia(ID mediaId)

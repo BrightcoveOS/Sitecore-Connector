@@ -2,12 +2,12 @@
 ID: "efdb5e27-30c7-4970-a2c9-df0cc21cc64e"
 Parent: "2efb2da4-7e22-4f6b-8a05-4d519b2747f3"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Brightcove/Rendering Parameters/Embed Rendering Parameters/Embed Parameters/isFixedSize
+Path: /sitecore/templates/Brightcove/Rendering Parameters/Embed Rendering Parameters/Embed Parameters/sizing
 DB: master
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Checkbox
+  Value: "Single-Line Text"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 600

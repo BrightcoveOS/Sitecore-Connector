@@ -1,8 +1,8 @@
 ﻿---
-ID: "cd1440ab-8c48-42ae-94af-579f27dd7472"
+ID: "7b0c80d9-658c-4341-87df-aea34705c672"
 Parent: "2efb2da4-7e22-4f6b-8a05-4d519b2747f3"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Brightcove/Rendering Parameters/Embed Rendering Parameters/Embed Parameters/mediaId
+Path: /sitecore/templates/Brightcove/Rendering Parameters/Embed Rendering Parameters/Embed Parameters/brightcovePlayerId
 DB: master
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
@@ -10,7 +10,7 @@ SharedFields:
   Value: "Single-Line Text"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 300
+  Value: 200
 Languages:
 - Language: en
   Versions:

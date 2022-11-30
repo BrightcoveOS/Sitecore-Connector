@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
 using Brightcove.Core.EmbedGenerator.Models;
+using Brightcove.MediaFramework.Brightcove;
 using Sitecore.Data;
 using Sitecore.Diagnostics;
 using Sitecore.Mvc.Presentation;
@@ -42,8 +43,24 @@ namespace Brightcove.Web.Models
             Width = model.Width;
             Height = model.Height;
             IsPlaylist = model.MediaType == MediaType.Playlist;
-            IsFixed = model.MediaSizing == MediaSizing.Fixed;
-            IsJavascriptEmbed = model.EmbedType == EmbedType.JavaScript;
+
+            if(model.MediaSizing == MediaSizing.Fixed)
+            {
+                Sizing = Constants.SizingFixed;
+            }
+            else
+            {
+                Sizing = Constants.SizingResponsive;
+            }
+
+            if(model.EmbedType == EmbedType.JavaScript)
+            {
+                Embed = Constants.EmbedJavascript;
+            }
+            else
+            {
+                Embed = Constants.EmbedIframe;
+            }
         }
 
         public string AccountId
@@ -62,11 +79,11 @@ namespace Brightcove.Web.Models
         {
             get
             {
-                return GetString("playerId");
+                return GetString("brightcovePlayerId");
             }
             set
             {
-                this.Parameters["playerId"] = value;
+                this.Parameters["brightcovePlayerId"] = value;
             }
         }
 
@@ -74,11 +91,11 @@ namespace Brightcove.Web.Models
         {
             get
             {
-                return GetString("mediaId");
+                return GetString("brightcoveMediaId");
             }
             set
             {
-                this.Parameters["mediaId"] = value;
+                this.Parameters["brightcoveMediaId"] = value;
             }
         }
 
@@ -118,27 +135,27 @@ namespace Brightcove.Web.Models
             }
         }
 
-        public bool IsFixed
+        public string Sizing
         {
             get
             {
-                return GetBoolean("isFixedSize");
+                return GetString("sizing");
             }
             set
             {
-                this.Parameters["isFixedSize"] = (value ? "1" : "0");
+                this.Parameters["sizing"] = value;
             }
         }
 
-        public bool IsJavascriptEmbed
+        public string Embed
         {
             get
             {
-                return GetBoolean("isJavascriptEmbed");
+                return GetString("embed");
             }
             set
             {
-                this.Parameters["isJavascriptEmbed"] = (value ? "1" : "0");
+                this.Parameters["embed"] = value;
             }
         }
 
@@ -161,7 +178,7 @@ namespace Brightcove.Web.Models
                 embedModel.MediaType = MediaType.Video;
             }
 
-            if(IsFixed)
+            if(Sizing == Constants.SizingFixed)
             {
                 embedModel.MediaSizing = MediaSizing.Fixed;
             }
@@ -170,7 +187,7 @@ namespace Brightcove.Web.Models
                 embedModel.MediaSizing = MediaSizing.Responsive;
             }
 
-            if(IsJavascriptEmbed)
+            if(Embed == Constants.EmbedJavascript)
             {
                 embedModel.EmbedType = EmbedType.JavaScript;
             }
