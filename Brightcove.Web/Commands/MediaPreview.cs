@@ -43,10 +43,15 @@ namespace Brightcove.Web.Commands
                    defaultPlayerItem = (((ReferenceField)accountItem?.Fields["DefaultVideoPlayer"])?.TargetItem);
                 }
 
-                UrlString url = new UrlString(string.Format("/layouts/Brightcove/Sublayouts/Player.aspx?itemId={0}&playerId={1}", item.ID, defaultPlayerItem.ID));
+                UrlString url = new UrlString("/layouts/Brightcove/Sublayouts/Player.aspx");
 
-                //url[PlayerParameters.ForceRender] = "1";
                 url["sc_content"] = "master";
+                url["itemId"] = item.ID.ToString();
+                
+                if(defaultPlayerItem != null)
+                {
+                    url["playerId"] = defaultPlayerItem.ID.ToString();
+                }
 
                 SheerResponse.ShowModalDialog(url.ToString(), "960", "540", string.Empty, false);
             }

@@ -9,6 +9,7 @@
     using Brightcove.Web.Utilities;
     using Sitecore.Data;
     using Sitecore.Data.Fields;
+    using Sitecore.Data.Items;
     using Sitecore.Shell.Framework.Commands;
 
     public partial class Player : Page
@@ -20,8 +21,14 @@
                 return;
             }
 
-            var item = Sitecore.Context.ContentDatabase.GetItem(new ID(Guid.Parse(this.Request.QueryString["itemId"])));
-            var player = Sitecore.Context.ContentDatabase.GetItem(new ID(Guid.Parse(this.Request.QueryString["playerId"])));
+            var itemId = this.Request.QueryString["itemId"];
+
+            if(itemId == null)
+            {
+                return;
+            }
+
+            var item = Sitecore.Context.ContentDatabase.GetItem(new ID(itemId));
             var account = MediaItemUtil.GetAccountForMedia(item);
             bool isPlaylist = item.TemplateID == Brightcove.MediaFramework.Brightcove.TemplateIDs.Playlist;
 
@@ -29,11 +36,21 @@
 
             model.MediaId = item["ID"];
             model.AccountId = account["AccountId"];
-            model.PlayerId = player["ID"];
             model.EmbedType = EmbedType.Iframe;
             model.MediaSizing = MediaSizing.Fixed;
 
-            if(isPlaylist)
+            var playerId = this.Request.QueryString["playerId"];
+
+            if (playerId != null)
+            {
+                model.PlayerId = Sitecore.Context.ContentDatabase.GetItem(new ID(playerId))["ID"];
+            }
+            else
+            {
+                model.PlayerId = "default";
+            }
+
+            if (isPlaylist)
             {
                 model.MediaType = MediaType.Playlist;
             }
