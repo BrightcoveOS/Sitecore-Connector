@@ -13,12 +13,12 @@ namespace Brightcove.Web.Utilities
 
         public static Item GetAccountForMedia(Item media)
         {
-            return Sitecore.Context.Database.GetItem(string.Join("/", media.Paths.Path.Split('/').Take(5)));
+            return media.Database.GetItem(string.Join("/", media.Paths.Path.Split('/').Take(5)));
         }
 
         public static Item GetAccountForMedia(ID mediaId)
         {
-            return GetAccountForMedia(Sitecore.Context.ContentDatabase.GetItem(mediaId));
+            return GetAccountForMedia(Sitecore.Context.Database.GetItem(mediaId));
         }
 
         public static bool IsMediaElement(TemplateItem template)
