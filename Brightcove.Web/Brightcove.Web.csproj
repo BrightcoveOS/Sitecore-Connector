@@ -819,11 +819,12 @@
     <Compile Include="Commands\TextTracks.cs" />
     <Compile Include="Controllers\ExperienceController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
-    <Compile Include="misc\EmbedMediaController.cs" />
-    <Compile Include="misc\EmbedMediaPlayer.ascx.cs">
+    <Compile Include="Controllers\EmbedMediaController.cs" />
+    <Compile Include="EmbedGenerator\SitecoreEmbedGenerator.cs" />
+    <Compile Include="UI\Sublayouts\EmbedMediaPlayer.ascx.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="misc\EmbedMediaPlayer.ascx.designer.cs">
+    <Compile Include="UI\Sublayouts\EmbedMediaPlayer.ascx.designer.cs">
       <DependentUpon>EmbedMediaPlayer.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="misc\HtmlResources.cs" />
@@ -858,24 +859,18 @@
     <Compile Include="UI\FieldTypes\ReadOnlyCheckBox.cs" />
     <Compile Include="UI\FieldTypes\ReadOnlyText.cs" />
     <Compile Include="misc\BrightcoveConstants.cs" />
-    <Compile Include="misc\BrightcovePlayerMarkupGenerator.cs" />
+    <None Include="misc\BrightcovePlayerMarkupGenerator.cs.ignore" />
     <Compile Include="misc\Constants.cs" />
-    <Compile Include="misc\EmbedAsset.cs" />
-    <Compile Include="misc\EmbedMedia.cs" />
+    <Compile Include="UI\Wizards\EmbedMediaWizard.cs" />
     <Compile Include="misc\FieldIDs.cs" />
-    <Compile Include="misc\IPlayerMarkupGenerator.cs" />
-    <Compile Include="misc\MarkupType.cs" />
     <Compile Include="misc\MediaFrameworkContext.cs" />
-    <Compile Include="misc\MediaGenerateMarkupArgs.cs" />
-    <Compile Include="misc\Player.aspx.cs">
+    <Compile Include="UI\Sublayouts\Player.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="misc\Player.aspx.designer.cs">
+    <Compile Include="UI\Sublayouts\Player.aspx.designer.cs">
       <DependentUpon>Player.aspx.cs</DependentUpon>
     </Compile>
-    <Compile Include="misc\PlayerMarkupGeneratorBase.cs" />
-    <Compile Include="misc\PlayerMarkupResult.cs" />
-    <Compile Include="misc\PlayerProperties.cs" />
+    <Compile Include="Models\EmbedRenderingParameters.cs" />
     <Compile Include="misc\TemplateIDs.cs" />
     <Compile Include="misc\Translations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

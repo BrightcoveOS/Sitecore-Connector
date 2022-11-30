@@ -3,17 +3,15 @@
   using System;
     using System.Linq;
     using System.Web.UI;
-    using Brightcove.MediaFramework.Brightcove.Players;
     using Sitecore.Data;
     using Sitecore.Diagnostics;
-    using Sitecore.MediaFramework.Pipelines.MediaGenerateMarkup;
-  using Sitecore.MediaFramework.Players;
     using Sitecore.Web.UI.WebControls;
 
     public partial class EmbedMediaPlayer : UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            /*
             //if (Page.IsPostBack)
             //{
             //  return;
@@ -46,25 +44,27 @@
                 //MediaGenerateMarkupPipeline.Run(args);
 
                 //if (!args.Aborted)
-                //{
-                this.PlayerContainer.InnerHtml = args.Result.Html;
+                //{*/
+            this.PlayerContainer.InnerHtml = "An error has occured";
 
-                RegisterResources(this.Page, args.Result);
+                //RegisterResources(this.Page, args.Result);
 
-                this.PlayerContainer.Attributes["data-mf-params"] = properties.ToString();
+                //this.PlayerContainer.Attributes["data-mf-params"] = properties.ToString();
                 /*}
                 else
                 {
                   this.PlayerContainer.Attributes.Remove("data-mf-params");
                   this.PlayerContainer.InnerHtml = PlayerManager.GetEmptyValue();
                 }*/
-            }
+            /*}
             else
             {
                 this.PlayerContainer.InnerHtml = "<div class='mf-default-view'><p>No media is selected</p></div>";
-            }
+            }*/
+    
         }
 
+        /*
         private void RegisterDefaultResources(Page page)
         {
             Assert.ArgumentNotNull(page, "page");
@@ -104,5 +104,6 @@
                 }
             }
         }
+        */
     }
 }

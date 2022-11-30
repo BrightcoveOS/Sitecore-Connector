@@ -3,29 +3,34 @@
   using System.Collections.Generic;
   using System.Collections.Specialized;
   using System.Globalization;
+    using Brightcove.MediaFramework.Brightcove;
+    using Sitecore.Data;
 
-  using Sitecore.Data;
-  using Sitecore.MediaFramework.Players;
-
-  public class EventProperties : PlayerProperties
+  public class EventProperties
   {
-    public EventProperties(Dictionary<string, string> dictionary) : base(dictionary)
+        public NameValueCollection Parameters { get; protected set; }
+        public EventProperties(Dictionary<string, string> dictionary)
     {
-    }
+            foreach (var pair in dictionary)
+            {
+                this.Parameters.Add(pair.Key, pair.Value);
+            }
+        }
 
-    public EventProperties(NameValueCollection collection) : base(collection)
+    public EventProperties(NameValueCollection collection)
     {
-    }
+            this.Parameters = new NameValueCollection(collection);
+        }
 
     public ID ContextItemId
     {
       get
       {
-        return GetId(this.Collection[Constants.PlayerEventParameters.ContextItemId]);
+        return GetId(this.Parameters[PlayerEventParameters.ContextItemId]);
       }
       set
       {
-        this.Collection[Constants.PlayerEventParameters.ContextItemId] = value.ToShortID().ToString();
+        this.Parameters[PlayerEventParameters.ContextItemId] = value.ToShortID().ToString();
       }
     }
 
@@ -33,11 +38,11 @@
     {
       get
       {
-        return this.Collection[Constants.PlayerEventParameters.MediaName];
+        return this.Parameters[PlayerEventParameters.MediaName];
       }
       set
       {
-        this.Collection[Constants.PlayerEventParameters.MediaName] = value;
+        this.Parameters[PlayerEventParameters.MediaName] = value;
       }
     }
 
@@ -45,11 +50,11 @@
     {
       get
       {
-        return MainUtil.GetInt(this.Collection[Constants.PlayerEventParameters.MediaLength], 0);
+        return MainUtil.GetInt(this.Parameters[PlayerEventParameters.MediaLength], 0);
       }
       set
       {
-        this.Collection[Constants.PlayerEventParameters.MediaLength] = value.ToString(CultureInfo.InvariantCulture);
+        this.Parameters[PlayerEventParameters.MediaLength] = value.ToString(CultureInfo.InvariantCulture);
       }
     }
 
@@ -57,12 +62,37 @@
     {
       get
       {
-        return this.Collection[Constants.PlayerEventParameters.EventParameter];
+        return this.Parameters[PlayerEventParameters.EventParameter];
       }
       set
       {
-        this.Collection[Constants.PlayerEventParameters.EventParameter] = value;
+        this.Parameters[PlayerEventParameters.EventParameter] = value;
       }
     }
-  }
+
+        protected static ID GetId(string value)
+        {
+            return !string.IsNullOrEmpty(value) && ShortID.IsShortID(value) ? new ID(value) : ID.Null;
+        }
+
+        public ID Template
+        {
+            get
+            {
+                return GetId(this.Parameters[PlayerParameters.Template]);
+            }
+            set
+            {
+                this.Parameters[PlayerParameters.Template] = !ReferenceEquals(value, null) ? value.ToShortID().ToString() : null;
+            }
+        }
+
+        public string MediaId
+        {
+            get
+            {
+                return this.Parameters["mediaId"];
+            }
+        }
+    }
 }

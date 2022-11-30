@@ -27,17 +27,6 @@ namespace Sitecore.MediaFramework
     /// <summary>
     /// The configuration paths.
     /// </summary>
-    public static class PlayerParameters
-    {
-      public static readonly string ItemId = "itemId";
-      public static readonly string Template = "template";
-      public static readonly string MediaId = "mediaId";
-      public static readonly string PlayerId = "playerId";
-      public static readonly string Width = "width";
-      public static readonly string Height = "height";
-      public static readonly string ForceRender = "forceRender";
-      public static readonly string ActivePage = "active";
-    }
 
     public static class PlayerEventParameters
     {

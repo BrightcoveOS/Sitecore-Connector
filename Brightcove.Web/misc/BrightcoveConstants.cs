@@ -58,4 +58,24 @@
     public static readonly string AccountName = "AccountName";
     public static readonly string ForceRender = "forceRender";
   }
+
+    public static class PlayerParameters
+    {
+        public static readonly string ItemId = "itemId";
+        public static readonly string Template = "template";
+        public static readonly string MediaId = "mediaId";
+        public static readonly string PlayerId = "playerId";
+        public static readonly string Width = "width";
+        public static readonly string Height = "height";
+        public static readonly string ForceRender = "forceRender";
+        public static readonly string ActivePage = "active";
+    }
+
+    public static class PlayerEventParameters
+    {
+        public static readonly string MediaName = "mediaName";
+        public static readonly string MediaLength = "mediaLength";
+        public static readonly string EventParameter = "eventParameter";
+        public static readonly string ContextItemId = "contextItemId";
+    }
 }

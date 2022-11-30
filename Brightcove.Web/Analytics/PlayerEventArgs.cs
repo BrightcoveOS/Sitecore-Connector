@@ -10,7 +10,6 @@
 namespace Sitecore.MediaFramework.Pipelines.Analytics
 {
   using Sitecore.MediaFramework.Analytics;
-  using Sitecore.MediaFramework.Players;
   using Sitecore.Pipelines;
 
   /// <summary>
