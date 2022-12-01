@@ -1,8 +1,8 @@
 ﻿---
-ID: "2bc40494-10ce-4b43-88c4-d2a2ba7ddcde"
-Parent: "2d40c1c7-d718-4c57-a077-18048dec3f44"
+ID: "ecd6112b-05d9-4df9-84cc-9b7af2356a1a"
+Parent: "7e9759ca-21fc-4091-abe1-931d6bca4615"
 Template: "3c8bd8a1-280b-4278-bb8b-21fa3b87af0f"
-Path: /sitecore/system/Settings/Html Editor Profiles/Rich Text Full/Toolbar 1/Embed Media
+Path: /sitecore/system/Settings/Html Editor Profiles/Rich Text Default/Toolbar 1/Embed Media
 DB: core
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
@@ -13,7 +13,7 @@ SharedFields:
   Value: EmbedMedia
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 1552
+  Value: 719
 - ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
   Hint: __Originator
   Value: 

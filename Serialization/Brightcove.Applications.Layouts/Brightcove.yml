@@ -1,0 +1,14 @@
+﻿---
+ID: "0d0048df-889d-4cfb-8f46-8880894e7984"
+Parent: "0a2731a3-eff9-4100-89fb-00e9bfb85565"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: /sitecore/layout/Layouts/Media/Brightcove
+DB: core
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20221130T183617Z

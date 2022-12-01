@@ -5,12 +5,6 @@ Template: "a7eaf4fd-bcf3-4511-9e8c-2ed0b165f1d6"
 Path: /sitecore/templates/Brightcove/BrightcoveVideoVariant/__Standard Values
 DB: master
 SharedFields:
-- ID: "22579c0b-2bb7-47eb-ae54-39cc8d9899c5"
-  Hint: Economics
-  Value: AD_SUPPORTED
-- ID: "437a7d9f-7a50-4955-b3ae-583eba5ad35a"
-  Hint: Name
-  Value: $name
 - ID: "a0cb3965-8884-4c7a-8815-b6b2e5ced162"
   Hint: __Editors
   Type: TreelistEx
@@ -22,12 +16,6 @@ SharedFields:
   Hint: __Quick Actions
   Type: Multilist
   Value: 
-- ID: "c923961c-5664-43d2-85d2-d194143197df"
-  Hint: Events
-  Type: Multilist
-  Value: |
-    {2301F41F-58EA-4AD8-A26D-DE8BDA637261}
-    {5FA3479A-E78B-4858-84F3-5430880FE4B5}
 - ID: "c9283d9e-7c29-4419-9c28-5a5c8ff53e84"
   Hint: __Bucketable
   Type: Checkbox

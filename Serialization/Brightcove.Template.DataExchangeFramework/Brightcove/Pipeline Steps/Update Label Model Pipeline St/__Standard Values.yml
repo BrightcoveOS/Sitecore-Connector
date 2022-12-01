@@ -11,12 +11,6 @@ SharedFields:
 - ID: "3c7f78cc-0c5c-4076-80ef-9a49fda5ff96"
   Hint: ConverterType
   Value: Brightcove.DataExchangeFramework.Converters.ResolveOrUpdateAssetModelPipelineStepConverter, Brightcove.DataExchangeFramework
-- ID: "4286cf2a-964d-424e-894c-ebd3d5db8345"
-  Hint: AssetItemLocation
-  Value: "{17DF1143-A38D-4C77-A933-E66B5ED21E9A}"
-- ID: "77bc01e6-b89e-4b69-a1f3-db947fa35eca"
-  Hint: AssetModelLocation
-  Value: "{EC64487D-E7E6-40B0-A86C-40C74B95E04E}"
 - ID: "a83a2eb2-bfa1-4d3f-9f17-0cc6c9a91c42"
   Hint: ProcessorType
   Value: Brightcove.DataExchangeFramework.Processors.UpdateLabelModelPipelineStepProcessor, Brightcove.DataExchangeFramework

@@ -770,7 +770,7 @@
     <Content Include="sitecore\shell\client\Applications\ExperienceAnalytics\Common\Layouts\Renderings\Brightcove\ExperienceAnalyticsListControl.js" />
     <Content Include="sitecore\shell\Controls\Rich Text Editor\EmbedMedia\EmbedMedia.js" />
     <Content Include="sitecore\shell\Controls\Rich Text Editor\EmbedMedia\EmbedMedia.xml" />
-    <Content Include="sitecore\shell\Controls\Rich Text Editor\Brightcove RichText Commands.js" />
+    <Content Include="sitecore\shell\Controls\Rich Text Editor\EmbedMedia\Brightcove RichText Commands.js" />
     <Content Include="sitecore\shell\Themes\Standard\Images\Brightcove\Common\gal.png" />
     <Content Include="sitecore\shell\Themes\Standard\Images\Brightcove\Common\loading.gif" />
     <Content Include="sitecore\shell\Themes\Standard\Images\Brightcove\Common\Player.png" />
@@ -788,7 +788,9 @@
     <Content Include="App_Config\Include\Unicorn\Unicorn.PowerShell.config" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.UI.config" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.UI.IdentityServer.config" />
-    <None Include="App_Config\Include\Unicorn\Unicorn.Configs.Brightcove.config.example" />
+    <Content Include="App_Config\Include\Unicorn\Unicorn.Configs.Brightcove.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

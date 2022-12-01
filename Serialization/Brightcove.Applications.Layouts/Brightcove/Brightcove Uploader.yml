@@ -1,0 +1,22 @@
+﻿---
+ID: "f2e64362-f635-45f5-8b8f-621e549e543a"
+Parent: "0d0048df-889d-4cfb-8f46-8880894e7984"
+Template: "3a45a723-64ee-4919-9d41-02fd40fd1466"
+Path: /sitecore/layout/Layouts/Media/Brightcove/Brightcove Uploader
+DB: core
+SharedFields:
+- ID: "a036b2bc-ba04-44f6-a75f-bae6cd242abf"
+  Hint: Path
+  Value: /layouts/Brightcove/Upload.cshtml
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20130806T165641Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin

@@ -5,10 +5,7 @@ Template: "2a3e91a0-7987-44b5-ab34-35c2d9de83b9"
 Path: /sitecore/layout/Renderings/Brightcove/Experience Rendering
 DB: master
 SharedFields:
-- ID: "51b435bc-f7b9-478a-9c51-52916af96ff5"
-  Hint: Path
-  Value: /Views/BrightCove/ExperienceRendering.cshtml
-- ID: "7d24e54f-5c16-4314-90c9-6051aa1a7da1"
+- ID: "13f89250-ad6b-4548-882e-118a12c18094"
   Hint: Parameters Template
   Value: "{46C527DD-CD6E-40D2-AA14-6432EF6031DF}"
 - ID: "94069f66-609c-48b0-8281-521c30fb269d"

@@ -7,7 +7,7 @@ DB: master
 SharedFields:
 - ID: "80f4d332-3c57-4fc5-8096-2d2b4f7e3cd5"
   Hint: Players
-  Type: Multilist
+  Type: Treelist
   Value: 
 - ID: "f0c25f85-7f6d-44e1-9df8-86e6a7ee7039"
   Hint: DefaultPlaylistPlayer

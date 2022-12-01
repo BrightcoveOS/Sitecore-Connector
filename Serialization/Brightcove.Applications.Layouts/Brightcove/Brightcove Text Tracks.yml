@@ -1,8 +1,8 @@
 ﻿---
 ID: "6b21dc30-385e-4ed2-bedc-aa66cc44806d"
-Parent: "0a2731a3-eff9-4100-89fb-00e9bfb85565"
+Parent: "0d0048df-889d-4cfb-8f46-8880894e7984"
 Template: "3a45a723-64ee-4919-9d41-02fd40fd1466"
-Path: /sitecore/layout/Layouts/Media/Brightcove Text Tracks
+Path: /sitecore/layout/Layouts/Media/Brightcove/Brightcove Text Tracks
 DB: core
 SharedFields:
 - ID: "a036b2bc-ba04-44f6-a75f-bae6cd242abf"

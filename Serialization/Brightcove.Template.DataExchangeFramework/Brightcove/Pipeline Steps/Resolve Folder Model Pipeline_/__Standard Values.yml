@@ -8,12 +8,6 @@ SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: Applications/16x16/document.png
-- ID: "19174e44-13f2-4c97-8e6c-ad909db4e29d"
-  Hint: AssetModelLocation
-  Value: "{EC64487D-E7E6-40B0-A86C-40C74B95E04E}"
-- ID: "264d947f-bc3e-4769-ae24-1f256bf2cb61"
-  Hint: AssetItemLocation
-  Value: "{17DF1143-A38D-4C77-A933-E66B5ED21E9A}"
 - ID: "3c7f78cc-0c5c-4076-80ef-9a49fda5ff96"
   Hint: ConverterType
   Value: Brightcove.DataExchangeFramework.Converters.ResolveOrUpdateAssetModelPipelineStepConverter, Brightcove.DataExchangeFramework
