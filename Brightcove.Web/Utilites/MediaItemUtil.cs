@@ -8,7 +8,7 @@ namespace Brightcove.Web.Utilities
     {
         public static string GetMediaId(ID mediaId)
         {
-            return Sitecore.Context.Database.GetItem(mediaId)["ID"];
+            return Sitecore.Context.ContentDatabase.GetItem(mediaId)["ID"];
         }
 
         public static Item GetAccountForMedia(Item media)
@@ -18,7 +18,7 @@ namespace Brightcove.Web.Utilities
 
         public static Item GetAccountForMedia(ID mediaId)
         {
-            return GetAccountForMedia(Sitecore.Context.Database.GetItem(mediaId));
+            return GetAccountForMedia(Sitecore.Context.ContentDatabase.GetItem(mediaId));
         }
 
         public static bool IsMediaElement(TemplateItem template)
