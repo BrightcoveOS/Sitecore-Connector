@@ -389,7 +389,3 @@ FodyWeavers.xsd
 /package.zip
 
 
-
-# Brightcove
-Brightcove.Web/App_Config/Include/Unicorn/Unicorn.Configs.Brightcove.config
-
