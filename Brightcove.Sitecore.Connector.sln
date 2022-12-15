@@ -23,15 +23,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{6398F502-408F-4EE8-BBED-17359C61FD6F}"
 	ProjectSection(SolutionItems) = preProject
 		Scripts\analytics-setup.sql = Scripts\analytics-setup.sql
+		Scripts\create_sitecore_package.ps1 = Scripts\create_sitecore_package.ps1
 		Scripts\migration-cleanup.ps1 = Scripts\migration-cleanup.ps1
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installation", "Installation", "{AC767D45-025B-4B75-B124-FDE3BA6E9B18}"
-	ProjectSection(SolutionItems) = preProject
-		Installation\brightcove.video.connect.10.1.0.1.xml = Installation\brightcove.video.connect.10.1.0.1.xml
-		Installation\brightcove.video.connect.10.1.2.0.xml = Installation\brightcove.video.connect.10.1.2.0.xml
-		Installation\brightcove.video.connect.10.1.3.0.xml = Installation\brightcove.video.connect.10.1.3.0.xml
-		Installation\brightcove.video.connect.10.1.3.1.xml = Installation\brightcove.video.connect.10.1.3.1.xml
 	EndProjectSection
 EndProject
 Global
@@ -61,7 +54,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Caching.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.ServiceBus.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.WindowsAzure.Storage.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.Configuration.6.0.1304.0\lib\NET45
 		SolutionGuid = {9E646E94-C8E4-4C67-8244-EB7810F19469}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Caching.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.ServiceBus.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.WindowsAzure.Storage.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.Configuration.6.0.1304.0\lib\NET45
 	EndGlobalSection
 EndGlobal
