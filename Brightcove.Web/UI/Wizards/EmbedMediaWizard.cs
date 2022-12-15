@@ -140,7 +140,7 @@ namespace Brightcove.Web.UI.Wizards
                     break;
 
                 default:
-                    SheerResponse.Eval("scClose(" + StringUtil.EscapeJavascriptString(result.Markup + result.ScriptTag) + ")");
+                    SheerResponse.Eval("scClose(" + StringUtil.EscapeJavascriptString(result.Markup + result.ScriptTag + "<p>&nbsp;</p>") + ")");
                     break;
             }
         }
@@ -159,6 +159,10 @@ namespace Brightcove.Web.UI.Wizards
             parameters.Embed = this.EmbedInput.Value;
             parameters.Sizing = this.SizingInput.Value;
             parameters.IsPlaylist = IsPlaylist(SourceItemID);
+
+            parameters.Autoplay = this.AutoplayCheckbox.Checked;
+            parameters.Muted = this.MutedCheckbox.Checked;
+            parameters.Language = this.AssetLanguage.Value;
 
             return parameters;
         }

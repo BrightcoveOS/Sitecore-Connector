@@ -160,6 +160,42 @@ namespace Brightcove.Web.Models
             }
         }
 
+        public bool Autoplay
+        {
+            get
+            {
+                return GetBoolean("autoplay");
+            }
+            set
+            {
+                this.Parameters["autoplay"] = (value ? "1" : "0");
+            }
+        }
+
+        public bool Muted
+        {
+            get
+            {
+                return GetBoolean("muted");
+            }
+            set
+            {
+                this.Parameters["muted"] = (value ? "1" : "0");
+            }
+        }
+
+        public string Language
+        {
+            get
+            {
+                return GetString("lang");
+            }
+            set
+            {
+                this.Parameters["lang"] = value;
+            }
+        }
+
         public EmbedModel CreateEmbedModel()
         {
             EmbedModel embedModel = new EmbedModel();
@@ -169,8 +205,11 @@ namespace Brightcove.Web.Models
             embedModel.MediaId = MediaId;
             embedModel.Height = Height;
             embedModel.Width = Width;
+            embedModel.Muted = Muted;
+            embedModel.Autoplay = Autoplay;
+            embedModel.Language = Language;
 
-            if(IsPlaylist)
+            if (IsPlaylist)
             {
                 embedModel.MediaType = MediaType.Playlist;
             }

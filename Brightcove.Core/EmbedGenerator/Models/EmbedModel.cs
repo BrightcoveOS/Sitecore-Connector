@@ -24,6 +24,12 @@ namespace Brightcove.Core.EmbedGenerator.Models
 
         public EmbedType EmbedType { get; set; } = EmbedType.Iframe;
 
+        public bool Autoplay { get; set; } = false;
+
+        public bool Muted { get; set; } = false;
+
+        public string Language { get; set; } = "";
+
         public EmbedModel()
         {
 
