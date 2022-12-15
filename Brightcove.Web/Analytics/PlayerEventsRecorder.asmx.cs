@@ -13,11 +13,12 @@ namespace Sitecore.MediaFramework.Analytics
     using System.Web.Script.Services;
     using System.Web.Services;
     using System.Web.Services.Protocols;
+    using Brightcove.Constants;
     using Brightcove.MediaFramework.Brightcove.Analytics;
+    using Brightcove.Web.Utilities;
     using Newtonsoft.Json;
     using Sitecore.Data;
     using Sitecore.Diagnostics;
-    using Sitecore.MediaFramework.Diagnostics;
     using Sitecore.MediaFramework.Pipelines.Analytics;
 
     /// <summary>
@@ -71,8 +72,8 @@ namespace Sitecore.MediaFramework.Analytics
 
         protected virtual void InitPlayerEventsTriggers()
         {
-            EventTriggers.Add(Brightcove.MediaFramework.Brightcove.TemplateIDs.Video, new VideoEventTrigger());
-            EventTriggers.Add(Brightcove.MediaFramework.Brightcove.TemplateIDs.Playlist, new PlaylistEventTrigger());
+            EventTriggers.Add(Templates.Video.Id, new VideoEventTrigger());
+            EventTriggers.Add(Templates.Playlist.Id, new PlaylistEventTrigger());
 
             foreach (IEventTrigger eventTrigger in EventTriggers.Values)
             {

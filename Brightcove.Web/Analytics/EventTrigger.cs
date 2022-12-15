@@ -12,14 +12,13 @@ namespace Sitecore.MediaFramework.Analytics
   using System;
   using System.Collections.Generic;
   using System.Globalization;
-
-  using Sitecore.Analytics;
+    using Brightcove.Web.Utilities;
+    using Sitecore.Analytics;
   using Sitecore.Analytics.Data;
     using Sitecore.Analytics.Tracking;
     using Sitecore.Configuration;
   using Sitecore.Data;
   using Sitecore.Diagnostics;
-  using Sitecore.MediaFramework.Diagnostics;
   using Sitecore.MediaFramework.Pipelines.Analytics;
 
   /// <summary>
@@ -66,7 +65,7 @@ namespace Sitecore.MediaFramework.Analytics
     /// </param>
     protected virtual void TriggerEvent(PageEventData eventData)
     {
-            var analyticsEnabled = Brightcove.MediaFramework.Brightcove.Configuration.Settings.AnalyticsEnabled;
+            var analyticsEnabled = Brightcove.Constants.Settings.AnalyticsEnabled;
 
             if (!analyticsEnabled)
                 return;

@@ -2,7 +2,6 @@
 using Sitecore.Data.Items;
 using Sitecore.Links;
 using Sitecore.MediaFramework;
-using Sitecore.MediaFramework.Diagnostics;
 using Sitecore.Shell.Framework;
 using Sitecore.Shell.Framework.Commands;
 using Sitecore.Text;
@@ -10,14 +9,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Brightcove.MediaFramework.Brightcove.Commands
+namespace Brightcove.Web.Commands
 {
     [Serializable]
     public class TextTracks : Command
     {
         public override void Execute(CommandContext context)
         {
-            Item application = Database.GetDatabase("core").GetItem(new ID("{C4D485C4-ED0C-40EF-B576-A839AE62D00D}"));
+            /*Item application = Database.GetDatabase("core").GetItem(new ID("{C4D485C4-ED0C-40EF-B576-A839AE62D00D}"));
             UrlString urlString = new UrlString(LinkManager.GetItemUrl(application));
             Item obj = Enumerable.FirstOrDefault<Item>((IEnumerable<Item>)context.Items);
             if (obj != null)
@@ -33,9 +32,10 @@ namespace Brightcove.MediaFramework.Brightcove.Commands
             catch (Exception ex)
             {
                 LogHelper.Error("Opening Text Tracks failed.", (object)this, ex);
-            }
+            }*/
         }
 
+    /*
         protected virtual Item GetItem(CommandContext context)
         {
             if (context.Items.Length > 0 && context.Items[0] != null)
@@ -51,5 +51,6 @@ namespace Brightcove.MediaFramework.Brightcove.Commands
             Item obj = this.GetItem(context);
             return obj != null && obj.TemplateID.Equals(TemplateIDs.Video) ? CommandState.Enabled : CommandState.Hidden;
         }
+    */
     }
 }

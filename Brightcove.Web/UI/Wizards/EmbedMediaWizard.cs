@@ -19,6 +19,7 @@ using Brightcove.Core;
 using Brightcove.Web.Utilities;
 using Brightcove.Web.EmbedGenerator;
 using Newtonsoft.Json;
+using Brightcove.Constants;
 
 namespace Brightcove.Web.UI.Wizards
 {
@@ -189,9 +190,9 @@ namespace Brightcove.Web.UI.Wizards
             this.HeightInput.Value = "540";
             this.InitAspectRatiosList();
             this.JavascriptRadiobutton.Checked = true;
-            this.EmbedInput.Value = Brightcove.MediaFramework.Brightcove.Constants.EmbedJavascript;
+            this.EmbedInput.Value = PlayerParameters.EmbedJavascript;
             this.ResponsiveRadiobutton.Checked = true;
-            this.SizingInput.Value = Brightcove.MediaFramework.Brightcove.Constants.SizingResponsive;
+            this.SizingInput.Value = PlayerParameters.SizingResponsive;
             string player = WebUtil.GetQueryString(PlayerParameters.PlayerId, string.Empty);
 
             this.PlayerId = ShortID.IsShortID(player) ? new ShortID(player) : ID.Null.ToShortID();
@@ -227,22 +228,22 @@ namespace Brightcove.Web.UI.Wizards
             {
                 ID = Control.GetUniqueID("ListItem"),
                 Selected = true,
-                Header = BrightcovePlayerParameters.Ratio16X9,
-                Value = BrightcovePlayerParameters.Ratio16X9
+                Header = PlayerParameters.Ratio16X9,
+                Value = PlayerParameters.Ratio16X9
             });
             this.AspectRatioList.Controls.Add(new ListItem
             {
                 ID = Control.GetUniqueID("ListItem"),
                 Selected = false,
-                Header = BrightcovePlayerParameters.Ratio4X3,
-                Value = BrightcovePlayerParameters.Ratio4X3
+                Header = PlayerParameters.Ratio4X3,
+                Value = PlayerParameters.Ratio4X3
             });
             this.AspectRatioList.Controls.Add(new ListItem
             {
                 ID = Control.GetUniqueID("ListItem"),
                 Selected = false,
-                Header = BrightcovePlayerParameters.RatioCustom,
-                Value = BrightcovePlayerParameters.RatioCustom
+                Header = PlayerParameters.RatioCustom,
+                Value = PlayerParameters.RatioCustom
             });
         }
 
@@ -272,7 +273,7 @@ namespace Brightcove.Web.UI.Wizards
 
         protected virtual bool IsPlaylist(Item item)
         {
-            return item.TemplateID.ToString() == Brightcove.MediaFramework.Brightcove.Constants.BrightcovePlaylistTemplateId;
+            return item.TemplateID == Templates.Playlist.Id;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -362,15 +363,15 @@ namespace Brightcove.Web.UI.Wizards
             var item = this.GetItem();
             if (item != null)
             {
-                this.PlaylistIdLiteral.Text = item[BrightcovePlayerParameters.PlaylistId] ?? String.Empty;
+                this.PlaylistIdLiteral.Text = item[PlayerParameters.PlaylistId] ?? String.Empty;
                 //var account = AccountManager.GetAccountItemForDescendant(item);
                 //this.AccountNameLiteral.Text = account?.Name ?? String.Empty;
-                this.CreatedLiteral.Text = item[BrightcovePlayerParameters.PlaylistCreated] ?? String.Empty;
-                this.UpdatedLiteral.Text = item[BrightcovePlayerParameters.PlaylistUpdated] ?? String.Empty;
-                this.PlaylistTypeLiteral.Text = item[BrightcovePlayerParameters.PlaylistType] ?? String.Empty;
+                this.CreatedLiteral.Text = item[PlayerParameters.PlaylistCreated] ?? String.Empty;
+                this.UpdatedLiteral.Text = item[PlayerParameters.PlaylistUpdated] ?? String.Empty;
+                this.PlaylistTypeLiteral.Text = item[PlayerParameters.PlaylistType] ?? String.Empty;
 
                 this.SourceLiteral.Text = item.DisplayName ?? String.Empty;
-                this.VideoIdLiteral.Text = item[BrightcovePlayerParameters.MediaId] ?? String.Empty;
+                this.VideoIdLiteral.Text = item[PlayerParameters.MediaId] ?? String.Empty;
 
                 this.ShowPlaylistHead.Value = this.IsPlaylist(item) ? "true" : String.Empty;
                 SheerResponse.Eval("scNext()");

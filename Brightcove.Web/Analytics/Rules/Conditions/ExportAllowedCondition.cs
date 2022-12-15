@@ -7,7 +7,8 @@
   {
     protected override bool Execute(T ruleContext)
     {
-      return MediaFrameworkContext.IsExportAllowed();
+            return true;
+      //return MediaFrameworkContext.IsExportAllowed();
     }
   }
 }

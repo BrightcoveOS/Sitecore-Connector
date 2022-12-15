@@ -14,6 +14,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Sitecore.Diagnostics;
+using Brightcove.Constants;
 
 namespace Brightcove.Web.Controllers
 {
@@ -64,7 +65,7 @@ namespace Brightcove.Web.Controllers
                 Item accountItem = Sitecore.Context.ContentDatabase.GetItem(new ID(accountItemId));
                 string videosPath = accountItem.Paths.Path + "/Videos";
 
-                Item videoItem = Sitecore.Context.ContentDatabase.GetItem(videosPath).Add(ItemUtil.ProposeValidItemName(videoName), new TemplateID(TemplateIDs.Video));
+                Item videoItem = Sitecore.Context.ContentDatabase.GetItem(videosPath).Add(ItemUtil.ProposeValidItemName(videoName), new TemplateID(Templates.Video.Id));
                 videoItem.Editing.BeginEdit();
                 videoItem["ID"] = videoId;
                 videoItem["Name"] = videoName;

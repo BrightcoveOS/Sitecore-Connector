@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Brightcove.Constants;
 using Sitecore.Data;
 using Sitecore.Data.Items;
 
@@ -23,7 +24,7 @@ namespace Brightcove.Web.Utilities
 
         public static bool IsMediaElement(TemplateItem template)
         {
-            if (template.ID == Brightcove.MediaFramework.Brightcove.TemplateIDs.MediaElement)
+            if (template.ID == Templates.MediaElement.Id)
             {
                 return true;
             }

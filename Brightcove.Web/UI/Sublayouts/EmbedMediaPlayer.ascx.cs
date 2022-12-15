@@ -1,12 +1,12 @@
-﻿namespace Sitecore.MediaFramework.UI.Sublayouts
-{                     
-  using System;
-    using System.Linq;
-    using System.Web.UI;
-    using Sitecore.Data;
-    using Sitecore.Diagnostics;
-    using Sitecore.Web.UI.WebControls;
+﻿using System;
+using System.Linq;
+using System.Web.UI;
+using Sitecore.Data;
+using Sitecore.Diagnostics;
+using Sitecore.Web.UI.WebControls;
 
+namespace Brightcove.Web.UI.Sublayouts
+{                     
     public partial class EmbedMediaPlayer : UserControl
     {
         protected void Page_Load(object sender, EventArgs e)

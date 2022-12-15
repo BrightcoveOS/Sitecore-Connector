@@ -59,11 +59,12 @@ namespace Sitecore.MediaFramework.Pipelines.AnalyticsAggregation.Interactions
 
         protected virtual List<PageEventData> GetPageEvents(VisitData visit)
         {
-            return new List<PageEventData>(
+            return new List<PageEventData>();
+            /*return new List<PageEventData>(
               visit.Pages
                 .Where(page => page.PageEvents != null)
                 .SelectMany(page => page.PageEvents)
-                .Where(pageEvent => MediaFrameworkContext.IsMediaEvent(pageEvent.PageEventDefinitionId)));
+                .Where(pageEvent => MediaFrameworkContext.IsMediaEvent(pageEvent.PageEventDefinitionId)));*/
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using Brightcove.Constants;
 using Brightcove.Core.EmbedGenerator.Models;
 using Brightcove.MediaFramework.Brightcove;
 using Brightcove.Web.Models;

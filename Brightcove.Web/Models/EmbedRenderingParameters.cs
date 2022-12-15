@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
+using Brightcove.Constants;
 using Brightcove.Core.EmbedGenerator.Models;
 using Brightcove.MediaFramework.Brightcove;
 using Sitecore.Data;
@@ -46,20 +47,20 @@ namespace Brightcove.Web.Models
 
             if(model.MediaSizing == MediaSizing.Fixed)
             {
-                Sizing = Constants.SizingFixed;
+                Sizing = PlayerParameters.SizingFixed;
             }
             else
             {
-                Sizing = Constants.SizingResponsive;
+                Sizing = PlayerParameters.SizingResponsive;
             }
 
             if(model.EmbedType == EmbedType.JavaScript)
             {
-                Embed = Constants.EmbedJavascript;
+                Embed = PlayerParameters.EmbedJavascript;
             }
             else
             {
-                Embed = Constants.EmbedIframe;
+                Embed = PlayerParameters.EmbedIframe;
             }
         }
 
@@ -178,7 +179,7 @@ namespace Brightcove.Web.Models
                 embedModel.MediaType = MediaType.Video;
             }
 
-            if(Sizing == Constants.SizingFixed)
+            if(Sizing == PlayerParameters.SizingFixed)
             {
                 embedModel.MediaSizing = MediaSizing.Fixed;
             }
@@ -187,7 +188,7 @@ namespace Brightcove.Web.Models
                 embedModel.MediaSizing = MediaSizing.Responsive;
             }
 
-            if(Embed == Constants.EmbedJavascript)
+            if(Embed == PlayerParameters.EmbedJavascript)
             {
                 embedModel.EmbedType = EmbedType.JavaScript;
             }

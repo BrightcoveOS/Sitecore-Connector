@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sitecore.MediaFramework.UI.Sublayouts {
+namespace Brightcove.Web.UI.Sublayouts {
     
     
     public partial class Player {

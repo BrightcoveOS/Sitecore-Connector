@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="Sitecore.MediaFramework.UI.Sublayouts.Player,Brightcove.Web" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="Brightcove.Web.UI.Sublayouts.Player,Brightcove.Web" %>
 
 <!DOCTYPE html>
 <html>

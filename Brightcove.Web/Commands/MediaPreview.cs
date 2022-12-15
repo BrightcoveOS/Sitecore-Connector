@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
+using Brightcove.Constants;
 using Brightcove.Core.EmbedGenerator.Models;
 using Brightcove.MediaFramework.Brightcove;
 using Brightcove.Web.EmbedGenerator;
@@ -30,7 +31,7 @@ namespace Brightcove.Web.Commands
 
             if (item != null)
             {
-                bool isPlaylist = item.TemplateID == Brightcove.MediaFramework.Brightcove.TemplateIDs.Playlist;
+                bool isPlaylist = item.TemplateID == Templates.Playlist.Id;
                 Item accountItem = MediaItemUtil.GetAccountForMedia(item);
                 Item defaultPlayerItem;
 

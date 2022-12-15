@@ -1,4 +1,5 @@
-﻿using Sitecore.Analytics;
+﻿using Brightcove.Constants;
+using Sitecore.Analytics;
 using Sitecore.Analytics.Data;
 using Sitecore.MediaFramework;
 using Sitecore.MediaFramework.Analytics;
@@ -15,10 +16,10 @@ namespace Brightcove.MediaFramework.Brightcove.Analytics
     {
         public override void InitEvents()
         {
-            this.AddEvent(TemplateIDs.Video, PlaybackEvents.PlaybackStarted.ToString(), "Brightcove video is started.");
-            this.AddEvent(TemplateIDs.Video, PlaybackEvents.PlaybackCompleted.ToString(), "Brightcove video is completed.");
-            this.AddEvent(TemplateIDs.Video, PlaybackEvents.PlaybackChanged.ToString(), "Brightcove video progress is changed.");
-            this.AddEvent(TemplateIDs.Video, PlaybackEvents.PlaybackError.ToString(), "Brightcove video playback error.");
+            this.AddEvent(Templates.Video.Id, PlaybackEvents.PlaybackStarted.ToString(), "Brightcove video is started.");
+            this.AddEvent(Templates.Video.Id, PlaybackEvents.PlaybackCompleted.ToString(), "Brightcove video is completed.");
+            this.AddEvent(Templates.Video.Id, PlaybackEvents.PlaybackChanged.ToString(), "Brightcove video progress is changed.");
+            this.AddEvent(Templates.Video.Id, PlaybackEvents.PlaybackError.ToString(), "Brightcove video playback error.");
         }
         protected override void TriggerEvent(PageEventData eventData)
         {
@@ -33,16 +34,16 @@ namespace Brightcove.MediaFramework.Brightcove.Analytics
                 {
                     switch (eventData.Name.ToLowerInvariant()){
                         case "playbackstarted":
-                            eventData.PageEventDefinitionId = ItemIDs.PageEvents.PlaybackStarted.ToGuid();
+                            eventData.PageEventDefinitionId = Items.PageEvents.PlaybackStarted.ToGuid();
                             break;
                         case "playbackcompleted":
-                            eventData.PageEventDefinitionId = ItemIDs.PageEvents.PlaybackCompleted.ToGuid();
+                            eventData.PageEventDefinitionId = Items.PageEvents.PlaybackCompleted.ToGuid();
                             break;
                         case "playbackchanged":
-                            eventData.PageEventDefinitionId = ItemIDs.PageEvents.PlaybackChanged.ToGuid();
+                            eventData.PageEventDefinitionId = Items.PageEvents.PlaybackChanged.ToGuid();
                             break;
                         case "playbackerror":
-                            eventData.PageEventDefinitionId = ItemIDs.PageEvents.PlaybackError.ToGuid();
+                            eventData.PageEventDefinitionId = Items.PageEvents.PlaybackError.ToGuid();
                             break;
                         default:
                             break;

@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
+using Brightcove.Constants;
 using Brightcove.Core;
 using Brightcove.Core.EmbedGenerator;
 using Brightcove.Core.EmbedGenerator.Models;
@@ -43,7 +44,7 @@ namespace Brightcove.Web.Controllers
             Item datasource = Sitecore.Context.Database.GetItem(new ID(datasourceId));
             parameters.MediaId = datasource["ID"];
             parameters.AccountId = MediaItemUtil.GetAccountForMedia(datasource)["AccountId"];
-            parameters.IsPlaylist = datasource.TemplateID == TemplateIDs.Playlist;
+            parameters.IsPlaylist = datasource.TemplateID == Templates.Playlist.Id;
 
             if (!string.IsNullOrWhiteSpace(parameters.Parameters["playerId"]))
             {

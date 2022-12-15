@@ -829,43 +829,32 @@
     <Compile Include="UI\Sublayouts\EmbedMediaPlayer.ascx.designer.cs">
       <DependentUpon>EmbedMediaPlayer.ascx.cs</DependentUpon>
     </Compile>
-    <Compile Include="misc\HtmlResources.cs" />
-    <Compile Include="misc\HtmlResourcesContext.cs" />
-    <Compile Include="misc\HtmlResourcesHelper.cs" />
-    <Compile Include="misc\HtmlResourcesHelperExtentions.cs" />
-    <Compile Include="misc\IHtmlResourcesHelper.cs" />
-    <Compile Include="misc\ItemIDs.cs" />
-    <Compile Include="misc\LogHelper.cs" />
-    <Compile Include="misc\MediaFrameworkSearchFilters.cs" />
-    <Compile Include="misc\MvcConstants.cs" />
-    <Compile Include="misc\OtherFieldIDs.cs" />
-    <Compile Include="misc\PlaybackEvents.cs" />
-    <Compile Include="misc\Settings.cs" />
+    <Compile Include="Constants\Items.cs" />
+    <Compile Include="Utilites\LogHelper.cs" />
+    <Compile Include="Pipelines\BrightcoveSearchFilters.cs" />
+    <Compile Include="Analytics\PlaybackEvents.cs" />
+    <Compile Include="Constants\Settings.cs" />
     <Compile Include="Models\ExperienceModel.cs" />
     <Compile Include="Models\WebApiResponse.cs" />
     <Compile Include="Pipelines\RegisterRoutes.cs" />
-    <Compile Include="Pipelines\WebApiInitializer.cs" />
-    <Compile Include="Rules\Analytics\Actions\AddMediaItemEvents.cs" />
-    <Compile Include="Rules\Analytics\Actions\TriggerPlaybackCompleted.cs" />
-    <Compile Include="Rules\Analytics\Actions\TriggerPlaybackError.cs" />
-    <Compile Include="Rules\Analytics\Actions\TriggerPlaybackPercentageCompleteReached.cs" />
-    <Compile Include="Rules\Analytics\Actions\TriggerPlaybackStarted.cs" />
-    <Compile Include="Rules\Analytics\Actions\TriggerPlaybackTimeReached.cs" />
-    <Compile Include="Rules\Analytics\PlaybackRuleContext.cs" />
-    <Compile Include="Rules\Conditions\AccountTemplateCondition.cs" />
-    <Compile Include="Rules\Conditions\ExportAllowedCondition.cs" />
+    <Compile Include="Pipelines\AnalyticsWebApiInitializer.cs" />
+    <Compile Include="Analytics\Rules\Analytics\Actions\AddMediaItemEvents.cs" />
+    <Compile Include="Analytics\Rules\Analytics\Actions\TriggerPlaybackCompleted.cs" />
+    <Compile Include="Analytics\Rules\Analytics\Actions\TriggerPlaybackError.cs" />
+    <Compile Include="Analytics\Rules\Analytics\Actions\TriggerPlaybackPercentageCompleteReached.cs" />
+    <Compile Include="Analytics\Rules\Analytics\Actions\TriggerPlaybackStarted.cs" />
+    <Compile Include="Analytics\Rules\Analytics\Actions\TriggerPlaybackTimeReached.cs" />
+    <Compile Include="Analytics\Rules\Analytics\PlaybackRuleContext.cs" />
+    <Compile Include="Analytics\Rules\Conditions\AccountTemplateCondition.cs" />
+    <Compile Include="Analytics\Rules\Conditions\ExportAllowedCondition.cs" />
     <Compile Include="Search\ComputedFields\FolderComputedField.cs" />
     <Compile Include="Search\ComputedFields\LabelsComputedField.cs" />
     <Compile Include="UI\FieldTypes\ImagePreview.cs" />
     <Compile Include="UI\FieldTypes\ReadOnlyDropTree.cs" />
     <Compile Include="UI\FieldTypes\ReadOnlyCheckBox.cs" />
     <Compile Include="UI\FieldTypes\ReadOnlyText.cs" />
-    <Compile Include="misc\BrightcoveConstants.cs" />
-    <None Include="misc\BrightcovePlayerMarkupGenerator.cs.ignore" />
-    <Compile Include="misc\Constants.cs" />
+    <Compile Include="Constants\BrightcoveConstants.cs" />
     <Compile Include="UI\Wizards\EmbedMediaWizard.cs" />
-    <Compile Include="misc\FieldIDs.cs" />
-    <Compile Include="misc\MediaFrameworkContext.cs" />
     <Compile Include="UI\Sublayouts\Player.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -873,8 +862,8 @@
       <DependentUpon>Player.aspx.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\EmbedRenderingParameters.cs" />
-    <Compile Include="misc\TemplateIDs.cs" />
-    <Compile Include="misc\Translations.cs" />
+    <Compile Include="Constants\Templates.cs" />
+    <Compile Include="Constants\Translations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilites\MediaItemUtil.cs" />
   </ItemGroup>

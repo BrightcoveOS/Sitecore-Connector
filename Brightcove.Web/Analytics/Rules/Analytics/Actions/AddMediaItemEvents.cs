@@ -1,6 +1,7 @@
 ﻿namespace Sitecore.MediaFramework.Rules.Analytics.Actions
 {
-  using Sitecore.Data.Fields;
+    using Brightcove.Constants;
+    using Sitecore.Data.Fields;
   using Sitecore.Data.Items;
   using Sitecore.Diagnostics;
   using Sitecore.Rules.Actions;
@@ -12,7 +13,7 @@
       Assert.ArgumentNotNull(ruleContext, "ruleContext");
       Assert.ArgumentNotNull(ruleContext.Item, "ruleContext.Item");
 
-      MultilistField eventsField = ruleContext.Item.Fields[FieldIDs.MediaElement.Events];
+      MultilistField eventsField = ruleContext.Item.Fields[Templates.MediaElement.EventsId];
 
       if (eventsField == null)
       {
@@ -21,10 +22,10 @@
 
       foreach (Item item in eventsField.GetItems())
       {
-        string eventName = item[FieldIDs.PlaybackEvent.PageEvent];
+        string eventName = item[Templates.PlaybackEvent.PageEventId];
         if (eventName.Length > 0)
         {
-          string parameter = item[FieldIDs.PlaybackEvent.Parameter];
+          string parameter = item[Templates.PlaybackEvent.ParameterId];
           ruleContext.AddPlaybackEvent(eventName, parameter, parameter.Length == 0);
         }
       }
