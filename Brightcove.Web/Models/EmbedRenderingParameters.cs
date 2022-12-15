@@ -44,6 +44,9 @@ namespace Brightcove.Web.Models
             Width = model.Width;
             Height = model.Height;
             IsPlaylist = model.MediaType == MediaType.Playlist;
+            Autoplay = model.Autoplay;
+            Muted = model.Muted;
+            Language = model.Language;
 
             if(model.MediaSizing == MediaSizing.Fixed)
             {
