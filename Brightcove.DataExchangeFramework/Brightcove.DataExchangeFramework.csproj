@@ -35,9 +35,8 @@
       <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib, Version=1.3.0.8, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpZipLib.1.3.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.3.2.10, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.3.2\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.OData, Version=7.0.0.20629, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.OData.7.0.0\lib\net45\Microsoft.AspNet.OData.dll</HintPath>
@@ -55,57 +54,44 @@
       <HintPath>..\packages\Microsoft.Configuration.ConfigurationBuilders.Environment.1.0.2\lib\Net471\Microsoft.Configuration.ConfigurationBuilders.Environment.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration, Version=3.1.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Configuration.3.1.5\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=3.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.3.1.14\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=3.1.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.3.1.5\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=3.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.3.1.14\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=3.1.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Configuration.Binder.3.1.5\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=3.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Binder.3.1.14\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=3.1.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.3.1.5\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=3.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.3.1.14\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=3.1.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.3.1.5\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=3.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.3.1.14\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions, Version=3.1.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.3.1.5\lib\netstandard2.0\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions, Version=3.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.3.1.14\lib\netstandard2.0\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.FileProviders.Abstractions, Version=3.1.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.FileProviders.Abstractions.3.1.5\lib\netstandard2.0\Microsoft.Extensions.FileProviders.Abstractions.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.Extensions.FileProviders.Abstractions, Version=3.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileProviders.Abstractions.3.1.14\lib\netstandard2.0\Microsoft.Extensions.FileProviders.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.FileProviders.Physical, Version=3.1.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.FileProviders.Physical.3.1.5\lib\netstandard2.0\Microsoft.Extensions.FileProviders.Physical.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.Extensions.FileProviders.Physical, Version=3.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileProviders.Physical.3.1.14\lib\netstandard2.0\Microsoft.Extensions.FileProviders.Physical.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.FileSystemGlobbing, Version=3.1.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.FileSystemGlobbing.3.1.5\lib\netstandard2.0\Microsoft.Extensions.FileSystemGlobbing.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.Extensions.FileSystemGlobbing, Version=3.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileSystemGlobbing.3.1.14\lib\netstandard2.0\Microsoft.Extensions.FileSystemGlobbing.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Logging, Version=3.1.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Logging.3.1.5\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.Extensions.Logging, Version=3.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.3.1.14\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=3.1.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.3.1.5\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=3.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.3.1.14\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Options, Version=3.1.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Options.3.1.5\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.Extensions.Options, Version=3.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.3.1.14\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Primitives, Version=3.1.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Primitives.3.1.5\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=3.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.3.1.14\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=5.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.5.4.0\lib\net461\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
@@ -163,77 +149,72 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Microsoft.Win32.Primitives" />
     <Reference Include="Mvp.Xml, Version=2.3.0.0, Culture=neutral, PublicKeyToken=6ead800d778c9b9f, processorArchitecture=MSIL">
       <HintPath>..\packages\Mvp.Xml.2.3.0\lib\net20\Mvp.Xml.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Polly, Version=6.0.0.0, Culture=neutral, PublicKeyToken=c8a3ffc3f8f825cc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Polly.6.1.2\lib\netstandard2.0\Polly.dll</HintPath>
     </Reference>
     <Reference Include="protobuf-net, Version=2.0.0.668, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
       <HintPath>..\packages\protobuf-net.2.0.0.668\lib\net40\protobuf-net.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Sitecore.Buckets, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Buckets.10.1.0\lib\net48\Sitecore.Buckets.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.Buckets, Version=9.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Buckets.10.2.0\lib\net48\Sitecore.Buckets.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Client, Version=16.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Client.10.1.0\lib\net48\Sitecore.Client.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.Client, Version=17.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Client.10.2.0\lib\net48\Sitecore.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.ContentSearch, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.ContentSearch.10.1.0\lib\net48\Sitecore.ContentSearch.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.ContentSearch, Version=9.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.ContentSearch.10.2.0\lib\net48\Sitecore.ContentSearch.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.ContentSearch.Client, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.ContentSearch.Client.10.1.0\lib\net48\Sitecore.ContentSearch.Client.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.ContentSearch.Client, Version=9.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.ContentSearch.Client.10.2.0\lib\net48\Sitecore.ContentSearch.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.ContentSearch.Data, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.ContentSearch.Data.10.1.0\lib\net48\Sitecore.ContentSearch.Data.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.ContentSearch.Data, Version=9.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.ContentSearch.Data.10.2.0\lib\net48\Sitecore.ContentSearch.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.ContentSearch.Linq, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.ContentSearch.Linq.10.1.0\lib\net48\Sitecore.ContentSearch.Linq.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.ContentSearch.Linq, Version=9.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.ContentSearch.Linq.10.2.0\lib\net48\Sitecore.ContentSearch.Linq.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.DataExchange, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.DataExchange.6.0.0\lib\net48\Sitecore.DataExchange.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.Data.ResourceItems.Abstractions, Version=17.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Data.ResourceItems.Abstractions.10.2.0\lib\netstandard2.0\Sitecore.Data.ResourceItems.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.DataExchange.DataAccess, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.DataExchange.DataAccess.6.0.0\lib\net48\Sitecore.DataExchange.DataAccess.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.Data.ResourceItems.ProtobufNet, Version=17.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Data.ResourceItems.ProtobufNet.10.2.0\lib\netstandard2.0\Sitecore.Data.ResourceItems.ProtobufNet.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.DataExchange.Local, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.DataExchange.Local.6.0.0\lib\net48\Sitecore.DataExchange.Local.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.DataExchange, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.DataExchange.7.0.0\lib\net48\Sitecore.DataExchange.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.DataExchange.Providers.Sc, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.DataExchange.Providers.Sc.6.0.0\lib\net48\Sitecore.DataExchange.Providers.Sc.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.DataExchange.DataAccess, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.DataExchange.DataAccess.7.0.0\lib\net48\Sitecore.DataExchange.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.DataExchange.Local, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.DataExchange.Local.7.0.0\lib\net48\Sitecore.DataExchange.Local.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.DataExchange.Providers.Sc, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.DataExchange.Providers.Sc.7.0.0\lib\net48\Sitecore.DataExchange.Providers.Sc.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Framework.Common, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Framework.Common.5.0.0\lib\netstandard2.0\Sitecore.Framework.Common.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\packages\Sitecore.Framework.Common.5.0.1\lib\netstandard2.0\Sitecore.Framework.Common.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Framework.Common.Abstractions, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Framework.Common.Abstractions.5.0.0\lib\netstandard2.0\Sitecore.Framework.Common.Abstractions.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\packages\Sitecore.Framework.Common.Abstractions.5.0.1\lib\netstandard2.0\Sitecore.Framework.Common.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Framework.Common.WildcardMatch, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Framework.Common.WildcardMatch.5.0.0\lib\netstandard2.0\Sitecore.Framework.Common.WildcardMatch.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\packages\Sitecore.Framework.Common.WildcardMatch.5.0.1\lib\netstandard2.0\Sitecore.Framework.Common.WildcardMatch.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Framework.Conditions, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sitecore.Framework.Conditions.5.0.0\lib\netstandard2.0\Sitecore.Framework.Conditions.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Sitecore.Framework.Configuration.Abstractions, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Framework.Configuration.Abstractions.6.0.0\lib\netstandard2.0\Sitecore.Framework.Configuration.Abstractions.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\packages\Sitecore.Framework.Configuration.Abstractions.6.0.1\lib\netstandard2.0\Sitecore.Framework.Configuration.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Framework.Data.Blobs, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sitecore.Framework.Data.Blobs.2.0.0\lib\netstandard2.0\Sitecore.Framework.Data.Blobs.dll</HintPath>
@@ -243,72 +224,58 @@
       <HintPath>..\packages\Sitecore.Framework.Data.Blobs.Abstractions.2.0.0\lib\netstandard2.0\Sitecore.Framework.Data.Blobs.Abstractions.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Sitecore.Framework.Rules, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Framework.Rules.5.0.0\lib\netstandard2.0\Sitecore.Framework.Rules.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.Framework.Rules, Version=5.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Framework.Rules.5.1.3\lib\netstandard2.0\Sitecore.Framework.Rules.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Framework.Rules.Abstractions, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Framework.Rules.Abstractions.5.0.0\lib\netstandard2.0\Sitecore.Framework.Rules.Abstractions.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.Framework.Rules.Abstractions, Version=5.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Framework.Rules.Abstractions.5.1.3\lib\netstandard2.0\Sitecore.Framework.Rules.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Framework.Rules.Api, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Framework.Rules.Api.5.0.0\lib\netstandard2.0\Sitecore.Framework.Rules.Api.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.Framework.Rules.Api, Version=5.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Framework.Rules.Api.5.1.3\lib\netstandard2.0\Sitecore.Framework.Rules.Api.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Framework.Rules.Core, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Framework.Rules.Core.5.0.0\lib\netstandard2.0\Sitecore.Framework.Rules.Core.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.Framework.Rules.Core, Version=5.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Framework.Rules.Core.5.1.3\lib\netstandard2.0\Sitecore.Framework.Rules.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Framework.Rules.Model, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Framework.Rules.Model.5.0.0\lib\netstandard2.0\Sitecore.Framework.Rules.Model.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.Framework.Rules.Model, Version=5.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Framework.Rules.Model.5.1.3\lib\netstandard2.0\Sitecore.Framework.Rules.Model.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Framework.Rules.Registry, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Framework.Rules.Registry.5.0.0\lib\netstandard2.0\Sitecore.Framework.Rules.Registry.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.Framework.Rules.Registry, Version=5.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Framework.Rules.Registry.5.1.3\lib\netstandard2.0\Sitecore.Framework.Rules.Registry.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Framework.Rules.Serialization, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Framework.Rules.Serialization.5.0.0\lib\netstandard2.0\Sitecore.Framework.Rules.Serialization.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.Framework.Rules.Serialization, Version=5.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Framework.Rules.Serialization.5.1.3\lib\netstandard2.0\Sitecore.Framework.Rules.Serialization.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Kernel, Version=16.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Kernel.10.1.0\lib\net48\Sitecore.Kernel.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.Kernel, Version=17.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Kernel.10.2.0\lib\net48\Sitecore.Kernel.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Logging, Version=14.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Logging.10.1.0\lib\net48\Sitecore.Logging.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.Logging, Version=14.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Logging.10.2.0\lib\net48\Sitecore.Logging.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Logging.Client, Version=14.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Logging.Client.10.1.0\lib\net48\Sitecore.Logging.Client.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.Logging.Client, Version=14.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Logging.Client.10.2.0\lib\net48\Sitecore.Logging.Client.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Nexus.Consumption, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9de34fe2109de40c, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Nexus.Consumption.1.2.0\lib\netstandard2.0\Sitecore.Nexus.Consumption.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\packages\Sitecore.Nexus.Consumption.1.4.2\lib\netstandard2.0\Sitecore.Nexus.Consumption.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Nexus.Licensing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9de34fe2109de40c, processorArchitecture=MSIL">
       <HintPath>..\packages\Sitecore.Nexus.Licensing.2.0.6\lib\netstandard2.0\Sitecore.Nexus.Licensing.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Sitecore.Services.Core, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Services.Core.10.1.0\lib\net48\Sitecore.Services.Core.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.Services.Core, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Services.Core.10.2.0\lib\net48\Sitecore.Services.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Services.Infrastructure, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Services.Infrastructure.10.1.0\lib\net48\Sitecore.Services.Infrastructure.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.Services.Infrastructure, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Services.Infrastructure.10.2.0\lib\net48\Sitecore.Services.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Services.Infrastructure.Sitecore, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Services.Infrastructure.Sitecore.10.1.0\lib\net48\Sitecore.Services.Infrastructure.Sitecore.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.Services.Infrastructure.Sitecore, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Services.Infrastructure.Sitecore.10.2.0\lib\net48\Sitecore.Services.Infrastructure.Sitecore.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Web, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Web.10.1.0\lib\net48\Sitecore.Web.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.Web, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Web.10.2.0\lib\net48\Sitecore.Web.dll</HintPath>
     </Reference>
     <Reference Include="sysglobl" />
     <Reference Include="System" />
+    <Reference Include="System.AppContext" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
       <Private>False</Private>
@@ -319,40 +286,49 @@
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
+    <Reference Include="System.Console" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Design" />
+    <Reference Include="System.Diagnostics.Tracing" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Globalization.Calendars" />
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.4.0\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.IO" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile" />
+    <Reference Include="System.IO.FileSystem" />
+    <Reference Include="System.IO.FileSystem.Primitives" />
     <Reference Include="System.Linq" />
-    <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Memory.4.5.2\lib\netstandard2.0\System.Memory.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="System.Linq.Expressions" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
     </Reference>
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Net.Sockets" />
     <Reference Include="System.Numerics" />
-    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
     </Reference>
+    <Reference Include="System.Reflection" />
     <Reference Include="System.Runtime" />
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Runtime.Extensions" />
     <Reference Include="System.Runtime.InteropServices" />
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
     <Reference Include="System.Runtime.Serialization" />
@@ -361,6 +337,10 @@
       <HintPath>..\packages\System.Security.AccessControl.4.5.0\lib\net461\System.Security.AccessControl.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms" />
+    <Reference Include="System.Security.Cryptography.Encoding" />
+    <Reference Include="System.Security.Cryptography.Primitives" />
+    <Reference Include="System.Security.Cryptography.X509Certificates" />
     <Reference Include="System.Security.Cryptography.Xml, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Cryptography.Xml.4.5.0\lib\net461\System.Security.Cryptography.Xml.dll</HintPath>
       <Private>False</Private>
@@ -376,6 +356,7 @@
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Text.RegularExpressions" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
       <Private>False</Private>
@@ -436,6 +417,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.ReaderWriter" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Converters\PipelineStepWithEndpointFromConverter.cs" />
