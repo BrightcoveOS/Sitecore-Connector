@@ -14,7 +14,7 @@ SharedFields:
 - ID: "a2f5d9df-8cba-4a1d-99eb-51acb94cb057"
   Hint: Page Editor Buttons
   Type: Treelist
-  Value: "{E3E407DE-D365-4D8C-97EC-E9FFE51F0932}"
+  Value: "{35A5C1B7-AEE1-4A5D-B3D9-78D498C05135}"
 - ID: "ded9e431-3604-4921-a4b3-a6ec7636a5b6"
   Hint: Controller Action
   Value: RenderMedia
