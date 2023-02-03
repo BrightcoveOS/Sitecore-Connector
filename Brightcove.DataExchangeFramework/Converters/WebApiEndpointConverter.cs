@@ -35,6 +35,7 @@ namespace Brightcove.DataExchangeFramework.Converters
                 accountSettings.AccountId = accountItem["AccountId"];
                 accountSettings.ClientId = accountItem["ClientId"];
                 accountSettings.ClientSecret = accountItem["ClientSecret"];
+                accountSettings.AccountItem = accountItem;
             }
 
             endpoint.AddPlugin(accountSettings);
