@@ -1,4 +1,5 @@
-﻿using Sitecore.DataExchange;
+﻿using Sitecore.Data.Items;
+using Sitecore.DataExchange;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,7 @@ namespace Brightcove.DataExchangeFramework.Settings
         public string AccountId { get; set; } = "";
         public string ClientId { get; set; } = "";
         public string ClientSecret { get; set; } = "";
+
+        public Item AccountItem { get; set; } = null;
     }
 }

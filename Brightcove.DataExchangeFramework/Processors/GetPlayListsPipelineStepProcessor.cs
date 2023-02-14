@@ -1,6 +1,8 @@
 ﻿using Brightcove.Core.Models;
 using Brightcove.Core.Services;
 using Brightcove.DataExchangeFramework.Settings;
+using Sitecore.ContentSearch;
+using Sitecore.Data.Items;
 using Sitecore.DataExchange.Attributes;
 using Sitecore.DataExchange.Contexts;
 using Sitecore.DataExchange.Models;
@@ -24,14 +26,15 @@ namespace Brightcove.DataExchangeFramework.Processors
         {
             base.ProcessPipelineStep(pipelineStep, pipelineContext, logger);
 
+            //We may need to refresh the search index before syncing
+            RefreshSearchIndex(pipelineStep);
+
             service = new BrightcoveService(WebApiSettings.AccountId, WebApiSettings.ClientId, WebApiSettings.ClientSecret);
 
             var data = this.GetIterableData(WebApiSettings, pipelineStep);
             var dataSettings = new IterableDataSettings(data);
 
             pipelineContext.AddPlugin(dataSettings);
-
-            SetFolderSettings("Playlists");
         }
 
         protected virtual IEnumerable<PlayList> GetIterableData(WebApiSettings settings, PipelineStep pipelineStep)
@@ -50,6 +53,22 @@ namespace Brightcove.DataExchangeFramework.Processors
                     yield return playList;
                 }
             }
+        }
+
+        private void RefreshSearchIndex(PipelineStep pipelineStep)
+        {
+            Item videosFolder = Sitecore.Data.Database.GetDatabase("master").GetItem(WebApiSettings.AccountItem.Paths.FullPath + "/Videos");
+
+            Logger.Debug($"Started refreshing the search index before syncing videos... (pipeline step: {pipelineStep.Name})");
+
+            var jobs = Sitecore.ContentSearch.Maintenance.IndexCustodian.RefreshTree((SitecoreIndexableItem)videosFolder);
+
+            foreach (var job in jobs)
+            {
+                job.Wait();
+            }
+
+            Logger.Debug($"Finished refreshing the search index (pipeline step: {pipelineStep.Name})");
         }
     }
 }
