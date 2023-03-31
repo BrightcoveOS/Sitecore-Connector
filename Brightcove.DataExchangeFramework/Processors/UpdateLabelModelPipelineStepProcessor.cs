@@ -59,18 +59,9 @@ namespace Brightcove.DataExchangeFramework.Processors
                     return;
                 }
 
-                DateTime lastSyncTime = DateTime.UtcNow;
-                DateField lastModifiedTime = item.Fields["__Updated"];
-                bool isNewLabel = string.IsNullOrWhiteSpace(item["LastSyncTime"]);
+                bool isNewLabel = !string.IsNullOrWhiteSpace(item["NewLabel"]);
 
-                if (!isNewLabel)
-                {
-                    lastSyncTime = DateTime.Parse(item["LastSyncTime"]);
-                }
-
-                //If the brightcove item has been modified since the last sync (or is new) then send the updates to brightcove
-                //Unless the brightcove model has already been modified since the last sync (presumably outside of Sitecore)
-                if (isNewLabel || lastModifiedTime.DateTime > lastSyncTime)
+                if (isNewLabel)
                 {
                     Label updatedLabel = service.UpdateLabel(label);
 
