@@ -74,6 +74,12 @@ namespace Brightcove.DataExchangeFramework.ValueReaders
                 obj = null;
             }
 
+            if(!wasValueRead || obj == null)
+            {
+                wasValueRead = true;
+                obj = "";
+            }
+
             return new ReadResult(DateTime.UtcNow)
             {
                 WasValueRead = wasValueRead,
