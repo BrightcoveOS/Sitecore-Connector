@@ -5,10 +5,16 @@ Template: "a3b4449b-2acb-414c-a239-5d12a1473759"
 Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Pipelines/Subpipelines/Update Model Pipelines/Update Label Models Pipeline/Update Label Model
 DB: master
 SharedFields:
+- ID: "1123c057-aebf-47c1-9494-c292ba59a41b"
+  Hint: AssetItemLocation
+  Value: "{17DF1143-A38D-4C77-A933-E66B5ED21E9A}"
 - ID: "506bad49-3da6-474c-acb5-7bcb509bfbd7"
   Hint: Enabled
   Type: Checkbox
   Value: 1
+- ID: "8a95a576-fe84-4ec8-9845-c464499805e8"
+  Hint: AssetModelLocation
+  Value: "{EC64487D-E7E6-40B0-A86C-40C74B95E04E}"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 300

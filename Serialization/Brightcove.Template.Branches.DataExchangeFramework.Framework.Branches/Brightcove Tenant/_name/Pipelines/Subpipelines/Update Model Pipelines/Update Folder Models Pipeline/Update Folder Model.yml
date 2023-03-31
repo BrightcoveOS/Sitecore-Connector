@@ -5,10 +5,16 @@ Template: "f71558cf-4314-4f88-9e36-b284372fb8f7"
 Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Pipelines/Subpipelines/Update Model Pipelines/Update Folder Models Pipeline/Update Folder Model
 DB: master
 SharedFields:
+- ID: "137634be-547d-4773-a6d8-f851ba47a346"
+  Hint: AssetModelLocation
+  Value: "{EC64487D-E7E6-40B0-A86C-40C74B95E04E}"
 - ID: "506bad49-3da6-474c-acb5-7bcb509bfbd7"
   Hint: Enabled
   Type: Checkbox
   Value: 1
+- ID: "a2d0b651-7b83-4edc-b2f2-585219764079"
+  Hint: AssetItemLocation
+  Value: "{17DF1143-A38D-4C77-A933-E66B5ED21E9A}"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 200
@@ -20,6 +26,9 @@ Languages:
   Versions:
   - Version: 1
     Fields:
+    - ID: "03bd4a56-4e60-488f-b176-6ceaf2069f22"
+      Hint: EndpointFrom
+      Value: "{17DF1FC5-386D-4783-9CC6-A31ABFCF6A48}"
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20220406T132500Z
