@@ -5,6 +5,9 @@ Template: "a0737430-a34e-4034-8f98-e15fbcc6948c"
 Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Data Access/Value Accessor Sets/Providers/Brightcove/Video Model Properties/Labels Property
 DB: master
 SharedFields:
+- ID: "16b64a43-1c28-47cd-9b1e-de707cd7f9a9"
+  Hint: PropertyName
+  Value: Labels
 - ID: "3c7f78cc-0c5c-4076-80ef-9a49fda5ff96"
   Hint: ConverterType
   Value: Brightcove.DataExchangeFramework.Converters.LabelsPropertyValueAccessorConverter, Brightcove.DataExchangeFramework

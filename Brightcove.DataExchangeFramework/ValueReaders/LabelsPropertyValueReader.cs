@@ -58,7 +58,7 @@ namespace Brightcove.DataExchangeFramework.ValueReaders
                                     .Where(r => r.Path.Contains(accountPath) && r.TemplateId == labelTemplate && r.Label == label)
                                     .FirstOrDefault();
 
-                                string labelItemId = searchResult.ItemId.ToString();
+                                string labelItemId = searchResult?.ItemId?.ToString();
 
                                 if(labelItemId != null)
                                 {
@@ -79,6 +79,12 @@ namespace Brightcove.DataExchangeFramework.ValueReaders
             {
                 wasValueRead = false;
                 obj = null;
+            }
+
+            if (!wasValueRead || obj == null)
+            {
+                wasValueRead = true;
+                obj = "";
             }
 
             return new ReadResult(DateTime.UtcNow)

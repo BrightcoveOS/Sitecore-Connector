@@ -4,6 +4,10 @@ Parent: "9f623c7f-51f5-4091-8645-daad69627e67"
 Template: "beec5e96-d7d6-4eb8-8472-e118c131340b"
 Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Data Access/Value Accessor Sets/Providers/Brightcove/Video Model Properties/Folder Property
 DB: master
+SharedFields:
+- ID: "2fd34e11-3d44-446b-8317-de171f9656e3"
+  Hint: PropertyName
+  Value: Folder
 Languages:
 - Language: en
   Versions:
