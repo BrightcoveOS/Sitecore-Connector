@@ -23,32 +23,37 @@ namespace Brightcove.DataExchangeFramework.Processors
     public class GetVideosPipelineStepProcessor : BasePipelineStepWithWebApiEndpointProcessor
     {
         BrightcoveService service;
+        int totalCount = 0;
 
-        protected override void ProcessPipelineStep(PipelineStep pipelineStep = null, PipelineContext pipelineContext = null, ILogger logger = null)
+        protected override void ProcessPipelineStepInternal(PipelineStep pipelineStep = null, PipelineContext pipelineContext = null, ILogger logger = null)
         {
-            base.ProcessPipelineStep(pipelineStep, pipelineContext, logger);
+            try
+            {
+                service = new BrightcoveService(WebApiSettings.AccountId, WebApiSettings.ClientId, WebApiSettings.ClientSecret);
 
-            service = new BrightcoveService(WebApiSettings.AccountId, WebApiSettings.ClientId, WebApiSettings.ClientSecret);
+                totalCount = service.VideosCount();
+                LogDebug("Read " + totalCount + " video model(s) from web API");
 
-            var data = GetIterableData(pipelineStep);
-            var dataSettings = new IterableDataSettings(data);
+                var data = GetIterableData(pipelineStep);
+                var dataSettings = new IterableDataSettings(data);
 
-            pipelineContext.AddPlugin(dataSettings);
+                pipelineContext.AddPlugin(dataSettings);
+            }
+            catch (Exception ex)
+            {
+                LogError($"Failed to get the brightcove models because an unexpected error has occured", ex);
+            }
         }
 
         protected virtual IEnumerable<Video> GetIterableData(PipelineStep pipelineStep)
         {
-            int totalVideosCount = service.VideosCount();
             int limit = 100;
 
-            for (int offset = 0; offset < totalVideosCount; offset += limit)
+            for (int offset = 0; offset < totalCount; offset += limit)
             {
                 foreach (Video video in service.GetVideos(offset, limit))
                 {
-                    Logger.Debug($"Found the brightcove asset {video.Id} (pipeline step: {pipelineStep.Name})");
-
                     video.LastSyncTime = DateTime.UtcNow;
-
                     yield return video;
                 }
             }

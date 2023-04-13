@@ -7,6 +7,8 @@ using Sitecore.DataExchange.Models;
 using Sitecore.DataExchange.Plugins;
 using Sitecore.SecurityModel;
 using Sitecore.Services.Core.Diagnostics;
+using System;
+using System.Linq;
 
 namespace Brightcove.DataExchangeFramework.Processors
 {
@@ -14,18 +16,29 @@ namespace Brightcove.DataExchangeFramework.Processors
     {
         BrightcoveService service;
 
-        protected override void ProcessPipelineStep(PipelineStep pipelineStep = null, PipelineContext pipelineContext = null, ILogger logger = null)
+        protected override void ProcessPipelineStepInternal(PipelineStep pipelineStep = null, PipelineContext pipelineContext = null, ILogger logger = null)
         {
-            base.ProcessPipelineStep(pipelineStep, pipelineContext, logger);
+            try
+            {
+                service = new BrightcoveService(WebApiSettings.AccountId, WebApiSettings.ClientId, WebApiSettings.ClientSecret);
 
-            service = new BrightcoveService(WebApiSettings.AccountId, WebApiSettings.ClientId, WebApiSettings.ClientSecret);
+                var data = service.GetPlayers().Items;
 
-            var data = service.GetPlayers().Items;
-            var dataSettings = new IterableDataSettings(data);
+                foreach (var player in data)
+                {
+                    player.LastSyncTime = DateTime.UtcNow;
+                }
 
-            pipelineContext.AddPlugin(dataSettings);
+                var dataSettings = new IterableDataSettings(data);
 
-            SetFolderSettings("Players");
+                LogDebug("Read " + data.Count() + " player model(s) from web API");
+
+                pipelineContext.AddPlugin(dataSettings);
+            }
+            catch (Exception ex)
+            {
+                LogError($"Failed to get the brightcove models because an unexpected error has occured", ex);
+            }
         }
     }
 }

@@ -454,7 +454,6 @@
     <Compile Include="Helpers\ItemUpdater.cs" />
     <Compile Include="Helpers\Mapper.cs" />
     <Compile Include="Processors\BasePipelineStepProcessor.cs" />
-    <Compile Include="Processors\BasePipelineStepWithEndpointFromProcessor.cs" />
     <Compile Include="Processors\BasePipelineStepWithWebApiEndpointProcessor.cs" />
     <Compile Include="Processors\Get\GetExperiencesPipelineStepProcessor.cs" />
     <Compile Include="Processors\Get\GetFoldersPipelineStepProcessor.cs" />

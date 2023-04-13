@@ -22,100 +22,59 @@ using System.Threading.Tasks;
 
 namespace Brightcove.DataExchangeFramework.Processors
 {
-    public class BasePipelineStepWithWebApiEndpointProcessor : BasePipelineStepWithEndpointFromProcessor
+    public class BasePipelineStepWithWebApiEndpointProcessor : BasePipelineStepProcessor
     {
         protected WebApiSettings WebApiSettings { get; set; }
+        protected Endpoint EndpointFrom { get; set; }
 
         protected override void ProcessPipelineStep(PipelineStep pipelineStep = null, PipelineContext pipelineContext = null, ILogger logger = null)
         {
-            base.ProcessPipelineStep(pipelineStep, pipelineContext, logger);
-
-            if (pipelineContext.CriticalError)
+            if (pipelineStep == null)
             {
+                throw new ArgumentNullException(nameof(pipelineStep));
+            }
+            if (pipelineContext == null)
+            {
+                throw new ArgumentNullException(nameof(pipelineContext));
+            }
+            if (logger == null)
+            {
+                throw new ArgumentNullException(nameof(logger));
+            }
+
+            EndpointSettings endpointSettings = pipelineStep.GetEndpointSettings();
+
+            if (endpointSettings == null)
+            {
+                LogFatal("Pipeline step processing will abort because the pipeline step is missing endpoint settings.");
                 return;
             }
 
-            WebApiSettings = EndpointFrom.GetPlugin<WebApiSettings>();
+            EndpointFrom = endpointSettings.EndpointFrom;
 
-            if (WebApiSettings == null)
+            if (EndpointFrom == null)
             {
-                logger.Error(
-                    "No web api settings specified on the endpoint. " +
-                    "(pipeline step: {0})",
-                    pipelineStep.Name);
-
-                pipelineContext.CriticalError = true;
+                LogFatal("Pipeline step processing will abort because the pipeline step is missing an endpoint to read from.");
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(WebApiSettings.AccountId))
-            {
-                logger.Error(
-                    "No account ID is specified on the endpoint. " +
-                    "(pipeline step: {0})",
-                    pipelineStep.Name);
+            WebApiSettings = GetPluginOrFail<WebApiSettings>(EndpointFrom);
 
-                pipelineContext.CriticalError = true;
+            if(!WebApiSettings.Validate())
+            {
+                LogFatal("Pipeline step processing will abort because the Brightcove web API settings are invalid: "+WebApiSettings.ValidationMessage);
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(WebApiSettings.ClientId))
+            try
             {
-                logger.Error(
-                    "No client ID is specified on the endpoint. " +
-                    "(pipeline step: {0})",
-                    pipelineStep.Name);
-
-                pipelineContext.CriticalError = true;
-                return;
+                ProcessPipelineStepInternal(pipelineStep, pipelineContext, logger);
             }
-
-            if (string.IsNullOrWhiteSpace(WebApiSettings.ClientSecret))
+            catch (Exception ex)
             {
-                logger.Error(
-                    "No client secret is specified on the endpoint. " +
-                    "(pipeline step: {0})",
-                    pipelineStep.Name);
-
-                pipelineContext.CriticalError = true;
-                return;
+                LogFatal("An unexpected error occured running the internal pipeline step", ex);
+                pipelineContext.CriticalError = false;
             }
-        }
-
-        public void SetFolderSettings(string folderName)
-        {
-            Sitecore.Data.Database masterDB = Sitecore.Configuration.Factory.GetDatabase("master");
-            Sitecore.Data.Items.Item node = masterDB.GetItem("/sitecore/media library/BrightCove/BrightCove Account/"+ folderName);
-            if (node == null)
-            {
-                Sitecore.Data.Items.Item parentNode = masterDB.GetItem("/sitecore/media library/BrightCove/BrightCove Account");
-                Sitecore.Data.Items.Item folder = masterDB.GetItem("/sitecore/templates/Common/Folder");
-                parentNode.Add(folderName, new TemplateItem(folder));
-
-                node = masterDB.GetItem("/sitecore/media library/BrightCove/BrightCove Account/"+ folderName);
-                using (new Sitecore.Data.Items.EditContext(node, SecurityCheck.Disable))
-                {
-                    IsBucketItemCheckBox(node).Checked = true;
-                }
-            }
-            else
-            {
-                using (new Sitecore.Data.Items.EditContext(node, SecurityCheck.Disable))
-                {
-                    if (!IsBucketItemCheck(node))
-                        IsBucketItemCheckBox(node).Checked = true;
-                }
-            }
-        }
-
-        public bool IsBucketItemCheck(Item item)
-        {
-            return (((item != null) && (item.Fields[Sitecore.Buckets.Util.Constants.IsBucket] != null)) && item.Fields[Sitecore.Buckets.Util.Constants.IsBucket].Value.Equals("1"));
-        }
-
-        public CheckboxField IsBucketItemCheckBox(Item item)
-        {
-            return item.Fields[Sitecore.Buckets.Util.Constants.IsBucket];
         }
     }
 }

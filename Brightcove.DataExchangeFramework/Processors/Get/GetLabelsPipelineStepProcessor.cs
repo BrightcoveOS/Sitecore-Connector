@@ -22,22 +22,29 @@ namespace Brightcove.DataExchangeFramework.Processors
     {
         BrightcoveService service;
 
-        protected override void ProcessPipelineStep(PipelineStep pipelineStep = null, PipelineContext pipelineContext = null, ILogger logger = null)
+        protected override void ProcessPipelineStepInternal(PipelineStep pipelineStep = null, PipelineContext pipelineContext = null, ILogger logger = null)
         {
-            base.ProcessPipelineStep(pipelineStep, pipelineContext, logger);
-
-            service = new BrightcoveService(WebApiSettings.AccountId, WebApiSettings.ClientId, WebApiSettings.ClientSecret);
-
-            var labels = service.GetLabels();
-
-            foreach (Label label in labels)
+            try
             {
-                label.LastSyncTime = DateTime.UtcNow;
+                service = new BrightcoveService(WebApiSettings.AccountId, WebApiSettings.ClientId, WebApiSettings.ClientSecret);
+
+                var labels = service.GetLabels();
+
+                foreach (Label label in labels)
+                {
+                    label.LastSyncTime = DateTime.UtcNow;
+                }
+
+                LogDebug("Read " + labels.Count() + " label model(s) from web API");
+
+                var dataSettings = new IterableDataSettings(labels);
+
+                pipelineContext.AddPlugin(dataSettings);
             }
-
-            var dataSettings = new IterableDataSettings(labels);
-
-            pipelineContext.AddPlugin(dataSettings);
+            catch (Exception ex)
+            {
+                LogError($"Failed to get the brightcove models because an unexpected error has occured", ex);
+            }
         }
     }
 }

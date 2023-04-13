@@ -43,15 +43,13 @@ namespace Brightcove.DataExchangeFramework.Processors
             }
             catch(Exception ex)
             {
-                LogFatal("An unexpected error occured running the pipeline step", ex);
-                pipelineContext.CriticalError = true;
+                LogFatal("An unexpected error occured running the internal pipeline step", ex);
+                pipelineContext.CriticalError = false;
             }
         }
 
         protected virtual void ProcessPipelineStepInternal(PipelineStep pipelineStep = null, PipelineContext pipelineContext = null, ILogger logger = null)
         {
-            LogFatal($"No processor has been defined for the pipeline step");
-            pipelineContext.CriticalError = true;
             return;
         }
 
@@ -119,7 +117,7 @@ namespace Brightcove.DataExchangeFramework.Processors
 
         private string GetExceptionMessage(Exception ex)
         {
-            return $"{ex.GetType()}: {ex.Message}\n{ex.StackTrace}";
+            return ex.ToString();
         }
     }
 }

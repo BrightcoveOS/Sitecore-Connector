@@ -22,22 +22,29 @@ namespace Brightcove.DataExchangeFramework.Processors
     {
         BrightcoveService service;
 
-        protected override void ProcessPipelineStep(PipelineStep pipelineStep = null, PipelineContext pipelineContext = null, ILogger logger = null)
+        protected override void ProcessPipelineStepInternal(PipelineStep pipelineStep = null, PipelineContext pipelineContext = null, ILogger logger = null)
         {
-            base.ProcessPipelineStep(pipelineStep, pipelineContext, logger);
-
-            service = new BrightcoveService(WebApiSettings.AccountId, WebApiSettings.ClientId, WebApiSettings.ClientSecret);
-
-            var folders = service.GetFolders();
-
-            foreach (Folder folder in folders)
+            try
             {
-                folder.LastSyncTime = DateTime.UtcNow;
+                service = new BrightcoveService(WebApiSettings.AccountId, WebApiSettings.ClientId, WebApiSettings.ClientSecret);
+
+                var folders = service.GetFolders();
+
+                foreach (Folder folder in folders)
+                {
+                    folder.LastSyncTime = DateTime.UtcNow;
+                }
+
+                LogDebug("Read " + folders.Count() + " folder model(s) from web API");
+
+                var dataSettings = new IterableDataSettings(folders);
+
+                pipelineContext.AddPlugin(dataSettings);
             }
-
-            var dataSettings = new IterableDataSettings(folders);
-
-            pipelineContext.AddPlugin(dataSettings);
+            catch (Exception ex)
+            {
+                LogError($"Failed to get the brightcove models because an unexpected error has occured", ex);
+            }
         }
     }
 }
