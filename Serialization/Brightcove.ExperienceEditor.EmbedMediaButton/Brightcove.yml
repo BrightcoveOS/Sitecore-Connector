@@ -1,0 +1,14 @@
+﻿---
+ID: "7e949aa0-dddc-4c1e-ac28-6b4401c54169"
+Parent: "db662edf-5965-4848-ad14-ba6bf0d55d1e"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: /sitecore/content/Applications/WebEdit/Custom Experience Buttons/Brightcove
+DB: core
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20221130T203127Z
