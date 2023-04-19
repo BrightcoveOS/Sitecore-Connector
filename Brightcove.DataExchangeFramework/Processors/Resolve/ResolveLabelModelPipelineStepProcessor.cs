@@ -48,7 +48,7 @@ namespace Brightcove.DataExchangeFramework.Processors
                 {
                     //The item was probably deleted or the ID has been modified incorrectly so we delete the item
                     LogWarn($"Deleting the brightcove item '{item.GetItemId()}' because the corresponding brightcove model '{labelField}' could not be found");
-                    Sitecore.Context.ContentDatabase.GetItem(item.GetItemId().ToString()).Delete();
+                    Sitecore.Context.ContentDatabase.GetItem(new ID(item.GetItemId())).Delete();
                 }
             }
             catch (Exception ex)

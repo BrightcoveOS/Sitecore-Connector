@@ -61,7 +61,7 @@ namespace Brightcove.DataExchangeFramework.Processors
                 }
                 else
                 {
-                    LogInfo($"Updated the video item '{item.GetItemId()}'");
+                    LogDebug($"Updated the video item '{item.GetItemId()}'");
                 }
 
                 UpdateVariants(mappingSettings.VariantMappingSets, item, model);
@@ -125,7 +125,7 @@ namespace Brightcove.DataExchangeFramework.Processors
             }
             else
             {
-                LogInfo($"Updated the video variant item '{item.GetItemId()}'");
+                LogDebug($"Updated the video variant item '{item.GetItemId()}'");
             }
         }
     }
