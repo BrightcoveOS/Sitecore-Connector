@@ -1,33 +1,10 @@
 ﻿---
-ID: "692f3d44-412f-40c7-9ee4-5c6733121975"
+ID: "13d202d3-15d7-47c3-8ea5-230b94962edb"
 Parent: "617228b5-978e-48c9-bed9-79826ef07142"
-Template: "6a5c6835-6e11-4602-a11d-b626e9255397"
+Template: "617228b5-978e-48c9-bed9-79826ef07142"
 Path: /sitecore/templates/Brightcove/Brightcove Experience/__Standard Values
 DB: master
 SharedFields:
-- ID: "22579c0b-2bb7-47eb-ae54-39cc8d9899c5"
-  Hint: Economics
-  Value: AD_SUPPORTED
-- ID: "437a7d9f-7a50-4955-b3ae-583eba5ad35a"
-  Hint: Name
-  Value: $name
-- ID: "a0cb3965-8884-4c7a-8815-b6b2e5ced162"
-  Hint: __Editors
-  Type: TreelistEx
-  Value: 
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 0
-- ID: "c0e276bb-8807-40aa-8138-e5c38b0c5dab"
-  Hint: __Quick Actions
-  Type: Multilist
-  Value: 
-- ID: "c923961c-5664-43d2-85d2-d194143197df"
-  Hint: Events
-  Type: Multilist
-  Value: |
-    {2301F41F-58EA-4AD8-A26D-DE8BDA637261}
-    {5FA3479A-E78B-4858-84F3-5430880FE4B5}
 - ID: "c9283d9e-7c29-4419-9c28-5a5c8ff53e84"
   Hint: __Bucketable
   Type: Checkbox
@@ -39,8 +16,8 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20090813T110100Z
+      Value: 20230419T160845Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\admin
+        sitecore\Admin
