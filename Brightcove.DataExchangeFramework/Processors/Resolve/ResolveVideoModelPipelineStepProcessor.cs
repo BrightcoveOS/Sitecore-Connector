@@ -34,7 +34,7 @@ namespace Brightcove.DataExchangeFramework.Processors
 
                 if (service.TryGetVideo(videoId, out video))
                 {
-                    LogDebug($"Successfully resolved the brightcove item '{item.GetItemId()}' to the brightcove model '{video.Id}'");
+                    LogDebug($"Resolved the brightcove item '{item.GetItemId()}' to the brightcove model '{video.Id}'");
 
                     //The brightcove API says the asset is deleted so we should probably delete the item
                     if (video.ItemState == Core.Models.ItemState.DELETED)

@@ -31,18 +31,15 @@ namespace Brightcove.DataExchangeFramework.Processors
 
         protected override void ProcessPipelineStepInternal(PipelineStep pipelineStep = null, PipelineContext pipelineContext = null, ILogger logger = null)
         {
-            var mappingSettings = GetPluginOrFail<MappingSettings>();
-            var endpointSettings = GetPluginOrFail<BrightcoveEndpointSettings>();
-            var webApiSettings = GetPluginOrFail<WebApiSettings>(endpointSettings.BrightcoveEndpoint);
-            itemModelRepository = GetPluginOrFail<ItemModelRepositorySettings>(endpointSettings.SitecoreEndpoint).ItemModelRepository;
-
-            service = new BrightcoveService(webApiSettings.AccountId, webApiSettings.ClientId, webApiSettings.ClientSecret);
-
-            Video video = null;
-
             try
             {
-                video = (Video)pipelineContext.GetObjectFromPipelineContext(mappingSettings.TargetObjectLocation);
+                var mappingSettings = GetPluginOrFail<MappingSettings>();
+                var endpointSettings = GetPluginOrFail<BrightcoveEndpointSettings>();
+                var webApiSettings = GetPluginOrFail<WebApiSettings>(endpointSettings.BrightcoveEndpoint);
+                itemModelRepository = GetPluginOrFail<ItemModelRepositorySettings>(endpointSettings.SitecoreEndpoint).ItemModelRepository;
+
+                service = new BrightcoveService(webApiSettings.AccountId, webApiSettings.ClientId, webApiSettings.ClientSecret);
+                Video video = (Video)pipelineContext.GetObjectFromPipelineContext(mappingSettings.TargetObjectLocation);
                 ItemModel itemModel = (ItemModel)pipelineContext.GetObjectFromPipelineContext(mappingSettings.SourceObjectLocation);
                 Item item = Sitecore.Context.ContentDatabase.GetItem(itemModel.GetItemId().ToString());
 
@@ -78,7 +75,7 @@ namespace Brightcove.DataExchangeFramework.Processors
                             item.Editing.EndEdit();
                         }
 
-                        LogDebug($"Updated the brightcove model '{video.Id}'");
+                        LogInfo($"Updated the brightcove video model '{video.Id}'");
                     }
                     else
                     {
@@ -94,7 +91,7 @@ namespace Brightcove.DataExchangeFramework.Processors
             }
             catch(Exception ex)
             {
-                LogError($"An unexpected error occured updating the model '{video?.Id}'", ex);
+                LogError($"An unexpected error occured updating the model", ex);
             }
         }
 
@@ -138,7 +135,7 @@ namespace Brightcove.DataExchangeFramework.Processors
             {
                 service.UpdateVideo(video);
             }
-            //This is hacky fix to silent ignore invalid custom fields
+            //This is hacky fix to ignore invalid custom fields
             //This should be removed when a more permant solution is found
             catch (HttpStatusException ex)
             {
@@ -149,6 +146,8 @@ namespace Brightcove.DataExchangeFramework.Processors
 
                 if (!message.Contains("custom_fields"))
                     throw ex;
+
+                LogWarn($"The video model {video.Id} contains invalid custom fields so the custom fields will not be updated. Please verify all of the custom fields have been defined properly.");
 
                 //Rerun with the invalid custom fields removed so the rest of the updates are made
                 video.CustomFields = null;
@@ -272,7 +271,7 @@ namespace Brightcove.DataExchangeFramework.Processors
             {
                 service.UpdateVideoVariant(videoVariant);
             }
-            //This is hacky fix to silent ignore invalid custom fields
+            //This is hacky fix to ignore invalid custom fields
             //This should be removed when a more permant solution is found
             catch (HttpStatusException ex)
             {
@@ -283,6 +282,8 @@ namespace Brightcove.DataExchangeFramework.Processors
 
                 if (!message.Contains("custom_fields"))
                     throw ex;
+
+                LogWarn($"The video variant model {videoVariant.Id} contains invalid custom fields so the custom fields will not be updated. Please verify all of the custom fields have been defined properly.");
 
                 //Rerun with the invalid custom fields removed so the rest of the updates are made
                 videoVariant.CustomFields = null;

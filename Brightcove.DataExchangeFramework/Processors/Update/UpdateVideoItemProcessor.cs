@@ -31,19 +31,15 @@ namespace Brightcove.DataExchangeFramework.Processors
 
         protected override void ProcessPipelineStepInternal(PipelineStep pipelineStep = null, PipelineContext pipelineContext = null, ILogger logger = null)
         {
-            var mappingSettings = GetPluginOrFail<MappingSettings>();
-            var endpointSettings = GetPluginOrFail<BrightcoveEndpointSettings>();
-            var webApiSettings = GetPluginOrFail<WebApiSettings>(endpointSettings.BrightcoveEndpoint);
-            itemModelRepository = GetPluginOrFail<ItemModelRepositorySettings>(endpointSettings.SitecoreEndpoint).ItemModelRepository;
-            service = new BrightcoveService(webApiSettings.AccountId, webApiSettings.ClientId, webApiSettings.ClientSecret);
-
-            ItemModel item = null;
-            Video model = null;
-
             try
             {
-                item = (ItemModel)this.GetObjectFromPipelineContext(mappingSettings.TargetObjectLocation, pipelineContext, logger);
-                model = (Video)this.GetObjectFromPipelineContext(mappingSettings.SourceObjectLocation, pipelineContext, logger);
+                var mappingSettings = GetPluginOrFail<MappingSettings>();
+                var endpointSettings = GetPluginOrFail<BrightcoveEndpointSettings>();
+                var webApiSettings = GetPluginOrFail<WebApiSettings>(endpointSettings.BrightcoveEndpoint);
+                itemModelRepository = GetPluginOrFail<ItemModelRepositorySettings>(endpointSettings.SitecoreEndpoint).ItemModelRepository;
+                service = new BrightcoveService(webApiSettings.AccountId, webApiSettings.ClientId, webApiSettings.ClientSecret);
+                ItemModel item = (ItemModel)this.GetObjectFromPipelineContext(mappingSettings.TargetObjectLocation, pipelineContext, logger);
+                Video model = (Video)this.GetObjectFromPipelineContext(mappingSettings.SourceObjectLocation, pipelineContext, logger);
 
                 foreach (IMappingSet mappingSet in mappingSettings.ModelMappingSets)
                 {
@@ -65,14 +61,14 @@ namespace Brightcove.DataExchangeFramework.Processors
                 }
                 else
                 {
-                    LogDebug($"Updated the item '{item.GetItemId()}'");
+                    LogInfo($"Updated the video item '{item.GetItemId()}'");
                 }
 
                 UpdateVariants(mappingSettings.VariantMappingSets, item, model);
             }
             catch(Exception ex)
             {
-                LogError($"An unexpected error occured updating the item '{item?.GetItemId()}'", ex);
+                LogError($"An unexpected error occured updating the item", ex);
             }
         }
 
@@ -129,7 +125,7 @@ namespace Brightcove.DataExchangeFramework.Processors
             }
             else
             {
-                LogDebug($"Updated the variant '{item.GetItemId()}'");
+                LogInfo($"Updated the video variant item '{item.GetItemId()}'");
             }
         }
     }

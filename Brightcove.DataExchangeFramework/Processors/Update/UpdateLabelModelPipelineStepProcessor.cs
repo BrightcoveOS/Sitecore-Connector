@@ -18,29 +18,11 @@ namespace Brightcove.DataExchangeFramework.Processors
     {
         BrightcoveService service;
 
-        protected override void ProcessPipelineStep(PipelineStep pipelineStep = null, PipelineContext pipelineContext = null, ILogger logger = null)
+        protected override void ProcessPipelineStepInternal(PipelineStep pipelineStep = null, PipelineContext pipelineContext = null, ILogger logger = null)
         {
-            base.ProcessPipelineStep(pipelineStep, pipelineContext, logger);
-
-            if (pipelineContext.CriticalError)
-            {
-                return;
-            }
-
-            var resolveAssetModelSettings = pipelineStep.GetPlugin<ResolveAssetModelSettings>();
-            if (resolveAssetModelSettings == null)
-            {
-                logger.Error(
-                    "No resolve asset model settings are specified for the pipeline step. " +
-                    "(pipeline step: {0})",
-                    pipelineStep.Name);
-
-                pipelineContext.CriticalError = true;
-                return;
-            }
-
             try
             {
+                var resolveAssetModelSettings = GetPluginOrFail<ResolveAssetModelSettings>();
                 service = new BrightcoveService(WebApiSettings.AccountId, WebApiSettings.ClientId, WebApiSettings.ClientSecret);
 
                 Label label = (Label)pipelineContext.GetObjectFromPipelineContext(resolveAssetModelSettings.AssetModelLocation);
@@ -50,10 +32,10 @@ namespace Brightcove.DataExchangeFramework.Processors
                 //The item has been marked for deletion in Sitecore
                 if ((string)itemModel["Delete"] == "1")
                 {
-                    logger.Info($"Deleting the brightcove model '{label.Path}' because it has been marked for deletion in Sitecore (pipeline step: {pipelineStep.Name})");
+                    LogInfo($"Deleting the brightcove model '{label.Path}' because it has been marked for deletion in Sitecore");
                     service.DeleteLabel(label.Path);
 
-                    logger.Info($"Deleting the brightcove item '{item.ID}' because it has been marked for deleteion in Sitecore '{itemModel.GetItemId()}' (pipeline step: {pipelineStep.Name})");
+                    LogInfo($"Deleting the brightcove item '{item.ID}' because it has been marked for deleteion in Sitecore '{itemModel.GetItemId()}'");
                     item.Delete();
 
                     return;
@@ -73,16 +55,16 @@ namespace Brightcove.DataExchangeFramework.Processors
                     item["__Display name"] = updatedLabel.Path;
                     item.Editing.EndEdit();
 
-                    logger.Debug($"Successfully updated the brightcove model '{label.Path}' (pipeline step: {pipelineStep.Name})");
+                    LogInfo($"Updated the brightcove label model '{label.Path}'");
                 }
                 else
                 {
-                    logger.Debug($"Ignored the brightcove item '{item.ID}' because it has not been updated since last sync (pipeline step: {pipelineStep.Name})");
+                    LogDebug($"Ignored the brightcove item '{item.ID}' because it has not been updated since last sync");
                 }
             }
             catch (Exception ex)
             {
-                logger.Error($"Failed to update the brightcove model because an unexpected error occured (pipeline step: {pipelineStep.Name}, exception: {ex.Message})");
+                LogError($"Failed to update the brightcove model because an unexpected error occured", ex);
             }
         }
     }
