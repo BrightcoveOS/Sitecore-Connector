@@ -29,8 +29,8 @@ namespace Brightcove.Core.Services
                 throw new ArgumentException("argument must not be null or empty", nameof(clientSecret));
             }
 
-            this.clientId = clientId;
-            this.clientSecret = clientSecret;
+            this.clientId = clientId.Trim();
+            this.clientSecret = clientSecret.Trim();
         }
 
         AccessToken GetAccessToken()

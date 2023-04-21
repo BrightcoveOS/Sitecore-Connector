@@ -30,7 +30,7 @@ namespace Brightcove.Core.Services
                 throw new ArgumentException("argument must not be null or empty", nameof(accountId));
             }
 
-            this.accountId = accountId;
+            this.accountId = accountId.Trim();
 
             authenticationService = new BrightcoveAuthenticationService(clientId, clientSecret);
         }
