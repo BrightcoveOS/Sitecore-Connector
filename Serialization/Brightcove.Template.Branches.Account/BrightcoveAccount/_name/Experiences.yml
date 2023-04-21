@@ -22,7 +22,7 @@ SharedFields:
 - ID: "d312103c-b36c-4ca5-864a-c85f9abda503"
   Hint: __Is Bucket
   Type: Checkbox
-  Value: 0
+  Value: 1
 Languages:
 - Language: en
   Versions:
