@@ -54,7 +54,8 @@ namespace Brightcove.DataExchangeFramework.Processors
                 //Unless the brightcove model has already been modified since the last sync (presumably outside of Sitecore)
                 if (isNewPlayer || lastModifiedTime.DateTime > lastSyncTime)
                 {
-                    if (isNewPlayer || player.LastModifiedDate < lastSyncTime)
+                    //We dont currently map anything (and probably wont anytime soon) so nothing to update
+                    /*if (isNewPlayer || player.Branches.Master.UpdatedAt < lastSyncTime)
                     {
                         service.UpdatePlayer(player);
 
@@ -67,7 +68,7 @@ namespace Brightcove.DataExchangeFramework.Processors
                     else
                     {
                         LogWarn($"Ignored changes made to brightcove item '{item.ID}' because the brightcove asset '{player.Id}' has been modified since last sync. Please run the pull pipeline to get the latest changes");
-                    }
+                    }*/
                 }
                 else
                 {

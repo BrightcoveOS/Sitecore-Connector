@@ -75,7 +75,7 @@ namespace Brightcove.DataExchangeFramework.Processors
                             item.Editing.EndEdit();
                         }
 
-                        LogInfo($"Updated the brightcove video model '{video.Id}'");
+                        LogDebug($"Updated the brightcove video model '{video.Id}'");
                     }
                     else
                     {
