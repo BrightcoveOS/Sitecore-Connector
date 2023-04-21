@@ -4,6 +4,8 @@ $pkg = New-Package "Brightcove Video Connect for Sitecore"
 $pkg.Metadata.Version = "10.1.3.2"
 $pkg.Metadata.Publisher = "Brightcove Inc."
 
+$pkg.Metadata.Readme = "PATCHING INSTRUCTIONS:`nIf you have already installed the Brightcove connector and are now installing a patch`nthen please follow these instructions to ensure all changes inlcuded in the patch`nare properly installed.`n`n1. Select the overwrite option if prompted about item/file conflicts`n2. Delete and then re-create all pre-existing Brightcove account folders`n3. Delete and then re-create all pre-existing Brightcove DEF tenants"
+
 # Get the Unicorn Configuration(s) we want to package
 $configs = Get-UnicornConfiguration "Brightcove.*" 
 
@@ -45,5 +47,4 @@ $pkg.Sources.Add($source);
 
 
 # Export the package to a zip file on disk
-Export-Package -Project $pkg -Path "C:\Code\Sitecore-Connector\Installation\Brightcove.Video.Connect.for.Sitecore-10.1.zip" -Zip
-
+Export-Package -Project $pkg -Path "C:\Code\Brightcove.Video.Connect.for.Sitecore-10.1.zip" -Zip
