@@ -38,8 +38,10 @@ namespace Brightcove.DataExchangeFramework.Processors
                 var webApiSettings = GetPluginOrFail<WebApiSettings>(endpointSettings.BrightcoveEndpoint);
                 itemModelRepository = GetPluginOrFail<ItemModelRepositorySettings>(endpointSettings.SitecoreEndpoint).ItemModelRepository;
                 service = new BrightcoveService(webApiSettings.AccountId, webApiSettings.ClientId, webApiSettings.ClientSecret);
-                ItemModel item = (ItemModel)this.GetObjectFromPipelineContext(mappingSettings.TargetObjectLocation, pipelineContext, logger);
                 Video model = (Video)this.GetObjectFromPipelineContext(mappingSettings.SourceObjectLocation, pipelineContext, logger);
+
+                string itemLanguage = pipelineContext.GetPlugin<SelectedLanguagesSettings>()?.Languages?.FirstOrDefault() ?? "en";
+                ItemModel item = (ItemModel)this.GetObjectFromPipelineContext(mappingSettings.TargetObjectLocation, pipelineContext, logger);
 
                 foreach (IMappingSet mappingSet in mappingSettings.ModelMappingSets)
                 {
@@ -64,7 +66,7 @@ namespace Brightcove.DataExchangeFramework.Processors
                     LogDebug($"Updated the video item '{item.GetItemId()}'");
                 }
 
-                UpdateVariants(mappingSettings.VariantMappingSets, item, model);
+                UpdateVariants(mappingSettings.VariantMappingSets, item, model, itemLanguage);
             }
             catch(Exception ex)
             {
@@ -73,13 +75,13 @@ namespace Brightcove.DataExchangeFramework.Processors
         }
 
 
-        private void UpdateVariants(IEnumerable<IMappingSet> mappingSets, ItemModel videoItem, Video video)
+        private void UpdateVariants(IEnumerable<IMappingSet> mappingSets, ItemModel videoItem, Video video, string itemLanguage)
         {
             var videoVariants = service.GetVideoVariants(video.Id);
 
             foreach(VideoVariant videoVariant in videoVariants)
             {
-                ItemModel videoVariantItem = ResolveVideoVariant(videoItem, videoVariant);
+                ItemModel videoVariantItem = ResolveVideoVariant(videoItem, videoVariant, itemLanguage);
                 ApplyMappings(mappingSets, videoVariant, videoVariantItem);
                 UpdateVideoVariant(videoVariantItem);
             }
@@ -102,14 +104,14 @@ namespace Brightcove.DataExchangeFramework.Processors
             }
         }
 
-        private ItemModel ResolveVideoVariant(ItemModel videoItem, VideoVariant videoVariant)
+        private ItemModel ResolveVideoVariant(ItemModel videoItem, VideoVariant videoVariant, string itemLanguage)
         {
-            ItemModel variantItem = itemModelRepository.GetChildren(videoItem.GetItemId()).Where(c => c["Language"].ToString() == videoVariant.Language).FirstOrDefault();
+            ItemModel variantItem = itemModelRepository.GetChildren(videoItem.GetItemId(), itemLanguage).Where(c => c["Language"].ToString() == videoVariant.Language).FirstOrDefault();
 
             if (variantItem == null)
             {
-                Guid variantItemId = itemModelRepository.Create(ItemUtil.ProposeValidItemName(videoVariant.Name), new Guid("{A7EAF4FD-BCF3-4511-9E8C-2ED0B165F1D6}"), videoItem.GetItemId());
-                variantItem = itemModelRepository.Get(variantItemId);
+                Guid variantItemId = itemModelRepository.Create(ItemUtil.ProposeValidItemName(videoVariant.Name), new Guid("{A7EAF4FD-BCF3-4511-9E8C-2ED0B165F1D6}"), videoItem.GetItemId(), itemLanguage);
+                variantItem = itemModelRepository.Get(variantItemId, itemLanguage);
             }
 
             return variantItem;
