@@ -82,13 +82,13 @@ namespace Brightcove.DataExchangeFramework.Processors
             }
         }
 
-        public void SetFolderSettings(string folderName)
+        public void SetFolderSettings(string accountName, string folderName)
         {
             Sitecore.Data.Database masterDB = Sitecore.Configuration.Factory.GetDatabase("master");
-            Sitecore.Data.Items.Item node = masterDB.GetItem("/sitecore/media library/BrightCove/BrightCove Account/"+ folderName);
+            Sitecore.Data.Items.Item node = masterDB.GetItem($"/sitecore/media library/BrightCove/{accountName}/{folderName}");
             if (node == null)
             {
-                Sitecore.Data.Items.Item parentNode = masterDB.GetItem("/sitecore/media library/BrightCove/BrightCove Account");
+                Sitecore.Data.Items.Item parentNode = masterDB.GetItem($"/sitecore/media library/BrightCove/{accountName}");
                 Sitecore.Data.Items.Item folder = masterDB.GetItem("/sitecore/templates/Common/Folder");
                 parentNode.Add(folderName, new TemplateItem(folder));
 

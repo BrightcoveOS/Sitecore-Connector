@@ -25,7 +25,7 @@ namespace Brightcove.DataExchangeFramework.Processors
 
             pipelineContext.AddPlugin(dataSettings);
 
-            SetFolderSettings("Experiences");
+            SetFolderSettings(WebApiSettings.AccountItem.Name, "Experiences");
         }
     }
 }

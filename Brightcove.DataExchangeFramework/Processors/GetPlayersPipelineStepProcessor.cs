@@ -25,7 +25,7 @@ namespace Brightcove.DataExchangeFramework.Processors
 
             pipelineContext.AddPlugin(dataSettings);
 
-            SetFolderSettings("Players");
+            SetFolderSettings(WebApiSettings.AccountItem.Name, "Players");
         }
     }
 }
