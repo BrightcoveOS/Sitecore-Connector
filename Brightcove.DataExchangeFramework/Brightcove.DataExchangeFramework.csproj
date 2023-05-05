@@ -451,6 +451,7 @@
     <Compile Include="Converters\ValueAccessor\StringDictionaryPropertyValueAccessorConverter.cs" />
     <Compile Include="Converters\ValueAccessor\ChainedPropertyValueAccessorConverter.cs" />
     <Compile Include="Converters\PipelineStep\ResolveOrUpdateAssetModelPipelineStepConverter.cs" />
+    <Compile Include="Extensions\ItemModelExtensions.cs" />
     <Compile Include="Helpers\ItemUpdater.cs" />
     <Compile Include="Helpers\Mapper.cs" />
     <Compile Include="Processors\BasePipelineStepProcessor.cs" />

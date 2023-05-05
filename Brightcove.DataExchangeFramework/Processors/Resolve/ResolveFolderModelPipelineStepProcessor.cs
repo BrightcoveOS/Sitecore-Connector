@@ -1,11 +1,13 @@
 ﻿using Brightcove.Core.Models;
 using Brightcove.Core.Services;
+using Brightcove.DataExchangeFramework.Extensions;
 using Brightcove.DataExchangeFramework.Settings;
 using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.DataExchange.Contexts;
 using Sitecore.DataExchange.Extensions;
 using Sitecore.DataExchange.Models;
+using Sitecore.Globalization;
 using Sitecore.Services.Core.Diagnostics;
 using Sitecore.Services.Core.Model;
 using System;
@@ -42,6 +44,7 @@ namespace Brightcove.DataExchangeFramework.Processors
                     //The item was probably deleted or the ID has been modified incorrectly so we delete the item
                     LogWarn($"Deleting the brightcove item '{item.GetItemId()}' because the corresponding brightcove model '{id}' could not be found");
                     Sitecore.Context.ContentDatabase.GetItem(new ID(item.GetItemId())).Delete();
+                    pipelineContext.Finished = true;
                 }
             }
             catch (Exception ex)
@@ -54,7 +57,7 @@ namespace Brightcove.DataExchangeFramework.Processors
         private Folder CreateFolder(ItemModel itemModel)
         {
             Folder folder = service.CreateFolder((string)itemModel["Name"]);
-            Item item = Sitecore.Context.ContentDatabase.GetItem(new ID(itemModel.GetItemId()));
+            Item item = Sitecore.Context.ContentDatabase.GetItem(new ID(itemModel.GetItemId()), Language.Parse(itemModel.GetLanguage()));
 
             item.Editing.BeginEdit();
             item["ID"] = folder.Id;

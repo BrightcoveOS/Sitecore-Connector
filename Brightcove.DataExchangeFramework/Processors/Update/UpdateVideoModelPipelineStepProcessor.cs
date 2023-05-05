@@ -21,6 +21,8 @@ using Brightcove.Core.Extensions;
 using Brightcove.DataExchangeFramework.Helpers;
 using Sitecore.DataExchange.Providers.Sc.Plugins;
 using Sitecore.Data;
+using Sitecore.Globalization;
+using Brightcove.DataExchangeFramework.Extensions;
 
 namespace Brightcove.DataExchangeFramework.Processors
 {
@@ -41,7 +43,7 @@ namespace Brightcove.DataExchangeFramework.Processors
                 service = new BrightcoveService(webApiSettings.AccountId, webApiSettings.ClientId, webApiSettings.ClientSecret);
                 Video video = (Video)pipelineContext.GetObjectFromPipelineContext(mappingSettings.TargetObjectLocation);
                 ItemModel itemModel = (ItemModel)pipelineContext.GetObjectFromPipelineContext(mappingSettings.SourceObjectLocation);
-                Item item = Sitecore.Context.ContentDatabase.GetItem(itemModel.GetItemId().ToString());
+                Item item = Sitecore.Context.ContentDatabase.GetItem(itemModel.GetItemId().ToString(), Language.Parse(itemModel.GetLanguage()));
 
                 DateTime lastSyncTime = DateTime.UtcNow;
                 DateField lastModifiedTime = item.Fields["__Updated"];
@@ -182,7 +184,7 @@ namespace Brightcove.DataExchangeFramework.Processors
 
         public void UpdateVariants(IItemModelRepository itemModelRepository, IEnumerable<IMappingSet> mappingSets, ItemModel item, Video model)
         {
-            var variantItems = itemModelRepository.GetChildren(item.GetItemId());
+            var variantItems = itemModelRepository.GetChildren(item.GetItemId(), item.GetLanguage());
 
             foreach(ItemModel variantItem in variantItems)
             {

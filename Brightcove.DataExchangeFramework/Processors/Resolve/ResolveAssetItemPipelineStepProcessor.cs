@@ -20,6 +20,8 @@ using Sitecore.DataExchange.Repositories;
 using Sitecore.Services.Core.Diagnostics;
 using Sitecore.Services.Core.Model;
 using Sitecore.DataExchange.Providers.Sc.Extensions;
+using Sitecore.Collections;
+using Sitecore.Globalization;
 
 namespace Brightcove.DataExchangeFramework.Processors
 {
@@ -46,7 +48,7 @@ namespace Brightcove.DataExchangeFramework.Processors
             string parentItemMediaPath = GetAssetParentItemMediaPath(pipelineContext);
 
             Database database = Sitecore.Configuration.Factory.GetDatabase(repository.DatabaseName);
-            Item parentItem = database?.GetItem(parentItemPath);
+            Item parentItem = database?.GetItem(parentItemPath, Language.Parse(language));
 
             if (parentItem == null)
             {
@@ -54,7 +56,7 @@ namespace Brightcove.DataExchangeFramework.Processors
             }
 
             string fieldName = valueReader.FieldName;
-            string convertedValue = value.ToString();//this.ConvertValueForSearch(value);
+            string convertedValue = this.ConvertValueForSearch(value);
 
             if (BucketManager.IsBucket(parentItem))
             {

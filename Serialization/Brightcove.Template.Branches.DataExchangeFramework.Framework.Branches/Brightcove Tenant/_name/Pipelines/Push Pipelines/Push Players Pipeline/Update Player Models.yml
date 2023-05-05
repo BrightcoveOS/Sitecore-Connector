@@ -8,7 +8,7 @@ SharedFields:
 - ID: "506bad49-3da6-474c-acb5-7bcb509bfbd7"
   Hint: Enabled
   Type: Checkbox
-  Value: 0
+  Value: 1
 - ID: "585fe5a4-68d8-4c1e-8056-635f3d73d723"
   Hint: Pipelines
   Type: Treelist

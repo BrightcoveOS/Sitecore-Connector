@@ -32,6 +32,7 @@ namespace Brightcove.DataExchangeFramework.Processors
           ILogger logger)
         {
             IItemModelRepository itemModelRepository = endpoint.GetPlugin<ItemModelRepositorySettings>().ItemModelRepository;
+            string language = pipelineContext.GetPlugin<SelectedLanguagesSettings>()?.Languages?.FirstOrDefault() ?? "en";
 
             if (readSitecoreItemModelsSettings.ItemRootId == Guid.Empty)
             {
@@ -42,16 +43,16 @@ namespace Brightcove.DataExchangeFramework.Processors
             string bucketPath = GetAssetParentItemMediaPath(pipelineContext);
             string indexName = $"sitecore_{itemModelRepository.DatabaseName}_index";
 
-            return Search(bucketPath, indexName, readSitecoreItemModelsSettings.TemplateIds.FirstOrDefault());
+            return Search(bucketPath, indexName, readSitecoreItemModelsSettings.TemplateIds.FirstOrDefault(), language, itemModelRepository);
         }
 
-        public virtual IEnumerable<ItemModel> Search(string bucketPath, string indexName, Guid templateGuid)
+        public virtual IEnumerable<ItemModel> Search(string bucketPath, string indexName, Guid templateGuid, string language, IItemModelRepository modelRepository)
         {
             var index = ContentSearchManager.GetIndex(indexName);
 
             using (var context = index.CreateSearchContext())
             {
-                var query = context.GetQueryable<SearchResultItem>().Where(x => x.Path.Contains(bucketPath) && x.Path != bucketPath);
+                var query = context.GetQueryable<SearchResultItem>().Where(x => x.Path.Contains(bucketPath) && x.Path != bucketPath && x.Language == language);
 
                 if(templateGuid != Guid.Empty)
                 {
@@ -60,7 +61,7 @@ namespace Brightcove.DataExchangeFramework.Processors
                 }
 
                 var searchResults = query.ToList();
-                var itemModels = searchResults.Select(r => r.GetItem()?.GetItemModel()).Where(r => r != null);
+                IEnumerable<ItemModel> itemModels = searchResults.Select(r => modelRepository.Get(r.ItemId.ToGuid(), language)).Where(m => m != null);
 
                 return itemModels;
             }
