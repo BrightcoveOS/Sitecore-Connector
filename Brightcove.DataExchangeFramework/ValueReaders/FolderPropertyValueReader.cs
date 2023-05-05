@@ -3,6 +3,7 @@ using Brightcove.DataExchangeFramework.Settings;
 using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.SearchTypes;
 using Sitecore.Data;
+using Sitecore.Data.Items;
 using Sitecore.DataExchange.DataAccess;
 using Sitecore.DataExchange.DataAccess.Readers;
 using System;
@@ -30,69 +31,50 @@ namespace Brightcove.DataExchangeFramework.ValueReaders
                 throw new ArgumentNullException(nameof(context));
 
             bool wasValueRead = false;
-            object obj = source;
-
-            var reader = new ChainedPropertyValueReader(PropertyName);
-            var result = reader.Read(obj, context);
-
-            wasValueRead = result.WasValueRead;
-            obj = result.ReadValue;
+            object property = null;
+            string returnValue = "";
 
             try
             {
+                var reader = new ChainedPropertyValueReader(PropertyName);
+                var readResult = reader.Read(source, context);
+
+                wasValueRead = readResult.WasValueRead;
+                property = readResult.ReadValue;
+
                 if (wasValueRead)
                 {
-                    string folderId = obj as string;
-                    List<string> videoItemIds = new List<string>();
+                    string brightcoveFolderId = property as string;
 
-                    if (!string.IsNullOrWhiteSpace(folderId))
+                    if (!string.IsNullOrWhiteSpace(brightcoveFolderId))
                     {
-                        string accountPath = GetAssetParentItemMediaPath();
-
-                        using (var index = ContentSearchManager.GetIndex("sitecore_master_index").CreateSearchContext())
-                        {
-                            //Note we need to limit our search to only videos in the current account but we need
-                            //context information to know which account is currently being synced. We use the
-                            //Sitecore.DataExchange.Context to pass this information to this value reader
-                            string folderItemId = index.GetQueryable<AssetSearchResult>()
-                                .Where(r => r.Path.Contains(accountPath) && r.ID == folderId)
-                                .Select(r => r.ItemId.ToString())
-                                .FirstOrDefault();
-
-                            obj = folderItemId ?? "";
-                        }
-                    }
-                    else
-                    {
-                        obj = "";
+                        Item parentFoldersItem = GetParentFoldersItem();
+                        string sitecoreFolderId = parentFoldersItem.Children?.Where(c => c["ID"] == brightcoveFolderId)?.FirstOrDefault()?.ID?.ToString() ?? "";
+                        returnValue = sitecoreFolderId;
                     }
                 }
             }
             catch
             {
                 wasValueRead = false;
-                obj = null;
-            }
-
-            if(!wasValueRead || obj == null)
-            {
-                wasValueRead = true;
-                obj = "";
+                returnValue = null;
             }
 
             return new ReadResult(DateTime.UtcNow)
             {
                 WasValueRead = wasValueRead,
-                ReadValue = obj
+                ReadValue = returnValue
             };
         }
 
-        private string GetAssetParentItemMediaPath()
+        //Gets the Sitecore folder that holds all of the Brightcove folder items (Yes both are called folders)
+        private Item GetParentFoldersItem()
         {
             var settings = Sitecore.DataExchange.Context.GetPlugin<ResolveAssetItemSettings>();
             var accountItem = Sitecore.Context.ContentDatabase.GetItem(settings.AcccountItemId);
+            var foldersItem = Sitecore.Context.ContentDatabase.GetItem(accountItem.Paths.FullPath + "/Folders");
 
-            return accountItem.Paths.MediaPath;
+            return foldersItem;
         }
     }
 }

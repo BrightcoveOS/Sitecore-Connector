@@ -3,6 +3,7 @@ using Sitecore.DataExchange.DataAccess;
 using System;
 using System.Reflection;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Brightcove.DataExchangeFramework.ValueWriters
 {
@@ -12,24 +13,31 @@ namespace Brightcove.DataExchangeFramework.ValueWriters
         {
         }
 
-        public override bool Write(object target, object value, DataAccessContext context)
+        public override bool Write(object target, object labelIds, DataAccessContext context)
         {
             if (context == null)
                 throw new ArgumentNullException(nameof(context));
 
-            if (value != null)
-            {
-                string[] itemIds = ((string)value).Split('|');
-                var paths = itemIds.Select(id => Sitecore.Context.ContentDatabase.GetItem(id))
-                                    .Where(label => label != null)
-                                    .Select(labelItem => labelItem["label"])
-                                    .Where(path => !string.IsNullOrWhiteSpace(path))
-                                    .ToList();
+            List<string> labelItemIds = null;
 
-                value = paths;
+            try
+            {
+                if (labelIds != null)
+                {
+                    string[] itemIds = ((string)labelIds).Split('|');
+                    labelItemIds = itemIds.Select(id => Sitecore.Context.ContentDatabase.GetItem(id))
+                                        .Where(label => label != null)
+                                        .Select(labelItem => labelItem["label"])
+                                        .Where(path => !string.IsNullOrWhiteSpace(path))
+                                        .ToList();
+                }
+            }
+            catch
+            {
+                labelItemIds = null;
             }
 
-            return base.Write(target, value, context);
+            return base.Write(target, labelItemIds, context);
         }
     }
 }

@@ -3,6 +3,7 @@ using Brightcove.DataExchangeFramework.Settings;
 using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.SearchTypes;
 using Sitecore.Data;
+using Sitecore.Data.Items;
 using Sitecore.DataExchange.DataAccess;
 using Sitecore.DataExchange.DataAccess.Readers;
 using System;
@@ -30,79 +31,60 @@ namespace Brightcove.DataExchangeFramework.ValueReaders
                 throw new ArgumentNullException(nameof(context));
 
             bool wasValueRead = false;
-            object obj = source;
-
-            var reader = new ChainedPropertyValueReader(PropertyName);
-            var result = reader.Read(obj, context);
-
-            wasValueRead = result.WasValueRead;
-            obj = result.ReadValue;
+            object property = null;
+            string returnValue = "";
 
             try
             {
-                if (wasValueRead && obj != null)
+                var reader = new ChainedPropertyValueReader(PropertyName);
+                var result = reader.Read(source, context);
+
+                wasValueRead = result.WasValueRead;
+                property = result.ReadValue;
+
+                if (wasValueRead && property != null)
                 {
-                    List<string> labels = obj as List<string>;
+                    List<string> labels = property as List<string>;
                     List<string> labelItemIds = new List<string>();
 
                     if (labels.Count > 0)
                     {
-                        string accountPath = GetAssetParentItemMediaPath();
-                        ID labelTemplate = new ID("{8B6A9EAD-4DE9-4C59-B8F5-F3FF40A64F12}");
+                        Item parentLabelsItem = GetParentLabelsItem();
 
-                        using (var index = ContentSearchManager.GetIndex("sitecore_master_index").CreateSearchContext())
+                        foreach (var label in labels)
                         {
-                            foreach (var label in labels)
+                            string labelItemId = parentLabelsItem.Children?.Where(c => c["Label"] == label)?.FirstOrDefault()?.ID?.ToString() ?? "";
+
+                            if(!string.IsNullOrWhiteSpace(labelItemId))
                             {
-                                var searchResult = index.GetQueryable<AssetSearchResult>()
-                                    .Where(r => r.Path.Contains(accountPath) && r.TemplateId == labelTemplate && r.Label == label)
-                                    .FirstOrDefault();
-
-                                string labelItemId = searchResult?.ItemId?.ToString();
-
-                                if(labelItemId != null)
-                                {
-                                    labelItemIds.Add(labelItemId);
-                                }
+                                labelItemIds.Add(labelItemId);
                             }
-
-                            obj = string.Join("|", labelItemIds);
                         }
-                    }
-                    else
-                    {
-                        obj = "";
+
+                        returnValue = string.Join("|", labelItemIds);
                     }
                 }
             }
             catch
             {
                 wasValueRead = false;
-                obj = null;
-            }
-
-            if (!wasValueRead || obj == null)
-            {
-                wasValueRead = true;
-                obj = "";
+                returnValue = null;
             }
 
             return new ReadResult(DateTime.UtcNow)
             {
                 WasValueRead = wasValueRead,
-                ReadValue = obj
+                ReadValue = returnValue
             };
         }
 
-        private string GetAssetParentItemMediaPath()
+        private Item GetParentLabelsItem()
         {
-            //Note we need to limit our search to only assets in the current account but we need
-            //context information to know which account is currently being synced. We use the
-            //Sitecore.DataExchange.Context to pass this information to this value reader
             var settings = Sitecore.DataExchange.Context.GetPlugin<ResolveAssetItemSettings>();
             var accountItem = Sitecore.Context.ContentDatabase.GetItem(settings.AcccountItemId);
+            var parentLabelsItem = Sitecore.Context.ContentDatabase.GetItem(accountItem.Paths.FullPath + "/Labels");
 
-            return accountItem.Paths.MediaPath;
+            return parentLabelsItem;
         }
     }
 }
