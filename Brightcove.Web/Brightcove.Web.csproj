@@ -768,6 +768,9 @@
     <Content Include="sitecore modules\Web\Brightcove\js\brightcove.js" />
     <Content Include="sitecore modules\Web\Brightcove\PlayerEventsRecorder.asmx" />
     <Content Include="sitecore\shell\client\Applications\ExperienceAnalytics\Common\Layouts\Renderings\Brightcove\ExperienceAnalyticsListControl.js" />
+    <Content Include="sitecore\shell\Controls\Rich Text Editor\EmbedLink\Brightcove RichText Commands.js" />
+    <Content Include="sitecore\shell\Controls\Rich Text Editor\EmbedLink\EmbedLink.js" />
+    <Content Include="sitecore\shell\Controls\Rich Text Editor\EmbedLink\EmbedLink.xml" />
     <Content Include="sitecore\shell\Controls\Rich Text Editor\EmbedMedia\EmbedMedia.js" />
     <Content Include="sitecore\shell\Controls\Rich Text Editor\EmbedMedia\EmbedMedia.xml" />
     <Content Include="sitecore\shell\Controls\Rich Text Editor\EmbedMedia\Brightcove RichText Commands.js" />
@@ -830,6 +833,8 @@
       <DependentUpon>EmbedMediaPlayer.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="Constants\Items.cs" />
+    <Compile Include="UI\Wizards\EmbedLinkWizard.cs" />
+    <Compile Include="UI\Wizards\BaseEmbedWizard.cs" />
     <Compile Include="Utilites\LogHelper.cs" />
     <Compile Include="Pipelines\BrightcoveSearchFilters.cs" />
     <Compile Include="Analytics\PlaybackEvents.cs" />
