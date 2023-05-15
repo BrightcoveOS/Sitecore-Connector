@@ -57,6 +57,7 @@ namespace Brightcove.DataExchangeFramework.Processors
 
             string fieldName = valueReader.FieldName;
             string convertedValue = this.ConvertValueForSearch(value);
+            ItemModel resolvedItem = null;
 
             if (BucketManager.IsBucket(parentItem))
             {
@@ -64,10 +65,25 @@ namespace Brightcove.DataExchangeFramework.Processors
 
                 //Since we must search the index becasue the target folder is a bucket the items must have a field called 'ID' that can be used to identify them
                 AssetSearchResult searchResult = searchContext.GetQueryable<AssetSearchResult>().FirstOrDefault(x => x.Path.Contains(parentItemMediaPath) && x.ID == convertedValue && x.Language == language);
-                return searchResult?.GetItem()?.GetItemModel();
+                resolvedItem = searchResult?.GetItem()?.GetItemModel();
+            }
+            else
+            {
+                resolvedItem = parentItem.Children?.Where(c => c[fieldName] == convertedValue)?.FirstOrDefault()?.GetItemModel();
             }
 
-            return parentItem.Children?.Where(c => c[fieldName] == convertedValue)?.FirstOrDefault()?.GetItemModel();
+            //Make sure we update the item name if it has changed. (The name is initially set as part of the CreateNewItem method)
+            if(resolvedItem != null)
+            {
+                string modelName = GetModelName(pipelineContext.CurrentPipelineStep, pipelineContext, logger, resolveItemSettings);
+
+                if(!string.IsNullOrWhiteSpace(modelName) && modelName != (string)resolvedItem["ItemName"])
+                {
+                    resolvedItem["ItemName"] = modelName;
+                }
+            }
+
+            return resolvedItem;
         }
 
         private string GetAssetParentItemPath(PipelineContext context)
@@ -200,6 +216,22 @@ namespace Brightcove.DataExchangeFramework.Processors
           ILogger logger)
         {
             return identifierValue;
+        }
+
+        private string GetModelName(PipelineStep pipelineStep, PipelineContext pipelineContext, ILogger logger, ResolveSitecoreItemSettings settings)
+        {
+            object identifierObject = this.GetIdentifierObject(pipelineStep, pipelineContext, logger);
+
+            IValueReader valueReader = this.GetValueReader(settings.ItemNameValueAccessor);
+            if (valueReader == null)
+                return null;
+
+            DataAccessContext context = new DataAccessContext();
+            string validItemName = this.ConvertValueToValidItemName(this.ReadValue(identifierObject, valueReader, context), pipelineContext, logger);
+            if (validItemName == null)
+                return null;
+
+            return validItemName;
         }
     }
 }
