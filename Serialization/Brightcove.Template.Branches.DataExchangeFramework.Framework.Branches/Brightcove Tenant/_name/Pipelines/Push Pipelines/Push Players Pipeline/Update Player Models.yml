@@ -5,6 +5,10 @@ Template: "0fd90877-c5a1-4a9a-b7d5-a8469cfa89b1"
 Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Pipelines/Push Pipelines/Push Players Pipeline/Update Player Models
 DB: master
 SharedFields:
+- ID: "506bad49-3da6-474c-acb5-7bcb509bfbd7"
+  Hint: Enabled
+  Type: Checkbox
+  Value: 1
 - ID: "585fe5a4-68d8-4c1e-8056-635f3d73d723"
   Hint: Pipelines
   Type: Treelist

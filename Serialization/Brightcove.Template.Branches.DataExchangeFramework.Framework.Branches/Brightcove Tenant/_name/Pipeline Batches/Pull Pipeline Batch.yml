@@ -8,10 +8,10 @@ SharedFields:
 - ID: "2aa5c591-ff55-411d-96c0-978bb2c58b94"
   Hint: Log
   Value: |
-    C:\inetpub\wwwroot\brightcovesc.dev.local\App_Data\logs\DataExchange\$name\Pull.Pipeline.Batch.20220831.200933.txt
+    C:\inetpub\wwwroot\brightcovesc.dev.local\App_Data\logs\DataExchange\$name\Pull.Pipeline.Batch.20230421.141907.txt
 - ID: "6a2b2cbb-4338-4814-a8a9-9fecbb90456a"
   Hint: LastRunFinished
-  Value: 20220831T200940Z
+  Value: 20230421T141907Z
 - ID: "9061beea-df25-4b2b-a698-3f5b4e867d18"
   Hint: Pipelines
   Type: Treelist
@@ -24,7 +24,11 @@ SharedFields:
     {3558D737-2162-46F5-ACE9-928C98ABECB0}
 - ID: "985ba535-0f3e-4da8-a768-a469026de9db"
   Hint: RequestedAt
-  Value: 20220831T200933Z
+  Value: 20230421T141907Z
+- ID: "e20cd41a-2930-4831-b0a4-9b70ae2996e7"
+  Hint: IncludeStackTraceForExceptions
+  Type: Checkbox
+  Value: 1
 - ID: "f09c65f8-c611-476f-9ef2-457fdcc88e1a"
   Hint: LogLevels
   Type: Checklist

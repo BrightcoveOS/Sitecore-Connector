@@ -1,5 +1,5 @@
 ﻿---
-ID: "9688763f-a548-475d-88cd-484580202927"
+ID: "7e949aa0-dddc-4c1e-ac28-6b4401c54169"
 Parent: "db662edf-5965-4848-ad14-ba6bf0d55d1e"
 Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
 Path: /sitecore/content/Applications/WebEdit/Custom Experience Buttons/Brightcove
@@ -11,8 +11,4 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20221222T182634Z
-    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
-      Hint: __Created by
-      Value: |
-        sitecore\Admin
+      Value: 20221130T203127Z

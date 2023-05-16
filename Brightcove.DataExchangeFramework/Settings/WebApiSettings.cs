@@ -1,5 +1,6 @@
 ﻿using Sitecore.Data.Items;
 using Sitecore.DataExchange;
+using Sitecore.Services.Core.Diagnostics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,29 @@ namespace Brightcove.DataExchangeFramework.Settings
         public string ClientSecret { get; set; } = "";
 
         public Item AccountItem { get; set; } = null;
+        public string ValidationMessage { get; set; } = "";
+
+        public bool Validate()
+        {
+            if (string.IsNullOrWhiteSpace(AccountId))
+            {
+                ValidationMessage = "No account ID is specified on the endpoint. ";
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(ClientId))
+            {
+                ValidationMessage = "No client ID is specified on the endpoint. ";
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(ClientSecret))
+            {
+                ValidationMessage = "No client secret is specified on the endpoint. ";
+                return false;
+            }
+
+            return true;
+        }
     }
 }

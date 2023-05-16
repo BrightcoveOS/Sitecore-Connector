@@ -30,7 +30,7 @@ namespace Brightcove.Core.Services
                 throw new ArgumentException("argument must not be null or empty", nameof(accountId));
             }
 
-            this.accountId = accountId;
+            this.accountId = accountId.Trim();
 
             authenticationService = new BrightcoveAuthenticationService(clientId, clientSecret);
         }
@@ -513,8 +513,6 @@ namespace Brightcove.Core.Services
             HttpResponseMessage response = SendRequest(request);
 
             PlayerList players = JsonConvert.DeserializeObject<PlayerList>(response.Content.ReadAsString());
-            foreach (var p in players.Items)
-                p.LastSyncTime = DateTime.UtcNow;
 
             return players;
         }

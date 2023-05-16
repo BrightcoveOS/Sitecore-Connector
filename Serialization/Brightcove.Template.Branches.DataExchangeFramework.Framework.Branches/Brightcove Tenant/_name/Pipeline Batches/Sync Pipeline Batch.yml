@@ -32,6 +32,10 @@ SharedFields:
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 450
+- ID: "e20cd41a-2930-4831-b0a4-9b70ae2996e7"
+  Hint: IncludeStackTraceForExceptions
+  Type: Checkbox
+  Value: 1
 - ID: "f09c65f8-c611-476f-9ef2-457fdcc88e1a"
   Hint: LogLevels
   Type: Checklist
