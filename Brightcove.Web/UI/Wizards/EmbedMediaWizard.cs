@@ -140,7 +140,7 @@ namespace Brightcove.Web.UI.Wizards
                     break;
 
                 default:
-                    SheerResponse.Eval("scClose(" + StringUtil.EscapeJavascriptString(result.Markup + result.ScriptTag + "<p>&nbsp;</p>") + ")");
+                    SheerResponse.Eval("scClose(" + StringUtil.EscapeJavascriptString(result.Markup) + ")");
                     break;
             }
         }

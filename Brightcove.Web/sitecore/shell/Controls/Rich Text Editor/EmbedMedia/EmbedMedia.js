@@ -90,9 +90,10 @@ var EditorOptions = function () {
     var embedRadiogroup = document.getElementsByName("EmbedRadiogroup");
     var sizingRadiogroup = document.getElementsByName("SizingRadiogroup");
 
-    for (var i = 0; i < embedRadiogroup.length; i++) {
+    /*for (var i = 0; i < embedRadiogroup.length; i++) {
         embedRadiogroup[i].addEventListener("change", function () { SetRadioSelection(embedInput, embedRadiogroup); }, false);
     }
+    */
     for (var i = 0; i < sizingRadiogroup.length; i++) {
         sizingRadiogroup[i].addEventListener("change", function () { SetRadioSelection(sizingInput, sizingRadiogroup); }, false);
     }
@@ -100,4 +101,18 @@ var EditorOptions = function () {
         aspectRatioSelect.addEventListener("change", function () { CalculateDimensions(aspectRatioSelect, widthInput, heightInput); }, false);
         widthInput.addEventListener("change", function () { CalculateDimensions(aspectRatioSelect, widthInput, heightInput); }, false);
     }
+
+    document.getElementById("IframeRadiobutton").addEventListener("change", function (event) {
+        document.getElementById("ResponsiveRadiobutton").disabled = true;
+        document.getElementById("FixedRadiobutton").checked = true;
+        SetRadioSelection(embedInput, embedRadiogroup);
+        SetRadioSelection(sizingInput, sizingRadiogroup);
+    });
+
+    document.getElementById("JavascriptRadiobutton").addEventListener("change", function () {
+        document.getElementById("ResponsiveRadiobutton").disabled = false;
+        document.getElementById("ResponsiveRadiobutton").checked = true;
+        SetRadioSelection(embedInput, embedRadiogroup);
+        SetRadioSelection(sizingInput, sizingRadiogroup);
+    });
 }
