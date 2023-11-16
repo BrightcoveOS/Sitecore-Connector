@@ -1,0 +1,22 @@
+﻿---
+ID: "c0bcef72-220f-442a-aac8-397ae60dabb4"
+Parent: "30693d90-8638-472e-8a4e-e6fbe2d3fb0e"
+Template: "6f7375cc-9942-4e30-8c63-95281b69c65f"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Data Access/Value Accessor Sets/Providers/Sitecore/Video Item Fields/EndsAt Field
+DB: master
+SharedFields:
+- ID: "a011c1d5-1c40-4420-8592-d0ce0306e0dd"
+  Hint: Field
+  Value: "{D9C6CE29-E93F-4813-8805-6927BDB4611E}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231115T163610Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

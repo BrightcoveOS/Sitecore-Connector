@@ -1,0 +1,18 @@
+﻿---
+ID: "c104d540-133a-41d0-8bbb-7fdd54387499"
+Parent: "30693d90-8638-472e-8a4e-e6fbe2d3fb0e"
+Template: "6f7375cc-9942-4e30-8c63-95281b69c65f"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Data Access/Value Accessor Sets/Providers/Sitecore/Video Item Fields/State Field
+DB: master
+SharedFields:
+- ID: "a011c1d5-1c40-4420-8592-d0ce0306e0dd"
+  Hint: Field
+  Value: "{3F9ABDBC-788E-459B-AFAC-E2A9836DF0B0}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231115T142437Z
