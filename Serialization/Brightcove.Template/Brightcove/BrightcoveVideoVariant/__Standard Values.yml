@@ -5,6 +5,9 @@ Template: "a7eaf4fd-bcf3-4511-9e8c-2ed0b165f1d6"
 Path: /sitecore/templates/Brightcove/BrightcoveVideoVariant/__Standard Values
 DB: master
 SharedFields:
+- ID: "2bf865a0-e595-4e8c-926f-dc1f9060a189"
+  Hint: Name
+  Value: $name
 - ID: "a0cb3965-8884-4c7a-8815-b6b2e5ced162"
   Hint: __Editors
   Type: TreelistEx
@@ -28,9 +31,6 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20090813T110100Z
-    - ID: "2bf865a0-e595-4e8c-926f-dc1f9060a189"
-      Hint: Name
-      Value: $name
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |

@@ -8,7 +8,7 @@ SharedFields:
 - ID: "2aa5c591-ff55-411d-96c0-978bb2c58b94"
   Hint: Log
   Value: |
-    C:\inetpub\wwwroot\brightcovesc.dev.local\App_Data\logs\DataExchange\$name\Pull.Pipeline.Batch.20230421.141907.txt
+    C:\inetpub\wwwroot\brightcovesc.dev.local\App_Data\logs\DataExchange\Pull Pipeline Batch\Pull.Pipeline.Batch.20230421.141907.txt
 - ID: "6a2b2cbb-4338-4814-a8a9-9fecbb90456a"
   Hint: LastRunFinished
   Value: 20230421T141907Z

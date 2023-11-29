@@ -1,8 +1,8 @@
 ﻿---
-ID: "107f2e15-cdb9-40ab-ac04-9d60999f986a"
+ID: "0b208341-474a-4ef0-b341-5fd09013b6d0"
 Parent: "c7164a41-4c4d-4fd8-bec7-b55f757e992b"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Data Exchange/Providers/Brightcove/Folders/Brightcove Mappings Applied Actions Root
+Path: /sitecore/templates/Data Exchange/Providers/Brightcove/Folders/Brightcove Mappings Applied Action Rules Root
 DB: master
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
@@ -11,13 +11,13 @@ SharedFields:
 - ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
   Hint: __Base template
   Type: tree list
-  Value: "{639C40F3-5041-487F-A9AE-313DC6271177}"
+  Value: "{6F34D029-EF7B-402F-B2B2-5764074A2F59}"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 1325
+  Value: 1100
 - ID: "f7d48a55-2158-4f02-9356-756654404f73"
   Hint: __Standard values
-  Value: "{614584FB-6018-4287-B3C7-038A59A2B265}"
+  Value: "{B69B73A1-CF5B-4178-825B-DFFA0C2321F0}"
 Languages:
 - Language: en
   Versions:

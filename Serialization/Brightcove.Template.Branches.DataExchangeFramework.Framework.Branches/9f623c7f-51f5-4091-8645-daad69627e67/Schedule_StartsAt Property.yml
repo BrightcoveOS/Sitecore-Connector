@@ -5,7 +5,7 @@ Template: "cc5ac65c-acaf-4d89-8811-43b2d8e8134a"
 Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Data Access/Value Accessor Sets/Providers/Brightcove/Video Model Properties/Schedule_StartsAt Property
 DB: master
 SharedFields:
-- ID: "158781df-aa2e-4ea9-8d84-a668b11450d7"
+- ID: "bbcf1be5-5f6b-4e21-9c8e-00e12aa2f042"
   Hint: PropertyName
   Value: Schedule.StartsAt
 Languages:
