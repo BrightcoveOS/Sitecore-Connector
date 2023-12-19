@@ -466,6 +466,7 @@
     <Compile Include="Converters\PipelineStep\UpdatePipelineStepConverter.cs" />
     <Compile Include="Converters\ValueAccessor\LabelsPropertyValueAccessorConverter.cs" />
     <Compile Include="Converters\ValueAccessor\FolderPropertyValueAccessorConverter.cs" />
+    <Compile Include="Converters\ValueAccessor\DateTimePropertyValueAccessorConverter.cs" />
     <Compile Include="Converters\WebApiEndpointConverter.cs" />
     <Compile Include="Converters\PipelineStep\ResolveAssetItemPipelineStepConverter.cs" />
     <Compile Include="Converters\ValueAccessor\CsvStringPropertyValueAccessorConverter.cs" />
@@ -505,6 +506,8 @@
     <Compile Include="Settings\ResolveAssetModelSettings.cs" />
     <Compile Include="Settings\WebApiSettings.cs" />
     <Compile Include="ValueReaders\CsvStringPropertyValueReader.cs" />
+    <Compile Include="ValueReaders\DateTimePropertyValueReader.cs" />
+    <Compile Include="ValueWriters\DateTimePropertyValueWriter.cs" />
     <Compile Include="ValueReaders\NullableEnumValueReader.cs" />
     <Compile Include="ValueReaders\LabelsPropertyValueReader.cs" />
     <Compile Include="ValueReaders\FolderPropertyValueReader.cs" />

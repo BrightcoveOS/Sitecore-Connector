@@ -1,0 +1,22 @@
+﻿---
+ID: "a1b315c9-791f-43f4-8864-1417599e34a0"
+Parent: "cc5ac65c-acaf-4d89-8811-43b2d8e8134a"
+Template: "cc5ac65c-acaf-4d89-8811-43b2d8e8134a"
+Path: /sitecore/templates/Data Exchange/Providers/Brightcove/Data Access/Value Accessors/DateTime Property Value Accessor/__Standard Values
+DB: master
+SharedFields:
+- ID: "3c7f78cc-0c5c-4076-80ef-9a49fda5ff96"
+  Hint: ConverterType
+  Value: Brightcove.DataExchangeFramework.DateTimePropertyValueAccessorConverter, Brightcove.DataExchangeFramework
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20160310T175552Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin

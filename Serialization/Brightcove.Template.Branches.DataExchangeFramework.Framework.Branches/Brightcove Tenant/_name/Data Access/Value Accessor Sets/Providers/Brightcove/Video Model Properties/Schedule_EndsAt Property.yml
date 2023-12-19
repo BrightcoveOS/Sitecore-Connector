@@ -1,0 +1,22 @@
+﻿---
+ID: "95f41ff7-7660-478f-9a25-dc576db83c81"
+Parent: "9f623c7f-51f5-4091-8645-daad69627e67"
+Template: "cc5ac65c-acaf-4d89-8811-43b2d8e8134a"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Data Access/Value Accessor Sets/Providers/Brightcove/Video Model Properties/Schedule_EndsAt Property
+DB: master
+SharedFields:
+- ID: "bbcf1be5-5f6b-4e21-9c8e-00e12aa2f042"
+  Hint: PropertyName
+  Value: Schedule.EndsAt
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231115T163711Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

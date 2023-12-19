@@ -1,0 +1,18 @@
+﻿---
+ID: "1be62a15-de92-4a2e-8206-38476c26e47b"
+Parent: "8d4f36f7-c4c3-4c20-af12-380bb7954a3a"
+Template: "f4fbbe1f-7212-4ccc-9c7c-ac982f68fcf7"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Data Access/Value Readers/Common/ISO Date Value Reader
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231115T170633Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

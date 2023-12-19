@@ -7,7 +7,7 @@ namespace Brightcove.Core.EmbedGenerator
     {
         protected string iframeBaseUrl = "https://players.brightcove.net/{0}/{1}_default/index.html?{3}={2}";
         protected string iframeTemplate = "<div class='brightcove-media-container brightcove-media-container-iframe'><iframe src='{0}' allowfullscreen='' allow='encrypted-media' width='{1}' height='{2}'></iframe></div>";
-        protected string iframeResponsiveTemplate = "<div class='brightcove-media-container brightcove-media-container-iframe' style='position: relative; display: block; max-width: {1}px;'><div style='padding-top: {2}%;'><iframe src='{0}' allowfullscreen='' allow='encrypted-media' style='position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; width: 100%; height: 100%;'></iframe></div></div>";
+        protected string iframeResponsiveTemplate = "<div class='brightcove-media-container brightcove-media-container-iframe' style='position: relative; display: block; max-width: {1}px;'><div style='padding-top: {2}%;'><p><iframe src='{0}' allowfullscreen='' allow='encrypted-media' style='position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; width: 100%; height: 100%;'></iframe></p></div></div>";
 
         protected string jsTemplate = "<div class='brightcove-media-container brightcove-media-container-js' style='width: {4}px;'><video-js data-account='{0}' data-player='{1}' data-embed='default' controls='' data-video-id='{2}' data-playlist-id='{3}' data-application-id='' width='{4}' height='{5}' class='vjs-fluid' {7} {8} {9}></video-js>{6}</div>";
         protected string jsResponsiveTemplate = "<div class='brightcove-media-container brightcove-media-container-js' style='max-width: {4}px;'><style>video-js.video-js.vjs-fluid:not(.vjs-audio-only-mode) {{padding-top: {5}%;}}</style><video-js data-account='{0}' data-player='{1}' data-embed='default' controls='' data-video-id='{2}' data-playlist-id='{3}' data-application-id='' class='vjs-fluid' {7} {8} {9}></video-js>{6}</div>";
@@ -91,7 +91,7 @@ namespace Brightcove.Core.EmbedGenerator
             EmbedMarkup result = new EmbedMarkup();
             string videoId = "";
             string playlistId = "";
-            string playlistMarkup = "";
+            string innerHtml = "";
             string autoplay = "";
             string muted = "";
             string language = "";
@@ -103,7 +103,7 @@ namespace Brightcove.Core.EmbedGenerator
                     break;
                 case MediaType.Playlist:
                     playlistId = model.MediaId;
-                    playlistMarkup = "<div class='vjs-playlist'></div>";
+                    innerHtml = "<div class='vjs-playlist'></div>";
                     break;
                 default:
                     throw new Exception("Invalid media type for javascript embed");
@@ -126,20 +126,21 @@ namespace Brightcove.Core.EmbedGenerator
                 language = $"lang='{model.Language}'";
             }
 
+            innerHtml += string.Format(jsScriptTemplate, model.AccountId, model.PlayerId);
+
             switch (model.MediaSizing)
             {
                 case MediaSizing.Responsive:
                     string aspectRatio = ((double)model.Height / model.Width * 100.0).ToString("F2");
-                    result.Markup = string.Format(jsResponsiveTemplate, model.AccountId, model.PlayerId, videoId, playlistId, model.Width, aspectRatio, playlistMarkup, autoplay, muted, language);
+                    result.Markup = string.Format(jsResponsiveTemplate, model.AccountId, model.PlayerId, videoId, playlistId, model.Width, aspectRatio, innerHtml, autoplay, muted, language);
                     break;
                 case MediaSizing.Fixed:
-                    result.Markup = string.Format(jsTemplate, model.AccountId, model.PlayerId, videoId, playlistId, model.Width, model.Height, playlistMarkup, autoplay, muted, language);
+                    result.Markup = string.Format(jsTemplate, model.AccountId, model.PlayerId, videoId, playlistId, model.Width, model.Height, innerHtml, autoplay, muted, language);
                     break;
                 default:
                     throw new Exception("Invalid media sizing for javascript embed");
             }
 
-            result.ScriptTag = string.Format(jsScriptTemplate, model.AccountId, model.PlayerId);
             result.Model = model;
 
             return result;

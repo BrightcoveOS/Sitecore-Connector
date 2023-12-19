@@ -11,7 +11,5 @@ namespace Brightcove.Core.EmbedGenerator.Models
         public EmbedModel Model { get; set; } = new EmbedModel();
 
         public string Markup { get; set; } = "";
-
-        public string ScriptTag { get; set; } = "";
     }
 }

@@ -59,6 +59,9 @@ namespace Brightcove.Core.Models
         [JsonIgnore]
         public bool IngestSuccessful { get; set; }
 
+        [JsonProperty("schedule", NullValueHandling = NullValueHandling.Ignore)]
+        public VideoSchedule Schedule { get; set; }
+
         public Video ShallowCopy()
         {
             return (Video)this.MemberwiseClone();

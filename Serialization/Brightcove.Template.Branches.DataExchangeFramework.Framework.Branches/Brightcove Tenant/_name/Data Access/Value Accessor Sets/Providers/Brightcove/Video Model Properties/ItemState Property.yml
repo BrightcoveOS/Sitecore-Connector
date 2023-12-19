@@ -1,0 +1,18 @@
+﻿---
+ID: "a9578900-8b33-4ac4-9edd-8f3d0942b967"
+Parent: "9f623c7f-51f5-4091-8645-daad69627e67"
+Template: "729aeffb-b5bd-4cd4-958f-e25b50948ac8"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Data Access/Value Accessor Sets/Providers/Brightcove/Video Model Properties/ItemState Property
+DB: master
+SharedFields:
+- ID: "06fd1c3e-a7f7-4cd2-a54e-a995d7a9e4de"
+  Hint: PropertyName
+  Value: ItemState
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231115T142712Z
