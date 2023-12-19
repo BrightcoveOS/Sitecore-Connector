@@ -1,0 +1,22 @@
+﻿---
+ID: "1b3f3daa-a507-4a78-969c-0c0e39b157d0"
+Parent: "30693d90-8638-472e-8a4e-e6fbe2d3fb0e"
+Template: "6f7375cc-9942-4e30-8c63-95281b69c65f"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Data Access/Value Accessor Sets/Providers/Sitecore/Video Item Fields/StartsAt Field
+DB: master
+SharedFields:
+- ID: "a011c1d5-1c40-4420-8592-d0ce0306e0dd"
+  Hint: Field
+  Value: "{C6FCEDB0-77FA-4B7C-91F0-3901A86097E0}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231115T163551Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

@@ -307,7 +307,9 @@ namespace Brightcove.Core.Services
             newVideo.Id = null;
             newVideo.Images = null;
 
-            request.Content = new StringContent(JsonConvert.SerializeObject(newVideo), Encoding.UTF8, "application/json");
+            string content = JsonConvert.SerializeObject(newVideo);
+
+            request.Content = new StringContent(content, Encoding.UTF8, "application/json");
 
             HttpResponseMessage response = SendRequest(request);
 

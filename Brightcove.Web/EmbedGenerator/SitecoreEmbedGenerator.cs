@@ -13,6 +13,10 @@ namespace Brightcove.Web.EmbedGenerator
     {
         public SitecoreEmbedGenerator() : base()
         {
+            //1) We wrap the iframe in a paragraph tag so that the RTE handles it better
+            //2) We don't support using a resposive iframe in the RTE
+            iframeTemplate = "<p><iframe class='brightcove-media-container brightcove-media-container-iframe' src='{0}' allowfullscreen='' allow='encrypted-media' width='{1}' height='{2}'></iframe></p>";
+
             //1) The RTE does not like the <video-js> tag and will try to incorrectly HTML encode it so we use standard <video> instead.
             //2) Using <video> instead also breaks some styling so we have to change the class to "video-js" (instead of vjs-fluid) and tweak the responsive styling.
             //3) Note that the controls attribute must be set to 'true' or the RTE will strip it away and break the embed

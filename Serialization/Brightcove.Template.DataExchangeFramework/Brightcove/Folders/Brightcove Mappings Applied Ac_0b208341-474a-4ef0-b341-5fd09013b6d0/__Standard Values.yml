@@ -1,8 +1,8 @@
 ﻿---
-ID: "614584fb-6018-4287-b3c7-038a59a2b265"
-Parent: "107f2e15-cdb9-40ab-ac04-9d60999f986a"
-Template: "107f2e15-cdb9-40ab-ac04-9d60999f986a"
-Path: /sitecore/templates/Data Exchange/Providers/Brightcove/Folders/Brightcove Mappings Applied Actions Root/__Standard Values
+ID: "b69b73a1-cf5b-4178-825b-dffa0c2321f0"
+Parent: "0b208341-474a-4ef0-b341-5fd09013b6d0"
+Template: "0b208341-474a-4ef0-b341-5fd09013b6d0"
+Path: /sitecore/templates/Data Exchange/Providers/Brightcove/Folders/Brightcove Mappings Applied Action Rules Root/__Standard Values
 DB: master
 Languages:
 - Language: en

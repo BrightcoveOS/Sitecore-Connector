@@ -1,23 +1,25 @@
 ﻿---
-ID: "107f2e15-cdb9-40ab-ac04-9d60999f986a"
-Parent: "c7164a41-4c4d-4fd8-bec7-b55f757e992b"
+ID: "cc5ac65c-acaf-4d89-8811-43b2d8e8134a"
+Parent: "dff7bb17-2c3a-4a57-b8f3-7edd4ab2ee8e"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Data Exchange/Providers/Brightcove/Folders/Brightcove Mappings Applied Actions Root
+Path: /sitecore/templates/Data Exchange/Providers/Brightcove/Data Access/Value Accessors/DateTime Property Value Accessor
 DB: master
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
-  Value: Office/32x32/folder_open.png
+  Value: Office/32x32/radio_button_selected.png
 - ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
   Hint: __Base template
   Type: tree list
-  Value: "{639C40F3-5041-487F-A9AE-313DC6271177}"
+  Value: |
+    {1930BBEB-7805-471A-A3BE-4858AC7CF696}
+    {5C8862A6-7B47-4354-92F6-11EB080E6D0C}
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 1325
+  Value: 100
 - ID: "f7d48a55-2158-4f02-9356-756654404f73"
   Hint: __Standard values
-  Value: "{614584FB-6018-4287-B3C7-038A59A2B265}"
+  Value: "{A1B315C9-791F-43F4-8864-1417599E34A0}"
 Languages:
 - Language: en
   Versions:
@@ -25,8 +27,8 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20210909T202003Z
+      Value: 20160310T175354Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\Anonymous
+        sitecore\admin

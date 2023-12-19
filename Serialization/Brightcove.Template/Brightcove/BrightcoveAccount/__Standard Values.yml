@@ -5,6 +5,31 @@ Template: "c657f8ef-4916-447f-9255-483ed2eec562"
 Path: /sitecore/templates/Brightcove/BrightcoveAccount/__Standard Values
 DB: master
 SharedFields:
+- ID: "9e3ac3e4-e9ab-4b9c-94f0-60b90b284d18"
+  Hint: PlaybackEventsRules
+  Type: Rules
+  Value: |
+    <ruleset>
+      <rule
+        uid="{4CD3C9DF-9629-4987-8D37-B32C4AF50BDC}">
+        <conditions>
+          <condition
+            id="{4888ABBB-F17D-4485-B14B-842413F88732}"
+            uid="D712742C1A4C44439448AB21403F58FB" />
+        </conditions>
+        <actions>
+          <action
+            id="{9850DB80-D70F-410B-9A5C-E825B4DE8F94}"
+            uid="36C3881349BA452A925A18AA62FEF6F4" />
+          <action
+            id="{209A6D7F-D645-4606-8B63-678149DCDB5F}"
+            uid="07AEBFCC7E724AA1BAC89EF20C4C8A77" />
+          <action
+            id="{0FD811D2-CEC2-4121-A78C-936E579E2377}"
+            uid="3133D5BEAC764B61B9BA896DEA675DE6" />
+        </actions>
+      </rule>
+    </ruleset>
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 300
@@ -20,28 +45,3 @@ Languages:
       Hint: __Created by
       Value: |
         sitecore\Admin
-    - ID: "9e3ac3e4-e9ab-4b9c-94f0-60b90b284d18"
-      Hint: PlaybackEventsRules
-      Type: Rules
-      Value: |
-        <ruleset>
-          <rule
-            uid="{4CD3C9DF-9629-4987-8D37-B32C4AF50BDC}">
-            <conditions>
-              <condition
-                id="{4888ABBB-F17D-4485-B14B-842413F88732}"
-                uid="D712742C1A4C44439448AB21403F58FB" />
-            </conditions>
-            <actions>
-              <action
-                id="{9850DB80-D70F-410B-9A5C-E825B4DE8F94}"
-                uid="36C3881349BA452A925A18AA62FEF6F4" />
-              <action
-                id="{209A6D7F-D645-4606-8B63-678149DCDB5F}"
-                uid="07AEBFCC7E724AA1BAC89EF20C4C8A77" />
-              <action
-                id="{0FD811D2-CEC2-4121-A78C-936E579E2377}"
-                uid="3133D5BEAC764B61B9BA896DEA675DE6" />
-            </actions>
-          </rule>
-        </ruleset>

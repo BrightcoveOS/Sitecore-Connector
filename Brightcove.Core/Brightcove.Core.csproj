@@ -57,6 +57,7 @@
     <Compile Include="Models\IngestTextTrack.cs" />
     <Compile Include="Models\IngestVideo.cs" />
     <Compile Include="Models\Experience.cs" />
+    <Compile Include="Models\VideoSchedule.cs" />
     <Compile Include="Models\Label.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\TemporaryIngestUrls.cs" />
