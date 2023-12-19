@@ -16,6 +16,13 @@ SharedFields:
   Value: 100
 Languages:
 - Language: en
+  Fields:
+  - ID: "9541e67d-ce8c-4225-803d-33f7f29f09ef"
+    Hint: __Short description
+    Value: Note that the PENDING/DELETED options do not have any effect when set manually by the user. Only ACTIVE/INACTIVE can be explicitly set by the user.
+  - ID: "b12e4906-b96b-495e-b343-cd2e92dc6347"
+    Hint: ValidationText
+    Value: 
   Versions:
   - Version: 1
     Fields:
