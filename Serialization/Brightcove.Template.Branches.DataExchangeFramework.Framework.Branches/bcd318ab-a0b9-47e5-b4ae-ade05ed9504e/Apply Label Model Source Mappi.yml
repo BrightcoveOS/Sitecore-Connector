@@ -1,7 +1,7 @@
 ﻿---
 ID: "5ac1c8d3-eaa3-49f1-b5eb-e41f2b0495c9"
 Parent: "bcd318ab-a0b9-47e5-b4ae-ade05ed9504e"
-Template: "8e726575-35cf-48a0-b2c9-00c30d16f2d9"
+Template: "ab4af4df-d282-4cd1-8268-fa12a9e457a3"
 Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Pipelines/Subpipelines/Update Item Pipelines/Update Label Items Pipeline/Apply Label Model Source Mapping Set
 DB: master
 SharedFields:

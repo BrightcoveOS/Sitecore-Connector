@@ -5,6 +5,10 @@ Template: "c657f8ef-4916-447f-9255-483ed2eec562"
 Path: /sitecore/templates/Brightcove/BrightcoveAccount/__Standard Values
 DB: master
 SharedFields:
+- ID: "9135200a-5626-4dd8-ab9d-d665b8c11748"
+  Hint: __Never publish
+  Type: checkbox
+  Value: 1
 - ID: "9e3ac3e4-e9ab-4b9c-94f0-60b90b284d18"
   Hint: PlaybackEventsRules
   Type: Rules

@@ -11,6 +11,10 @@ SharedFields:
 - ID: "70059b46-11d1-45f3-b92e-45df21af8310"
   Hint: PlaylistType
   Value: ACTIVATED_NEWEST_TO_OLDEST
+- ID: "9135200a-5626-4dd8-ab9d-d665b8c11748"
+  Hint: __Never publish
+  Type: checkbox
+  Value: 1
 - ID: "a0cb3965-8884-4c7a-8815-b6b2e5ced162"
   Hint: __Editors
   Type: TreelistEx

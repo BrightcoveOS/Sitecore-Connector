@@ -14,19 +14,23 @@ namespace Brightcove.DataExchangeFramework.ValueWriters
 
         public override bool Write(object target, object value, DataAccessContext context)
         {
-            if (context == null)
-                throw new ArgumentNullException(nameof(context));
-
-            if (value != null)
+            try
             {
-                string[] itemIds = ((string)value).Split('|');
-                var videoIds = itemIds.Select(id => Sitecore.Context.ContentDatabase.GetItem(id))
-                                    .Where(v => v != null)
-                                    .Select(v => v["ID"])
-                                    .Where(id => !string.IsNullOrWhiteSpace(id))
-                                    .ToList();
+                if (value != null)
+                {
+                    string[] itemIds = ((string)value).Split('|');
+                    var videoIds = itemIds.Select(id => Sitecore.Context.ContentDatabase.GetItem(id))
+                                        .Where(v => v != null)
+                                        .Select(v => v["ID"])
+                                        .Where(id => !string.IsNullOrWhiteSpace(id))
+                                        .ToList();
 
-                value = videoIds;
+                    value = videoIds;
+                }
+            }
+            catch
+            {
+                return false;
             }
 
             return base.Write(target, value, context);

@@ -1,14 +1,9 @@
 ﻿---
-ID: "f4b7a143-5ccc-4f98-8a35-eafb08e79969"
+ID: "a3c202b5-f1d0-4d5e-b658-59c2e5ff53a4"
 Parent: "3916e0d4-74bd-4818-8caa-61f331c50199"
-Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Template: "65845509-0620-4c2b-b726-ee536a7d8c32"
 Path: /sitecore/templates/Branches/BrightcoveAccount/$name/Labels
 DB: master
-SharedFields:
-- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
-  Hint: __Masters
-  Type: TreelistEx
-  Value: "{8B6A9EAD-4DE9-4C59-B8F5-F3FF40A64F12}"
 Languages:
 - Language: en
   Versions:
@@ -16,4 +11,4 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20220809T154230Z
+      Value: 20240925T055845Z

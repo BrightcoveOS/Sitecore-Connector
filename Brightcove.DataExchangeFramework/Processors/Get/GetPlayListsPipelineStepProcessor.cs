@@ -5,6 +5,7 @@ using Sitecore.ContentSearch;
 using Sitecore.Data.Items;
 using Sitecore.DataExchange.Attributes;
 using Sitecore.DataExchange.Contexts;
+using Sitecore.DataExchange.Extensions;
 using Sitecore.DataExchange.Models;
 using Sitecore.DataExchange.Plugins;
 using Sitecore.DataExchange.Processors.PipelineSteps;
@@ -20,38 +21,32 @@ namespace Brightcove.DataExchangeFramework.Processors
 {
     class GetPlayListsPipelineStepProcessor : BasePipelineStepWithWebApiEndpointProcessor
     {
-        BrightcoveService service;
+        DateTime lastSyncStartTime;
         int totalCount = 0;
 
         protected override void ProcessPipelineStepInternal(PipelineStep pipelineStep = null, PipelineContext pipelineContext = null, ILogger logger = null)
         {
-            try
-            {
-                service = new BrightcoveService(WebApiSettings.AccountId, WebApiSettings.ClientId, WebApiSettings.ClientSecret);
+            lastSyncStartTime = GetPluginOrFail<BrightcoveSyncSettings>(pipelineContext.GetCurrentPipelineBatch()).LastSyncStartTime;
+            totalCount = service.PlayListsCount();
 
-                totalCount = service.PlayListsCount();
-                LogDebug("Read " + totalCount + " playlist model(s) from web API");
+            var data = this.GetIterableData(WebApiSettings, pipelineStep);
+            var dataSettings = new IterableDataSettings(data);
 
-                var data = this.GetIterableData(WebApiSettings, pipelineStep);
-                var dataSettings = new IterableDataSettings(data);
-
-                pipelineContext.AddPlugin(dataSettings);
-            }
-            catch (Exception ex)
-            {
-                LogError($"Failed to get the brightcove models because an unexpected error has occured", ex);
-            }
+            pipelineContext.AddPlugin(dataSettings);
         }
 
         protected virtual IEnumerable<PlayList> GetIterableData(WebApiSettings settings, PipelineStep pipelineStep)
         {
-            int limit = 100;
+            IEnumerable<PlayList> playLists;
+            int limit = 1000;
 
             for (int offset = 0; offset < totalCount; offset += limit)
             {
-                foreach(PlayList playList in service.GetPlayLists(offset, limit))
+                playLists = service.GetPlayLists(offset, limit).Where(p => p.LastModifiedDate > lastSyncStartTime);
+                LogInfo("Identified " + playLists.Count() + " playlist model(s) that have been modified since last sync " + lastSyncStartTime);
+
+                foreach (PlayList playList in playLists)
                 {
-                    playList.LastSyncTime = DateTime.UtcNow;
                     yield return playList;
                 }
             }

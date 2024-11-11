@@ -27,7 +27,7 @@ SharedFields:
     {EF1E96BF-0500-4DA4-A1BA-9CE1A318EDA6}
 - ID: "a83a2eb2-bfa1-4d3f-9f17-0cc6c9a91c42"
   Hint: ProcessorType
-  Value: Brightcove.DataExchangeFramework.Processors.UpdateVideoItemProcessor, Brightcove.DataExchangeFramework
+  Value: Brightcove.DataExchangeFramework.Processors.UpdateVideoItemPipelineStepProcessor, Brightcove.DataExchangeFramework
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 500

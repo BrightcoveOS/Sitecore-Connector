@@ -1,0 +1,24 @@
+﻿---
+ID: "47cebcb4-f14a-45c4-9ee1-deddecfa6684"
+Parent: "ca5e8990-000d-4e76-8318-209a08b80270"
+Template: "36f84a64-6bb9-42b0-8618-34191c705be0"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Pipelines/Subpipelines/Resolve Model Pipelines/Resolve Playlist Models Pipeline/Resolve Playlist Model
+DB: master
+SharedFields:
+- ID: "2facef61-894d-42d2-8c3d-5ebaf3f1c55d"
+  Hint: AssetItemLocation
+  Value: "{17DF1143-A38D-4C77-A933-E66B5ED21E9A}"
+- ID: "c0d2f6d7-dcb9-4685-b25a-cefd4dd5babb"
+  Hint: AssetModelLocation
+  Value: "{EC64487D-E7E6-40B0-A86C-40C74B95E04E}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210923T154043Z
+    - ID: "adcc503a-24cb-463b-8093-669e150d5dfa"
+      Hint: EndpointFrom
+      Value: "{17DF1FC5-386D-4783-9CC6-A31ABFCF6A48}"

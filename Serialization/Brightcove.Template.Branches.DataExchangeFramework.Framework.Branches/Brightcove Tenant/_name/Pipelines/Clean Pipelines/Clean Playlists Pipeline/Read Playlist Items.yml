@@ -1,0 +1,31 @@
+﻿---
+ID: "f0c5d8f3-c3be-4325-b298-29c241109551"
+Parent: "0b2d746b-028f-446f-a018-66eb2685418f"
+Template: "51ef874f-cca2-402d-8d5f-289e635d68e3"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Pipelines/Clean Pipelines/Clean Playlists Pipeline/Read Playlist Items
+DB: master
+SharedFields:
+- ID: "2d120995-c8ef-44c9-9827-b6e5ef8fbb5c"
+  Hint: EndpointFrom
+  Value: "{B869F0C0-9743-452A-B019-015FF0845A1F}"
+- ID: "a6a0c985-bcc2-4f06-99a1-62dd37d299aa"
+  Hint: ItemRoot
+  Value: "{1ADBC873-DFBF-4C09-853E-AC71E6D59739}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210923T043552Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "68097dcb-1918-44cc-8fb5-cf000711dacf"
+      Hint: BrightcoveEndpoint
+      Value: "{17DF1FC5-386D-4783-9CC6-A31ABFCF6A48}"
+    - ID: "8f7002ad-7a84-4320-a734-6e561e67d443"
+      Hint: RelativePath
+      Value: Playlists

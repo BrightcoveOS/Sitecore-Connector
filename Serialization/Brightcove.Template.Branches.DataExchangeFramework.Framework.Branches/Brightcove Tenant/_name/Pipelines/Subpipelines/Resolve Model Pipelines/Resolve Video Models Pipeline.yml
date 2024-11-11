@@ -1,0 +1,23 @@
+﻿---
+ID: "6a7f73ad-4c48-4abb-98a4-8878eccc9456"
+Parent: "98bf353e-3609-43c3-bccb-9a9790028ca2"
+Template: "2dc9c843-b841-483c-bb9b-ae0c9386404c"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Pipelines/Subpipelines/Resolve Model Pipelines/Resolve Video Models Pipeline
+DB: master
+BranchID: "1a8db091-5b22-402b-bb2c-215068772f46"
+SharedFields:
+- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
+  Hint: __Originator
+  Value: "{74B7ACC0-8994-431F-9280-10FF01463E03}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20220615T040810Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Anonymous

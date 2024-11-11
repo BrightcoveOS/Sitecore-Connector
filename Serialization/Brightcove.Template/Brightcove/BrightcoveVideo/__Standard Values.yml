@@ -1,5 +1,5 @@
 ﻿---
-ID: "a0b6faaa-3c37-4ca4-8792-7fc9eaf9e7d8"
+ID: "e029b8b2-5e80-4082-bf59-6d9074f88449"
 Parent: "6a5c6835-6e11-4602-a11d-b626e9255397"
 Template: "6a5c6835-6e11-4602-a11d-b626e9255397"
 Path: /sitecore/templates/Brightcove/BrightcoveVideo/__Standard Values
@@ -9,29 +9,10 @@ SharedFields:
   Hint: __Masters
   Type: TreelistEx
   Value: "{A7EAF4FD-BCF3-4511-9E8C-2ED0B165F1D6}"
-- ID: "22579c0b-2bb7-47eb-ae54-39cc8d9899c5"
-  Hint: Economics
-  Value: AD_SUPPORTED
-- ID: "437a7d9f-7a50-4955-b3ae-583eba5ad35a"
-  Hint: Name
-  Value: $name
-- ID: "a0cb3965-8884-4c7a-8815-b6b2e5ced162"
-  Hint: __Editors
-  Type: TreelistEx
-  Value: 
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 0
-- ID: "c0e276bb-8807-40aa-8138-e5c38b0c5dab"
-  Hint: __Quick Actions
-  Type: Multilist
-  Value: 
-- ID: "c923961c-5664-43d2-85d2-d194143197df"
-  Hint: Events
-  Type: Multilist
-  Value: |
-    {2301F41F-58EA-4AD8-A26D-DE8BDA637261}
-    {5FA3479A-E78B-4858-84F3-5430880FE4B5}
+- ID: "9135200a-5626-4dd8-ab9d-d665b8c11748"
+  Hint: __Never publish
+  Type: checkbox
+  Value: 1
 - ID: "c9283d9e-7c29-4419-9c28-5a5c8ff53e84"
   Hint: __Bucketable
   Type: Checkbox
@@ -43,8 +24,8 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20090813T110100Z
+      Value: 20240426T135807Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\admin
+        sitecore\Admin

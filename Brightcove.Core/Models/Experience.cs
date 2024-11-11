@@ -10,8 +10,11 @@ namespace Brightcove.Core.Models
     /// </summary>
     public class Experience : Asset
     {
-        [JsonProperty("created_at", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("createdAt", NullValueHandling = NullValueHandling.Ignore)]
         public DateTime CreationDate { get; set; }
+
+        [JsonProperty("updatedAt", NullValueHandling = NullValueHandling.Ignore)]
+        public new DateTime? LastModifiedDate { get; set; }
 
         [JsonProperty("publishedUrl", NullValueHandling = NullValueHandling.Ignore)]
         public string Url { get; set; }

@@ -1,0 +1,18 @@
+﻿---
+ID: "71387c87-ee99-459a-934c-5d83155ee93d"
+Parent: "19a8a3c1-4358-43ba-9271-969ce93939e0"
+Template: "2dc9c843-b841-483c-bb9b-ae0c9386404c"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Pipelines/Sync Pipelines/Verify Sync Pipeline
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240501T121345Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

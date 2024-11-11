@@ -76,50 +76,5 @@ namespace Brightcove.DataExchangeFramework.Helpers
                     itemModel[key] = (object)obj.ToString();
             }
         }
-
-        public static SyncStatus GetSyncStatus(ItemModel itemModel)
-        {
-            DateTime lastSyncTime = DateTime.MinValue;
-            DateTime modelLastModifiedTime = DateTime.MinValue;
-            DateTime itemLastModifiedTime = DateTime.MinValue;
-
-            if (string.IsNullOrWhiteSpace((string)itemModel["LastSyncTime"]))
-            {
-                return SyncStatus.NewItem;
-            }
-            lastSyncTime = DateTime.Parse((string)itemModel["LastSyncTime"]);
-
-            Item item = Sitecore.Context.ContentDatabase.GetItem(new ID(itemModel.GetItemId()));
-
-            if (item != null)
-            {
-                itemLastModifiedTime = ((DateField)item.Fields["__Updated"]).DateTime;
-            }
-
-            if (itemModel.ContainsKey("LastModifiedTime") && !string.IsNullOrWhiteSpace((string)itemModel["LastModifiedTime"]))
-            {
-                modelLastModifiedTime = DateTime.Parse((string)itemModel["LastModifiedTime"]);
-            }
-
-            if (modelLastModifiedTime > lastSyncTime)
-            {
-                return SyncStatus.ModelNewer;
-            }
-
-            if (itemLastModifiedTime > lastSyncTime)
-            {
-                return SyncStatus.ItemNewer;
-            }
-
-            return SyncStatus.Unmodified;
-        }
-    }
-
-    public enum SyncStatus
-    {
-        NewItem,
-        ModelNewer,
-        ItemNewer,
-        Unmodified
     }
 }
