@@ -1,9 +1,11 @@
 ﻿using Brightcove.Core.Models;
 using Brightcove.Core.Services;
+using Brightcove.DataExchangeFramework.Helpers;
 using Brightcove.DataExchangeFramework.Settings;
 using Sitecore.DataExchange.Attributes;
 using Sitecore.DataExchange.Contexts;
 using Sitecore.DataExchange.Converters.PipelineSteps;
+using Sitecore.DataExchange.Extensions;
 using Sitecore.DataExchange.Models;
 using Sitecore.DataExchange.Plugins;
 using Sitecore.DataExchange.Processors.PipelineSteps;
@@ -20,31 +22,15 @@ namespace Brightcove.DataExchangeFramework.Processors
 {
     public class GetLabelsPipelineStepProcessor : BasePipelineStepWithWebApiEndpointProcessor
     {
-        BrightcoveService service;
-
         protected override void ProcessPipelineStepInternal(PipelineStep pipelineStep = null, PipelineContext pipelineContext = null, ILogger logger = null)
         {
-            try
-            {
-                service = new BrightcoveService(WebApiSettings.AccountId, WebApiSettings.ClientId, WebApiSettings.ClientSecret);
+            //DateTime lastSyncStartTime = GetPluginOrFail<BrightcoveSyncSettings>(pipelineContext.GetCurrentPipelineBatch()).LastSyncStartTime;
 
-                var labels = service.GetLabels();
+            var labels = service.GetLabels();
+            LogDebug("Identified " + labels.Count() + "label model(s)");
 
-                foreach (Label label in labels)
-                {
-                    label.LastSyncTime = DateTime.UtcNow;
-                }
-
-                LogDebug("Read " + labels.Count() + " label model(s) from web API");
-
-                var dataSettings = new IterableDataSettings(labels);
-
-                pipelineContext.AddPlugin(dataSettings);
-            }
-            catch (Exception ex)
-            {
-                LogError($"Failed to get the brightcove models because an unexpected error has occured", ex);
-            }
+            var dataSettings = new IterableDataSettings(labels);
+            pipelineContext.AddPlugin(dataSettings);
         }
     }
 }

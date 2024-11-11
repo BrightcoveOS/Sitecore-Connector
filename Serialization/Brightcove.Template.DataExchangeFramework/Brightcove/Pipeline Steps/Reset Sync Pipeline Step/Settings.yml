@@ -1,0 +1,14 @@
+﻿---
+ID: "af914f5f-6bda-4161-a8b4-1d32e87057a2"
+Parent: "6bcb66f9-5db7-4e39-b476-9b74c70fb45a"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Data Exchange/Providers/Brightcove/Pipeline Steps/Reset Sync Pipeline Step/Settings
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20211103T101303Z

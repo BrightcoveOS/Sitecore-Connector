@@ -5,6 +5,10 @@ Template: "de0f5bb5-1d51-41b2-ba4d-2c176c904bf3"
 Path: /sitecore/templates/Brightcove/BrightcoveVideoPlayer/__Standard Values
 DB: master
 SharedFields:
+- ID: "9135200a-5626-4dd8-ab9d-d665b8c11748"
+  Hint: __Never publish
+  Type: checkbox
+  Value: 1
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 300
@@ -23,7 +27,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20130828T105604
+      Value: 20130828T145604Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |

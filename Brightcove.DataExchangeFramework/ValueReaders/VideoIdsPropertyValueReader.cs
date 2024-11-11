@@ -91,10 +91,7 @@ namespace Brightcove.DataExchangeFramework.ValueReaders
 
         private string GetAssetParentItemMediaPath()
         {
-            var settings = Sitecore.DataExchange.Context.GetPlugin<ResolveAssetItemSettings>();
-            var accountItem = Sitecore.Context.ContentDatabase.GetItem(settings.AcccountItemId);
-
-            return accountItem.Paths.MediaPath;
+            return Sitecore.DataExchange.Context.GetPlugin<ResolveAssetItemSettings>().AccountItem.Paths.MediaPath;
         }
     }
 }

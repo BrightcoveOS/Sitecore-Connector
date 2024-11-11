@@ -15,7 +15,6 @@ namespace Brightcove.DataExchangeFramework.Settings
         public string ClientId { get; set; } = "";
         public string ClientSecret { get; set; } = "";
 
-        public Item AccountItem { get; set; } = null;
         public string ValidationMessage { get; set; } = "";
 
         public bool Validate()

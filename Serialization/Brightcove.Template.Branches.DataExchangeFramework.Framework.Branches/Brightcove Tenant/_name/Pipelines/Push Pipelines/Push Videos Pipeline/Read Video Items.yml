@@ -8,7 +8,9 @@ SharedFields:
 - ID: "1d115e57-50f5-4d22-bac2-933d00e54e83"
   Hint: Templates
   Type: Treelist
-  Value: "{6A5C6835-6E11-4602-A11D-B626E9255397}"
+  Value: |
+    {6A5C6835-6E11-4602-A11D-B626E9255397}
+    {A7EAF4FD-BCF3-4511-9E8C-2ED0B165F1D6}
 - ID: "2d120995-c8ef-44c9-9827-b6e5ef8fbb5c"
   Hint: EndpointFrom
   Value: "{B869F0C0-9743-452A-B019-015FF0845A1F}"

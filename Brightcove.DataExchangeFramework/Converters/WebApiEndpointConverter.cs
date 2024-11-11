@@ -26,16 +26,15 @@ namespace Brightcove.DataExchangeFramework.Converters
         protected override void AddPlugins(ItemModel source, Endpoint endpoint)
         {
             Guid accountItemId = this.GetGuidValue(source, TemplateAccount);
-            Item accountItem = Sitecore.Context.ContentDatabase.GetItem(new ID(accountItemId));
+            ItemModel accountItem = ItemModelRepository.Get(accountItemId);
 
             WebApiSettings accountSettings = new WebApiSettings();
 
             if(accountItem != null)
             {
-                accountSettings.AccountId = accountItem["AccountId"];
-                accountSettings.ClientId = accountItem["ClientId"];
-                accountSettings.ClientSecret = accountItem["ClientSecret"];
-                accountSettings.AccountItem = accountItem;
+                accountSettings.AccountId = this.GetStringValue(accountItem, "AccountId") ?? "";
+                accountSettings.ClientId = this.GetStringValue(accountItem, "ClientId") ?? "";
+                accountSettings.ClientSecret = this.GetStringValue(accountItem, "ClientSecret") ?? "";
             }
 
             endpoint.AddPlugin(accountSettings);

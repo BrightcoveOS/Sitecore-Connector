@@ -1,5 +1,6 @@
 ﻿using Brightcove.Core.Models;
 using Brightcove.Core.Services;
+using Brightcove.DataExchangeFramework.Helpers;
 using Brightcove.DataExchangeFramework.Settings;
 using Sitecore.DataExchange;
 using Sitecore.DataExchange.Attributes;
@@ -22,28 +23,34 @@ namespace Brightcove.DataExchangeFramework.Processors
 {
     public class BasePipelineStepProcessor : Sitecore.DataExchange.Processors.PipelineSteps.BasePipelineStepProcessor
     {
+        protected IItemModelRepository itemModelRepository { get; set; }
+
         protected override void ProcessPipelineStep(PipelineStep pipelineStep = null, PipelineContext pipelineContext = null, ILogger logger = null)
         {
-            if (pipelineStep == null)
-            {
-                throw new ArgumentNullException(nameof(pipelineStep));
-            }
-            if (pipelineContext == null)
-            {
-                throw new ArgumentNullException(nameof(pipelineContext));
-            }
-            if (logger == null)
-            {
-                throw new ArgumentNullException(nameof(logger));
-            }
-
             try
             {
+                if (pipelineStep == null)
+                {
+                    throw new ArgumentNullException(nameof(pipelineStep));
+                }
+                if (pipelineContext == null)
+                {
+                    throw new ArgumentNullException(nameof(pipelineContext));
+                }
+                if (logger == null)
+                {
+                    throw new ArgumentNullException(nameof(logger));
+                }
+
+                itemModelRepository = Sitecore.DataExchange.Context.ItemModelRepository;
+
                 ProcessPipelineStepInternal(pipelineStep, pipelineContext, logger);
             }
             catch(Exception ex)
             {
                 LogFatal("An unexpected error occured running the internal pipeline step", ex);
+                BrightcoveSyncSettingsHelper.SetErrorFlag(pipelineContext);
+                pipelineContext.Finished = true;
                 pipelineContext.CriticalError = false;
             }
         }

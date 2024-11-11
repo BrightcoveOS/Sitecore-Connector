@@ -1,7 +1,7 @@
 ﻿---
 ID: "481d210d-98d5-437e-ac4b-342f3787e92c"
 Parent: "853ba6e4-363f-4e3e-b364-43138acfefca"
-Template: "8e726575-35cf-48a0-b2c9-00c30d16f2d9"
+Template: "ab4af4df-d282-4cd1-8268-fa12a9e457a3"
 Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Pipelines/Subpipelines/Update Item Pipelines/Update Folder Items Pipeline/Apply Folder Model Source Mapping Set
 DB: master
 SharedFields:

@@ -420,10 +420,13 @@
     <Reference Include="System.Xml.ReaderWriter" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\PipelineStep\ApplyMappingPipelineStepConverter.cs" />
     <Compile Include="Converters\PipelineStep\PipelineStepWithEndpointFromConverter.cs" />
     <Compile Include="Converters\NullableEnumValueReaderConverter.cs" />
+    <Compile Include="Converters\PipelineStep\SyncPipelineStepConverter.cs" />
     <Compile Include="Converters\PipelineStep\ReadAssetItemsPipelineStepConverter.cs" />
-    <Compile Include="Converters\PipelineStep\UpdatePipelineStepConverter.cs" />
+    <Compile Include="Converters\PipelineStep\UpdateAssetItemPipelineStepConverter.cs" />
+    <Compile Include="Converters\PipelineStep\UpdateVideoPipelineStepConverter.cs" />
     <Compile Include="Converters\ValueAccessor\LabelsPropertyValueAccessorConverter.cs" />
     <Compile Include="Converters\ValueAccessor\FolderPropertyValueAccessorConverter.cs" />
     <Compile Include="Converters\ValueAccessor\DateTimePropertyValueAccessorConverter.cs" />
@@ -435,6 +438,8 @@
     <Compile Include="Converters\ValueAccessor\ChainedPropertyValueAccessorConverter.cs" />
     <Compile Include="Converters\PipelineStep\ResolveOrUpdateAssetModelPipelineStepConverter.cs" />
     <Compile Include="Extensions\ItemModelExtensions.cs" />
+    <Compile Include="Helpers\BrightcoveSyncSettingsHelper.cs" />
+    <Compile Include="Helpers\IItemModelRepositoryHelper.cs" />
     <Compile Include="Helpers\ItemUpdater.cs" />
     <Compile Include="Helpers\Mapper.cs" />
     <Compile Include="Processors\BasePipelineStepProcessor.cs" />
@@ -449,18 +454,23 @@
     <Compile Include="Processors\Get\GetVideosPipelineStepProcessor.cs" />
     <Compile Include="Processors\Resolve\ResolveFolderModelPipelineStepProcessor.cs" />
     <Compile Include="Processors\Resolve\ResolveLabelModelPipelineStepProcessor.cs" />
-    <Compile Include="Processors\Resolve\ResolvePlayerModelPipelineStepProcessor.cs" />
     <Compile Include="Processors\Resolve\ResolvePlayListModelPipelineStepProcessor.cs" />
+    <Compile Include="Processors\ApplyMappingPipelineStepProcessor.cs" />
+    <Compile Include="Processors\Sync\ResetSyncPipelineStepProcessor.cs" />
+    <Compile Include="Processors\Sync\FinishSyncPipelineStepProcessor.cs" />
+    <Compile Include="Processors\Sync\VerifySyncPipelineStepProcessor.cs" />
+    <Compile Include="Processors\Sync\StartSyncPipelineStepProcessor.cs" />
+    <Compile Include="Processors\Update\UpdateAssetItemPipelineStepProcessor.cs" />
     <Compile Include="Processors\Update\UpdateLabelModelPipelineStepProcessor.cs" />
     <Compile Include="Processors\Update\UpdateFolderModelPipelineStepProcessor.cs" />
     <Compile Include="Processors\Update\UpdatePlaylistModelPipelineStepProcessor.cs" />
-    <Compile Include="Processors\Update\UpdatePlayerModelPipelineStepProcessor.cs" />
-    <Compile Include="Processors\Update\UpdateVideoItemProcessor.cs" />
+    <Compile Include="Processors\Update\UpdateVideoItemPipelineStepProcessor.cs" />
     <Compile Include="Processors\Update\UpdateVideoModelPipelineStepProcessor.cs" />
     <Compile Include="Processors\Resolve\ResolveVideoModelPipelineStepProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchResults\AssetSearchResult.cs" />
     <Compile Include="Settings\EndpointsSettings.cs" />
+    <Compile Include="Settings\BrightcoveSyncSettings.cs" />
     <Compile Include="Settings\MappingSettings.cs" />
     <Compile Include="Settings\ResolveAssetItemSettings.cs" />
     <Compile Include="Settings\ResolveAssetModelSettings.cs" />

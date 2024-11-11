@@ -25,53 +25,55 @@ namespace Brightcove.DataExchangeFramework.Processors
     {
         protected override void ProcessPipelineStepInternal(PipelineStep pipelineStep = null, PipelineContext pipelineContext = null, ILogger logger = null)
         {
-            try
+            var resolveAssetModelSettings = GetPluginOrFail<ResolveAssetModelSettings>();
+            Folder folder = (Folder)pipelineContext.GetObjectFromPipelineContext(resolveAssetModelSettings.AssetModelLocation);
+            ItemModel itemModel = (ItemModel)pipelineContext.GetObjectFromPipelineContext(resolveAssetModelSettings.AssetItemLocation);
+
+            if (string.IsNullOrWhiteSpace(folder.Id))
             {
-                var resolveAssetModelSettings = GetPluginOrFail<ResolveAssetModelSettings>();
-                BrightcoveService service = new BrightcoveService(WebApiSettings.AccountId, WebApiSettings.ClientId, WebApiSettings.ClientSecret);
-                Folder folder = (Folder)pipelineContext.GetObjectFromPipelineContext(resolveAssetModelSettings.AssetModelLocation);
-                ItemModel itemModel = (ItemModel)pipelineContext.GetObjectFromPipelineContext(resolveAssetModelSettings.AssetItemLocation);
-                Item item = Sitecore.Context.ContentDatabase.GetItem(itemModel.GetItemId().ToString(), Language.Parse(itemModel.GetLanguage()));
+                LogInfo($"Creating brightcove model for the new brightcove item '{itemModel.GetItemId()}'");
+                CreateFolder(itemModel);
 
-                //The item has been marked for deletion in Sitecore
-                if ((string)itemModel["Delete"] == "1")
-                {
-                    LogInfo($"Deleting the brightcove model '{folder.Id}' because it has been marked for deletion in Sitecore");
-                    service.DeleteFolder(folder.Id);
-
-                    LogInfo($"Deleting the brightcove item '{item.ID}' because it has been marked for deletion in Sitecore");
-                    item.Delete();
-
-                    return;
-                }
-
-                string itemName = (string)itemModel["Name"];
-                DateTime lastSyncTime = DateTime.Parse(item["LastSyncTime"]);
-
-                if (folder.Name != itemName)
-                {
-                    //If the folder names are different and the folder has not been updated outside of Sitecore since last sync then the name has been modified in Sitecore
-                    if (folder.UpdatedDate < lastSyncTime)
-                    {
-                        //We can only update one field for folders (the name) so it is easier to manually map it
-                        folder.Name = itemName;
-                        service.UpdateFolder(folder);
-                        LogInfo($"Updated the brightcove asset '{folder.Id}'");
-                    }
-                    else
-                    {
-                        LogWarn($"Ignored changes made to brightcove item '{item.ID}' because the brightcove asset '{folder.Id}' has been modified since last sync. Please run the pull pipeline to get the latest changes");
-                    }
-                }
-                else
-                {
-                    LogDebug($"Ignored the brightcove item '{item.ID}' because it has not been updated since last sync");
-                }
+                return;
             }
-            catch(Exception ex)
+
+            //The item has been marked for deletion in Sitecore
+            if ((string)itemModel["Delete"] == "1")
             {
-                LogError($"Failed to update the brightcove model because an unexpected error occured", ex);
+                LogInfo($"Deleting the brightcove model '{folder.Id}' because it has been marked for deletion in Sitecore");
+                service.DeleteFolder(folder.Id);
+
+                LogInfo($"Deleting the brightcove item '{itemModel.GetItemId()}' because it has been marked for deletion in Sitecore");
+                itemModelRepository.Delete(itemModel.GetItemId());
+
+                return;
             }
+
+            string itemName = (string)itemModel["Name"];
+
+            if (folder.Name != itemName)
+            {
+                //We can only update one field for folders (the name) so it is easier to manually map it
+                folder.Name = itemName;
+                service.UpdateFolder(folder);
+                LogInfo($"Updated the brightcove asset '{folder.Id}'");
+            }
+            else
+            {
+                LogDebug($"Ignored the brightcove item '{itemModel.GetItemId()}' because it has not been updated since last sync");
+            }
+        }
+
+
+        private Folder CreateFolder(ItemModel itemModel)
+        {
+            Folder folder = service.CreateFolder((string)itemModel["Name"]);
+
+            itemModel["ID"] = folder.Id;
+
+            itemModelRepository.Update(itemModel.GetItemId(), itemModel);
+
+            return folder;
         }
     }
 }

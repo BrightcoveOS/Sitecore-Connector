@@ -1,8 +1,10 @@
 ﻿using Brightcove.Core.Services;
+using Brightcove.DataExchangeFramework.Helpers;
 using Brightcove.DataExchangeFramework.Settings;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.DataExchange.Contexts;
+using Sitecore.DataExchange.Extensions;
 using Sitecore.DataExchange.Models;
 using Sitecore.DataExchange.Plugins;
 using Sitecore.SecurityModel;
@@ -14,25 +16,15 @@ namespace Brightcove.DataExchangeFramework.Processors
 {
     class GetExperiencesPipelineStepProcessor : BasePipelineStepWithWebApiEndpointProcessor
     {
-        BrightcoveService service;
-
         protected override void ProcessPipelineStepInternal(PipelineStep pipelineStep = null, PipelineContext pipelineContext = null, ILogger logger = null)
         {
-            try
-            {
-                service = new BrightcoveService(WebApiSettings.AccountId, WebApiSettings.ClientId, WebApiSettings.ClientSecret);
+            DateTime lastSyncStartTime = GetPluginOrFail<BrightcoveSyncSettings>(pipelineContext.GetCurrentPipelineBatch()).LastSyncStartTime;
 
-                var data = service.GetExperiences().Items;
-                var dataSettings = new IterableDataSettings(data);
+            var data = service.GetExperiences().Items.Where(e => e.LastModifiedDate > lastSyncStartTime);
+            LogInfo("Identified " + data.Count() + " experience model(s) that have been modified since last sync "+ lastSyncStartTime);
 
-                LogDebug("Read " + data.Count() + " experience model(s) from web API");
-
-                pipelineContext.AddPlugin(dataSettings);
-            }
-            catch (Exception ex)
-            {
-                LogError($"Failed to get the brightcove models because an unexpected error has occured", ex);
-            }
+            var dataSettings = new IterableDataSettings(data);
+            pipelineContext.AddPlugin(dataSettings);
         }
     }
 }

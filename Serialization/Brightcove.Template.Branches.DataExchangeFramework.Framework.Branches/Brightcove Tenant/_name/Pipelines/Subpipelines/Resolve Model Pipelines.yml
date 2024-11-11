@@ -1,0 +1,18 @@
+﻿---
+ID: "98bf353e-3609-43c3-bccb-9a9790028ca2"
+Parent: "8db8c80f-9ce4-44b7-ac9e-56aaad80fbce"
+Template: "70ed1d4d-3796-400d-a64e-e538d933e12c"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Pipelines/Subpipelines/Resolve Model Pipelines
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20220830T173722Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
