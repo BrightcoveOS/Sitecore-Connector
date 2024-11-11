@@ -1,0 +1,17 @@
+﻿---
+ID: "5ba96152-77bf-4931-b4c2-45078b72244c"
+Parent: "16662dda-5efd-47e4-9f1a-8cbb4ada2058"
+Template: "cc01c7e7-c0d4-4ae3-a419-1d5a93b4fc09"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Pipelines/Sync Pipelines/Start Sync Pipeline/Start Sync
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240501T123541Z
+    - ID: "26e4d933-40d9-41d0-8bfa-4c1912b2a940"
+      Hint: EndpointFrom
+      Value: "{17DF1FC5-386D-4783-9CC6-A31ABFCF6A48}"

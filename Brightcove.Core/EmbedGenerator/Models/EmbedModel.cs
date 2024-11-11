@@ -30,6 +30,8 @@ namespace Brightcove.Core.EmbedGenerator.Models
 
         public string Language { get; set; } = "";
 
+        public string Title { get; set; } = "";
+
         public EmbedModel()
         {
 

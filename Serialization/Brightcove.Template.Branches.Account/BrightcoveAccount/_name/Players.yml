@@ -1,28 +1,9 @@
 ﻿---
-ID: "df42c6c1-7b32-4cd9-ac20-a2b1e8e40f9d"
+ID: "9f928d9d-3ad1-4787-89e7-a80c41cf0ac9"
 Parent: "3916e0d4-74bd-4818-8caa-61f331c50199"
-Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Template: "65845509-0620-4c2b-b726-ee536a7d8c32"
 Path: /sitecore/templates/Branches/BrightcoveAccount/$name/Players
 DB: master
-SharedFields:
-- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
-  Hint: __Masters
-  Type: TreelistEx
-  Value: "{DE0F5BB5-1D51-41B2-BA4D-2C176C904BF3}"
-- ID: "39c4902e-9960-4469-aeef-e878e9c8218f"
-  Hint: __Hidden
-  Type: Checkbox
-  Value: 0
-- ID: "a0cb3965-8884-4c7a-8815-b6b2e5ced162"
-  Hint: __Editors
-  Type: TreelistEx
-  Value: |
-    {59F53BBB-D1F5-4E38-8EBA-0D73109BB59B}
-    {A0C460F4-DBAE-4A5A-8F3A-C4ADFCDACEEA}
-- ID: "d312103c-b36c-4ca5-864a-c85f9abda503"
-  Hint: __Is Bucket
-  Type: Checkbox
-  Value: 0
 Languages:
 - Language: en
   Versions:
@@ -30,4 +11,4 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20211103T091133Z
+      Value: 20240925T055845Z

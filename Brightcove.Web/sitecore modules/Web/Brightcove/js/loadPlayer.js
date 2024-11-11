@@ -22,7 +22,7 @@ if (document.currentScript != null) {
             playerScript.setAttribute("src", "https://players.brightcove.net/" + accountId + "/" + playerId + "_default/index.min.js");
             playerScript.setAttribute("type", "text/javascript");
 
-            document.currentScript.appendChild(playerScript);
+            document.currentScript.parentNode.appendChild(playerScript);
         }
     }
 }

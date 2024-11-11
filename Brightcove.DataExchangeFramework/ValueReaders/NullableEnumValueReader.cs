@@ -43,11 +43,25 @@ namespace Brightcove.DataExchangeFramework.ValueReaders
 
         public override ReadResult Read(object source, DataAccessContext context)
         {
-            object enumMember = this.ToEnumMember(source);
+            try
+            {
+                object enumMember = this.ToEnumMember(source);
+
+                return new ReadResult(DateTime.UtcNow)
+                {
+                    WasValueRead = true,
+                    ReadValue = enumMember
+                };
+            }
+            catch
+            {
+
+            }
+
             return new ReadResult(DateTime.UtcNow)
             {
-                WasValueRead = true,
-                ReadValue = enumMember
+                WasValueRead = false,
+                ReadValue = null
             };
         }
     }

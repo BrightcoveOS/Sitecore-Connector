@@ -1,0 +1,26 @@
+﻿---
+ID: "a90262b4-18da-40ad-9a84-af8cd3cb1203"
+Parent: "0b2d746b-028f-446f-a018-66eb2685418f"
+Template: "0fd90877-c5a1-4a9a-b7d5-a8469cfa89b1"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Pipelines/Clean Pipelines/Clean Playlists Pipeline/Resolve Playlist Models
+DB: master
+SharedFields:
+- ID: "585fe5a4-68d8-4c1e-8056-635f3d73d723"
+  Hint: Pipelines
+  Type: Treelist
+  Value: "{CA5E8990-000D-4E76-8318-209A08B80270}"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 400
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210923T160249Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

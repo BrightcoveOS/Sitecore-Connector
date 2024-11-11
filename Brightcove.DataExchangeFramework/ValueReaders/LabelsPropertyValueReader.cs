@@ -80,11 +80,7 @@ namespace Brightcove.DataExchangeFramework.ValueReaders
 
         private Item GetParentLabelsItem()
         {
-            var settings = Sitecore.DataExchange.Context.GetPlugin<ResolveAssetItemSettings>();
-            var accountItem = Sitecore.Context.ContentDatabase.GetItem(settings.AcccountItemId);
-            var parentLabelsItem = Sitecore.Context.ContentDatabase.GetItem(accountItem.Paths.FullPath + "/Labels");
-
-            return parentLabelsItem;
+            return Sitecore.DataExchange.Context.GetPlugin<ResolveAssetItemSettings>().ParentItem;
         }
     }
 }

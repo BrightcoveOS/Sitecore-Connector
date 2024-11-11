@@ -1,0 +1,27 @@
+﻿---
+ID: "17368e5c-e755-425e-a208-61eeb37281eb"
+Parent: "604f51e7-c676-4d51-b94a-99e7ff45b5da"
+Template: "5b822f3f-d51a-48c8-88a8-ff38f8799f2c"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Pipelines/Subpipelines/Resolve Model Pipelines/Resolve Label Models Pipeline/Resolve Label Model
+DB: master
+SharedFields:
+- ID: "19174e44-13f2-4c97-8e6c-ad909db4e29d"
+  Hint: AssetModelLocation
+  Value: "{EC64487D-E7E6-40B0-A86C-40C74B95E04E}"
+- ID: "264d947f-bc3e-4769-ae24-1f256bf2cb61"
+  Hint: AssetItemLocation
+  Value: "{17DF1143-A38D-4C77-A933-E66B5ED21E9A}"
+- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
+  Hint: __Originator
+  Value: "{8C35E043-E7C9-4446-AC1C-9C4E8D515075}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20220406T132500Z
+    - ID: "86e2d598-c2c9-4a1f-96ba-30a2c1801a11"
+      Hint: EndpointFrom
+      Value: "{17DF1FC5-386D-4783-9CC6-A31ABFCF6A48}"

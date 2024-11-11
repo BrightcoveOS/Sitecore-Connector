@@ -29,6 +29,10 @@ SharedFields:
 - ID: "e074292d-0467-443c-a1b5-cbd5e5162813"
   Hint: MatchingFieldValueAccessor
   Value: "{FF8E9462-EC8C-45EB-B26C-A2388D0A113D}"
+- ID: "f81d9686-085b-4514-accd-37409c757cd8"
+  Hint: DoNotCreateItemIfDoesNotExist
+  Type: Checkbox
+  Value: 1
 Languages:
 - Language: en
   Versions:
