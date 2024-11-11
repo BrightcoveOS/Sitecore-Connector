@@ -1,0 +1,14 @@
+﻿---
+ID: "f62d6d3d-8bc6-4af3-834c-ae1c201c0481"
+Parent: "3e9e79d3-260d-4e2e-b810-dce3d28db48d"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Data Exchange/Providers/Brightcove/Pipeline Steps/Finish Sync Pipeline Step/Settings
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20211103T101303Z

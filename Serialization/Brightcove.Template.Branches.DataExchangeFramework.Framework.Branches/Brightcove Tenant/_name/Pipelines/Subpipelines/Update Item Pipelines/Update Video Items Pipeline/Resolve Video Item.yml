@@ -33,6 +33,10 @@ SharedFields:
 - ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
   Hint: __Originator
   Value: "{2A2BF744-D1AB-4951-9EDA-8091E421742E}"
+- ID: "f81d9686-085b-4514-accd-37409c757cd8"
+  Hint: DoNotCreateItemIfDoesNotExist
+  Type: Checkbox
+  Value: 1
 Languages:
 - Language: en
   Versions:

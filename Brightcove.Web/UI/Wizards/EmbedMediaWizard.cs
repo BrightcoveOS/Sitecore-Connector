@@ -148,21 +148,49 @@ namespace Brightcove.Web.UI.Wizards
         protected virtual EmbedRenderingParameters GetEmbedParameters()
         {
             var parameters = new EmbedRenderingParameters();
+            Item accountItem = MediaItemUtil.GetAccountForMedia(this.SourceItemID);
 
             parameters.MediaId = MediaItemUtil.GetMediaId(this.SourceItemID);
             parameters.PlayerId = MediaItemUtil.GetMediaId(new ID(this.PlayersList.Value));
-            parameters.AccountId = MediaItemUtil.GetAccountForMedia(this.SourceItemID)["AccountId"];
+            parameters.AccountId = accountItem["AccountId"];
 
             parameters.Width = int.Parse(this.WidthInput.Value);
             parameters.Height = int.Parse(this.HeightInput.Value);
 
             parameters.Embed = this.EmbedInput.Value;
             parameters.Sizing = this.SizingInput.Value;
-            parameters.IsPlaylist = IsPlaylist(SourceItemID);
 
             parameters.Autoplay = this.AutoplayCheckbox.Checked;
             parameters.Muted = this.MutedCheckbox.Checked;
             parameters.Language = this.AssetLanguage.Value;
+
+            parameters.IsPlaylist = false;
+            parameters.Title = "";
+
+            if (IsPlaylist(SourceItemID))
+            {
+                parameters.IsPlaylist = true;
+            }
+            else
+            {
+                string customTitleField = accountItem["IframeTitleCustomField"];
+
+                if (!string.IsNullOrWhiteSpace(customTitleField))
+                {
+                    parameters.Title = ((NameValueListField)GetItem()?.Fields["CustomFields"])?.NameValues[customTitleField] ?? "";
+                }
+
+                //If Title still not set then try to fallback. Note the fallback is not a custom field
+                if(string.IsNullOrWhiteSpace(parameters.Title))
+                {
+                    string titleFallbackField = accountItem["IframeTitleFallbackField"];
+
+                    if(!string.IsNullOrWhiteSpace(titleFallbackField))
+                    {
+                        parameters.Title = GetItem()?.Fields[titleFallbackField]?.Value ?? "";
+                    }
+                }
+            }
 
             return parameters;
         }

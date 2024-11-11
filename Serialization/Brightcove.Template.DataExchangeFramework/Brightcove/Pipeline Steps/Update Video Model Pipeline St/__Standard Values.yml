@@ -10,7 +10,7 @@ SharedFields:
   Value: Applications/16x16/document.png
 - ID: "3c7f78cc-0c5c-4076-80ef-9a49fda5ff96"
   Hint: ConverterType
-  Value: Brightcove.DataExchangeFramework.Converters.UpdatePipelineStepConverter, Brightcove.DataExchangeFramework
+  Value: Brightcove.DataExchangeFramework.Converters.UpdateVideoPipelineStepConverter, Brightcove.DataExchangeFramework
 - ID: "a83a2eb2-bfa1-4d3f-9f17-0cc6c9a91c42"
   Hint: ProcessorType
   Value: Brightcove.DataExchangeFramework.Processors.UpdateVideoModelPipelineStepProcessor, Brightcove.DataExchangeFramework

@@ -47,6 +47,7 @@ namespace Brightcove.Web.Models
             Autoplay = model.Autoplay;
             Muted = model.Muted;
             Language = model.Language;
+            Title = model.Title;
 
             if(model.MediaSizing == MediaSizing.Fixed)
             {
@@ -199,6 +200,18 @@ namespace Brightcove.Web.Models
             }
         }
 
+        public string Title
+        {
+            get
+            {
+                return GetString("title");
+            }
+            set
+            {
+                this.Parameters["title"] = value;
+            }
+        }
+
         public EmbedModel CreateEmbedModel()
         {
             EmbedModel embedModel = new EmbedModel();
@@ -211,6 +224,7 @@ namespace Brightcove.Web.Models
             embedModel.Muted = Muted;
             embedModel.Autoplay = Autoplay;
             embedModel.Language = Language;
+            embedModel.Title = Title;
 
             if (IsPlaylist)
             {

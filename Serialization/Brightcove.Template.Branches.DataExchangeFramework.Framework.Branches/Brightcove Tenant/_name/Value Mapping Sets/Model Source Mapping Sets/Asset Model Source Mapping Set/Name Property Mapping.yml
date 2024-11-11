@@ -5,6 +5,10 @@ Template: "450c8f38-91c9-4896-957b-6f7daf18ccfc"
 Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Value Mapping Sets/Model Source Mapping Sets/Asset Model Source Mapping Set/Name Property Mapping
 DB: master
 SharedFields:
+- ID: "72a93355-3132-4f80-a208-7925600d2a80"
+  Hint: MappingSetFailsIfThisMappingFails
+  Type: Checkbox
+  Value: 0
 - ID: "95184b45-efef-447c-9089-4f2ec5df26c5"
   Hint: SourceAccessor
   Type: Treelist

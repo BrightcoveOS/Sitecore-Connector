@@ -16,28 +16,37 @@ namespace Brightcove.DataExchangeFramework.ValueReaders
 
         public override ReadResult Read(object source, DataAccessContext context)
         {
-            if (context == null)
-                throw new ArgumentNullException(nameof(context));
-
-            var result = base.Read(source, context);
-
-            bool wasValueRead = result.WasValueRead;
-            object obj = result.ReadValue;
-
-            if(obj == null || !(obj is DateTime))
+            try
             {
-                obj = "";
-                wasValueRead = true;
+                var result = base.Read(source, context);
+
+                bool wasValueRead = result.WasValueRead;
+                object obj = result.ReadValue;
+
+                if (obj == null || !(obj is DateTime))
+                {
+                    obj = "";
+                    wasValueRead = true;
+                }
+                else
+                {
+                    obj = ((DateTime)obj).ToString("yyyyMMddTHHmmss\\Z");
+                }
+
+                return new ReadResult(DateTime.UtcNow)
+                {
+                    WasValueRead = wasValueRead,
+                    ReadValue = obj
+                };
             }
-            else
+            catch
             {
-                obj = ((DateTime)obj).ToString("yyyyMMddTHHmmss\\Z");
             }
 
             return new ReadResult(DateTime.UtcNow)
             {
-                WasValueRead = wasValueRead,
-                ReadValue = obj
+                WasValueRead = false,
+                ReadValue = null
             };
         }
     }

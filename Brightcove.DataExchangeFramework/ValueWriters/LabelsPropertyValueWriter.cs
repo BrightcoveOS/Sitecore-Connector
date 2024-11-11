@@ -34,7 +34,7 @@ namespace Brightcove.DataExchangeFramework.ValueWriters
             }
             catch
             {
-                labelItemIds = null;
+                return false;
             }
 
             return base.Write(target, labelItemIds, context);

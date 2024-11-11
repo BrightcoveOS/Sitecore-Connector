@@ -25,65 +25,43 @@ namespace Brightcove.DataExchangeFramework.Processors
     {
         protected override void ProcessPipelineStepInternal(PipelineStep pipelineStep = null, PipelineContext pipelineContext = null, ILogger logger = null)
         {
-            try
+            var resolveAssetModelSettings = GetPluginOrFail<ResolveAssetModelSettings>();
+            PlayList playlist = (PlayList)pipelineContext.GetObjectFromPipelineContext(resolveAssetModelSettings.AssetModelLocation);
+            ItemModel itemModel = (ItemModel)pipelineContext.GetObjectFromPipelineContext(resolveAssetModelSettings.AssetItemLocation);
+
+            if (string.IsNullOrWhiteSpace(playlist.Id))
             {
-                var resolveAssetModelSettings = GetPluginOrFail<ResolveAssetModelSettings>();
-                BrightcoveService service = new BrightcoveService(WebApiSettings.AccountId, WebApiSettings.ClientId, WebApiSettings.ClientSecret);
-                PlayList playlist = (PlayList)pipelineContext.GetObjectFromPipelineContext(resolveAssetModelSettings.AssetModelLocation);
-                ItemModel itemModel = (ItemModel)pipelineContext.GetObjectFromPipelineContext(resolveAssetModelSettings.AssetItemLocation);
-                Item item = Sitecore.Context.ContentDatabase.GetItem(itemModel.GetItemId().ToString(), Language.Parse(itemModel.GetLanguage()));
+                LogInfo($"Creating brightcove model for the brightcove item '{itemModel.GetItemId()}'");
+                CreatePlaylist(itemModel);
 
-                //The item has been marked for deletion in Sitecore
-                if ((string)itemModel["Delete"] == "1")
-                {
-                    LogInfo($"Deleting the brightcove model '{playlist.Id}' because it has been marked for deletion in Sitecore");
-                    service.DeletePlaylist(playlist.Id);
-
-                    LogInfo($"Deleting the brightcove item '{item.ID}' because it has been marked for deletion in Sitecore");
-                    item.Delete();
-
-                    return;
-                }
-
-                DateTime lastSyncTime = DateTime.UtcNow;
-                DateField lastModifiedTime = item.Fields["__Updated"];
-                bool isNewPlaylist = string.IsNullOrWhiteSpace(item["LastSyncTime"]);
-
-                if (!isNewPlaylist)
-                {
-                    lastSyncTime = DateTime.Parse(item["LastSyncTime"]);
-                }
-
-                //If the brightcove item has been modified since the last sync (or is new) then send the updates to brightcove
-                //Unless the brightcove asset has already been modified since the last sync (presumably outside of Sitecore)
-                if (isNewPlaylist || lastModifiedTime.DateTime > lastSyncTime)
-                {
-                    if (isNewPlaylist || playlist.LastModifiedDate < lastSyncTime)
-                    {
-                        service.UpdatePlaylist(playlist);
-                        LogInfo($"Updated the brightcove playlist model '{playlist.Id}'");
-
-                        if(isNewPlaylist)
-                        {
-                            item.Editing.BeginEdit();
-                            item["LastSyncTime"] = DateTime.UtcNow.ToString();
-                            item.Editing.EndEdit();
-                        }
-                    }
-                    else
-                    {
-                        LogWarn($"Ignored changes made to brightcove item '{item.ID}' because the brightcove asset '{playlist.Id}' has been modified since last sync. Please run the pull pipeline to get the latest changes");
-                    }
-                }
-                else
-                {
-                    LogDebug($"Ignored the brightcove item '{item.ID}' because it has not been updated since last sync");
-                }
+                return;
             }
-            catch(Exception ex)
+
+            //The item has been marked for deletion in Sitecore
+            if ((string)itemModel["Delete"] == "1")
             {
-                LogError($"Failed to update the brightcove model because an unexpected error occured", ex);
+                LogInfo($"Deleting the brightcove model '{playlist.Id}' because it has been marked for deletion in Sitecore");
+                service.DeletePlaylist(playlist.Id);
+
+                LogInfo($"Deleting the brightcove item '{itemModel.GetItemId()}' because it has been marked for deletion in Sitecore");
+                itemModelRepository.Delete(itemModel.GetItemId());
+
+                return;
             }
+
+            service.UpdatePlaylist(playlist);
+            LogInfo($"Updated the brightcove playlist model '{playlist.Id}'");
+        }
+
+        private PlayList CreatePlaylist(ItemModel itemModel)
+        {
+            PlayList playlist = service.CreatePlaylist((string)itemModel["Name"]);
+
+            itemModel["ID"] = playlist.Id;
+
+            itemModelRepository.Update(itemModel.GetItemId(), itemModel);
+
+            return playlist;
         }
     }
 }

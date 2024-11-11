@@ -1,7 +1,7 @@
 ﻿---
 ID: "74acf488-944c-46eb-8349-7f7c54fc5f51"
 Parent: "2f977a04-220d-42b5-a313-9fe622f60bca"
-Template: "8e726575-35cf-48a0-b2c9-00c30d16f2d9"
+Template: "ab4af4df-d282-4cd1-8268-fa12a9e457a3"
 Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Pipelines/Subpipelines/Update Item Pipelines/Update Experience Items Pipeline/Apply Experience Model Source Mapping Set
 DB: master
 SharedFields:

@@ -70,11 +70,7 @@ namespace Brightcove.DataExchangeFramework.ValueReaders
         //Gets the Sitecore folder that holds all of the Brightcove folder items (Yes both are called folders)
         private Item GetParentFoldersItem()
         {
-            var settings = Sitecore.DataExchange.Context.GetPlugin<ResolveAssetItemSettings>();
-            var accountItem = Sitecore.Context.ContentDatabase.GetItem(settings.AcccountItemId);
-            var foldersItem = Sitecore.Context.ContentDatabase.GetItem(accountItem.Paths.FullPath + "/Folders");
-
-            return foldersItem;
+            return Sitecore.DataExchange.Context.GetPlugin<ResolveAssetItemSettings>().ParentItem;
         }
     }
 }

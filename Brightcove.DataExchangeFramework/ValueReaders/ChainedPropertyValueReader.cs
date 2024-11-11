@@ -19,28 +19,37 @@ namespace Brightcove.DataExchangeFramework.ValueReaders
 
         public virtual ReadResult Read(object source, DataAccessContext context)
         {
-            if (context == null)
-                throw new ArgumentNullException(nameof(context));
-
-            bool wasValueRead = false;
-            object obj = source;
-
-            foreach (string property in PropertyName.Split('.'))
+            try
             {
-                var reader = new PropertyValueReader(property);
-                var result = reader.Read(obj, context);
+                bool wasValueRead = false;
+                object obj = source;
 
-                wasValueRead = result.WasValueRead;
-                obj = result.ReadValue;
+                foreach (string property in PropertyName.Split('.'))
+                {
+                    var reader = new PropertyValueReader(property);
+                    var result = reader.Read(obj, context);
 
-                if (!wasValueRead || obj == null)
-                    break;
+                    wasValueRead = result.WasValueRead;
+                    obj = result.ReadValue;
+
+                    if (!wasValueRead || obj == null)
+                        break;
+                }
+
+                return new ReadResult(DateTime.UtcNow)
+                {
+                    WasValueRead = wasValueRead,
+                    ReadValue = obj
+                };
+            }
+            catch
+            {
             }
 
             return new ReadResult(DateTime.UtcNow)
             {
-                WasValueRead = wasValueRead,
-                ReadValue = obj
+                WasValueRead = false,
+                ReadValue = null
             };
         }
     }

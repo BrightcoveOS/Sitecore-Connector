@@ -14,6 +14,7 @@ namespace Brightcove.Core.Services
         static BrightcoveHttpClient()
         {
             Instance = new HttpClient();
+            Instance.Timeout = TimeSpan.FromSeconds(30);
         }
     }
 }

@@ -18,14 +18,11 @@ namespace Brightcove.DataExchangeFramework.ValueWriters
 
         public virtual bool Write(object target, object value, DataAccessContext context)
         {
-            if (context == null)
-                throw new ArgumentNullException(nameof(context));
-
-            PropertyInfo propertyInfo = null;
-            string[] properties = PropertyName.Split('.');
-
             try
             {
+                PropertyInfo propertyInfo = null;
+                string[] properties = PropertyName.Split('.');
+
                 for (int i = 0; i < properties.Length; i++)
                 {
                     propertyInfo = this.ReflectionUtil.GetProperty(properties[i], target);

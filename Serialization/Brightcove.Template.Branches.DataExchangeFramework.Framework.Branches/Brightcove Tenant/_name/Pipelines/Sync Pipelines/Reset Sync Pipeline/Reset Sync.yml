@@ -1,0 +1,17 @@
+﻿---
+ID: "8bb6b131-c6e5-4d77-ac4c-b3a2bf9e25b5"
+Parent: "b843703b-b2d7-4727-9358-629cf5b048fa"
+Template: "6bcb66f9-5db7-4e39-b476-9b74c70fb45a"
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Pipelines/Sync Pipelines/Reset Sync Pipeline/Reset Sync
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "23047114-b7f6-49fd-87e9-a33db6ea26db"
+      Hint: EndpointFrom
+      Value: "{17DF1FC5-386D-4783-9CC6-A31ABFCF6A48}"
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240501T123541Z
