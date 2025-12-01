@@ -49,7 +49,7 @@ namespace Brightcove.DataExchangeFramework.Processors
             ApplyMappings(mappingSettings.ModelMappingSets, itemModel, video);
 
             LogInfo($"Updating the brightcove video model '{video.Id}'");
-            UpdateVideo(video);
+            UpdateVideo(video, itemModel);
             UpdateFolder(video, itemModel);
         }
 
@@ -78,7 +78,7 @@ namespace Brightcove.DataExchangeFramework.Processors
                 LogInfo($"Deleting the brightcove model '{video.Id}' because it has been marked for deletion in Sitecore");
                 service.DeleteVideo(video.Id);
 
-                LogInfo($"Deleting the brightcove item '{item.GetItemId()}' because it has been marked for deleteion in Sitecore");
+                LogInfo($"Deleting the brightcove item '{item.GetItemId()}' because it has been marked for deletion in Sitecore");
                 itemModelRepository.Delete(item.GetItemId());
 
                 return true;
@@ -87,7 +87,7 @@ namespace Brightcove.DataExchangeFramework.Processors
             return false;
         }
 
-        public void UpdateVideo(Video video)
+        public void UpdateVideo(Video video, ItemModel item)
         {
             try
             {
@@ -97,6 +97,13 @@ namespace Brightcove.DataExchangeFramework.Processors
             //This should be removed when a more permant solution is found
             catch (HttpStatusException ex)
             {
+                if ((int)ex.Response.StatusCode == 404)
+                {
+                    LogWarn($"Deleting the brightcove item '{item.GetItemId()}' in Sitecore because video '{video.Id}' has been deleted in Video Cloud");
+                    itemModelRepository.Delete(item.GetItemId());
+                    return;
+                }
+
                 if ((int)ex.Response.StatusCode != 422)
                     throw ex;
 
@@ -109,7 +116,7 @@ namespace Brightcove.DataExchangeFramework.Processors
 
                 //Rerun with the invalid custom fields removed so the rest of the updates are made
                 video.CustomFields = null;
-                UpdateVideo(video);
+                UpdateVideo(video, item);
                 return;
             }
         }
