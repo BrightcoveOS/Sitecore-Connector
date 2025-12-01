@@ -751,11 +751,11 @@ namespace Brightcove.Core.Services
 
         private HttpResponseMessage SendRequest(HttpRequestMessage request)
         {
+            request.Headers.Authorization = authenticationService.CreateAuthenticationHeader();
+
             try
             {
-                request.Headers.Authorization = authenticationService.CreateAuthenticationHeader();
-
-                HttpResponseMessage response = client.Send(request);
+                HttpResponseMessage response = client.Send(request.Clone());
 
                 if (!response.IsSuccessStatusCode)
                 {
@@ -769,7 +769,7 @@ namespace Brightcove.Core.Services
                 if(retryAttempt < retryMax)
                 {
                     retryAttempt++;
-                    return SendRequest(request);
+                    return SendRequest(request.Clone());
                 }
 
                 retryAttempt = 0;

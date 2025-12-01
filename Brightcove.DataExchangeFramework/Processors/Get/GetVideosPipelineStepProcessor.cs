@@ -14,6 +14,7 @@ using Sitecore.DataExchange.Repositories;
 using Sitecore.Services.Core.Diagnostics;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -36,6 +37,7 @@ namespace Brightcove.DataExchangeFramework.Processors
             }
 
             totalCount = service.VideosCount(query);
+
             LogInfo("Identified " + totalCount + " video model(s) that have been modified since last sync "+ syncSettings.LastSyncStartTime);
 
             var data = GetIterableData(pipelineStep);
@@ -46,7 +48,7 @@ namespace Brightcove.DataExchangeFramework.Processors
 
         protected virtual IEnumerable<Video> GetIterableData(PipelineStep pipelineStep)
         {
-            int limit = 1000;
+            int limit = 100;
 
             for (int offset = 0; offset < totalCount; offset += limit)
             {
