@@ -69,5 +69,10 @@ namespace Brightcove.Core.Models
         {
             return (Video)this.MemberwiseClone();
         }
+
+        public string ToCustomString()
+        {
+            return $"ID:{Id} | Name: {Name} | Folder: {Folder}";
+        }
     }
 }

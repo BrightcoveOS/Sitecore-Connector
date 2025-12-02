@@ -73,33 +73,63 @@ namespace Brightcove.DataExchangeFramework.Processors
                     //Since we must search the index becasue the target folder is a bucket the items must have a field called 'ID' that can be used to identify them
                     List<AssetSearchResult> searchResults = searchContext.GetQueryable<AssetSearchResult>()
                         .Where(x => x.Path.Contains(parentItemMediaPath) && x.ID == convertedValue && x.Language == language)
+                        .OrderBy((AssetSearchResult result) => result.CreatedDate)
                         .ToList();
 
                     if(searchResults.Count > 1)
                     {
-                        for(int i = 1; i < searchResults.Count; i++)
+                        logger.Warn($"Number of search results: {searchResults.Count}");
+
+                        logger.Debug("The search result  when searching the bucket");
+                        logger.Debug(searchResults[0].ToString());
+                        logger.Debug(searchResults[0].Name);
+                        logger.Debug($"publish at: {searchResults[0].Updated}");
+                        logger.Debug("the item itself");
+                        logger.Debug(database.GetItem(searchResults[0].ItemId).ToString());
+
+                        for (int i = 1; i < searchResults.Count; i++)
                         {
                             logger.Warn($"Deleting the asset item '{searchResults[0].ItemId}' because it is a duplicate of '{searchResults[i].ItemId}'");
+
+                            logger.Debug($"The dupe search result {i} when searching the bucket");
+                            logger.Debug(searchResults[i].ToString());
+                            logger.Debug(searchResults[i].ItemId.ToString());
+                            logger.Debug(searchResults[i].Name);
+                            logger.Debug($"publish at: {searchResults[i].Updated}");
+                            logger.Debug("the item itself");
+                            logger.Debug(database.GetItem(searchResults[i].ItemId).ToString());
+
                             database.GetItem(searchResults[i].ItemId).Delete();
                         }
                     }
-
+                    logger.Debug("No dupes dound in bucket search");
                     resolvedItem = searchResults.FirstOrDefault()?.GetItem()?.GetItemModel();
                 }
             }
             else
             {
-                var searchResults = parentItem.Children?.Where(c => c[fieldName] == convertedValue)?.ToList();
+                var searchResults = parentItem.Children?.Where(c => c[fieldName] == convertedValue)?
+                    .OrderBy((Item item) => item.Created)
+                    .ToList();
 
-                if(searchResults.Count > 1)
+                if (searchResults.Count > 1)
                 {
+                    logger.Debug("The search result whens searching children");
+                    logger.Debug(searchResults[0].ToString());
+                    logger.Debug(searchResults[0].Name);
+
                     for (int i = 1; i < searchResults.Count; i++)
                     {
                         logger.Warn($"Deleting the asset item '{searchResults[0].ID}' because it is a duplicate of '{searchResults[i].ID}'");
+
+                        logger.Debug($"The search result {i}  whens searching children");
+                        logger.Debug(searchResults[0].ToString());
+                        logger.Debug(searchResults[0].Name);
+
                         searchResults[i].Delete();
                     }
                 }
-
+                logger.Debug("No dupes found in regular search");
                 resolvedItem = searchResults.FirstOrDefault()?.GetItemModel();
             }
 

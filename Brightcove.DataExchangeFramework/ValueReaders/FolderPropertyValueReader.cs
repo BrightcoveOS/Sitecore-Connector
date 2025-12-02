@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Sitecore.Diagnostics;
 
 namespace Brightcove.DataExchangeFramework.ValueReaders
 {
@@ -50,6 +51,7 @@ namespace Brightcove.DataExchangeFramework.ValueReaders
                     {
                         Item parentFoldersItem = GetParentFoldersItem();
                         string sitecoreFolderId = parentFoldersItem.Children?.Where(c => c["ID"] == brightcoveFolderId)?.FirstOrDefault()?.ID?.ToString() ?? "";
+                        Log.Info($"bc folder id: {brightcoveFolderId} | sitecore folder id: {sitecoreFolderId}", this);
                         returnValue = sitecoreFolderId;
                     }
                 }
