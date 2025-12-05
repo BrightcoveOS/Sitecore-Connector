@@ -494,6 +494,18 @@ namespace Brightcove.Core.Services
             return JsonConvert.DeserializeObject<List<Video>>(response.Content.ReadAsString());
         }
 
+        public IEnumerable<Video> GetFolderVideos(string folderId, int offset = 0, int limit = 20, string sort = "")
+        {
+            HttpRequestMessage request = new HttpRequestMessage();
+
+            request.Method = HttpMethod.Get;
+            request.RequestUri = new Uri($"{cmsBaseUrl}/{accountId}/folders/{folderId}/videos?offset={offset}&limit={limit}&sort={sort}");
+
+            HttpResponseMessage response = SendRequest(request);
+
+            return JsonConvert.DeserializeObject<List<Video>>(response.Content.ReadAsString());
+        }
+
         public IEnumerable<VideoVariant> GetVideoVariants(string videoId)
         {
             HttpRequestMessage request = new HttpRequestMessage();
