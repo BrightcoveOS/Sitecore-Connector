@@ -536,6 +536,7 @@
     <Compile Include="Converters\PipelineStep\ReadAssetItemsPipelineStepConverter.cs" />
     <Compile Include="Converters\PipelineStep\UpdateAssetItemPipelineStepConverter.cs" />
     <Compile Include="Converters\PipelineStep\UpdateVideoPipelineStepConverter.cs" />
+    <Compile Include="Converters\UpdatePipelineStepConverter.cs" />
     <Compile Include="Converters\ValueAccessor\LabelsPropertyValueAccessorConverter.cs" />
     <Compile Include="Converters\ValueAccessor\FolderPropertyValueAccessorConverter.cs" />
     <Compile Include="Converters\ValueAccessor\DateTimePropertyValueAccessorConverter.cs" />
@@ -555,8 +556,10 @@
     <Compile Include="Processors\BasePipelineStepWithWebApiEndpointProcessor.cs" />
     <Compile Include="Processors\Get\GetExperiencesPipelineStepProcessor.cs" />
     <Compile Include="Processors\Get\GetFoldersPipelineStepProcessor.cs" />
+    <Compile Include="Processors\Get\GetFolderVideosPipelineStepProcessor.cs" />
     <Compile Include="Processors\Get\GetPlayersPipelineStepProcessor.cs" />
     <Compile Include="Processors\Get\GetLabelsPipelineStepProcessor.cs" />
+    <Compile Include="Processors\Get\ReadFolderVideoItemsPipelineStepProcessor.cs" />
     <Compile Include="Processors\ReadAssetItemsPipelineStepProcessor.cs" />
     <Compile Include="Processors\Resolve\ResolveAssetItemPipelineStepProcessor.cs" />
     <Compile Include="Processors\Get\GetPlayListsPipelineStepProcessor.cs" />

@@ -106,7 +106,7 @@ namespace Brightcove.DataExchangeFramework.Processors
             }
         }
 
-        private string GetAssetParentItemMediaPath(PipelineContext context)
+        protected string GetAssetParentItemMediaPath(PipelineContext context)
         {
             var settings = context.CurrentPipelineStep.GetPlugin<ResolveAssetItemSettings>();
             return settings.ParentItem.Paths.MediaPath;
