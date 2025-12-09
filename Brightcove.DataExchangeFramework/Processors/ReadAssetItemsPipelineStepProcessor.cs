@@ -25,7 +25,7 @@ namespace Brightcove.DataExchangeFramework.Processors
     [RequiredEndpointPlugins(new Type[] { typeof(ItemModelRepositorySettings) })]
     public class ReadAssetItemsPipelineStepProcessor : ReadSitecoreItemsStepProcessor
     {
-        DateTime lastSyncFinishTime;
+        protected DateTime lastSyncFinishTime;
 
         protected override void ProcessPipelineStep(PipelineStep pipelineStep = null, PipelineContext pipelineContext = null, ILogger logger = null)
         {

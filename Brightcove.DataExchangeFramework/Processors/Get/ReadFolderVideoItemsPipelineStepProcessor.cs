@@ -19,6 +19,7 @@ using Sitecore.DataExchange.Providers.Sc.Extensions;
 using Sitecore.DataExchange.Providers.Sc.Plugins;
 using Sitecore.DataExchange.Providers.Sc.Processors.PipelineSteps;
 using Sitecore.DataExchange.Repositories;
+using Sitecore.Search;
 using Sitecore.Services.Core.Diagnostics;
 using Sitecore.Services.Core.Model;
 using Sitecore.Services.Infrastructure.Sitecore.Data;
@@ -56,42 +57,17 @@ namespace Brightcove.DataExchangeFramework.Processors
             {
                 List<ItemModel> itemModels = new List<ItemModel>();
 
-                try
-                {
-                    ID templateId = new ID(templateGuids[0]);
+                ID templateId = new ID(templateGuids[0]);
 
-                    var query = context.GetQueryable<SearchResultItem>()
-                        .Where(x => x.Path.Contains(bucketPath) && x.Path != bucketPath && x.Language == language && x.TemplateId == templateId);
-                    
-                    var searchResults = query.ToList();
-                    
-                    itemModels = searchResults.Select(r => modelRepository.Get(r.ItemId.ToGuid(), language))
-                        .Where(model => model != null && model.GetFieldValueAsGuid("BrightcoveFolder") == folderItem.GetItemId())
-                        .ToList();
+                var query = context.GetQueryable<SearchResultItem>()
+                    .Where(x => x.Path.Contains(bucketPath) && x.Path != bucketPath && x.Language == language && x.TemplateId == templateId);
 
-                    List<String> itemModelsWithFolders = searchResults.Select(r => modelRepository.Get(r.ItemId.ToGuid(), language))
-                        .Where(model => model != null && model.GetFieldValueAsString("BrightcoveFolder")?.Length > 0)
-                        .Select(m => $"ID: {m.GetFieldValueAsString("ID")} FolderID: {m.GetFieldValueAsString("BrightcoveFolder")}")
-                        .ToList();
+                var searchResults = query.ToList();
 
-                    Logger.Info(string.Join("\n", itemModelsWithFolders));
+                itemModels = searchResults.Select(r => modelRepository.Get(r.ItemId.ToGuid(), language))
+                    .Where(model => model != null && model.GetFieldValueAsGuid("BrightcoveFolder") == folderItem.GetItemId())
+                    .ToList();
 
-                    //List<String> itemsModelsInAFolder = itemModels
-                    //    .Where(model => model.GetFieldValueAsString("BrightcoveFolder")?.Length > 0)
-                    //    .Select(m => $"ID: {m.GetFieldValueAsString("ID")} Name: \"{m.GetFieldValueAsString("Name")}\" Folder: {m.GetFieldValueAsString("BrightcoveFolder")}").ToList();
-
-                    //Logger.Info(string.Join("\n", itemsModelsInAFolder));
-
-                    //List<ItemModel> itemModelsInFolder = itemModels.Where(model => model.GetFieldValueAsString("BrightcoveFolder") == folderModel.Id).ToList();
-
-                    Logger.Info($"Number of Sitecore videos in folder {folderItem.GetItemId()} ({folderModel.Id}): {itemModels.Count()}");
-
-                }
-                catch (Exception ex)
-                {
-                    Logger.Info(ex.Message);
-                }
-               
                 return itemModels;
             }
         }
