@@ -558,6 +558,7 @@
     <Compile Include="Processors\Get\GetFoldersPipelineStepProcessor.cs" />
     <Compile Include="Processors\Get\GetPlayersPipelineStepProcessor.cs" />
     <Compile Include="Processors\Get\GetLabelsPipelineStepProcessor.cs" />
+    <Compile Include="Processors\Get\GetFolderVideosPipelineStepProcessor.cs" />
     <Compile Include="Processors\Get\ReadFolderVideoItemsPipelineStepProcessor.cs" />
     <Compile Include="Processors\ReadAssetItemsPipelineStepProcessor.cs" />
     <Compile Include="Processors\Resolve\ResolveAssetItemPipelineStepProcessor.cs" />
@@ -582,6 +583,7 @@
     <Compile Include="SearchResults\AssetSearchResult.cs" />
     <Compile Include="Settings\EndpointsSettings.cs" />
     <Compile Include="Settings\BrightcoveSyncSettings.cs" />
+    <Compile Include="Settings\BrightcoveFolderVideosSettings.cs" />
     <Compile Include="Settings\MappingSettings.cs" />
     <Compile Include="Settings\ResolveAssetItemSettings.cs" />
     <Compile Include="Settings\ResolveAssetModelSettings.cs" />

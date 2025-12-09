@@ -22,21 +22,20 @@ using Sitecore.DataExchange.Repositories;
 using Sitecore.Search;
 using Sitecore.Services.Core.Diagnostics;
 using Sitecore.Services.Core.Model;
-using Sitecore.Services.Infrastructure.Sitecore.Data;
 
 namespace Brightcove.DataExchangeFramework.Processors
 {
     [RequiredEndpointPlugins(new Type[] { typeof(ItemModelRepositorySettings) })]
     public class ReadFolderVideoItemsPipelineStepProcessor : ReadAssetItemsPipelineStepProcessor
     {
-        Folder folderModel;
-        ItemModel folderItem;
+        BrightcoveFolderVideosSettings folderSettings;
         protected override void ProcessPipelineStep(PipelineStep pipelineStep = null, PipelineContext pipelineContext = null, ILogger logger = null)
         {
             try
             {
-                folderModel = (Folder)pipelineContext.GetObjectFromPipelineContext(ItemIDs.PipelineContextStorageLocationSource);
-                folderItem = (ItemModel)pipelineContext.GetObjectFromPipelineContext(ItemIDs.PipelineContextStorageLocationTarget);
+                BrightcoveFolderVideosSettings folderSettings = pipelineContext.GetCurrentPipelineBatch().GetPlugin<BrightcoveFolderVideosSettings>();
+
+                this.folderSettings = folderSettings;
 
                 base.ProcessPipelineStep(pipelineStep, pipelineContext, logger);
             }
@@ -48,7 +47,7 @@ namespace Brightcove.DataExchangeFramework.Processors
                 pipelineContext.CriticalError = false;
             }
         }
-
+        
         public override IEnumerable<ItemModel> Search(string bucketPath, string indexName, List<Guid> templateGuids, string language, IItemModelRepository modelRepository)
         {
             var index = ContentSearchManager.GetIndex(indexName);
@@ -56,8 +55,8 @@ namespace Brightcove.DataExchangeFramework.Processors
             using (var context = index.CreateSearchContext())
             {
                 List<ItemModel> itemModels = new List<ItemModel>();
-
                 ID templateId = new ID(templateGuids[0]);
+                ItemModel folderItem = folderSettings.folderItem;
 
                 var query = context.GetQueryable<SearchResultItem>()
                     .Where(x => x.Path.Contains(bucketPath) && x.Path != bucketPath && x.Language == language && x.TemplateId == templateId);
@@ -67,6 +66,8 @@ namespace Brightcove.DataExchangeFramework.Processors
                 itemModels = searchResults.Select(r => modelRepository.Get(r.ItemId.ToGuid(), language))
                     .Where(model => model != null && model.GetFieldValueAsGuid("BrightcoveFolder") == folderItem.GetItemId())
                     .ToList();
+
+                Logger.Info($"number of vids in the folder: {folderSettings.videos.Count}");
 
                 return itemModels;
             }
