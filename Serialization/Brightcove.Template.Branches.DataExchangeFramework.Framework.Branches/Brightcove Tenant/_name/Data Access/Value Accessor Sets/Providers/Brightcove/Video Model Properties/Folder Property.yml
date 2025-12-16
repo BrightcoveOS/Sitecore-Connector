@@ -8,6 +8,9 @@ SharedFields:
 - ID: "2fd34e11-3d44-446b-8317-de171f9656e3"
   Hint: PropertyName
   Value: Folder
+- ID: "3c7f78cc-0c5c-4076-80ef-9a49fda5ff96"
+  Hint: ConverterType
+  Value: Brightcove.DataExchangeFramework.Converters.FolderPropertyValueAccessorConverter, Brightcove.DataExchangeFramework
 Languages:
 - Language: en
   Versions:
