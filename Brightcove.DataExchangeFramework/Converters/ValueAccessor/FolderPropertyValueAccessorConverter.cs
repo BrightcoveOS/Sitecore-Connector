@@ -1,4 +1,6 @@
-﻿using Brightcove.DataExchangeFramework.ValueReaders;
+﻿using System;
+using System.Diagnostics;
+using Brightcove.DataExchangeFramework.ValueReaders;
 using Brightcove.DataExchangeFramework.ValueWriters;
 using Sitecore.DataExchange;
 using Sitecore.DataExchange.Attributes;
@@ -11,39 +13,44 @@ using Sitecore.Services.Core.Model;
 
 namespace Brightcove.DataExchangeFramework.Converters
 {
-    [SupportedIds(new string[] { "{BEEC5E96-D7D6-4EB8-8472-E118C131340B}" })]
+    [SupportedIds("{BEEC5E96-D7D6-4EB8-8472-E118C131340B}")]
     public class FolderPropertyValueAccessorConverter : ValueAccessorConverter
     {
         public const string FieldNamePropertyName = "PropertyName";
 
-        public FolderPropertyValueAccessorConverter(IItemModelRepository repository)
-          : base(repository)
+        public FolderPropertyValueAccessorConverter(IItemModelRepository repository) : base(repository)
         {
+     
         }
 
-        protected override ConvertResult<IValueAccessor> ConvertSupportedItem(
-          ItemModel source)
+        protected override IValueReader GetValueReader(ItemModel source)
         {
-            ConvertResult<IValueAccessor> convertResult = base.ConvertSupportedItem(source);
-            if (!convertResult.WasConverted)
-                return convertResult;
-            string stringValue = this.GetStringValue(source, "PropertyName");
-            if (string.IsNullOrWhiteSpace(stringValue))
-                return this.NegativeResult(source, "The property name field must have a value specified.", "field: PropertyName");
-            IValueAccessor convertedValue = convertResult.ConvertedValue;
-            if (convertedValue == null)
-                return this.NegativeResult(source, "A null value accessor was returned by the converter.");
-            if (convertedValue.ValueReader == null)
+            string modelPropertyName = GetStringValue(source, FieldNamePropertyName);
+            return new FolderPropertyValueReader(modelPropertyName);
+        }
+        protected override IValueWriter GetValueWriter(ItemModel source)
+        {
+            string modelPropertyName = GetStringValue(source, FieldNamePropertyName);
+            return new PropertyValueWriter(modelPropertyName);
+        }
+
+        protected override ConvertResult<IValueAccessor> ConvertSupportedItem(ItemModel source)
+        {
+            try
             {
-                FolderPropertyValueReader propertyValueReader = new FolderPropertyValueReader(stringValue);
-                convertedValue.ValueReader = (IValueReader)propertyValueReader;
+                ValueAccessor obj = new ValueAccessor
+                {
+                    ValueReader = GetValueReader(source),
+                    ValueWriter = GetValueWriter(source)
+                };
+                return PositiveResult(obj);
             }
-            /*if (convertedValue.ValueWriter == null)
+            catch (Exception ex)
             {
-                VideoIdsPropertyValueWriter propertyValueWriter = new VideoIdsPropertyValueWriter(stringValue);
-                convertedValue.ValueWriter = (IValueWriter)propertyValueWriter;
-            }*/
-            return this.PositiveResult(convertedValue);
+                Context.Logger.Error(ex.Message);
+                throw ex;
+            }
+
         }
     }
 }
