@@ -7,8 +7,7 @@ DB: master
 SharedFields:
 - ID: "2aa5c591-ff55-411d-96c0-978bb2c58b94"
   Hint: Log
-  Value: |
-    C:\inetpub\wwwroot\brightcovesc.dev.local\App_Data\logs\DataExchange\$name\Pull.Latest.Pipeline.Batch.20240502.171526.txt
+  Value: 
 - ID: "6a2b2cbb-4338-4814-a8a9-9fecbb90456a"
   Hint: LastRunFinished
   Value: 20240502T171527Z
@@ -19,6 +18,7 @@ SharedFields:
     {16662DDA-5EFD-47E4-9F1A-8CBB4ADA2058}
     {4FA2E3FD-5503-46BC-90D4-8CA4645198DB}
     {33D53C95-F888-481E-98DD-5E8558753AF4}
+    {F7E901C2-F7AD-4D9E-B164-8B97D2AC131E}
     {11D1A819-2E6D-45DC-8F36-68D1635E4592}
     {F5F4B6E9-9DBA-4A3E-B24D-0F0902AC6EA8}
     {DDFE0AA5-FB5F-45F0-8E91-6B2F4FD55185}

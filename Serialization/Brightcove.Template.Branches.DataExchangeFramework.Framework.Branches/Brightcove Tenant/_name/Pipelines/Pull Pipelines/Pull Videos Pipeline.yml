@@ -4,6 +4,10 @@ Parent: "fad97d48-916a-4aef-a8e4-9180027d0eb5"
 Template: "2dc9c843-b841-483c-bb9b-ae0c9386404c"
 Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Pipelines/Pull Pipelines/Pull Videos Pipeline
 DB: master
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 600
 Languages:
 - Language: en
   Versions:

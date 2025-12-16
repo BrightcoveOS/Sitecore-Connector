@@ -1,0 +1,21 @@
+﻿---
+ID: "f843e00d-fb73-4b7e-a0fd-11cead85fb23"
+Parent: "793d132e-3d74-47fe-a984-a2864781d656"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Data Exchange/Providers/Brightcove/Pipeline Steps/Update Folder Videos Pipeline Step/Brightcove Asset Item Location/RelativePath
+DB: master
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Single-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 200
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20211103T160244Z

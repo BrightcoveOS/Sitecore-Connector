@@ -68,7 +68,7 @@ namespace Brightcove.DataExchangeFramework.Processors
             }
         }
 
-        private IDictionary<VideoVariant, ItemModel> ResolveVideoVariants(IEnumerable<VideoVariant> videoVariants, ItemModel videoItem, string itemLanguage)
+        protected IDictionary<VideoVariant, ItemModel> ResolveVideoVariants(IEnumerable<VideoVariant> videoVariants, ItemModel videoItem, string itemLanguage)
         {
             var resolvedVariantItems = new Dictionary<VideoVariant, ItemModel>();
             var videoChildren = itemModelRepository.GetChildren(videoItem.GetItemId(), itemLanguage);
@@ -93,7 +93,7 @@ namespace Brightcove.DataExchangeFramework.Processors
             return resolvedVariantItems;
         }
 
-        private void ApplyVariantMappings(IEnumerable<IMappingSet> mappingSets, IDictionary<VideoVariant, ItemModel> videoVariants, string itemLanguage)
+        protected void ApplyVariantMappings(IEnumerable<IMappingSet> mappingSets, IDictionary<VideoVariant, ItemModel> videoVariants, string itemLanguage)
         {
             foreach (VideoVariant videoVariant in videoVariants.Keys)
             {
@@ -101,7 +101,7 @@ namespace Brightcove.DataExchangeFramework.Processors
             }
         }
 
-        private void ApplyMappings(IEnumerable<IMappingSet> mappingSets, object model, ItemModel item)
+        protected void ApplyMappings(IEnumerable<IMappingSet> mappingSets, object model, ItemModel item)
         {
             foreach (IMappingSet mappingSet in mappingSets)
             {

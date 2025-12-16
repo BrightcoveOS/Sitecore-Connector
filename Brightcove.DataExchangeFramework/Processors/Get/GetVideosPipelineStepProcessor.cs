@@ -54,8 +54,6 @@ namespace Brightcove.DataExchangeFramework.Processors
             {
                 foreach (Video video in service.GetVideos(offset, limit, "created_at", query))
                 {
-                    if (video.Id == "4604478696001")
-                        LogInfo(video.ToCustomString());
                     yield return video;
                 }
             }

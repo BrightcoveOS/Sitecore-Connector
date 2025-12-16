@@ -1,16 +1,17 @@
 ﻿---
-ID: "11d1a819-2e6d-45dc-8f36-68d1635e4592"
+ID: "f7e901c2-f7ad-4d9e-b164-8b97d2ac131e"
 Parent: "fad97d48-916a-4aef-a8e4-9180027d0eb5"
 Template: "2dc9c843-b841-483c-bb9b-ae0c9386404c"
-Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Pipelines/Pull Pipelines/Pull Players Pipeline
+Path: /sitecore/templates/Branches/Data Exchange/Framework/Branches/Brightcove Tenant/$name/Pipelines/Pull Pipelines/Pull Folders With Videos Pipeline
 DB: master
+BranchID: "1a8db091-5b22-402b-bb2c-215068772f46"
 SharedFields:
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 400
+  Value: 50
 - ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
   Hint: __Originator
-  Value: "{B5EAB162-44CE-4EF6-BBE5-04BF047081FC}"
+  Value: "{F497B184-CF67-4380-84B2-786F27EEA3A2}"
 Languages:
 - Language: en
   Versions:
@@ -18,8 +19,8 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20220406T132459Z
+      Value: 20251209T201144Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\Admin
+        sitecore\Anonymous
