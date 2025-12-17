@@ -26,14 +26,15 @@ namespace Brightcove.DataExchangeFramework.Processors
     public class ReadAssetItemsPipelineStepProcessor : ReadSitecoreItemsStepProcessor
     {
         protected DateTime lastSyncFinishTime;
-
+        string pipelineStepName;
         protected override void ProcessPipelineStep(PipelineStep pipelineStep = null, PipelineContext pipelineContext = null, ILogger logger = null)
         {
             try
             {
                 var syncSettings = pipelineContext.GetCurrentPipelineBatch().GetPlugin<BrightcoveSyncSettings>();
+                pipelineStepName = pipelineStep.Name;
 
-                if(syncSettings != null)
+                if (syncSettings != null)
                 {
                     lastSyncFinishTime = syncSettings.LastSyncFinishTime;
                 }
@@ -100,7 +101,7 @@ namespace Brightcove.DataExchangeFramework.Processors
 
                 var searchResults = query.ToList();
                 IEnumerable<ItemModel> itemModels = searchResults.Select(r => modelRepository.Get(r.ItemId.ToGuid(), language)).Where(m => m != null);
-                this.Logger.Info("Identified " + itemModels.Count() + " sitecore items that have been modified since last sync "+lastSyncFinishTime);
+                Logger.Info($"Identified {itemModels.Count()} sitecore items that have been modified since last sync {lastSyncFinishTime} (pipeline step: {pipelineStepName})");
 
                 return itemModels;
             }
