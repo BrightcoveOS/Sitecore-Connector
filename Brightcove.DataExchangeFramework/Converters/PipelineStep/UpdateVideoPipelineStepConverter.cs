@@ -25,7 +25,8 @@ namespace Brightcove.DataExchangeFramework.Converters
                 ModelMappingSets = this.ConvertReferencesToModels<IMappingSet>(source, "ModelMappingSets"),
                 VariantMappingSets = this.ConvertReferencesToModels<IMappingSet>(source, "VariantMappingSets"),
                 SourceObjectLocation = this.GetGuidValue(source, "SourceObjectLocation"),
-                TargetObjectLocation = this.GetGuidValue(source, "TargetObjectLocation")
+                TargetObjectLocation = this.GetGuidValue(source, "TargetObjectLocation"),
+                SyncDeletionsFromBrightcove = this.GetBoolValue(source, "SyncDeletionsFromBrightcove")
             };
 
             pipelineStep.AddPlugin<MappingSettings>(mappingSettings);

@@ -23,10 +23,11 @@ namespace Brightcove.DataExchangeFramework.Processors
         BrightcoveService service;
 
         BrightcoveSyncSettings brightcoveSyncSettings;
+        MappingSettings mappingSettings;
 
         protected override void ProcessPipelineStepInternal(PipelineStep pipelineStep = null, PipelineContext pipelineContext = null, ILogger logger = null)
         {
-            var mappingSettings = GetPluginOrFail<MappingSettings>();
+            mappingSettings = GetPluginOrFail<MappingSettings>();
             var endpointSettings = GetPluginOrFail<BrightcoveEndpointSettings>();
             var webApiSettings = GetPluginOrFail<WebApiSettings>(endpointSettings.BrightcoveEndpoint);
             brightcoveSyncSettings = GetPluginOrFail<BrightcoveSyncSettings>(pipelineContext.GetCurrentPipelineBatch());
@@ -97,7 +98,7 @@ namespace Brightcove.DataExchangeFramework.Processors
             //This should be removed when a more permant solution is found
             catch (HttpStatusException ex)
             {
-                if ((int)ex.Response.StatusCode == 404)
+                if (mappingSettings.SyncDeletionsFromBrightcove && (int)ex.Response.StatusCode == 404)
                 {
                     LogWarn($"Deleting the brightcove item '{item.GetItemId()}' in Sitecore because video '{video.Id}' has been deleted in Video Cloud");
                     itemModelRepository.Delete(item.GetItemId());

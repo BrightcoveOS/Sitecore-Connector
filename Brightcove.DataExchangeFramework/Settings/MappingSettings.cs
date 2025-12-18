@@ -15,5 +15,7 @@ namespace Brightcove.DataExchangeFramework.Settings
         public Guid SourceObjectLocation { get; set; }
 
         public Guid TargetObjectLocation { get; set; }
+
+        public bool SyncDeletionsFromBrightcove { get; set; }
     }
 }
