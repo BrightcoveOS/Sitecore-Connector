@@ -86,7 +86,7 @@ namespace Brightcove.DataExchangeFramework.Processors
                     {
                         for (int i = 1; i < searchResults.Count; i++)
                         {
-                            logger.Warn($"Deleting the asset item '{searchResults[0].ItemId}' because it is a duplicate of '{searchResults[i].ItemId}'");
+                            logger.Warn($"Deleting the asset item '{searchResults[i].ItemId}' because it is a duplicate of '{searchResults[0].ItemId}'");
 
                             database.GetItem(searchResults[i].ItemId).Delete();
                         }
@@ -105,7 +105,7 @@ namespace Brightcove.DataExchangeFramework.Processors
 
                     for (int i = 1; i < searchResults.Count; i++)
                     {
-                        logger.Warn($"Deleting the asset item '{searchResults[0].ID}' because it is a duplicate of '{searchResults[i].ID}'");
+                        logger.Warn($"Deleting the asset item '{searchResults[i].ID}' because it is a duplicate of '{searchResults[0].ID}'");
 
                         searchResults[i].Delete();
                     }
