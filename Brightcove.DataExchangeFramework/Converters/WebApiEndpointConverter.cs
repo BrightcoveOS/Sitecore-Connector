@@ -1,40 +1,32 @@
-﻿using Brightcove.DataExchangeFramework.Settings;
-using Sitecore.Data;
-using Sitecore.Data.Items;
+﻿using Brightcove.DataExchangeFramework.Helpers;
+using Brightcove.DataExchangeFramework.Settings;
 using Sitecore.DataExchange.Converters.Endpoints;
-using Sitecore.DataExchange.Converters.PipelineSteps;
 using Sitecore.DataExchange.Models;
-using Sitecore.DataExchange.Plugins;
 using Sitecore.DataExchange.Repositories;
 using Sitecore.Services.Core.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Brightcove.DataExchangeFramework.Converters
 {
     public class WebApiEndpointConverter : BaseEndpointConverter
     {
-        public const string TemplateAccount = "Account";
-
-        public WebApiEndpointConverter(IItemModelRepository repository) : base(repository)
+        public WebApiEndpointConverter(IItemModelRepository repository) 
+            : base(repository)
         {
         }
 
         protected override void AddPlugins(ItemModel source, Endpoint endpoint)
         {
-            Guid accountItemId = this.GetGuidValue(source, TemplateAccount);
+            Guid accountItemId = GetGuidValue(source, FieldName.Account);
             ItemModel accountItem = ItemModelRepository.Get(accountItemId);
 
             WebApiSettings accountSettings = new WebApiSettings();
 
             if(accountItem != null)
             {
-                accountSettings.AccountId = this.GetStringValue(accountItem, "AccountId") ?? "";
-                accountSettings.ClientId = this.GetStringValue(accountItem, "ClientId") ?? "";
-                accountSettings.ClientSecret = this.GetStringValue(accountItem, "ClientSecret") ?? "";
+                accountSettings.AccountId = GetStringValue(accountItem, FieldName.BrightcoveAccount.AccountId) ?? "";
+                accountSettings.ClientId = GetStringValue(accountItem, FieldName.BrightcoveAccount.ClientId) ?? "";
+                accountSettings.ClientSecret = GetStringValue(accountItem, FieldName.BrightcoveAccount.ClientSecret) ?? "";
             }
 
             endpoint.AddPlugin(accountSettings);

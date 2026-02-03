@@ -1,12 +1,11 @@
-﻿using Brightcove.DataExchangeFramework.Settings;
+﻿using Brightcove.DataExchangeFramework.Helpers;
+using Brightcove.DataExchangeFramework.Settings;
 using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.DataExchange.Attributes;
 using Sitecore.DataExchange.Converters.PipelineSteps;
 using Sitecore.DataExchange.DataAccess;
 using Sitecore.DataExchange.Models;
-using Sitecore.DataExchange.Plugins;
-using Sitecore.DataExchange.Providers.Sc.Converters.PipelineSteps;
 using Sitecore.DataExchange.Repositories;
 using Sitecore.Services.Core.Model;
 using System;
@@ -22,23 +21,23 @@ namespace Brightcove.DataExchangeFramework.Converters
         {
             MappingSettings mappingSettings = new MappingSettings()
             {
-                ModelMappingSets = this.ConvertReferencesToModels<IMappingSet>(source, "ModelMappingSets"),
-                VariantMappingSets = this.ConvertReferencesToModels<IMappingSet>(source, "VariantMappingSets"),
-                SourceObjectLocation = this.GetGuidValue(source, "SourceObjectLocation"),
-                TargetObjectLocation = this.GetGuidValue(source, "TargetObjectLocation")
+                ModelMappingSets = ConvertReferencesToModels<IMappingSet>(source, FieldName.Mapping.ModelMappingSets),
+                VariantMappingSets = ConvertReferencesToModels<IMappingSet>(source, FieldName.Mapping.VariantMappingSets),
+                SourceObjectLocation = GetGuidValue(source, FieldName.Mapping.SourceObjectLocation),
+                TargetObjectLocation = GetGuidValue(source, FieldName.Mapping.TargetObjectLocation)
             };
 
-            pipelineStep.AddPlugin<MappingSettings>(mappingSettings);
+            pipelineStep.AddPlugin(mappingSettings);
 
             BrightcoveEndpointSettings endpointSettings = new BrightcoveEndpointSettings()
             {
-                BrightcoveEndpoint = this.ConvertReferenceToModel<Endpoint>(source, "BrightcoveEndpoint"),
-                SitecoreEndpoint = this.ConvertReferenceToModel<Endpoint>(source, "SitecoreEndpoint")
+                BrightcoveEndpoint = ConvertReferenceToModel<Endpoint>(source, FieldName.Endpoint.BrightcoveEndpoint),
+                SitecoreEndpoint = ConvertReferenceToModel<Endpoint>(source, FieldName.Endpoint.SitecoreEndpoint)
             };
 
-            pipelineStep.AddPlugin<BrightcoveEndpointSettings>(endpointSettings);
+            pipelineStep.AddPlugin(endpointSettings);
 
-            Guid endpointId = this.GetGuidValue(source, "BrightcoveEndpoint");
+            Guid endpointId = GetGuidValue(source, FieldName.Endpoint.BrightcoveEndpoint);
 
             if(endpointId == null)
             {
@@ -52,7 +51,7 @@ namespace Brightcove.DataExchangeFramework.Converters
                 return;
             }
 
-            Guid accountItemId = this.GetGuidValue(endpointModel, "Account");
+            Guid accountItemId = GetGuidValue(endpointModel, FieldName.Account);
 
             if(accountItemId == null)
             {
@@ -70,9 +69,9 @@ namespace Brightcove.DataExchangeFramework.Converters
 
             if (accountItem != null)
             {
-                webApiSettings.AccountId = accountItem["AccountId"];
-                webApiSettings.ClientId = accountItem["ClientId"];
-                webApiSettings.ClientSecret = accountItem["ClientSecret"];
+                webApiSettings.AccountId = accountItem[FieldName.BrightcoveAccount.AccountId];
+                webApiSettings.ClientId = accountItem[FieldName.BrightcoveAccount.ClientId];
+                webApiSettings.ClientSecret = accountItem[FieldName.BrightcoveAccount.ClientSecret];
             }
 
             endpointSettings.BrightcoveEndpoint.AddPlugin(webApiSettings);

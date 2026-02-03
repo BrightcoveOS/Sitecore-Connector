@@ -1,30 +1,23 @@
 ﻿using Brightcove.DataExchangeFramework.Settings;
-using Sitecore.Data;
-using Sitecore.Data.Items;
-using Sitecore.DataExchange.Attributes;
 using Sitecore.DataExchange.Converters.PipelineSteps;
 using Sitecore.DataExchange.Models;
-using Sitecore.DataExchange.Providers.Sc.Converters.PipelineSteps;
 using Sitecore.DataExchange.Repositories;
 using Sitecore.Services.Core.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Brightcove.DataExchangeFramework.Helpers;
 
 namespace Brightcove.DataExchangeFramework.Converters
 {
     public class SyncPipelineStepConverter : BasePipelineStepConverter
     {
-        public SyncPipelineStepConverter(IItemModelRepository repository) : base(repository)
+        public SyncPipelineStepConverter(IItemModelRepository repository) : 
+            base(repository)
         {
-
         }
 
         protected override void AddPlugins(ItemModel source, PipelineStep pipelineStep)
         {
-            Guid endpointId = this.GetGuidValue(source, "EndpointFrom");
+            Guid endpointId = GetGuidValue(source, FieldName.EndpointFrom);
             BrightcoveSyncSettings settings = new BrightcoveSyncSettings();
 
             if (endpointId != null)
@@ -33,7 +26,7 @@ namespace Brightcove.DataExchangeFramework.Converters
 
                 if(endpointItem != null)
                 {
-                    string accountId = this.GetStringValue(endpointItem, "Account") ?? "";
+                    string accountId = GetStringValue(endpointItem, FieldName.Account) ?? "";
                     settings.AccountItem = ItemModelRepository.Get(accountId);
                 }
             }

@@ -50,4 +50,4 @@ $pkg.Sources.Add($source);
 
 
 # Export the package to a zip file on disk
-Export-Package -Project $pkg -Path "C:\Code\Brightcove.Video.Connect.for.Sitecore-10.4.1.zip" -Zip
+Export-Package -Project $pkg -Path "C:\Code\Brightcove.Video.Connect.for.Sitecore-10.4.2.zip" -Zip

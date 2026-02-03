@@ -1,23 +1,15 @@
 ﻿using Brightcove.DataExchangeFramework.Settings;
-using Sitecore.DataExchange.Converters.PipelineSteps;
 using Sitecore.DataExchange.Models;
-using Sitecore.DataExchange.Plugins;
 using Sitecore.DataExchange.Repositories;
 using Sitecore.Services.Core.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Brightcove.DataExchangeFramework.Helpers;
 
 namespace Brightcove.DataExchangeFramework.Converters
 {
     public class ResolveOrUpdateAssetModelPipelineStepConverter : PipelineStepWithEndpointFromConverter
     {
-        public const string TemplateAssetItemLocation = "AssetItemLocation";
-        public const string TemplateAssetModelLocation = "AssetModelLocation";
-
-        public ResolveOrUpdateAssetModelPipelineStepConverter(IItemModelRepository repository) : base(repository)
+        public ResolveOrUpdateAssetModelPipelineStepConverter(IItemModelRepository repository) : 
+            base(repository)
         {
         }
 
@@ -27,8 +19,8 @@ namespace Brightcove.DataExchangeFramework.Converters
 
             var resolveAssetModelSettings = new ResolveAssetModelSettings()
             {
-                AssetItemLocation = this.GetGuidValue(source, TemplateAssetItemLocation),
-                AssetModelLocation = this.GetGuidValue(source, TemplateAssetModelLocation)
+                AssetItemLocation = GetGuidValue(source, FieldName.TemplateAssetItemLocation),
+                AssetModelLocation = GetGuidValue(source, FieldName.TemplateAssetModelLocation)
             };
 
             pipelineStep.AddPlugin(resolveAssetModelSettings);
