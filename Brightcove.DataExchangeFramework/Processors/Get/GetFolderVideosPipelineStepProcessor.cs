@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using Brightcove.Core.Models;
 using Brightcove.DataExchangeFramework.Settings;
@@ -8,7 +7,6 @@ using Sitecore.DataExchange;
 using Sitecore.DataExchange.Contexts;
 using Sitecore.DataExchange.Extensions;
 using Sitecore.DataExchange.Models;
-using Sitecore.DataExchange.Plugins;
 using Sitecore.Services.Core.Diagnostics;
 using Sitecore.Services.Core.Model;
 
@@ -51,7 +49,7 @@ namespace Brightcove.DataExchangeFramework.Processors
 
             for (int offset = 0; offset < totalCount; offset += limit)
             {
-                foreach (Video video in service.GetFolderVideos(folderModel.Id, offset, limit, "created_at"))
+                foreach (Video video in Service.GetFolderVideos(folderModel.Id, offset, limit, "created_at"))
                 {
                     yield return video;
                 }

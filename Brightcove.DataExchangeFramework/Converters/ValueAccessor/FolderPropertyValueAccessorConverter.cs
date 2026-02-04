@@ -14,8 +14,8 @@ namespace Brightcove.DataExchangeFramework.Converters
     [SupportedIds("{BEEC5E96-D7D6-4EB8-8472-E118C131340B}")]
     public class FolderPropertyValueAccessorConverter : ValueAccessorConverter
     {
-        public FolderPropertyValueAccessorConverter(IItemModelRepository repository) : 
-            base(repository)
+        public FolderPropertyValueAccessorConverter(IItemModelRepository repository) 
+            : base(repository)
         {
         }
 
@@ -46,7 +46,6 @@ namespace Brightcove.DataExchangeFramework.Converters
                 Context.Logger.Error(ex.Message);
                 throw ex;
             }
-
         }
     }
 }

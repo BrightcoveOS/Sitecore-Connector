@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using Brightcove.Core.Models;
 using Brightcove.DataExchangeFramework.Helpers;
@@ -8,18 +7,12 @@ using Brightcove.DataExchangeFramework.Settings;
 using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.SearchTypes;
 using Sitecore.Data;
-using Sitecore.Data.Items;
-using Sitecore.DataExchange;
 using Sitecore.DataExchange.Attributes;
 using Sitecore.DataExchange.Contexts;
 using Sitecore.DataExchange.Extensions;
-using Sitecore.DataExchange.Local.Extensions;
 using Sitecore.DataExchange.Models;
-using Sitecore.DataExchange.Providers.Sc.Extensions;
 using Sitecore.DataExchange.Providers.Sc.Plugins;
-using Sitecore.DataExchange.Providers.Sc.Processors.PipelineSteps;
 using Sitecore.DataExchange.Repositories;
-using Sitecore.Search;
 using Sitecore.Services.Core.Diagnostics;
 using Sitecore.Services.Core.Model;
 

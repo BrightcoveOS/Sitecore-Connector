@@ -1,5 +1,4 @@
 ﻿using Sitecore.DataExchange;
-using Sitecore.DataExchange.DataAccess;
 using System;
 
 namespace Brightcove.DataExchangeFramework.Settings

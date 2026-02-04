@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Security.Cryptography;
 using Brightcove.DataExchangeFramework.SearchResults;
 using Brightcove.DataExchangeFramework.Settings;
 using Sitecore.Buckets.Managers;
 using Sitecore.ContentSearch;
-using Sitecore.ContentSearch.SearchTypes;
-using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.DataExchange.DataAccess;
-using Sitecore.DataExchange.DataAccess.Readers;
 using Sitecore.DataExchange.Local.Extensions;
 using Sitecore.Diagnostics;
 using Sitecore.Services.Core.Model;
@@ -52,24 +47,20 @@ namespace Brightcove.DataExchangeFramework.ValueReaders
         {
             if (context == null)
                 throw new ArgumentNullException(nameof(context));
-
-            bool wasValueRead = false;
-            object property = null;
+            
             string returnValue = "";
-            string brightcoveFolderId = "";
-
+            bool wasValueRead;
             try
             {
                 var reader = new ChainedPropertyValueReader(PropertyName);
                 var readResult = reader.Read(source, context);
 
                 wasValueRead = readResult.WasValueRead;
-                property = readResult.ReadValue;
-                
+                object property = readResult.ReadValue;
+
                 if (wasValueRead)
                 {
-                    brightcoveFolderId = property as string;
-
+                    string brightcoveFolderId = property as string;
                     if (!string.IsNullOrWhiteSpace(brightcoveFolderId))
                     {
                         Item parentFoldersItem = GetParentFoldersItem();

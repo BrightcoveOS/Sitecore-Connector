@@ -1,25 +1,9 @@
-﻿using Brightcove.Core.Models;
-using Brightcove.Core.Services;
-using Brightcove.DataExchangeFramework.Extensions;
-using Brightcove.DataExchangeFramework.Helpers;
-using Brightcove.DataExchangeFramework.Settings;
-using Sitecore.Data.Fields;
-using Sitecore.Data.Items;
-using Sitecore.DataExchange.Attributes;
+﻿using Brightcove.DataExchangeFramework.Helpers;
 using Sitecore.DataExchange.Contexts;
-using Sitecore.DataExchange.DataAccess;
-using Sitecore.DataExchange.Extensions;
 using Sitecore.DataExchange.Models;
-using Sitecore.DataExchange.Plugins;
-using Sitecore.DataExchange.Processors.PipelineSteps;
 using Sitecore.DataExchange.Providers.Sc.Processors.PipelineSteps;
-using Sitecore.DataExchange.Repositories;
-using Sitecore.Globalization;
 using Sitecore.Services.Core.Diagnostics;
-using Sitecore.Services.Core.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Brightcove.DataExchangeFramework.Processors
 {

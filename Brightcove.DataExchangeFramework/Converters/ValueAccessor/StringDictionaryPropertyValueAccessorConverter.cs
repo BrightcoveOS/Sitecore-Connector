@@ -18,28 +18,33 @@ namespace Brightcove.DataExchangeFramework
         {
         }
 
-        protected override ConvertResult<IValueAccessor> ConvertSupportedItem(
-          ItemModel source)
+        protected override ConvertResult<IValueAccessor> ConvertSupportedItem(ItemModel source)
         {
             ConvertResult<IValueAccessor> convertResult = base.ConvertSupportedItem(source);
+            
             if (!convertResult.WasConverted)
                 return convertResult;
+            
             string stringValue = GetStringValue(source, FieldName.PropertyName);
             if (string.IsNullOrWhiteSpace(stringValue))
                 return NegativeResult(source, "The property name field must have a value specified.", $"field: {FieldName.PropertyName}");
+            
             IValueAccessor convertedValue = convertResult.ConvertedValue;
             if (convertedValue == null)
                 return NegativeResult(source, "A null value accessor was returned by the converter.");
+            
             if (convertedValue.ValueReader == null)
             {
                 StringDictionaryPropertyValueReader propertyValueReader = new StringDictionaryPropertyValueReader(stringValue);
                 convertedValue.ValueReader = propertyValueReader;
             }
+            
             if (convertedValue.ValueWriter == null)
             {
                 StringDictionaryPropertyValueWriter propertyValueWriter = new StringDictionaryPropertyValueWriter(stringValue);
                 convertedValue.ValueWriter = propertyValueWriter;
             }
+            
             return PositiveResult(convertedValue);
         }
     }

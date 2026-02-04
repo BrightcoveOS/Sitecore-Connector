@@ -1,29 +1,16 @@
-﻿using Brightcove.Core.Models;
-using Brightcove.Core.Services;
-using Brightcove.DataExchangeFramework.Helpers;
-using Brightcove.DataExchangeFramework.Settings;
+﻿using Brightcove.DataExchangeFramework.Helpers;
 using Sitecore.DataExchange;
-using Sitecore.DataExchange.Attributes;
 using Sitecore.DataExchange.Contexts;
-using Sitecore.DataExchange.Converters.PipelineSteps;
-using Sitecore.DataExchange.Extensions;
 using Sitecore.DataExchange.Models;
-using Sitecore.DataExchange.Plugins;
-using Sitecore.DataExchange.Processors.PipelineSteps;
 using Sitecore.DataExchange.Repositories;
 using Sitecore.Services.Core.Diagnostics;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Brightcove.DataExchangeFramework.Processors
 {
     public class BasePipelineStepProcessor : Sitecore.DataExchange.Processors.PipelineSteps.BasePipelineStepProcessor
     {
-        protected IItemModelRepository itemModelRepository { get; set; }
+        protected IItemModelRepository ItemModelRepository { get; set; }
 
         protected override void ProcessPipelineStep(PipelineStep pipelineStep = null, PipelineContext pipelineContext = null, ILogger logger = null)
         {
@@ -42,11 +29,11 @@ namespace Brightcove.DataExchangeFramework.Processors
                     throw new ArgumentNullException(nameof(logger));
                 }
 
-                itemModelRepository = Sitecore.DataExchange.Context.ItemModelRepository;
+                ItemModelRepository = Context.ItemModelRepository;
 
                 ProcessPipelineStepInternal(pipelineStep, pipelineContext, logger);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 LogFatal("An unexpected error occured running the internal pipeline step", ex);
                 BrightcoveSyncSettingsHelper.SetErrorFlag(pipelineContext);
@@ -62,7 +49,7 @@ namespace Brightcove.DataExchangeFramework.Processors
 
         protected T GetPluginOrFail<T>(IHasPlugins source) where T: IPlugin
         {
-            if(source == null)
+            if (source == null)
             {
                 throw new Exception($"Could not load plugin '{typeof(T)}' because the source is null. Please make sure the pipeline step has been configured properly.");
             }

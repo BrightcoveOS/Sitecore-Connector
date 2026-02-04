@@ -1,7 +1,5 @@
-﻿using Sitecore.Data.Fields;
-using Sitecore.DataExchange.DataAccess;
+﻿using Sitecore.DataExchange.DataAccess;
 using System;
-using System.Reflection;
 using System.Linq;
 using System.Collections.Generic;
 
@@ -9,7 +7,8 @@ namespace Brightcove.DataExchangeFramework.ValueWriters
 {
     public class LabelsPropertyValueWriter : ChainedPropertyValueWriter
     {
-        public LabelsPropertyValueWriter(string propertyName) : base(propertyName)
+        public LabelsPropertyValueWriter(string propertyName) 
+            : base(propertyName)
         {
         }
 

@@ -22,7 +22,7 @@ namespace Brightcove.DataExchangeFramework.Converters
 
             WebApiSettings accountSettings = new WebApiSettings();
 
-            if(accountItem != null)
+            if (accountItem != null)
             {
                 accountSettings.AccountId = GetStringValue(accountItem, FieldName.BrightcoveAccount.AccountId) ?? "";
                 accountSettings.ClientId = GetStringValue(accountItem, FieldName.BrightcoveAccount.ClientId) ?? "";

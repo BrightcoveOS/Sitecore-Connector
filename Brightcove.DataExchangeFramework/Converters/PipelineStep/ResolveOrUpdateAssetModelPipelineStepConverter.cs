@@ -8,8 +8,8 @@ namespace Brightcove.DataExchangeFramework.Converters
 {
     public class ResolveOrUpdateAssetModelPipelineStepConverter : PipelineStepWithEndpointFromConverter
     {
-        public ResolveOrUpdateAssetModelPipelineStepConverter(IItemModelRepository repository) : 
-            base(repository)
+        public ResolveOrUpdateAssetModelPipelineStepConverter(IItemModelRepository repository) 
+            : base(repository)
         {
         }
 

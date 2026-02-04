@@ -1,26 +1,12 @@
-﻿using Brightcove.Core.Models;
-using Brightcove.Core.Services;
+﻿using Brightcove.Core.Services;
 using Brightcove.DataExchangeFramework.Helpers;
 using Brightcove.DataExchangeFramework.Settings;
-using Sitecore.Data.Fields;
-using Sitecore.Data.Items;
-using Sitecore.DataExchange.Attributes;
 using Sitecore.DataExchange.Contexts;
-using Sitecore.DataExchange.Converters.PipelineSteps;
 using Sitecore.DataExchange.Extensions;
 using Sitecore.DataExchange.Models;
 using Sitecore.DataExchange.Plugins;
-using Sitecore.DataExchange.Processors.PipelineSteps;
-using Sitecore.DataExchange.Providers.Sc.Plugins;
-using Sitecore.DataExchange.Repositories;
-using Sitecore.SecurityModel;
 using Sitecore.Services.Core.Diagnostics;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Brightcove.DataExchangeFramework.Processors
 {
@@ -30,7 +16,7 @@ namespace Brightcove.DataExchangeFramework.Processors
 
         protected Endpoint EndpointFrom { get; set; }
 
-        protected BrightcoveService service { get; set; }
+        protected BrightcoveService Service { get; set; }
 
         protected override void ProcessPipelineStep(PipelineStep pipelineStep = null, PipelineContext pipelineContext = null, ILogger logger = null)
         {
@@ -82,8 +68,8 @@ namespace Brightcove.DataExchangeFramework.Processors
                     return;
                 }
 
-                itemModelRepository = Sitecore.DataExchange.Context.ItemModelRepository;
-                service = new BrightcoveService(WebApiSettings.AccountId, WebApiSettings.ClientId, WebApiSettings.ClientSecret);
+                ItemModelRepository = Sitecore.DataExchange.Context.ItemModelRepository;
+                Service = new BrightcoveService(WebApiSettings.AccountId, WebApiSettings.ClientId, WebApiSettings.ClientSecret);
 
                 ProcessPipelineStepInternal(pipelineStep, pipelineContext, logger);
             }

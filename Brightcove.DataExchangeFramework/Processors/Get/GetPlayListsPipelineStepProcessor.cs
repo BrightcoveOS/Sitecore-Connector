@@ -1,21 +1,13 @@
 ﻿using Brightcove.Core.Models;
-using Brightcove.Core.Services;
 using Brightcove.DataExchangeFramework.Settings;
-using Sitecore.ContentSearch;
-using Sitecore.Data.Items;
-using Sitecore.DataExchange.Attributes;
 using Sitecore.DataExchange.Contexts;
 using Sitecore.DataExchange.Extensions;
 using Sitecore.DataExchange.Models;
 using Sitecore.DataExchange.Plugins;
-using Sitecore.DataExchange.Processors.PipelineSteps;
 using Sitecore.Services.Core.Diagnostics;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Brightcove.DataExchangeFramework.Processors
 {
@@ -27,9 +19,9 @@ namespace Brightcove.DataExchangeFramework.Processors
         protected override void ProcessPipelineStepInternal(PipelineStep pipelineStep = null, PipelineContext pipelineContext = null, ILogger logger = null)
         {
             lastSyncStartTime = GetPluginOrFail<BrightcoveSyncSettings>(pipelineContext.GetCurrentPipelineBatch()).LastSyncStartTime;
-            totalCount = service.PlayListsCount();
+            totalCount = Service.PlayListsCount();
 
-            var data = this.GetIterableData(WebApiSettings, pipelineStep);
+            var data = GetIterableData(WebApiSettings, pipelineStep);
             var dataSettings = new IterableDataSettings(data);
 
             pipelineContext.AddPlugin(dataSettings);
@@ -42,7 +34,7 @@ namespace Brightcove.DataExchangeFramework.Processors
 
             for (int offset = 0; offset < totalCount; offset += limit)
             {
-                playLists = service.GetPlayLists(offset, limit).Where(p => p.LastModifiedDate > lastSyncStartTime);
+                playLists = Service.GetPlayLists(offset, limit).Where(p => p.LastModifiedDate > lastSyncStartTime);
                 LogInfo("Identified " + playLists.Count() + " playlist model(s) that have been modified since last sync " + lastSyncStartTime);
 
                 foreach (PlayList playList in playLists)

@@ -1,18 +1,14 @@
 ﻿using Sitecore.DataExchange.DataAccess;
 using Sitecore.DataExchange.DataAccess.Readers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Brightcove.DataExchangeFramework.ValueReaders
 {
     public class NullableEnumValueReader : EnumValueReader
     {
-        public NullableEnumValueReader(Type enumType) : base(enumType)
+        public NullableEnumValueReader(Type enumType) 
+            : base(enumType)
         {
-
         }
 
         private object ToEnumMember(object source)
@@ -21,31 +17,33 @@ namespace Brightcove.DataExchangeFramework.ValueReaders
             {
                 if (source is string)
                 {
-                    if (Enum.IsDefined(this.EnumType, source))
-                        return Enum.Parse(this.EnumType, source.ToString());
-                    int result = 0;
-                    if (int.TryParse(source.ToString(), out result))
-                        return this.ToEnumMemberAsInt(result);
+                    if (Enum.IsDefined(EnumType, source))
+                        return Enum.Parse(EnumType, source.ToString());
+
+                    if (int.TryParse(source.ToString(), out int result))
+                        return ToEnumMemberAsInt(result);
                 }
+
                 if (source is int i2)
-                    return this.ToEnumMemberAsInt(i2);
-                if (this.EnumType.IsAssignableFrom(source.GetType()))
+                    return ToEnumMemberAsInt(i2);
+
+                if (EnumType.IsAssignableFrom(source.GetType()))
                     return source;
             }
-            return (object)null;
+            return null;
         }
 
         private object ToEnumMemberAsInt(int i)
         {
-            object obj = Enum.ToObject(this.EnumType, i);
-            return Enum.IsDefined(this.EnumType, obj) ? obj : (object)null;
+            object obj = Enum.ToObject(EnumType, i);
+            return Enum.IsDefined(EnumType, obj) ? obj : null;
         }
 
         public override ReadResult Read(object source, DataAccessContext context)
         {
             try
             {
-                object enumMember = this.ToEnumMember(source);
+                object enumMember = ToEnumMember(source);
 
                 return new ReadResult(DateTime.UtcNow)
                 {
@@ -55,7 +53,6 @@ namespace Brightcove.DataExchangeFramework.ValueReaders
             }
             catch
             {
-
             }
 
             return new ReadResult(DateTime.UtcNow)

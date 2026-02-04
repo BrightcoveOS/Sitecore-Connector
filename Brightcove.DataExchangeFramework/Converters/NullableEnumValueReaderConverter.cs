@@ -18,8 +18,7 @@ namespace Brightcove.DataExchangeFramework.Converters
         {
         }
 
-        protected override ConvertResult<IValueReader> ConvertSupportedItem(
-          ItemModel source)
+        protected override ConvertResult<IValueReader> ConvertSupportedItem(ItemModel source)
         {
             Type typeFromTypeName = GetTypeFromTypeName(source, FieldName.EnumType);
             return typeFromTypeName == null ? NegativeResult(source, "No type was resolved for the item.") : PositiveResult(new NullableEnumValueReader(typeFromTypeName));

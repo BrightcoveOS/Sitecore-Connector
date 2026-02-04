@@ -8,8 +8,8 @@ namespace Brightcove.DataExchangeFramework.ValueWriters
     {
         public ChainedPropertyValueWriter(string propertyName)
         {
-            this.PropertyName = !string.IsNullOrWhiteSpace(propertyName) ? propertyName : throw new ArgumentOutOfRangeException(nameof(propertyName), (object)propertyName, "Property name must be specified.");
-            this.ReflectionUtil = (IReflectionUtil)Sitecore.DataExchange.DataAccess.Reflection.ReflectionUtil.Instance;
+            PropertyName = !string.IsNullOrWhiteSpace(propertyName) ? propertyName : throw new ArgumentOutOfRangeException(nameof(propertyName), (object)propertyName, "Property name must be specified.");
+            ReflectionUtil = Sitecore.DataExchange.DataAccess.Reflection.ReflectionUtil.Instance;
         }
 
         public string PropertyName { get; private set; }
@@ -25,9 +25,9 @@ namespace Brightcove.DataExchangeFramework.ValueWriters
 
                 for (int i = 0; i < properties.Length; i++)
                 {
-                    propertyInfo = this.ReflectionUtil.GetProperty(properties[i], target);
+                    propertyInfo = ReflectionUtil.GetProperty(properties[i], target);
 
-                    if (propertyInfo == (PropertyInfo)null || !propertyInfo.CanWrite)
+                    if (propertyInfo == null || !propertyInfo.CanWrite)
                     {
                         return false;
                     }

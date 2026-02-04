@@ -10,8 +10,8 @@ namespace Brightcove.DataExchangeFramework.Converters
 {
     public class SyncPipelineStepConverter : BasePipelineStepConverter
     {
-        public SyncPipelineStepConverter(IItemModelRepository repository) : 
-            base(repository)
+        public SyncPipelineStepConverter(IItemModelRepository repository) 
+            : base(repository)
         {
         }
 
@@ -24,7 +24,7 @@ namespace Brightcove.DataExchangeFramework.Converters
             {
                 ItemModel endpointItem = ItemModelRepository.Get(endpointId);
 
-                if(endpointItem != null)
+                if (endpointItem != null)
                 {
                     string accountId = GetStringValue(endpointItem, FieldName.Account) ?? "";
                     settings.AccountItem = ItemModelRepository.Get(accountId);

@@ -13,8 +13,8 @@ namespace Brightcove.DataExchangeFramework
     [SupportedIds(new string[] { "{CC5AC65C-ACAF-4D89-8811-43B2D8E8134A}" })]
     public class DateTimePropertyValueAccessorConverter : ValueAccessorConverter
     {
-        public DateTimePropertyValueAccessorConverter(IItemModelRepository repository): 
-            base(repository)
+        public DateTimePropertyValueAccessorConverter(IItemModelRepository repository)
+            : base(repository)
         {
         }
 

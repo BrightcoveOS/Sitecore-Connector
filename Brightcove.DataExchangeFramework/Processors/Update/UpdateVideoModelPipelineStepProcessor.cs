@@ -38,7 +38,7 @@ namespace Brightcove.DataExchangeFramework.Processors
 
             if (itemModel.GetTemplateId() == new Guid("{a7eaf4fd-bcf3-4511-9e8c-2ed0b165f1d6}"))
             {
-                HandleVariant(itemModelRepository, mappingSettings.VariantMappingSets, itemModel, video);
+                HandleVariant(ItemModelRepository, mappingSettings.VariantMappingSets, itemModel, video);
                 return;
             }    
 
@@ -80,7 +80,7 @@ namespace Brightcove.DataExchangeFramework.Processors
                 service.DeleteVideo(video.Id);
 
                 LogInfo($"Deleting the brightcove item '{item.GetItemId()}' because it has been marked for deletion in Sitecore");
-                itemModelRepository.Delete(item.GetItemId());
+                ItemModelRepository.Delete(item.GetItemId());
 
                 return true;
             }
@@ -101,7 +101,7 @@ namespace Brightcove.DataExchangeFramework.Processors
                 if (mappingSettings.SyncDeletionsFromBrightcove && (int)ex.Response.StatusCode == 404)
                 {
                     LogWarn($"Deleting the brightcove item '{item.GetItemId()}' in Sitecore because video '{video.Id}' has been deleted in Video Cloud");
-                    itemModelRepository.Delete(item.GetItemId());
+                    ItemModelRepository.Delete(item.GetItemId());
                     return;
                 }
 
@@ -126,9 +126,9 @@ namespace Brightcove.DataExchangeFramework.Processors
         {
             string folderField = (string)item["BrightcoveFolder"];
 
-            if(string.IsNullOrWhiteSpace(folderField))
+            if (string.IsNullOrWhiteSpace(folderField))
             {
-                if(!string.IsNullOrWhiteSpace(video.Folder))
+                if (!string.IsNullOrWhiteSpace(video.Folder))
                 {
                     LogInfo($"Removing the video '{video.Id}' from the folder '{video.Folder}'");
                     service.RemoveFromFolder(video, video.Folder);
@@ -136,9 +136,9 @@ namespace Brightcove.DataExchangeFramework.Processors
             }
             else
             {
-                string folderId = (string)(itemModelRepository.Get(new Guid(folderField))["ID"]);
+                string folderId = (string)ItemModelRepository.Get(new Guid(folderField))["ID"];
 
-                if(video.Folder != folderId)
+                if (video.Folder != folderId)
                 {
                     LogInfo($"Moving the video '{video.Id}' into the folder '{folderId}'");
                     service.MoveToFolder(video, folderId);
@@ -147,10 +147,9 @@ namespace Brightcove.DataExchangeFramework.Processors
         }
 
         /* Video Variant Handling */
-
         public void HandleVariant(IItemModelRepository itemModelRepository, IEnumerable<IMappingSet> mappingSets, ItemModel variantItemModel, Video model)
         {
-            var database = Sitecore.Data.Database.GetDatabase(itemModelRepository.DatabaseName);
+            var database = Database.GetDatabase(itemModelRepository.DatabaseName);
             Item variantItem = database?.GetItem(new ID(variantItemModel.GetItemId()));
 
             VideoVariant variantModel = new VideoVariant()
@@ -183,10 +182,10 @@ namespace Brightcove.DataExchangeFramework.Processors
 
         public bool ResolveVideoVariant(VideoVariant videoVariant, ItemModel item)
         {
-            if(!service.TryGetVideoVariant(videoVariant.Id, videoVariant.Language, out _))
+            if (!service.TryGetVideoVariant(videoVariant.Id, videoVariant.Language, out _))
             {
                 LogWarn($"Deleting the item '{item.GetItemId()}' because it could not be resolved to the model '{videoVariant.Id}:{videoVariant.Language}'");
-                itemModelRepository.Delete(item.GetItemId());
+                ItemModelRepository.Delete(item.GetItemId());
                 return false;
             }
 
@@ -195,7 +194,7 @@ namespace Brightcove.DataExchangeFramework.Processors
 
         public bool CreateVideoVariant(VideoVariant videoVariant, Item item)
         {
-            if(item.Statistics.Created > brightcoveSyncSettings.LastSyncStartTime)
+            if (item.Statistics.Created > brightcoveSyncSettings.LastSyncStartTime)
             {
                 LogInfo($"Creating the video variant model '{videoVariant.Id}:{videoVariant.Language}'");
                 service.CreateVideoVariant(videoVariant.Id, videoVariant.Name, videoVariant.Language);
@@ -241,7 +240,7 @@ namespace Brightcove.DataExchangeFramework.Processors
                 service.DeleteVideoVariant(videoVariant.Id, videoVariant.Language);
 
                 LogInfo($"Deleting the item '{itemModel.GetItemId()}' because it has been marked for deletion in Sitecore");
-                itemModelRepository.Delete(itemModel.GetItemId());
+                ItemModelRepository.Delete(itemModel.GetItemId());
 
                 return true;
             }

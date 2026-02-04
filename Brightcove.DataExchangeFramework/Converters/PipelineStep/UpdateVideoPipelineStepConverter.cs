@@ -13,8 +13,8 @@ namespace Brightcove.DataExchangeFramework.Converters
     [SupportedIds("{D79A5F5C-9A5E-4B1C-B884-8E3B97CACA2D}", "{F598D123-2FE9-45D3-99E2-3E4B5063190A}")]
     public class UpdateVideoPipelineStepConverter : BasePipelineStepConverter
     {
-        public UpdateVideoPipelineStepConverter(IItemModelRepository repository) : 
-            base(repository)
+        public UpdateVideoPipelineStepConverter(IItemModelRepository repository) 
+            : base(repository)
         {
         }
 
@@ -41,28 +41,28 @@ namespace Brightcove.DataExchangeFramework.Converters
 
             Guid endpointId = GetGuidValue(source, FieldName.Endpoint.BrightcoveEndpoint);
 
-            if(endpointId == null)
+            if (endpointId == null)
             {
                 return;
             }
 
             ItemModel endpointModel = ItemModelRepository.Get(endpointId);
 
-            if(endpointModel == null)
+            if (endpointModel == null)
             {
                 return;
             }
 
             Guid accountItemId = GetGuidValue(endpointModel, FieldName.Account);
 
-            if(accountItemId == null)
+            if (accountItemId == null)
             {
                 return;
             }
 
             ItemModel accountItem = ItemModelRepository.Get(accountItemId);
 
-            if(accountItem == null)
+            if (accountItem == null)
             {
                 return;
             }

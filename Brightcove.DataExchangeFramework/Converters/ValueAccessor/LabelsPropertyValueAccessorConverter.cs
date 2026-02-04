@@ -24,22 +24,27 @@ namespace Brightcove.DataExchangeFramework.Converters
             ConvertResult<IValueAccessor> convertResult = base.ConvertSupportedItem(source);
             if (!convertResult.WasConverted)
                 return convertResult;
+
             string stringValue = GetStringValue(source, FieldName.PropertyName);
             if (string.IsNullOrWhiteSpace(stringValue))
                 return NegativeResult(source, "The property name field must have a value specified.", $"field: {FieldName.PropertyName}");
+            
             IValueAccessor convertedValue = convertResult.ConvertedValue;
             if (convertedValue == null)
                 return NegativeResult(source, "A null value accessor was returned by the converter.");
+            
             if (convertedValue.ValueReader == null)
             {
                 LabelsPropertyValueReader propertyValueReader = new LabelsPropertyValueReader(stringValue);
                 convertedValue.ValueReader = propertyValueReader;
             }
+            
             if (convertedValue.ValueWriter == null)
             {
                 LabelsPropertyValueWriter propertyValueWriter = new LabelsPropertyValueWriter(stringValue);
                 convertedValue.ValueWriter = propertyValueWriter;
             }
+            
             return PositiveResult(convertedValue);
         }
     }

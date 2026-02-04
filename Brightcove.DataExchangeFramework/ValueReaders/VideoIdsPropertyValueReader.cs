@@ -1,14 +1,10 @@
 ﻿using Brightcove.DataExchangeFramework.SearchResults;
 using Brightcove.DataExchangeFramework.Settings;
 using Sitecore.ContentSearch;
-using Sitecore.ContentSearch.SearchTypes;
-using Sitecore.Data;
 using Sitecore.DataExchange.DataAccess;
-using Sitecore.DataExchange.DataAccess.Readers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 
 namespace Brightcove.DataExchangeFramework.ValueReaders
 {
@@ -16,8 +12,8 @@ namespace Brightcove.DataExchangeFramework.ValueReaders
     {
         public VideoIdsPropertyValueReader(string propertyName)
         {
-            this.PropertyName = !string.IsNullOrWhiteSpace(propertyName) ? propertyName : throw new ArgumentOutOfRangeException(nameof(propertyName), (object)propertyName, "Property name must be specified.");
-            this.ReflectionUtil = (IReflectionUtil)global::Sitecore.DataExchange.DataAccess.Reflection.ReflectionUtil.Instance;
+            PropertyName = !string.IsNullOrWhiteSpace(propertyName) ? propertyName : throw new ArgumentOutOfRangeException(nameof(propertyName), (object)propertyName, "Property name must be specified.");
+            ReflectionUtil = Sitecore.DataExchange.DataAccess.Reflection.ReflectionUtil.Instance;
         }
 
         public string PropertyName { get; private set; }
@@ -61,7 +57,7 @@ namespace Brightcove.DataExchangeFramework.ValueReaders
                                     .Select(r => r.ItemId.ToString())
                                     .FirstOrDefault();
 
-                                if(videoItemId != null)
+                                if (videoItemId != null)
                                 {
                                     videoItemIds.Add(videoItemId);
                                 }

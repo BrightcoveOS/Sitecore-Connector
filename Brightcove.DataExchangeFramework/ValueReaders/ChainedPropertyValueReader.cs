@@ -1,7 +1,6 @@
 ﻿using Sitecore.DataExchange.DataAccess;
 using Sitecore.DataExchange.DataAccess.Readers;
 using System;
-using System.Reflection;
 
 namespace Brightcove.DataExchangeFramework.ValueReaders
 {
@@ -9,8 +8,8 @@ namespace Brightcove.DataExchangeFramework.ValueReaders
     {
         public ChainedPropertyValueReader(string propertyName)
         {
-            this.PropertyName = !string.IsNullOrWhiteSpace(propertyName) ? propertyName : throw new ArgumentOutOfRangeException(nameof(propertyName), (object)propertyName, "Property name must be specified.");
-            this.ReflectionUtil = (IReflectionUtil)global::Sitecore.DataExchange.DataAccess.Reflection.ReflectionUtil.Instance;
+            PropertyName = !string.IsNullOrWhiteSpace(propertyName) ? propertyName : throw new ArgumentOutOfRangeException(nameof(propertyName), propertyName, "Property name must be specified.");
+            ReflectionUtil = Sitecore.DataExchange.DataAccess.Reflection.ReflectionUtil.Instance;
         }
 
         public string PropertyName { get; private set; }

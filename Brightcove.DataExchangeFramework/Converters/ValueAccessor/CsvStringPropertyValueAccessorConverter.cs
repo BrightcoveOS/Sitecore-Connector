@@ -13,8 +13,8 @@ namespace Brightcove.DataExchangeFramework
     [SupportedIds(new string[] { "{3A68C21B-5B14-48BA-875A-8DA2C42AFB91}" })]
     public class CsvStringPropertyValueAccessorConverter : ValueAccessorConverter
     {
-        public CsvStringPropertyValueAccessorConverter(IItemModelRepository repository): 
-            base(repository)
+        public CsvStringPropertyValueAccessorConverter(IItemModelRepository repository)
+            : base(repository)
         {
         }
 

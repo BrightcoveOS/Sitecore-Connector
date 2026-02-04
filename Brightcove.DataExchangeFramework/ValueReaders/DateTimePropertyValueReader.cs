@@ -1,16 +1,12 @@
 ﻿using Sitecore.DataExchange.DataAccess;
-using Sitecore.DataExchange.DataAccess.Readers;
 using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Linq;
-using System.Web;
 
 namespace Brightcove.DataExchangeFramework.ValueReaders
 {
     public class DateTimePropertyValueReader : ChainedPropertyValueReader
     {
-        public DateTimePropertyValueReader(string propertyName) : base(propertyName)
+        public DateTimePropertyValueReader(string propertyName) 
+            : base(propertyName)
         {
         }
 

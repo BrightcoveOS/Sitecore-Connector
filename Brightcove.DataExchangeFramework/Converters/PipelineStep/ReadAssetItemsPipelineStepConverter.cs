@@ -13,8 +13,8 @@ namespace Brightcove.DataExchangeFramework.Converters
     [SupportedIds("{51EF874F-CCA2-402D-8D5F-289E635D68E3}")]
     public class ReadAssetItemsPipelineStepConverter : ReadSitecoreItemsStepConverter
     {
-        public ReadAssetItemsPipelineStepConverter(IItemModelRepository repository) :
-            base(repository)
+        public ReadAssetItemsPipelineStepConverter(IItemModelRepository repository) 
+            : base(repository)
         {
         }
 
@@ -29,7 +29,7 @@ namespace Brightcove.DataExchangeFramework.Converters
             {
                 ItemModel endpointItem = ItemModelRepository.Get(endpointId);
 
-                if(endpointItem != null)
+                if (endpointItem != null)
                 {
                     resolveAssetItemSettings.AcccountItemId = GetStringValue(endpointItem, FieldName.Account) ?? "";
                     resolveAssetItemSettings.RelativePath = GetStringValue(source, FieldName.RelativePath) ?? "";

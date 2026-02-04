@@ -6,9 +6,9 @@ namespace Brightcove.DataExchangeFramework.ValueWriters
 {
     public class DateTimePropertyValueWriter : ChainedPropertyValueWriter
     {
-        public DateTimePropertyValueWriter(string propertyName) : base(propertyName)
+        public DateTimePropertyValueWriter(string propertyName) 
+            : base(propertyName)
         {
-
         }
 
         public override bool Write(object target, object value, DataAccessContext context)
@@ -20,9 +20,8 @@ namespace Brightcove.DataExchangeFramework.ValueWriters
                 if ((value is string) && !string.IsNullOrWhiteSpace((string)value))
                 {
                     string sourceValue = (string)value;
-                    DateTime tmp;
 
-                    if (DateTime.TryParseExact(sourceValue, new string[2] { "yyyyMMddTHHmmss", "yyyyMMddTHHmmss\\Z" }, (IFormatProvider)CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out tmp))
+                    if (DateTime.TryParseExact(sourceValue, new string[2] { "yyyyMMddTHHmmss", "yyyyMMddTHHmmss\\Z" }, CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out DateTime tmp))
                     {
                         returnValue = tmp;
                     }

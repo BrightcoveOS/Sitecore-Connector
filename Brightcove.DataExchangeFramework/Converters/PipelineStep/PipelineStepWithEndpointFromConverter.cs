@@ -9,8 +9,8 @@ namespace Brightcove.DataExchangeFramework.Converters
 {
     public class PipelineStepWithEndpointFromConverter : BasePipelineStepConverter
     {
-        public PipelineStepWithEndpointFromConverter(IItemModelRepository repository): 
-            base(repository) 
+        public PipelineStepWithEndpointFromConverter(IItemModelRepository repository)
+            : base(repository) 
         { 
         }
 
@@ -23,8 +23,10 @@ namespace Brightcove.DataExchangeFramework.Converters
         {
             EndpointSettings newPlugin = new EndpointSettings();
             Endpoint model = ConvertReferenceToModel<Endpoint>(source, FieldName.EndpointFrom);
+
             if (model != null)
                 newPlugin.EndpointFrom = model;
+
             pipelineStep.AddPlugin(newPlugin);
         }
     }

@@ -13,8 +13,8 @@ namespace Brightcove.DataExchangeFramework.Converters
     [SupportedIds("{31250AD6-4D31-485E-A42C-8D4ADE27B318}")]
     public class ResolveAssetItemPipelineStepConverter : ResolveSitecoreItemStepConverter
     {
-        public ResolveAssetItemPipelineStepConverter(IItemModelRepository repository) : 
-            base(repository)
+        public ResolveAssetItemPipelineStepConverter(IItemModelRepository repository) 
+            : base(repository)
         { 
         }
 

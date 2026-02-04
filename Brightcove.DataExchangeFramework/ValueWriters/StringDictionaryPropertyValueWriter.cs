@@ -1,18 +1,17 @@
 ﻿using Sitecore.DataExchange.DataAccess;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 
 namespace Brightcove.DataExchangeFramework.ValueWriters
 {
     public class StringDictionaryPropertyValueWriter : ChainedPropertyValueWriter
     {
-        public StringDictionaryPropertyValueWriter(string propertyName) : base(propertyName)
+        public StringDictionaryPropertyValueWriter(string propertyName) 
+            : base(propertyName)
         {
-            this.PropertyName = !string.IsNullOrWhiteSpace(propertyName) ? propertyName : throw new ArgumentOutOfRangeException(nameof(propertyName), (object)propertyName, "Property name must be specified.");
-            this.ReflectionUtil = (IReflectionUtil)Sitecore.DataExchange.DataAccess.Reflection.ReflectionUtil.Instance;
+            PropertyName = !string.IsNullOrWhiteSpace(propertyName) ? propertyName : throw new ArgumentOutOfRangeException(nameof(propertyName), (object)propertyName, "Property name must be specified.");
+            ReflectionUtil = Sitecore.DataExchange.DataAccess.Reflection.ReflectionUtil.Instance;
         }
 
         public new string PropertyName { get; private set; }

@@ -1,26 +1,16 @@
-﻿using Brightcove.Core.Exceptions;
-using Brightcove.Core.Models;
+﻿using Brightcove.Core.Models;
 using Brightcove.Core.Services;
 using Brightcove.DataExchangeFramework.Settings;
-using Sitecore.Data.Fields;
-using Sitecore.Data.Items;
-using Sitecore.DataExchange.Attributes;
 using Sitecore.DataExchange.Contexts;
-using Sitecore.DataExchange.DataAccess;
 using Sitecore.DataExchange.Extensions;
 using Sitecore.DataExchange.Models;
-using Sitecore.DataExchange.Plugins;
-using Sitecore.DataExchange.Processors.PipelineSteps;
-using Sitecore.DataExchange.Repositories;
 using Sitecore.Services.Core.Diagnostics;
 using Sitecore.Services.Core.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Brightcove.Core.Extensions;
 using Brightcove.DataExchangeFramework.Helpers;
 using Sitecore.DataExchange.Providers.Sc.Plugins;
-using Sitecore.Data;
 
 namespace Brightcove.DataExchangeFramework.Processors
 {
@@ -46,7 +36,7 @@ namespace Brightcove.DataExchangeFramework.Processors
 
             ApplyMappings(mappingSettings.ModelMappingSets, model, item);
 
-            if (!ItemUpdater.Update(itemModelRepository, item))
+            if (!ItemUpdater.Update(ItemModelRepository, item))
             {
                 throw new Exception($"Failed to update the item '{item.GetItemId()}'");
             }
@@ -62,7 +52,7 @@ namespace Brightcove.DataExchangeFramework.Processors
 
             foreach (ItemModel variantItem in resolvedVariantItems.Values)
             {
-                if (!ItemUpdater.Update(itemModelRepository, variantItem))
+                if (!ItemUpdater.Update(ItemModelRepository, variantItem))
                 {
                     throw new Exception($"Failed to update the item '{variantItem.GetItemId()}'");
                 }

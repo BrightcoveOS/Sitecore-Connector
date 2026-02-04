@@ -1,15 +1,9 @@
-﻿using Brightcove.Core.Services;
-using Brightcove.DataExchangeFramework.Settings;
-using Sitecore.Data.Fields;
-using Sitecore.Data.Items;
+﻿using Brightcove.DataExchangeFramework.Settings;
 using Sitecore.DataExchange.Contexts;
 using Sitecore.DataExchange.Extensions;
 using Sitecore.DataExchange.Models;
-using Sitecore.DataExchange.Plugins;
-using Sitecore.SecurityModel;
 using Sitecore.Services.Core.Diagnostics;
 using System;
-using System.Linq;
 
 namespace Brightcove.DataExchangeFramework.Processors
 {
@@ -28,8 +22,8 @@ namespace Brightcove.DataExchangeFramework.Processors
                     return;
                 }
 
-                DateTime.TryParse(((string)settings.AccountItem?["LastSyncStartTime"] ?? ""), out settings.LastSyncStartTime);
-                DateTime.TryParse(((string)settings.AccountItem?["LastSyncFinishTime"] ?? ""), out settings.LastSyncFinishTime);
+                DateTime.TryParse((string)settings.AccountItem?["LastSyncStartTime"] ?? "", out settings.LastSyncStartTime);
+                DateTime.TryParse((string)settings.AccountItem?["LastSyncFinishTime"] ?? "", out settings.LastSyncFinishTime);
                 settings.StartTime = DateTime.UtcNow;
 
                 pipelineContext.GetCurrentPipelineBatch().AddPlugin(settings);

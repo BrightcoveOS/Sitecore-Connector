@@ -1,16 +1,10 @@
 ﻿using Brightcove.Core.Models;
-using Brightcove.Core.Services;
-using Brightcove.DataExchangeFramework.Extensions;
 using Brightcove.DataExchangeFramework.Settings;
-using Sitecore.Data;
-using Sitecore.Data.Items;
 using Sitecore.DataExchange.Contexts;
 using Sitecore.DataExchange.Extensions;
 using Sitecore.DataExchange.Models;
-using Sitecore.Globalization;
 using Sitecore.Services.Core.Diagnostics;
 using Sitecore.Services.Core.Model;
-using System;
 
 namespace Brightcove.DataExchangeFramework.Processors
 {
@@ -25,7 +19,7 @@ namespace Brightcove.DataExchangeFramework.Processors
             Folder folder = new Folder();
             pipelineContext.SetObjectOnPipelineContext(resolveAssetModelSettings.AssetModelLocation, folder);
 
-            if (!string.IsNullOrWhiteSpace(id) && service.TryGetFolder(id, out folder))
+            if (!string.IsNullOrWhiteSpace(id) && Service.TryGetFolder(id, out folder))
             {
                 pipelineContext.SetObjectOnPipelineContext(resolveAssetModelSettings.AssetModelLocation, folder);
                 LogDebug($"Resolved the brightcove item '{item.GetItemId()}' to the brightcove model '{id}'");
@@ -34,7 +28,7 @@ namespace Brightcove.DataExchangeFramework.Processors
             {
                 //The item was probably deleted or the ID has been modified incorrectly so we delete the item
                 LogWarn($"Deleting the brightcove item '{item.GetItemId()}' because the corresponding brightcove model '{id}' could not be found");
-                itemModelRepository.Delete(item.GetItemId());
+                ItemModelRepository.Delete(item.GetItemId());
                 pipelineContext.Finished = true;
             }
         }

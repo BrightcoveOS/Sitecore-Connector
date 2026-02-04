@@ -1,14 +1,12 @@
-﻿using Sitecore.Data.Fields;
-using Sitecore.DataExchange.DataAccess;
-using System;
-using System.Reflection;
+﻿using Sitecore.DataExchange.DataAccess;
 using System.Linq;
 
 namespace Brightcove.DataExchangeFramework.ValueWriters
 {
     public class VideoIdsPropertyValueWriter : ChainedPropertyValueWriter
     {
-        public VideoIdsPropertyValueWriter(string propertyName) : base(propertyName)
+        public VideoIdsPropertyValueWriter(string propertyName) 
+            : base(propertyName)
         {
         }
 

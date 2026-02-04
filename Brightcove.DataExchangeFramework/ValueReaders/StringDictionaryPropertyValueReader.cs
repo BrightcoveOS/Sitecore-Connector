@@ -1,8 +1,6 @@
 ﻿using Sitecore.DataExchange.DataAccess;
-using Sitecore.DataExchange.DataAccess.Readers;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Linq;
 using System.Web;
 
@@ -10,7 +8,8 @@ namespace Brightcove.DataExchangeFramework.ValueReaders
 {
     public class StringDictionaryPropertyValueReader : ChainedPropertyValueReader
     {
-        public StringDictionaryPropertyValueReader(string propertyName) : base(propertyName)
+        public StringDictionaryPropertyValueReader(string propertyName) 
+            : base(propertyName)
         {
         }
 
@@ -44,7 +43,6 @@ namespace Brightcove.DataExchangeFramework.ValueReaders
             }
             catch
             {
-
             }
 
             return new ReadResult(DateTime.UtcNow)

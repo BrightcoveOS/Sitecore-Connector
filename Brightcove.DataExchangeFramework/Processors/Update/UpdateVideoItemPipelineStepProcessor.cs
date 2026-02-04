@@ -1,26 +1,18 @@
-﻿using Brightcove.Core.Exceptions;
-using Brightcove.Core.Models;
+﻿using Brightcove.Core.Models;
 using Brightcove.Core.Services;
 using Brightcove.DataExchangeFramework.Settings;
-using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
-using Sitecore.DataExchange.Attributes;
 using Sitecore.DataExchange.Contexts;
 using Sitecore.DataExchange.DataAccess;
 using Sitecore.DataExchange.Extensions;
 using Sitecore.DataExchange.Models;
-using Sitecore.DataExchange.Plugins;
-using Sitecore.DataExchange.Processors.PipelineSteps;
-using Sitecore.DataExchange.Repositories;
 using Sitecore.Services.Core.Diagnostics;
 using Sitecore.Services.Core.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Brightcove.Core.Extensions;
 using Brightcove.DataExchangeFramework.Helpers;
 using Sitecore.DataExchange.Providers.Sc.Plugins;
-using Sitecore.Data;
 
 namespace Brightcove.DataExchangeFramework.Processors
 {
@@ -35,13 +27,13 @@ namespace Brightcove.DataExchangeFramework.Processors
             var webApiSettings = GetPluginOrFail<WebApiSettings>(endpointSettings.BrightcoveEndpoint);
             service = new BrightcoveService(webApiSettings.AccountId, webApiSettings.ClientId, webApiSettings.ClientSecret);
 
-            Video model = (Video)this.GetObjectFromPipelineContext(mappingSettings.SourceObjectLocation, pipelineContext, logger);
-            ItemModel item = (ItemModel)this.GetObjectFromPipelineContext(mappingSettings.TargetObjectLocation, pipelineContext, logger);
+            Video model = (Video)GetObjectFromPipelineContext(mappingSettings.SourceObjectLocation, pipelineContext, logger);
+            ItemModel item = (ItemModel)GetObjectFromPipelineContext(mappingSettings.TargetObjectLocation, pipelineContext, logger);
             string itemLanguage = pipelineContext.GetPlugin<SelectedLanguagesSettings>()?.Languages?.FirstOrDefault() ?? "en";
 
             ApplyMappings(mappingSettings.ModelMappingSets, model, item);
 
-            if (!ItemUpdater.Update(itemModelRepository, item))
+            if (!ItemUpdater.Update(ItemModelRepository, item))
             {
                 throw new Exception($"Failed to update the item '{item.GetItemId()}'");
             }
@@ -57,7 +49,7 @@ namespace Brightcove.DataExchangeFramework.Processors
 
             foreach (ItemModel variantItem in resolvedVariantItems.Values)
             {
-                if (!ItemUpdater.Update(itemModelRepository, variantItem))
+                if (!ItemUpdater.Update(ItemModelRepository, variantItem))
                 {
                     throw new Exception($"Failed to update the item '{variantItem.GetItemId()}'");
                 }
@@ -71,7 +63,7 @@ namespace Brightcove.DataExchangeFramework.Processors
         protected IDictionary<VideoVariant, ItemModel> ResolveVideoVariants(IEnumerable<VideoVariant> videoVariants, ItemModel videoItem, string itemLanguage)
         {
             var resolvedVariantItems = new Dictionary<VideoVariant, ItemModel>();
-            var videoChildren = itemModelRepository.GetChildren(videoItem.GetItemId(), itemLanguage);
+            var videoChildren = ItemModelRepository.GetChildren(videoItem.GetItemId(), itemLanguage);
             ItemModel variantItem;
 
             foreach (var videoVariant in videoVariants)
@@ -80,11 +72,13 @@ namespace Brightcove.DataExchangeFramework.Processors
 
                 if (variantItem == null)
                 {
-                    variantItem = new ItemModel();
-                    variantItem.Add("ItemName", (object)ItemUtil.ProposeValidItemName(videoVariant.Name));
-                    variantItem.Add("TemplateID", new Guid("{A7EAF4FD-BCF3-4511-9E8C-2ED0B165F1D6}"));
-                    variantItem.Add("ParentID", (object)videoItem.GetItemId());
-                    variantItem.Add("ItemLanguage", (object)itemLanguage);
+                    variantItem = new ItemModel
+                    {
+                        { "ItemName", ItemUtil.ProposeValidItemName(videoVariant.Name) },
+                        { "TemplateID", new Guid("{A7EAF4FD-BCF3-4511-9E8C-2ED0B165F1D6}") },
+                        { "ParentID", videoItem.GetItemId() },
+                        { "ItemLanguage", itemLanguage }
+                    };
                 }
 
                 resolvedVariantItems.Add(videoVariant, variantItem);

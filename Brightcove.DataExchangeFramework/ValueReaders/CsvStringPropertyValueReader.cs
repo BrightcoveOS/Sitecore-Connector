@@ -1,15 +1,13 @@
 ﻿using Sitecore.DataExchange.DataAccess;
-using Sitecore.DataExchange.DataAccess.Readers;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
-using System.Linq;
 
 namespace Brightcove.DataExchangeFramework.ValueReaders
 {
     public class CsvStringPropertyValueReader : ChainedPropertyValueReader
     {
-        public CsvStringPropertyValueReader(string propertyName) : base(propertyName)
+        public CsvStringPropertyValueReader(string propertyName) 
+            : base(propertyName)
         {
         }
 

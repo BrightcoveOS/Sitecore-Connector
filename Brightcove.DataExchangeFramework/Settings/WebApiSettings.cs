@@ -1,11 +1,4 @@
-﻿using Sitecore.Data.Items;
-using Sitecore.DataExchange;
-using Sitecore.Services.Core.Diagnostics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Sitecore.DataExchange;
 
 namespace Brightcove.DataExchangeFramework.Settings
 {

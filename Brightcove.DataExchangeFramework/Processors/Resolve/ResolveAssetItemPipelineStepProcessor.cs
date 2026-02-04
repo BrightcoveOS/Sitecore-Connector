@@ -5,7 +5,6 @@ using Brightcove.DataExchangeFramework.SearchResults;
 using Brightcove.DataExchangeFramework.Settings;
 using Sitecore.Buckets.Managers;
 using Sitecore.ContentSearch;
-using Sitecore.ContentSearch.SearchTypes;
 using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.DataExchange;
@@ -20,8 +19,6 @@ using Sitecore.DataExchange.Repositories;
 using Sitecore.Services.Core.Diagnostics;
 using Sitecore.Services.Core.Model;
 using Sitecore.DataExchange.Providers.Sc.Extensions;
-using Sitecore.Collections;
-using Sitecore.Globalization;
 using Brightcove.DataExchangeFramework.Helpers;
 
 namespace Brightcove.DataExchangeFramework.Processors
@@ -55,7 +52,7 @@ namespace Brightcove.DataExchangeFramework.Processors
             string language = pipelineContext.GetPlugin<SelectedLanguagesSettings>()?.Languages?.FirstOrDefault() ?? "en";
             string parentItemMediaPath = GetAssetParentItemMediaPath(pipelineContext);
             Item parentItem = pipelineContext.CurrentPipelineStep.GetPlugin<ResolveAssetItemSettings>().ParentItem;
-            Database database = Sitecore.Data.Database.GetDatabase(repository.DatabaseName);
+            Database database = Database.GetDatabase(repository.DatabaseName);
 
             if (parentItem == null)
             {
@@ -63,7 +60,7 @@ namespace Brightcove.DataExchangeFramework.Processors
             }
 
             string fieldName = valueReader.FieldName;
-            string convertedValue = this.ConvertValueForSearch(value);
+            string convertedValue = ConvertValueForSearch(value);
             ItemModel resolvedItem = null;
 
             if (BucketManager.IsBucket(parentItem))
@@ -82,7 +79,7 @@ namespace Brightcove.DataExchangeFramework.Processors
                         .OrderBy((AssetSearchResult result) => result.CreatedDate)
                         .ToList();
 
-                    if(searchResults.Count > 1)
+                    if (searchResults.Count > 1)
                     {
                         for (int i = 1; i < searchResults.Count; i++)
                         {
@@ -114,11 +111,11 @@ namespace Brightcove.DataExchangeFramework.Processors
             }
 
             //Make sure we update the item name if it has changed. (The name is initially set as part of the CreateNewItem method)
-            if(resolvedItem != null)
+            if (resolvedItem != null)
             {
                 string modelName = GetModelName(pipelineContext.CurrentPipelineStep, pipelineContext, logger, resolveItemSettings);
 
-                if(!string.IsNullOrWhiteSpace(modelName) && modelName != (string)resolvedItem["ItemName"])
+                if (!string.IsNullOrWhiteSpace(modelName) && modelName != (string)resolvedItem["ItemName"])
                 {
                     resolvedItem["ItemName"] = modelName;
                 }
@@ -143,22 +140,28 @@ namespace Brightcove.DataExchangeFramework.Processors
         {
             if (identifierValue == null)
                 throw new ArgumentException("The value cannot be null.", nameof(identifierValue));
-            Endpoint endpoint = this.GetEndpoint(pipelineStep, pipelineContext, logger);
+            
+            Endpoint endpoint = GetEndpoint(pipelineStep, pipelineContext, logger);
             if (endpoint == null)
                 throw new ArgumentNullException("endpoint");
+            
             if (pipelineStep == null)
                 throw new ArgumentNullException(nameof(pipelineStep));
+            
             if (pipelineContext == null)
                 throw new ArgumentNullException(nameof(pipelineContext));
-            IItemModelRepository repositoryFromEndpoint = this.GetItemModelRepositoryFromEndpoint(endpoint);
+            
+            IItemModelRepository repositoryFromEndpoint = GetItemModelRepositoryFromEndpoint(endpoint);
             if (repositoryFromEndpoint == null)
-                return (object)null;
+                return null;
+            
             ResolveSitecoreItemSettings sitecoreItemSettings = pipelineStep.GetResolveSitecoreItemSettings();
             if (sitecoreItemSettings == null)
-                return (object)null;
-            ItemModel newItem = this.CreateNewItem(this.GetIdentifierObject(pipelineStep, pipelineContext, logger), repositoryFromEndpoint, sitecoreItemSettings, pipelineContext, logger);
-            this.SetRepositoryStatusSettings(RepositoryObjectStatus.DoesNotExist, pipelineContext);
-            return (object)newItem;
+                return null;
+            
+            ItemModel newItem = CreateNewItem(GetIdentifierObject(pipelineStep, pipelineContext, logger), repositoryFromEndpoint, sitecoreItemSettings, pipelineContext, logger);
+            SetRepositoryStatusSettings(RepositoryObjectStatus.DoesNotExist, pipelineContext);
+            return newItem;
         }
 
         private IItemModelRepository GetItemModelRepositoryFromEndpoint(Endpoint endpoint)
@@ -168,26 +171,28 @@ namespace Brightcove.DataExchangeFramework.Processors
 
         private ItemModel CreateNewItem(object identifierObject, IItemModelRepository repository, ResolveSitecoreItemSettings settings, PipelineContext pipelineContext, ILogger logger)
         {
-            IValueReader valueReader = this.GetValueReader(settings.ItemNameValueAccessor);
+            IValueReader valueReader = GetValueReader(settings.ItemNameValueAccessor);
             if (valueReader == null)
-                return (ItemModel)null;
+                return null;
 
             DataAccessContext context = new DataAccessContext();
-            string validItemName = this.ConvertValueToValidItemName(this.ReadValue(identifierObject, valueReader, context), pipelineContext, logger);
+            string validItemName = ConvertValueToValidItemName(ReadValue(identifierObject, valueReader, context), pipelineContext, logger);
             if (validItemName == null)
-                return (ItemModel)null;
+                return null;
 
             string language = pipelineContext.GetPlugin<SelectedLanguagesSettings>()?.Languages?.FirstOrDefault() ?? "en";
 
-            Guid itemIdForNewItem = this.GetParentItemIdForNewItem(repository, settings, pipelineContext, logger);
+            Guid itemIdForNewItem = GetParentItemIdForNewItem(repository, settings, pipelineContext, logger);
 
             if (settings.DoNotCreateItemIfDoesNotExist)
             {
-                ItemModel itemModel = new ItemModel();
-                itemModel.Add("ItemName", (object)validItemName);
-                itemModel.Add("TemplateID", (object)settings.TemplateForNewItem);
-                itemModel.Add("ParentID", (object)itemIdForNewItem);
-                itemModel.Add("ItemLanguage", (object)language);
+                ItemModel itemModel = new ItemModel
+                {
+                    { "ItemName", validItemName },
+                    { "TemplateID", settings.TemplateForNewItem },
+                    { "ParentID", itemIdForNewItem },
+                    { "ItemLanguage", language }
+                };
                 return itemModel;
             }
 
@@ -202,20 +207,22 @@ namespace Brightcove.DataExchangeFramework.Processors
           ILogger logger)
         {
             if (value == null)
-                return (string)null;
+                return null;
+
             string str = value.ToString();
             SitecoreItemUtilities plugin = Context.GetPlugin<SitecoreItemUtilities>();
             if (plugin == null)
             {
-                this.Log(new Action<string>(logger.Error), pipelineContext, "No plugin is specified on the context to determine whether or not the specified value is a valid item name. The original value will be used.", new string[1]
+                Log(new Action<string>(logger.Error), pipelineContext, "No plugin is specified on the context to determine whether or not the specified value is a valid item name. The original value will be used.", new string[1]
                 {
           "missing plugin: " + typeof (SitecoreItemUtilities).FullName
                 });
                 return str;
             }
+            
             if (plugin.IsItemNameValid == null)
             {
-                this.Log(new Action<string>(logger.Error), pipelineContext, "No delegate is specified on the plugin that can determine whether or not the specified value is a valid item name. The original value will be used.", new string[3]
+                Log(new Action<string>(logger.Error), pipelineContext, "No delegate is specified on the plugin that can determine whether or not the specified value is a valid item name. The original value will be used.", new string[3]
                 {
           "plugin: " + typeof (SitecoreItemUtilities).FullName,
           "delegate: IsItemNameValid",
@@ -223,11 +230,15 @@ namespace Brightcove.DataExchangeFramework.Processors
                 });
                 return str;
             }
+            
             if (plugin.IsItemNameValid(str))
                 return str;
+            
             if (plugin.ProposeValidItemName != null)
                 return plugin.ProposeValidItemName(str);
-            logger.Error("No delegate is specified on the plugin that can propose a valid item name. The original value will be used. (plugin: {0}, delegate: {1}, original value: {2})", (object)typeof(SitecoreItemUtilities).FullName, (object)"ProposeValidItemName", (object)str);
+            
+            logger.Error("No delegate is specified on the plugin that can propose a valid item name. The original value will be used. (plugin: {0}, delegate: {1}, original value: {2})", typeof(SitecoreItemUtilities).FullName, "ProposeValidItemName", str);
+            
             return str;
         }
 
@@ -236,9 +247,9 @@ namespace Brightcove.DataExchangeFramework.Processors
         private object ReadValue(object source, IValueReader reader, DataAccessContext context)
         {
             if (reader == null)
-                return (object)null;
+                return null;
             ReadResult readResult = reader.Read(source, context);
-            return !readResult.WasValueRead ? (object)null : readResult.ReadValue;
+            return !readResult.WasValueRead ? null : readResult.ReadValue;
         }
 
         protected override object ConvertValueToIdentifier(
@@ -252,14 +263,14 @@ namespace Brightcove.DataExchangeFramework.Processors
 
         private string GetModelName(PipelineStep pipelineStep, PipelineContext pipelineContext, ILogger logger, ResolveSitecoreItemSettings settings)
         {
-            object identifierObject = this.GetIdentifierObject(pipelineStep, pipelineContext, logger);
+            object identifierObject = GetIdentifierObject(pipelineStep, pipelineContext, logger);
 
-            IValueReader valueReader = this.GetValueReader(settings.ItemNameValueAccessor);
+            IValueReader valueReader = GetValueReader(settings.ItemNameValueAccessor);
             if (valueReader == null)
                 return null;
 
             DataAccessContext context = new DataAccessContext();
-            string validItemName = this.ConvertValueToValidItemName(this.ReadValue(identifierObject, valueReader, context), pipelineContext, logger);
+            string validItemName = ConvertValueToValidItemName(ReadValue(identifierObject, valueReader, context), pipelineContext, logger);
             if (validItemName == null)
                 return null;
 

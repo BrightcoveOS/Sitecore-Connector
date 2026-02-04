@@ -1,23 +1,10 @@
 ﻿using Brightcove.Core.Models;
-using Brightcove.Core.Services;
-using Brightcove.DataExchangeFramework.Extensions;
 using Brightcove.DataExchangeFramework.Settings;
-using Sitecore.Data.Fields;
-using Sitecore.Data.Items;
-using Sitecore.DataExchange.Attributes;
 using Sitecore.DataExchange.Contexts;
-using Sitecore.DataExchange.DataAccess;
 using Sitecore.DataExchange.Extensions;
 using Sitecore.DataExchange.Models;
-using Sitecore.DataExchange.Plugins;
-using Sitecore.DataExchange.Processors.PipelineSteps;
-using Sitecore.DataExchange.Repositories;
-using Sitecore.Globalization;
 using Sitecore.Services.Core.Diagnostics;
 using Sitecore.Services.Core.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Brightcove.DataExchangeFramework.Processors
 {
@@ -37,14 +24,14 @@ namespace Brightcove.DataExchangeFramework.Processors
                 return;
             }
 
-            //The item has been marked for deletion in Sitecore
+            // The item has been marked for deletion in Sitecore
             if ((string)itemModel["Delete"] == "1")
             {
                 LogInfo($"Deleting the brightcove model '{folder.Id}' because it has been marked for deletion in Sitecore");
-                service.DeleteFolder(folder.Id);
+                Service.DeleteFolder(folder.Id);
 
                 LogInfo($"Deleting the brightcove item '{itemModel.GetItemId()}' because it has been marked for deletion in Sitecore");
-                itemModelRepository.Delete(itemModel.GetItemId());
+                ItemModelRepository.Delete(itemModel.GetItemId());
 
                 return;
             }
@@ -53,9 +40,9 @@ namespace Brightcove.DataExchangeFramework.Processors
 
             if (folder.Name != itemName)
             {
-                //We can only update one field for folders (the name) so it is easier to manually map it
+                // We can only update one field for folders (the name) so it is easier to manually map it
                 folder.Name = itemName;
-                service.UpdateFolder(folder);
+                Service.UpdateFolder(folder);
                 LogInfo($"Updated the brightcove asset '{folder.Id}'");
             }
             else
@@ -67,11 +54,11 @@ namespace Brightcove.DataExchangeFramework.Processors
 
         private Folder CreateFolder(ItemModel itemModel)
         {
-            Folder folder = service.CreateFolder((string)itemModel["Name"]);
+            Folder folder = Service.CreateFolder((string)itemModel["Name"]);
 
             itemModel["ID"] = folder.Id;
 
-            itemModelRepository.Update(itemModel.GetItemId(), itemModel);
+            ItemModelRepository.Update(itemModel.GetItemId(), itemModel);
 
             return folder;
         }

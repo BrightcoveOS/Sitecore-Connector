@@ -1,15 +1,9 @@
-﻿using Brightcove.Core.Services;
-using Brightcove.DataExchangeFramework.Settings;
-using Sitecore.Data.Fields;
-using Sitecore.Data.Items;
+﻿using Brightcove.DataExchangeFramework.Settings;
 using Sitecore.DataExchange.Contexts;
 using Sitecore.DataExchange.Extensions;
 using Sitecore.DataExchange.Models;
-using Sitecore.DataExchange.Plugins;
-using Sitecore.SecurityModel;
 using Sitecore.Services.Core.Diagnostics;
 using System;
-using System.Linq;
 
 namespace Brightcove.DataExchangeFramework.Processors
 {
@@ -21,7 +15,7 @@ namespace Brightcove.DataExchangeFramework.Processors
             {
                 BrightcoveSyncSettings settings = pipelineContext.GetCurrentPipelineBatch().GetPlugin<BrightcoveSyncSettings>();
 
-                if(settings == null || settings.ErrorFlag)
+                if (settings == null || settings.ErrorFlag)
                 {
                     LogError($"Failed to finish the sync because an error has occured. Please correct the error(s) shown in the logs above and then run the sync again.");
                     pipelineContext.CriticalError = true;
@@ -31,7 +25,7 @@ namespace Brightcove.DataExchangeFramework.Processors
                 settings.AccountItem["LastSyncStartTime"] = settings.StartTime.ToString();
                 settings.AccountItem["LastSyncFinishTime"] = DateTime.UtcNow.ToString();
 
-                itemModelRepository.Update(settings.AccountItem.GetItemId(), settings.AccountItem);
+                ItemModelRepository.Update(settings.AccountItem.GetItemId(), settings.AccountItem);
             }
             catch (Exception ex)
             {
